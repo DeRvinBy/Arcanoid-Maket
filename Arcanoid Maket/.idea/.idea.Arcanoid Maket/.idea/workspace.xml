@@ -10,13 +10,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СaсhedTypes.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/IGlobalSubscriber.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/SubscribersList.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/EventBus.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/EventBusHelper.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СashedTypes.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/Types.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/PoolTypes.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolSettings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolObjects.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/ObjectPoolType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/EventBus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СaсhedTypes.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Test.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolContainer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uaqLiDye7PUVBN6s0xAefO6Wb8" />
@@ -29,7 +41,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">

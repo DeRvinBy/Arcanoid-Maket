@@ -6,15 +6,15 @@ namespace Project.Scripts.Utils.EventBus
 {
     internal static class СaсhedTypes
     {
-        private static Dictionary<Type, List<Type>> _caсhedSubscriberTypes =
+        private static Dictionary<Type, List<Type>> _cashedSubscriberTypes =
             new Dictionary<Type, List<Type>>();
 
         public static List<Type> GetSubscriberTypes(IGlobalSubscriber globalSubscriber)
         {
             Type type = globalSubscriber.GetType();
-            if (_caсhedSubscriberTypes.ContainsKey(type))
+            if (_cashedSubscriberTypes.ContainsKey(type))
             {
-                return _caсhedSubscriberTypes[type];
+                return _cashedSubscriberTypes[type];
             }
 
             List<Type> subscriberTypes = type
@@ -23,7 +23,7 @@ namespace Project.Scripts.Utils.EventBus
                     .Contains(typeof(IGlobalSubscriber)))
                 .ToList();
 
-            _caсhedSubscriberTypes[type] = subscriberTypes;
+            _cashedSubscriberTypes[type] = subscriberTypes;
             return subscriberTypes;
         }
     }
