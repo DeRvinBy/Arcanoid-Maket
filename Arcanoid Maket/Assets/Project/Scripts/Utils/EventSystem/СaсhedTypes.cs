@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Project.Scripts.Utils.EventBus
+namespace Project.Scripts.Utils.EventSystem
 {
     internal static class СaсhedTypes
     {

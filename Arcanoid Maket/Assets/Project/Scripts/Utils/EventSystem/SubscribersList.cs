@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Project.Scripts.Utils.EventBus
+namespace Project.Scripts.Utils.EventSystem
 {
     internal class SubscribersList<TSubscriber> 
         where TSubscriber : class

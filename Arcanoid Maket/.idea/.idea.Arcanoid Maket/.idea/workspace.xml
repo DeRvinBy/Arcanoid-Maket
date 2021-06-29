@@ -11,7 +11,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СaсhedTypes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/127E81E1-CB34-41CC-97D2-6B1910DAAE77/6b/0a51c47b/SystemLanguage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventSystem/СaсhedTypes.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -29,6 +30,27 @@
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Test.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolContainer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/LocalizationItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/TranslationItem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/Translation.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/Translations.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Localization.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/LocalizationManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Interfaces.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Interfaces/ILanguageChanged.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Data/TranslationData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/LocalizationParser.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventSystem/EventBus.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventSystem/IGlobalSubscriber.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventSystem/SubscribersList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventSystem/СaсhedTypes.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Interfaces/ILanguageChangedEvent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/UILocalization/TextMeshProLocalization.cs" />
+      <option value="$PROJECT_DIR$/Assets/Resources/Localization/localization.json" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Enumerations/LanguageCode.cs" />
+      <option value="$PROJECT_DIR$/Assets/Test.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/LocalizationManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uaqLiDye7PUVBN6s0xAefO6Wb8" />

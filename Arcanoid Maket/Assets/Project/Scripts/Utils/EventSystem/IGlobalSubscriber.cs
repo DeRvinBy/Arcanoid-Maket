@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.Utils.EventBus
+﻿namespace Project.Scripts.Utils.EventSystem
 {
     public interface IGlobalSubscriber { }
 }

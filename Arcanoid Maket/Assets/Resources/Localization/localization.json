@@ -1,0 +1,22 @@
+{
+  "translations": [
+    {
+      "languageCode" : 0,
+      "translationItems" : [
+        {
+          "name" : "testName",
+          "value" : "testValue"
+        }
+      ]
+    },
+    {
+      "languageCode" : 1,
+      "translationItems" : [
+        {
+          "name" : "testName",
+          "value" : "Тестовое значение"
+        }
+      ]
+    }
+  ]
+}
