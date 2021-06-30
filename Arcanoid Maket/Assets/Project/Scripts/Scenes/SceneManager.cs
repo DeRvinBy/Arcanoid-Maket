@@ -1,5 +1,4 @@
-﻿using Project.Scripts.Scenes.Abstract;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Project.Scripts.Scenes
 {
@@ -10,10 +9,10 @@ namespace Project.Scripts.Scenes
 
         private void Awake()
         {
-            CreateCurrentScene();
+            StartCurrentScene();
         }
 
-        private void CreateCurrentScene()
+        private void StartCurrentScene()
         {
             _currentScene.Initialize();
         }

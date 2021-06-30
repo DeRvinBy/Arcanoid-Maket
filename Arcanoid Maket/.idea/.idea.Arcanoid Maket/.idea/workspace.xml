@@ -53,15 +53,16 @@
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/LocalizationManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/GameState.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Interfaces/IStateSwitcher.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/GameState.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/StateMachine.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/StateMachine.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseController.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseModel.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseView.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseSettings.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/SceneManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/Abstract/Scene.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/SceneManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/Scene.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/GameState.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uaqLiDye7PUVBN6s0xAefO6Wb8" />
