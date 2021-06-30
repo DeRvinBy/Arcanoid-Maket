@@ -1,5 +1,4 @@
-﻿using Project.Scripts.Scenes.Abstract;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Project.Scripts.Scenes
 {
