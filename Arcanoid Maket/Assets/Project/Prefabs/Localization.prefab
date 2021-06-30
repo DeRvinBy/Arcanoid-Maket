@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4508589563572594721}
   - component: {fileID: 4508589563572594720}
   m_Layer: 0
-  m_Name: Localization
+  m_Name: LOCALIZATION
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

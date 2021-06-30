@@ -51,6 +51,17 @@
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/Enumerations/LanguageCode.cs" />
       <option value="$PROJECT_DIR$/Assets/Test.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/Localization/LocalizationManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/GameState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Interfaces/IStateSwitcher.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/GameState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/StateMachine.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/StateMachine.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseModel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseSettings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/SceneManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/Abstract/Scene.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uaqLiDye7PUVBN6s0xAefO6Wb8" />
@@ -63,7 +74,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
