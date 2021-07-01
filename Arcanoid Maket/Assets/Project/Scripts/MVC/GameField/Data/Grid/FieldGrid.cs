@@ -13,20 +13,21 @@ namespace Project.Scripts.MVC.GameField.Data.Grid
         
         private readonly FieldSettings _settings;
         private Vector2 _startPosition;
+        private Camera _camera;
 
-        public FieldGrid(FieldSettings fieldSettings)
+        public FieldGrid(Camera camera, FieldSettings fieldSettings)
         {
+            _camera = camera;
             _settings = fieldSettings;
             SetupStartPosition();
         }
         
         private void SetupStartPosition()
         {
-            var camera = Camera.main;
             var screenSideOffset = Screen.width * _settings.SideOffset;
             var screenTopOffset = Screen.height - (Screen.height * _settings.TopOffset);
             var screenPosition = new Vector2(screenSideOffset, screenTopOffset);
-            _startPosition = camera.ScreenToWorldPoint(screenPosition);
+            _startPosition = _camera.ScreenToWorldPoint(screenPosition);
         }
         
         public void CreateGameField(LevelData levelData)
@@ -40,9 +41,8 @@ namespace Project.Scripts.MVC.GameField.Data.Grid
 
         private void SetupCellSize()
         {
-            var camera = Camera.main;
-            var worldHeight = camera.orthographicSize * 2f;
-            var worldWidth = worldHeight * camera.aspect;
+            var worldHeight = _camera.orthographicSize * 2f;
+            var worldWidth = worldHeight * _camera.aspect;
             worldWidth -= worldWidth * _settings.SideOffset * 2f;
             var sizeX = (worldWidth - _settings.CellMargin * (HorizontalCount - 1)) / HorizontalCount;
             var sizeY = sizeX / _settings.BlockAspect;

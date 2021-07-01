@@ -1,6 +1,7 @@
 ﻿using Project.Scripts.GameSettings.GameFieldSettings;
 using Project.Scripts.MVC.GameField.Data.Grid;
 using Project.Scripts.MVC.GameField.Data.Level;
+using UnityEngine;
 
 
 namespace Project.Scripts.MVC.GameField
@@ -11,9 +12,9 @@ namespace Project.Scripts.MVC.GameField
 
         private LevelParser _levelParser;
         
-        public void Initialize(FieldSettings fieldSettings)
+        public void Initialize(Camera camera, FieldSettings fieldSettings)
         {
-            Grid = new FieldGrid(fieldSettings);
+            Grid = new FieldGrid(camera, fieldSettings);
             _levelParser = new LevelParser();
         }
 

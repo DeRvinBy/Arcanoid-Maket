@@ -1,49 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Project.Scripts.Utils.Extensions;
+using Project.Scripts.Utils.ObjectPool.Abstract;
+using Project.Scripts.Utils.ObjectPool.Interfaces;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Project.Scripts.Utils.ObjectPool
 {
-    [Serializable]
-    public class PoolContainer
+    public class PoolContainer<T> where T : MonoBehaviour, IPoolObject
     {
-        public PoolSettings PoolSettings;
+        private Stack<T> _container;
+        private PoolObjectCreator<T> _objectCreator;
 
-        private Stack<GameObject> _container;
-        private Transform _parent;
-
-        public void CreatePool(Transform parent)
+        public PoolContainer(PoolObjectCreator<T> creator)
         {
-            _parent = parent;
-            _container = new Stack<GameObject>();
-
-            for (int i = 0; i < PoolSettings.InitialCount; i++)
-            {
-                var go = InstantiateObject();
-                _container.Push(go);
-            }
-        }
-        
-        public void ReturnToPool(GameObject gameObject)
-        {
-            gameObject.SetActive(false);
-            _container.Push(gameObject);
+            _objectCreator = creator;
+            _container = new Stack<T>();
         }
 
-        public GameObject GetFromPool()
+        public void PushToPool(T obj)
         {
-            var result = _container.Count == 0 ? InstantiateObject() : _container.Pop();
+            obj.Reset();
+            obj.SetActive(false);
+            obj.transform.parent = _objectCreator.transform;
+            _container.Push(obj);
+        }
+
+        public T GetFromPool()
+        {
+            var result = _container.Count == 0 ? _objectCreator.Instantiate() : _container.Pop();
             result.SetActive(true);
+            result.Setup();
             return result;
-        }
-        
-        private GameObject InstantiateObject()
-        {
-            var gameObject = Object.Instantiate(PoolSettings.Prefab, _parent);
-            gameObject.name = PoolSettings.Prefab.name;
-            gameObject.SetActive(false);
-            return gameObject;
         }
     }
 }

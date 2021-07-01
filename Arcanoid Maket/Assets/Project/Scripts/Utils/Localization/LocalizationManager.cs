@@ -3,33 +3,28 @@ using System.Collections.Generic;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.Enumerations;
 using Project.Scripts.Utils.Localization.Interfaces;
+using Project.Scripts.Utils.Singleton;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.Localization
 {
-    public class LocalizationManager : MonoBehaviour
+    public class LocalizationManager : Singleton<LocalizationManager>
     {
         private const string LanguageKey = "language";
         private const string WrongTranslationName = "Wrong name!";
-        
-        private static LocalizationManager _instance;
-        
+
         private LocalizationParser _parser;
         private Dictionary<LanguageCode, Dictionary<string, string>> _translations;
         private LanguageCode _currentLanguage;
 
-        private void Awake()
+        protected override void OnAwake()
         {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-            }
-
-            _instance = this;
-            
             LoadTranslations();
             LoadUserLanguage();
-            
+        }
+
+        private void Start()
+        {
             EventBus.RaiseEvent<ILanguageChangedEvent>((a) => a.OnLanguageChanged());
         }
 
