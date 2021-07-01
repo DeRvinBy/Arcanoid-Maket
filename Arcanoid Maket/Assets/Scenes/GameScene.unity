@@ -306,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b957ca91ed4eb8b28796643d4d91ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topOffset: 0.15
-  _relativeHeight: 0.3
+  _topOffset: 0.1
+  _blockAspect: 2
   _sideOffset: 0.05
   _cellMargin: 0.05
 --- !u!1 &917610686

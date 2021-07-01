@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Project.Scripts.MVC.GameField.Data
+namespace Project.Scripts.MVC.GameField.Data.Grid
 {
     public class FieldCell
     {

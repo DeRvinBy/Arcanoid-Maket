@@ -1,7 +1,8 @@
 ﻿using Project.Scripts.GameSettings.GameFieldSettings;
+using Project.Scripts.MVC.GameField.Data.Level;
 using UnityEngine;
 
-namespace Project.Scripts.MVC.GameField.Data
+namespace Project.Scripts.MVC.GameField.Data.Grid
 {
     public class FieldGrid
     {
@@ -28,13 +29,13 @@ namespace Project.Scripts.MVC.GameField.Data
             _startPosition = camera.ScreenToWorldPoint(screenPosition);
         }
         
-        public void CreateGameField(int horizontalCount, int verticalCount)
+        public void CreateGameField(LevelData levelData)
         {
-            HorizontalCount = horizontalCount;
-            VerticalCount = verticalCount;
-            
+            VerticalCount = levelData.VerticalCount;
+            HorizontalCount = levelData.HorizontalCount;
+
             SetupCellSize();
-            CreateGrid();
+            CreateGrid(levelData.Data);
         }
 
         private void SetupCellSize()
@@ -48,10 +49,10 @@ namespace Project.Scripts.MVC.GameField.Data
             CellSize = new Vector2(sizeX, sizeY);
         }
 
-        private void CreateGrid()
+        private void CreateGrid(int[,] data)
         {
             Cells = new FieldCell[VerticalCount, HorizontalCount];
-            
+
             var startLineX = _startPosition.x + CellSize.x / 2f;
             var startLineY =_startPosition.y - CellSize.y / 2f;
             var offsetX = CellSize.x + _settings.CellMargin;
@@ -62,7 +63,7 @@ namespace Project.Scripts.MVC.GameField.Data
             {
                 for (int j = 0; j < HorizontalCount; j++)
                 {
-                    Cells[i, j] = new FieldCell(position, 0);
+                    Cells[i, j] = new FieldCell(position, data[i, j]);
                     position.x += offsetX;
                 }
 
