@@ -15,8 +15,8 @@ namespace Project.Scripts.Scenes
 
         public void Initialize()
         {
-            InitializeStateMachine();
             InitializeController();
+            InitializeStateMachine();
         }
         
         private void InitializeStateMachine()

@@ -16,15 +16,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/IGlobalSubscriber.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/SubscribersList.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/EventBusHelper.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СashedTypes.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/Types.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/PoolTypes.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolSettings.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolObjects.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/Enumerations/ObjectPoolType.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/EventBus.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/EventBus/СaсhedTypes.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Utils/ObjectPool/PoolManager.cs" />
@@ -59,10 +50,23 @@
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseSettings.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/Abstract/Scene.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/SceneManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/GameState.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/StateMachine.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/Abstract/GameState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/GameSceneStates.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/States/GameState.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/States/GameSceneStateMachine.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/EventInterfaces.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/EventInterfaces/StatesInterfaces/IMainGameStateEvent.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/Abstract/BaseController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameStates/States/MainGameState.cs" />
       <option value="$PROJECT_DIR$/Assets/Project/Scripts/Scenes/Scene.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameSettings/Field/FieldSettings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/GameSettings/GameFieldSettings/FieldSettings.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/GameField/Data/FieldCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/GameField/Data/FieldGrid.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/GameField/FieldModel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/GameField/FieldController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Project/Scripts/MVC/GameField/FieldView.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1uaqLiDye7PUVBN6s0xAefO6Wb8" />
