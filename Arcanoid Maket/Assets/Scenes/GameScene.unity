@@ -199,6 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0636c1d1602041ed8a6e7c182f95786f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneCamera: {fileID: 1972407940}
   _fieldSettings: {fileID: 618202564}
   _fieldView: {fileID: 1317651221}
 --- !u!1 &517714958

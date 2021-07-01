@@ -35,7 +35,11 @@ namespace Project.Scripts.Utils.EventSystem
         public static void RaiseEvent<TSubscriber>(Action<TSubscriber> action)
             where TSubscriber : class, IGlobalSubscriber
         {
-            SubscribersList<IGlobalSubscriber> subscribers = _subscribers[typeof(TSubscriber)];
+            var type = typeof(TSubscriber);
+            
+            if (!_subscribers.ContainsKey(type)) return;
+            
+            SubscribersList<IGlobalSubscriber> subscribers = _subscribers[type];
 
             subscribers.IsExecuting = true;
             foreach (IGlobalSubscriber subscriber in subscribers.List)

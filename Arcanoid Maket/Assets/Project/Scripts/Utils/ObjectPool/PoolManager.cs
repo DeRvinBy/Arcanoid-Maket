@@ -1,65 +1,57 @@
-﻿using System.Collections.Generic;
-using Project.Scripts.Utils.ObjectPool.Enumerations;
+﻿using Project.Scripts.Utils.ObjectPool.Abstract;
+using Project.Scripts.Utils.ObjectPool.Interfaces;
+using Project.Scripts.Utils.Singleton;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.ObjectPool
 {
-    public class PoolManager : MonoBehaviour
+    public class PoolManager<T> : Singleton<PoolManager<T>> where T : MonoBehaviour, IPoolObject
     {
-        private static PoolManager _instance;
-        
         [SerializeField]
-        private List<PoolContainer> _poolsContainers = null;
+        private PoolObjectCreator<T> _objectCreator;
 
-        private Dictionary<ObjectPoolType, PoolContainer> _pools;
+        [SerializeField]
+        private int _initialSize = 0;
 
-        private void Awake()
+        private PoolContainer<T> _container;
+
+        protected override void OnAwake()
         {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-            }
-
-            _instance = this;
-            
             CreatePools();
         }
 
         private void CreatePools()
         {
-            _pools = new Dictionary<ObjectPoolType, PoolContainer>();
-            var _transform = transform;
-            foreach (var container in _poolsContainers)
+            _container = new PoolContainer<T>(_objectCreator);
+            for (int i = 0; i < _initialSize; i++)
             {
-                Debug.Log(container);
-                var type = container.PoolSettings._type;
-                var parent = new GameObject(type.ToString());
-                parent.transform.parent = _transform;
-                container.CreatePool(_transform);
-                _pools.Add(type, container);
+                var instantiate = _objectCreator.Instantiate();
+                instantiate.transform.gameObject.SetActive(false);
+                _container.PushToPool(instantiate);
             }
         }
-
-        public static GameObject GetObject(ObjectPoolType type, Vector3 position) =>
-            _instance.GenerateObject(type, position, Quaternion.identity);
         
-        public static GameObject GetObject(ObjectPoolType type, Vector3 position, Quaternion rotation) =>
-            _instance.GenerateObject(type, position, Quaternion.identity);
-
-        private GameObject GenerateObject(ObjectPoolType type, Vector3 position, Quaternion rotation)
+        public static T GetObject(Vector3 position) =>
+            _instance.GenerateObject(position, Quaternion.identity);
+        
+        public static T GetObject(Vector3 position, Quaternion rotation) =>
+            _instance.GenerateObject(position, Quaternion.identity);
+        
+        private T GenerateObject(Vector3 position, Quaternion rotation)
         {
-            var go = _pools[type].GetFromPool();
-            go.transform.position = position;
-            go.transform.rotation = rotation;
+            var go = _container.GetFromPool();
+            var goTransform = go.transform;
+            goTransform.position = position;
+            goTransform.rotation = rotation;
             return go;
         }
-
-        public static void ReturnObject(ObjectPoolType type, GameObject go) => 
-            _instance.ReturnObjectToPool(type, go);
-
-        private void ReturnObjectToPool(ObjectPoolType type, GameObject go)
+        
+        public static void ReturnObject(T go) => 
+            _instance.ReturnObjectToPool(go);
+        
+        private void ReturnObjectToPool(T go)
         {
-            _pools[type].ReturnToPool(go);
+            _container.PushToPool(go);
         }
     }
 }

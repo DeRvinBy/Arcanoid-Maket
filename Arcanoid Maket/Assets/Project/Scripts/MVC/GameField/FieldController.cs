@@ -9,6 +9,9 @@ namespace Project.Scripts.MVC.GameField
     public class FieldController : BaseController, IMainGameStateEvent
     {
         [SerializeField]
+        private Camera _sceneCamera = null;
+        
+        [SerializeField]
         private FieldSettings _fieldSettings = null;
         
         [SerializeField]
@@ -19,7 +22,7 @@ namespace Project.Scripts.MVC.GameField
         public override void Initialize()
         {
             _fieldModel = new FieldModel();
-            _fieldModel.Initialize(_fieldSettings);
+            _fieldModel.Initialize(_sceneCamera, _fieldSettings);
 
             _fieldView.Initialize(_fieldModel);
             
