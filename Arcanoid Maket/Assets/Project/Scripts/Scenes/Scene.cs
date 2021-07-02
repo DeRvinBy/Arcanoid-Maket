@@ -11,7 +11,7 @@ namespace Project.Scripts.Scenes
         private StateMachine _stateMachine = null;
 
         [SerializeField]
-        private BaseController[] _controllers = null;
+        private SceneEntitiesController[] _controllers = null;
 
         public void Initialize()
         {

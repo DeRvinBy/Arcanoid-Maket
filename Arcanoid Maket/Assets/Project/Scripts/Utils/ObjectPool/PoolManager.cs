@@ -17,10 +17,10 @@ namespace Project.Scripts.Utils.ObjectPool
 
         protected override void OnAwake()
         {
-            CreatePools();
+            CreatePool();
         }
 
-        private void CreatePools()
+        private void CreatePool()
         {
             _container = new PoolContainer<T>(_objectCreator);
             for (int i = 0; i < _initialSize; i++)

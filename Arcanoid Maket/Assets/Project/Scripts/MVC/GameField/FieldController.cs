@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
 {
-    public class FieldController : BaseController, IMainGameStateEvent
+    public class FieldController : SceneEntitiesController, IMainGameStateEvent
     {
         [SerializeField]
         private Camera _sceneCamera = null;
@@ -23,8 +23,8 @@ namespace Project.Scripts.MVC.GameField
         {
             _fieldModel = new FieldModel();
             _fieldModel.Initialize(_sceneCamera, _fieldSettings);
-
-            _fieldView.Initialize(_fieldModel);
+            
+            _fieldModel.OnGameFieldCreated += _fieldView.CreateBlocksInField;
             
             EventBus.Subscribe(this);
         }
@@ -32,7 +32,6 @@ namespace Project.Scripts.MVC.GameField
         public void StartController()
         {
             _fieldModel.StartModel();
-            _fieldView.StartView();
         }
     }
 }
