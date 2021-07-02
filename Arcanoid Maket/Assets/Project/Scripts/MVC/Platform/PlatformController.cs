@@ -22,16 +22,16 @@ namespace Project.Scripts.MVC.Platform
         public override void Initialize()
         {
             _model = new PlatformModel();
-            _model.Initialize(_settings);
             _view.Initialize(_model);
-            _input.OnMousePositionUpdated += _view.UpdatePlatformPosition;
 
             EventBus.Subscribe(this);
         }
-
-
+        
         public void StartController()
         {
+            _model.SetSpeed(_settings.Speed);
+            _model.SetSize(_settings.StartSize);
+            _input.OnMousePositionUpdated += _view.UpdatePlatformPosition;
             _view.StartView();
         }
     }

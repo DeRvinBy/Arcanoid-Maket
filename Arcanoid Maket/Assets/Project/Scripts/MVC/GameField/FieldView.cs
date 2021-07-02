@@ -31,7 +31,7 @@ namespace Project.Scripts.MVC.GameField
         {
             var block = BlockPoolManager.GetObject(cell.Position);
             block.transform.localScale = cellSize;
-            block.Initialize(cell.Data);
+            block.SetBlockId(cell.Data);
         }
 
         private void OnDrawGizmos()

@@ -14,22 +14,13 @@ namespace Project.Scripts.MVC.Platform
 
         private PlatformModel _model;
         private Transform _transform;
-        private float _borderX;
-        
+
         public void Initialize(PlatformModel model)
         {
             _model = model;
             _transform = transform;
-            SetMovementBorder();
         }
 
-        private void SetMovementBorder()
-        {
-            var screenPosition = new Vector2(Screen.width, 0);
-            var rightBorder = _sceneCamera.ScreenToWorldPoint(screenPosition);
-            _borderX = rightBorder.x;
-        }
-        
         public void StartView()
         {
             var scale = _transform.localScale;

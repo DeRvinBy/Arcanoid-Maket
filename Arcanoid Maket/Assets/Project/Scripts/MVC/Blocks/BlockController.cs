@@ -9,40 +9,42 @@ namespace Project.Scripts.MVC.Blocks
     public class BlockController : MonoBehaviour, IPoolObject
     {
         [SerializeField]
-        private BlockView _blockView;
+        private BlockView _view;
 
-        private BlockModel _blockModel;
+        private BlockModel _model;
         private MainBlockSettings _mainSettings;
+        private BlockId _currentId;
         
-        public void InitializeSettings(MainBlockSettings settings)
+        public void Initialize(MainBlockSettings settings)
         {
-            _blockModel = new BlockModel();
+            _model = new BlockModel();
             _mainSettings = settings;
         }
 
-        public void Initialize(BlockId id)
+        public void SetBlockId(BlockId id)
         {
-            _blockModel.SetLife(_mainSettings.BlockLife);
-            var settings = _mainSettings.GetBlockSettings(id);
-            _blockView.SetSprite(settings.Sprite);
-
-            _blockModel.OnBlockLifeEnded += DestroyBlock;
-            _blockView.OnBlockDamaged += _blockModel.ReduceLife;
+            _currentId = id;
         }
 
-        public void DestroyBlock()
-        {
-            BlockPoolManager.ReturnObject(this);
-        }
-        
         public void Setup()
         {
-            
+            _model.SetLife(_mainSettings.BlockLife);
+            var settings = _mainSettings.GetBlockSettings(_currentId);
+            _view.SetSprite(settings.Sprite);
+
+            _model.OnBlockLifeEnded += DestroyBlock;
+            _view.OnBlockDamaged += _model.ReduceLife;
+        }
+        
+        private void DestroyBlock()
+        {
+            BlockPoolManager.ReturnObject(this);
         }
 
         public void Reset()
         {
-            
+            _model.OnBlockLifeEnded -= DestroyBlock;
+            _view.OnBlockDamaged -= _model.ReduceLife;
         }
     }
 }

@@ -7,10 +7,14 @@ namespace Project.Scripts.MVC.Platform
         public float Speed { get; private set; }
         public float Size { get; private set; }
 
-        public void Initialize(PlatformSettings settings)
+        public void SetSpeed(float speed)
         {
-            Speed = settings.Speed;
-            Size = settings.StartSize;
+            Speed = speed;
+        }
+
+        public void SetSize(float size)
+        {
+            Size = size;
         }
     }
 }

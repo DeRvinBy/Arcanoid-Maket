@@ -12,7 +12,7 @@ namespace Project.Scripts.MVC.Blocks.Creation
         public override BlockController Instantiate()
         {
             var instance = Instantiate(_prefab, transform);
-            instance.InitializeSettings(_blockSettings);
+            instance.Initialize(_blockSettings);
             return instance;
         }
     }

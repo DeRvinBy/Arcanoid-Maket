@@ -19,17 +19,17 @@ namespace Project.Scripts.Scenes
             InitializeStateMachine();
         }
         
-        private void InitializeStateMachine()
-        {
-            _stateMachine.Initialize();
-        }
-
         private void InitializeController()
         {
             foreach (var controller in _controllers)
             {
                 controller.Initialize();
             }
+        }
+        
+        private void InitializeStateMachine()
+        {
+            _stateMachine.Initialize();
         }
     }
 }
