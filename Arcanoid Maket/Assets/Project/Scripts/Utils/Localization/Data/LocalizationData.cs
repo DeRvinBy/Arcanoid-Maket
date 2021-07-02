@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using Project.Scripts.Utils.Localization.Settings;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.Localization.Data
 {
     public class LocalizationData
     {
-        private const string Path = "Localization/{0}";
         private const string LanguageKey = "language";
         private const string MissingTranslation = "Translation not found!";
-
-        private readonly List<SystemLanguage> _supportedLanguages = new List<SystemLanguage>()
-        {
-            SystemLanguage.Russian, SystemLanguage.English
-        };
+        
         private LocalizationParser _parser;
+        private LocalizationSettings _settings;
         private Dictionary<SystemLanguage, Dictionary<string, string>> _translationsMap;
         private SystemLanguage _currentLanguage;
 
-        public void Initialize()
+        public void Initialize(LocalizationSettings settings)
         {
+            _settings = settings;
             _parser = new LocalizationParser();
             _translationsMap = new Dictionary<SystemLanguage, Dictionary<string, string>>();
+            _settings.CreateTranslationPathMap();
             LoadUserLanguage();
             LoadTranslations();
         }
@@ -41,7 +40,7 @@ namespace Project.Scripts.Utils.Localization.Data
         {
             if (_translationsMap.ContainsKey(_currentLanguage)) return;
             
-            var jsonPath = String.Format(Path, _currentLanguage);
+            var jsonPath = _settings.GetPathToTranslation(_currentLanguage);
             _translationsMap[_currentLanguage] = _parser.GetTranslationsFromJSON(jsonPath);
         }
 
@@ -64,7 +63,7 @@ namespace Project.Scripts.Utils.Localization.Data
 
         public void SetLanguage(SystemLanguage language)
         {
-            if (_supportedLanguages.Contains(language))
+            if (_settings.IsLanguageSupported(language))
             {
                 _currentLanguage = language;
                 LoadTranslations();
