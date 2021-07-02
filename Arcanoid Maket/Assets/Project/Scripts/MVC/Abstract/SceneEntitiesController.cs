@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.MVC.Abstract
 {
-    public abstract class BaseController : MonoBehaviour
+    public abstract class SceneEntitiesController : MonoBehaviour
     {
         public abstract void Initialize();
     }

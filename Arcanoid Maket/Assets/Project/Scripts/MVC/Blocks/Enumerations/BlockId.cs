@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.GameSettings.GameBlockSettings.Enumerations
+﻿namespace Project.Scripts.MVC.Blocks.Enumerations
 {
     public enum BlockId
     {

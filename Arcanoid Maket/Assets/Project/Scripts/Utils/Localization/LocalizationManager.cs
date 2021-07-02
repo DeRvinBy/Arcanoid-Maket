@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.Utils.EventSystem;
+﻿using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.Data;
 using Project.Scripts.Utils.Localization.Interfaces;
 using Project.Scripts.Utils.Localization.Settings;

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
 {
-    public class FieldController : BaseController, IMainGameStateEvent
+    public class FieldController : SceneEntitiesController, IMainGameStateEvent
     {
         [SerializeField]
         private Camera _sceneCamera = null;

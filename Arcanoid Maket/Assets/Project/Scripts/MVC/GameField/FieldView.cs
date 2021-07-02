@@ -1,6 +1,6 @@
 ﻿using System;
-using Project.Scripts.GameSettings.GameBlockSettings.Enumerations;
 using Project.Scripts.MVC.Blocks.Creation;
+using Project.Scripts.MVC.Blocks.Enumerations;
 using Project.Scripts.MVC.GameField.Data.Grid;
 using UnityEngine;
 
