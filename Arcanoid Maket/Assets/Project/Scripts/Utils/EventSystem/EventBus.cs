@@ -44,14 +44,7 @@ namespace Project.Scripts.Utils.EventSystem
             subscribers.IsExecuting = true;
             foreach (IGlobalSubscriber subscriber in subscribers.List)
             {
-                try
-                {
-                    action.Invoke(subscriber as TSubscriber);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogError(e);
-                }
+                action.Invoke(subscriber as TSubscriber);
             }
             subscribers.IsExecuting = false;
             subscribers.Cleanup();

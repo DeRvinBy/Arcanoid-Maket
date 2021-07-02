@@ -56,7 +56,7 @@ namespace Project.Scripts.MVC.GameField.Data.Level
                 var line = row * layerWidth;
                 for (int j = 0, column = _leftStart - 1; column < _leftEnd; j++, column++)
                 {
-                    _data[i, j] = layerData[line + column];
+                    _data[i, j] = layerData[line + column]; 
                 }
             }
         }
