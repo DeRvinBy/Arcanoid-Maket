@@ -22,18 +22,18 @@ namespace Project.Scripts.MVC.Ball
         public void SetStartDirection(Vector2 startDirection)
         {
             _view.SetMovementDirection(startDirection);
+            _view.SetupView();
         }
         
         public void Setup()
         {
             _model.SetVelocity(_settings.StartVelocity);
             _model.SetDamage(_settings.BallDamage);
-            _view.SetupView();
         }
 
         public void Reset()
         {
-            
+            _view.ResetView();
         }
     }
 }

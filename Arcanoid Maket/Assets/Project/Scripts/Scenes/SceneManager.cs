@@ -7,7 +7,7 @@ namespace Project.Scripts.Scenes
         [SerializeField]
         private Scene _currentScene = null;
 
-        private void Awake()
+        private void Start()
         {
             StartCurrentScene();
         }

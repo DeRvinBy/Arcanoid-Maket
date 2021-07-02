@@ -23,9 +23,8 @@ namespace Project.Scripts.MVC.GameField
         {
             _fieldModel = new FieldModel();
             _fieldModel.Initialize(_sceneCamera, _fieldSettings);
-            
             _fieldModel.OnGameFieldCreated += _fieldView.CreateBlocksInField;
-            
+
             EventBus.Subscribe(this);
         }
 

@@ -13,25 +13,22 @@ namespace Project.Scripts.MVC.Blocks
 
         private BlockModel _model;
         private MainBlockSettings _mainSettings;
-        private BlockId _currentId;
-        
+
         public void Initialize(MainBlockSettings settings)
         {
             _model = new BlockModel();
             _mainSettings = settings;
         }
 
-        public void SetBlockId(BlockId id)
+        public void SetupBlock(BlockId id)
         {
-            _currentId = id;
+            _model.SetLife(_mainSettings.BlockLife);
+            var settings = _mainSettings.GetBlockSettings(id);
+            _view.SetSprite(settings.Sprite);
         }
 
         public void Setup()
         {
-            _model.SetLife(_mainSettings.BlockLife);
-            var settings = _mainSettings.GetBlockSettings(_currentId);
-            _view.SetSprite(settings.Sprite);
-
             _model.OnBlockLifeEnded += DestroyBlock;
             _view.OnBlockDamaged += _model.ReduceLife;
         }

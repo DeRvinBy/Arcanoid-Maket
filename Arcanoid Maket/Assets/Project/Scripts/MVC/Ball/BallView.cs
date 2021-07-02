@@ -23,6 +23,12 @@ namespace Project.Scripts.MVC.Ball
         public void SetupView()
         {
             _rigidbody.velocity = _movementDirection * _model.Velocity;
+            _rigidbody.simulated = true;
+        }
+
+        public void ResetView()
+        {
+            _rigidbody.simulated = false;
         }
     }
 }
