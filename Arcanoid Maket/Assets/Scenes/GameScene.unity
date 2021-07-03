@@ -270,21 +270,27 @@ MonoBehaviour:
   - _blockId: 1
     _blockSettings:
       _blockSprite: {fileID: 3317128819024105003, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.9568628, g: 0.15294118, b: 0.2392157, a: 1}
   - _blockId: 2
     _blockSettings:
       _blockSprite: {fileID: -9165667521666509536, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0, g: 0.63529414, b: 0.27058825, a: 1}
   - _blockId: 3
     _blockSettings:
       _blockSprite: {fileID: 5780770534196861083, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0, g: 0.76470596, b: 0.9843138, a: 1}
   - _blockId: 4
     _blockSettings:
       _blockSprite: {fileID: -4966992281954946882, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.454902, g: 0.36078432, b: 0.5686275, a: 1}
   - _blockId: 5
     _blockSettings:
       _blockSprite: {fileID: -6802198193789874668, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 1, g: 0.5176471, b: 0.18039216, a: 1}
   - _blockId: 6
     _blockSettings:
       _blockSprite: {fileID: -7959136965675241204, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.87843144, g: 0.5647059, b: 0.9294118, a: 1}
 --- !u!1 &425358117
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +468,7 @@ MonoBehaviour:
   _sceneCamera: {fileID: 1972407940}
   _fieldSettings: {fileID: 618202564}
   _fieldView: {fileID: 1317651221}
+  _borders: {fileID: 1545777876}
 --- !u!1 &517714958
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b957ca91ed4eb8b28796643d4d91ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _topOffset: 0.1
+  _topOffset: 0.07
   _blockAspect: 2
   _sideOffset: 0.05
   _cellMargin: 0.02
@@ -1100,9 +1107,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1545777875}
+  - component: {fileID: 1545777876}
   - component: {fileID: 1545777874}
   m_Layer: 6
-  m_Name: Border
+  m_Name: FieldBorders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1117,21 +1125,19 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1545777873}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: b49beb66a23503a4a90e4ae780d30a80, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 2.2, y: -5}
-  - {x: 2.2, y: 4.85}
-  - {x: 2, y: 5}
-  - {x: -2, y: 5}
-  - {x: -2.2, y: 4.85}
-  - {x: -2.2, y: -5}
+  - {x: 1, y: -1}
+  - {x: 1, y: 1}
+  - {x: -1, y: 1}
+  - {x: -1, y: -1}
   m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 1.79, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
 --- !u!4 &1545777875
@@ -1148,6 +1154,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1545777876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545777873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf7d207d265542e4bd1d4f6468e94255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneCamera: {fileID: 1972407940}
 --- !u!1 &1972407938
 GameObject:
   m_ObjectHideFlags: 0

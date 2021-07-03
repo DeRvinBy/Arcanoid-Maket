@@ -17,6 +17,9 @@ namespace Project.Scripts.MVC.GameField
         [SerializeField]
         private FieldView _fieldView = null;
 
+        [SerializeField]
+        private FieldBorders _borders;
+        
         private FieldModel _fieldModel;
 
         public override void Initialize()
@@ -24,6 +27,7 @@ namespace Project.Scripts.MVC.GameField
             _fieldModel = new FieldModel();
             _fieldModel.Initialize(_sceneCamera, _fieldSettings);
             _fieldModel.OnGameFieldCreated += _fieldView.CreateBlocksInField;
+            _borders.Initialize(_fieldSettings);
 
             EventBus.Subscribe(this);
         }
