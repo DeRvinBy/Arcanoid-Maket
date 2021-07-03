@@ -60,6 +60,7 @@ namespace Project.Scripts.MVC.Blocks
         {
             if (life <= DestroyLifeCount)
             {
+                _cracks.DisableBlockCracks();
                 StartCoroutine(DestroyBlockAfterParticles());
             }
         }

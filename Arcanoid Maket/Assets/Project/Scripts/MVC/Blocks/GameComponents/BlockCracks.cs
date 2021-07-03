@@ -25,15 +25,13 @@ namespace Project.Scripts.MVC.Blocks.GameComponents
 
         public void UpdateBlockCracks(int lifeCount)
         {
-            if (lifeCount != 0)
-            {
-                var newSprite = _lifeSettings.GetSpriteByLifeCount(lifeCount);
-                _spriteRenderer.sprite = newSprite;
-            }
-            else
-            {
-                _spriteRenderer.enabled = false;
-            }
+            var newSprite = _lifeSettings.GetSpriteByLifeCount(lifeCount);
+            _spriteRenderer.sprite = newSprite;
+        }
+
+        public void DisableBlockCracks()
+        {
+            _spriteRenderer.enabled = false;
         }
     }
 }
