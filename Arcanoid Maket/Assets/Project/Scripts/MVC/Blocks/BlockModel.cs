@@ -1,26 +1,30 @@
 ﻿using System;
+using Project.Scripts.GameSettings.GameBlockSettings;
 
 namespace Project.Scripts.MVC.Blocks
 {
     public class BlockModel
     {
-        public Action OnBlockLifeEnded;
+        public event Action<int> OnBlockLifeChanged;
 
-        private int _life;
+        private BlockLifeSettings _settings;
+        private int _lifeCount;
 
-        public void SetLife(int life)
+        public void Initialize(BlockLifeSettings lifeSettings)
         {
-            _life = life;
+            _settings = lifeSettings;
+        }
+
+        public void SetupModel()
+        {
+            _lifeCount = _settings.BlockLife;
         }
 
         public void ReduceLife(int value)
         {
-            _life -= value;
-
-            if (_life < 0)
-            {
-                OnBlockLifeEnded?.Invoke();
-            }
+            _lifeCount -= value;
+            
+            OnBlockLifeChanged?.Invoke(_lifeCount);
         }
     }
 }

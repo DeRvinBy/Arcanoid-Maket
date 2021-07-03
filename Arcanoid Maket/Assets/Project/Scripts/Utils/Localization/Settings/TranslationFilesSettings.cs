@@ -13,7 +13,6 @@ namespace Project.Scripts.Utils.Localization.Settings
         private string translationFileName = "";
 
         public SystemLanguage Language => _language;
-
         public string TranslationFileName => translationFileName;
     }
 }

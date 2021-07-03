@@ -8,10 +8,10 @@ namespace Project.Scripts.Scenes
     public class Scene : MonoBehaviour
     {
         [SerializeField]
-        private StateMachine _stateMachine = null;
+        private StateMachine _stateMachine;
 
         [SerializeField]
-        private SceneEntitiesController[] _controllers = null;
+        private SceneEntitiesController[] _controllers;
 
         public void Initialize()
         {

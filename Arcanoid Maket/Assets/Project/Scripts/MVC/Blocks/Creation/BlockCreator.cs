@@ -7,7 +7,7 @@ namespace Project.Scripts.MVC.Blocks.Creation
     public class BlockCreator : PoolObjectCreator<BlockController>
     {
         [SerializeField]
-        private MainBlockSettings _blockSettings = null;
+        private MainBlockSettings _blockSettings;
         
         public override BlockController Instantiate()
         {

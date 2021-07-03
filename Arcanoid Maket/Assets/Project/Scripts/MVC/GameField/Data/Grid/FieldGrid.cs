@@ -12,8 +12,8 @@ namespace Project.Scripts.MVC.GameField.Data.Grid
         public FieldCell[,] Cells { get; private set; }
         
         private readonly FieldSettings _settings;
+        private readonly Camera _camera;
         private Vector2 _startPosition;
-        private Camera _camera;
 
         public FieldGrid(Camera camera, FieldSettings fieldSettings)
         {
@@ -55,8 +55,8 @@ namespace Project.Scripts.MVC.GameField.Data.Grid
 
             var startLineX = _startPosition.x + CellSize.x / 2f;
             var startLineY =_startPosition.y - CellSize.y / 2f;
-            var offsetX = CellSize.x + _settings.CellMargin;
-            var offsetY = -CellSize.y - _settings.CellMargin;
+            var stepX = CellSize.x + _settings.CellMargin;
+            var stepY = -CellSize.y - _settings.CellMargin;
             var position = new Vector2(startLineX, startLineY);
             
             for (int i = 0; i < VerticalCount; i++)
@@ -64,11 +64,11 @@ namespace Project.Scripts.MVC.GameField.Data.Grid
                 for (int j = 0; j < HorizontalCount; j++)
                 {
                     Cells[i, j] = new FieldCell(position, data[i, j]);
-                    position.x += offsetX;
+                    position.x += stepX;
                 }
 
                 position.x = startLineX;
-                position.y += offsetY;
+                position.y += stepY;
             }
         }
     }

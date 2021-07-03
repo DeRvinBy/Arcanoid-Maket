@@ -23,7 +23,6 @@ namespace Project.Scripts.GameSettings.GameFieldSettings
         public float TopOffset => _topOffset;
         public float SideOffset => _sideOffset;
         public float CellMargin => _cellMargin;
-
         public float BlockAspect => _blockAspect;
     }
 }

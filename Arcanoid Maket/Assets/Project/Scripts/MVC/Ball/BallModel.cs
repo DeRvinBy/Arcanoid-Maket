@@ -1,18 +1,23 @@
-﻿namespace Project.Scripts.MVC.Ball
+﻿using Project.Scripts.GameSettings.GameBallSettings;
+
+namespace Project.Scripts.MVC.Ball
 {
     public class BallModel
     {
         public float Velocity { get; private set; }
         public float Damage { get; private set; }
 
-        public void SetVelocity(float velocity)
+        private BallSettings _settings;
+
+        public void Initialize(BallSettings settings)
         {
-            Velocity = velocity;
+            _settings = settings;
         }
 
-        public void SetDamage(float damage)
+        public void SetupModel()
         {
-            Damage = damage;
+            Velocity = _settings.StartVelocity;
+            Damage = _settings.BallDamage;
         }
     }
 }

@@ -11,10 +11,9 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
         private BlockId _blockId = BlockId.Red;
 
         [SerializeField]
-        private IndividualBlockSettings _blockSettings = null;
+        private IndividualBlockSettings _blockSettings;
 
         public BlockId BlockID => _blockId;
-
         public IndividualBlockSettings BlockSettings => _blockSettings;
     }
 }

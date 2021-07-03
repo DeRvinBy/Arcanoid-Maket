@@ -8,10 +8,10 @@ namespace Project.Scripts.Utils.Localization.Settings
         private const string PathFormat = "{0}/{1}";
         
         [SerializeField]
-        private string _translationsFolder = null;
+        private string _translationsFolder;
 
         [SerializeField]
-        private TranslationFilesSettings[] _translationFileSettings = null;
+        private TranslationFilesSettings[] _translationFileSettings;
         
         private Dictionary<SystemLanguage, string> _translationPathMap;
 

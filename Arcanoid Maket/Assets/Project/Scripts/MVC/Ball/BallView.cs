@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Project.Scripts.MVC.Ball
 {
@@ -8,21 +9,29 @@ namespace Project.Scripts.MVC.Ball
         private Rigidbody2D _rigidbody;
 
         private BallModel _model;
-        private Vector2 _movementDirection;
-        
+
         public void Initialize(BallModel model)
         {
             _model = model;
         }
 
-        public void SetMovementDirection(Vector2 movementDirection)
+        private void Update()
         {
-            _movementDirection = movementDirection;
+            if (Math.Abs(_rigidbody.velocity.magnitude - _model.Velocity) > 0.01f)
+            {
+                _rigidbody.velocity = _rigidbody.velocity.normalized * _model.Velocity;
+            }
         }
 
-        public void SetupView()
+        public void SetupView(Vector2 movementDirection)
         {
-            _rigidbody.velocity = _movementDirection * _model.Velocity;
+            _rigidbody.velocity = movementDirection * _model.Velocity;
+            _rigidbody.simulated = true;
+        }
+
+        public void ResetView()
+        {
+            _rigidbody.simulated = false;
         }
     }
 }
