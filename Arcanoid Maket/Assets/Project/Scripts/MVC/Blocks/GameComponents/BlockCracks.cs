@@ -2,7 +2,7 @@
 using Project.Scripts.Utils.Extensions;
 using UnityEngine;
 
-namespace Project.Scripts.GameComponents.SpriteComponents
+namespace Project.Scripts.MVC.Blocks.GameComponents
 {
     public class BlockCracks : MonoBehaviour
     {
@@ -19,15 +19,21 @@ namespace Project.Scripts.GameComponents.SpriteComponents
 
         public void SetupBlockCracks()
         {
-            print("setup");
+            _spriteRenderer.enabled = true;
             _spriteRenderer.sprite = null;
         }
 
         public void UpdateBlockCracks(int lifeCount)
         {
-            print("update sprite");
-            var newSprite = _lifeSettings.GetSpriteByLifeCount(lifeCount);
-            _spriteRenderer.sprite = newSprite;
+            if (lifeCount != 0)
+            {
+                var newSprite = _lifeSettings.GetSpriteByLifeCount(lifeCount);
+                _spriteRenderer.sprite = newSprite;
+            }
+            else
+            {
+                _spriteRenderer.enabled = false;
+            }
         }
     }
 }

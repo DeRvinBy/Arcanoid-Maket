@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: -7114481569433196745
     second: block_default
+  - first:
+      213: -871388111624932480
+    second: block_particle
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -371,6 +374,27 @@ TextureImporter:
       bones: []
       spriteID: 737eedce4b8444d90800000000000000
       internalID: -7114481569433196745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_particle
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 208
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083f819112538e3f0800000000000000
+      internalID: -871388111624932480
       vertices: []
       indices: 
       edges: []

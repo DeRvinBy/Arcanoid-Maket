@@ -10,6 +10,9 @@ namespace Project.Scripts.MVC.Blocks
         
         [SerializeField]
         private SpriteRenderer _spriteRenderer = null;
+        
+        [SerializeField]
+        private Collider2D _collider = null;
 
         public void Initialize()
         {
@@ -18,12 +21,19 @@ namespace Project.Scripts.MVC.Blocks
         
         public void SetSprite(Sprite sprite)
         {
+            _collider.enabled = true;
+            _spriteRenderer.enabled = true;
             _spriteRenderer.sprite = sprite;
+        }
+        
+        public void DisableView()
+        {
+            _collider.enabled = false;
+            _spriteRenderer.enabled = false;
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            print(other.gameObject.name);
             OnBlockDamaged?.Invoke(1);
         }
     }

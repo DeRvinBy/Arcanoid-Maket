@@ -1,5 +1,4 @@
-﻿using Project.Scripts.GameComponents.SpriteComponents;
-using Project.Scripts.GameSettings.GameBallSettings;
+﻿using Project.Scripts.GameSettings.GameBallSettings;
 using Project.Scripts.Utils.ObjectPool.Interfaces;
 using UnityEngine;
 

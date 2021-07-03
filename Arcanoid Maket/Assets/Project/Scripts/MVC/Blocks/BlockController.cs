@@ -1,7 +1,8 @@
-﻿using Project.Scripts.GameComponents.SpriteComponents;
+﻿using System.Collections;
 using Project.Scripts.GameSettings.GameBlockSettings;
 using Project.Scripts.MVC.Blocks.Creation;
 using Project.Scripts.MVC.Blocks.Enumerations;
+using Project.Scripts.MVC.Blocks.GameComponents;
 using Project.Scripts.Utils.ObjectPool.Interfaces;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace Project.Scripts.MVC.Blocks
 
         [SerializeField]
         private BlockCracks _cracks;
+
+        [SerializeField]
+        private BlockParticles _particles;
 
         private BlockModel _model;
         private MainBlockSettings _mainSettings;
@@ -31,6 +35,7 @@ namespace Project.Scripts.MVC.Blocks
             _model.SetLife(_mainSettings.LifeSettings.BlockLife);
             var settings = _mainSettings.GetBlockSettings(id);
             _view.SetSprite(settings.Sprite);
+            _particles.SetParticleColor(settings.ParticleColor);
             _cracks.SetupBlockCracks();
         }
 
@@ -45,8 +50,16 @@ namespace Project.Scripts.MVC.Blocks
         {
             if (life <= 0)
             {
-                BlockPoolManager.ReturnObject(this);
+                StartCoroutine(DestroyBlockAfterParticles());
             }
+        }
+
+        private IEnumerator DestroyBlockAfterParticles()
+        {
+            _view.DisableView();
+            _particles.PlayParticle();
+            yield return new WaitWhile(() => _particles.IsParticlesPlaying);
+            BlockPoolManager.ReturnObject(this);
         }
 
         public void Reset()
