@@ -11,14 +11,19 @@ namespace Project.Scripts.MVC.Blocks
         [SerializeField]
         private SpriteRenderer _spriteRenderer = null;
 
+        public void Initialize()
+        {
+            _spriteRenderer.SetTransformScaleOneByBoundsSize();
+        }
+        
         public void SetSprite(Sprite sprite)
         {
             _spriteRenderer.sprite = sprite;
-            _spriteRenderer.SetTransformScaleOneByBoundsSize();
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
+            print(other.gameObject.name);
             OnBlockDamaged?.Invoke(1);
         }
     }

@@ -4,7 +4,7 @@ namespace Project.Scripts.MVC.Blocks
 {
     public class BlockModel
     {
-        public Action OnBlockLifeEnded;
+        public Action<int> OnBlockLifeChanged;
 
         private int _life;
 
@@ -16,11 +16,8 @@ namespace Project.Scripts.MVC.Blocks
         public void ReduceLife(int value)
         {
             _life -= value;
-
-            if (_life < 0)
-            {
-                OnBlockLifeEnded?.Invoke();
-            }
+            
+            OnBlockLifeChanged?.Invoke(_life);
         }
     }
 }

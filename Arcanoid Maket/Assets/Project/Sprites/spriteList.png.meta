@@ -11,6 +11,18 @@ TextureImporter:
   - first:
       213: 3317128819024105003
     second: block_0
+  - first:
+      213: 8480730808895571315
+    second: cracks_0
+  - first:
+      213: -6082135074782123902
+    second: cracks_1
+  - first:
+      213: -4411952460908225232
+    second: cracks_3
+  - first:
+      213: -7114481569433196745
+    second: block_default
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -275,6 +287,90 @@ TextureImporter:
       bones: []
       spriteID: c22302e065a2bb7a0800000000000000
       internalID: -6360443499638148564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cracks_0
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 236
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3758ee3ecbb91b570800000000000000
+      internalID: 8480730808895571315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cracks_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 236
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288eaafbf5ae79ba0800000000000000
+      internalID: -6082135074782123902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cracks_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 236
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03d97a1cc9895c2c0800000000000000
+      internalID: -4411952460908225232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: block_default
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 236
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 737eedce4b8444d90800000000000000
+      internalID: -7114481569433196745
       vertices: []
       indices: 
       edges: []

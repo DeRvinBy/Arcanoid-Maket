@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Project.Scripts.MVC.Ball
 {
     public class BallView : MonoBehaviour
     {
         [SerializeField]
-        private Rigidbody2D _rigidbody;
+        private Rigidbody2D _rigidbody = null;
 
         private BallModel _model;
         private Vector2 _movementDirection;
@@ -18,6 +19,14 @@ namespace Project.Scripts.MVC.Ball
         public void SetMovementDirection(Vector2 movementDirection)
         {
             _movementDirection = movementDirection;
+        }
+
+        private void Update()
+        {
+            if (Math.Abs(_rigidbody.velocity.magnitude - _model.Velocity) > 0.01f)
+            {
+                _rigidbody.velocity = _rigidbody.velocity.normalized * _model.Velocity;
+            }
         }
 
         public void SetupView()
