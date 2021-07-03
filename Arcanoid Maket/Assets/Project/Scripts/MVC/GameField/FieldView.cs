@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.MVC.Blocks.Creation;
+﻿using Project.Scripts.MVC.Blocks.Creation;
 using Project.Scripts.MVC.Blocks.Enumerations;
 using Project.Scripts.MVC.GameField.Data.Grid;
 using UnityEngine;
@@ -13,15 +12,16 @@ namespace Project.Scripts.MVC.GameField
         public void CreateBlocksInField(FieldGrid grid)
         {
             _gridDebug = grid;
+            var cellSize = grid.CellSize;
             var cells = grid.Cells;
             for (int i = 0; i < grid.VerticalCount; i++)
             {
                 for (int j = 0; j < grid.HorizontalCount; j++)
                 {
                     var cell = cells[i, j];
-                    if (cell.Data != BlockId.Empty)
+                    if (cell.BlockId != BlockId.Empty)
                     {
-                        CreateBlock(cell, grid.CellSize);
+                        CreateBlock(cell, cellSize);
                     }
                 }    
             }
@@ -31,7 +31,7 @@ namespace Project.Scripts.MVC.GameField
         {
             var block = BlockPoolManager.GetObject(cell.Position);
             block.transform.localScale = cellSize;
-            block.SetupBlock(cell.Data);
+            block.SetupBlock(cell.BlockId);
         }
 
         private void OnDrawGizmos()

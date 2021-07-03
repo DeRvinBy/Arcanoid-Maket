@@ -6,13 +6,13 @@ namespace Project.Scripts.MVC.Blocks
 {
     public class BlockView : MonoBehaviour
     {
-        public Action<int> OnBlockDamaged;
+        public event Action<int> OnBlockDamaged;
         
         [SerializeField]
-        private SpriteRenderer _spriteRenderer = null;
+        private SpriteRenderer _spriteRenderer;
         
         [SerializeField]
-        private Collider2D _collider = null;
+        private Collider2D _collider;
 
         public void Initialize()
         {

@@ -7,7 +7,7 @@ namespace Project.Scripts.MVC.Platform
     {
         private const int MouseButton = 0;
         
-        public Action<Vector2> OnMousePositionUpdated;
+        public event Action<Vector2> OnMousePositionUpdated;
 
         private bool _isInputActive;
         

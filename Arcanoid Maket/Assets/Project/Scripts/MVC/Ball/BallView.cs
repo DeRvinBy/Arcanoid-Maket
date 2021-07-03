@@ -6,19 +6,13 @@ namespace Project.Scripts.MVC.Ball
     public class BallView : MonoBehaviour
     {
         [SerializeField]
-        private Rigidbody2D _rigidbody = null;
+        private Rigidbody2D _rigidbody;
 
         private BallModel _model;
-        private Vector2 _movementDirection;
-        
+
         public void Initialize(BallModel model)
         {
             _model = model;
-        }
-
-        public void SetMovementDirection(Vector2 movementDirection)
-        {
-            _movementDirection = movementDirection;
         }
 
         private void Update()
@@ -29,9 +23,9 @@ namespace Project.Scripts.MVC.Ball
             }
         }
 
-        public void SetupView()
+        public void SetupView(Vector2 movementDirection)
         {
-            _rigidbody.velocity = _movementDirection * _model.Velocity;
+            _rigidbody.velocity = movementDirection * _model.Velocity;
             _rigidbody.simulated = true;
         }
 

@@ -7,7 +7,7 @@ namespace Project.Scripts.MVC.Blocks.GameComponents
     public class BlockCracks : MonoBehaviour
     {
         [SerializeField]
-        private SpriteRenderer _spriteRenderer = null;
+        private SpriteRenderer _spriteRenderer;
 
         private BlockLifeSettings _lifeSettings;
 

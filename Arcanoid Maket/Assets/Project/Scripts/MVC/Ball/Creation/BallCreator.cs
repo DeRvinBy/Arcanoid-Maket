@@ -7,7 +7,7 @@ namespace Project.Scripts.MVC.Ball.Creation
     public class BallCreator : PoolObjectCreator<BallController>
     {
         [SerializeField]
-        private BallSettings _ballSettings = null;
+        private BallSettings _ballSettings;
         
         public override BallController Instantiate()
         {

@@ -10,7 +10,7 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
         private int _blockLife = 3;
 
         [SerializeField]
-        private Sprite[] _cracksSprites = null;
+        private Sprite[] _cracksSprites;
         
         public int BlockLife => _blockLife;
 

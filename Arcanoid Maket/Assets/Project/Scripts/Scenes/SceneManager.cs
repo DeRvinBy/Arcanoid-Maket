@@ -5,7 +5,7 @@ namespace Project.Scripts.Scenes
     public class SceneManager : MonoBehaviour
     {
         [SerializeField]
-        private Scene _currentScene = null;
+        private Scene _currentScene;
 
         private void Start()
         {

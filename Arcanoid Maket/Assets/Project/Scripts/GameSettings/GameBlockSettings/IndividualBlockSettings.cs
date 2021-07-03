@@ -13,7 +13,6 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
         private Color _particleColor;
         
         public Sprite Sprite => _blockSprite;
-
         public Color ParticleColor => _particleColor;
     }
 }

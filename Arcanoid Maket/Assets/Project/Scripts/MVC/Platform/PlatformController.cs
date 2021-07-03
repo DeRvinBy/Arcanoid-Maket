@@ -9,19 +9,20 @@ namespace Project.Scripts.MVC.Platform
     public class PlatformController : SceneEntitiesController, IMainGameStateEvent
     {
         [SerializeField]
-        private PlatformSettings _settings;
-        
-        [SerializeField]
         private UserInput _input;
         
         [SerializeField]
-        private PlatformView _view = null;
+        private PlatformSettings _settings;
+
+        [SerializeField]
+        private PlatformView _view;
 
         private PlatformModel _model;
         
         public override void Initialize()
         {
             _model = new PlatformModel();
+            _model.Initialize(_settings);
             _view.Initialize(_model);
 
             EventBus.Subscribe(this);
@@ -29,9 +30,8 @@ namespace Project.Scripts.MVC.Platform
         
         public void StartController()
         {
-            _model.SetSpeed(_settings.Speed);
-            _model.SetSize(_settings.StartSize);
             _input.OnMousePositionUpdated += _view.UpdatePlatformPosition;
+            _model.StartModel();
             _view.StartView();
         }
     }

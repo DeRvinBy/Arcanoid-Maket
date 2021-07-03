@@ -6,7 +6,7 @@ namespace Project.Scripts.MVC.GameField
     public class FieldBorders : MonoBehaviour
     {
         [SerializeField]
-        private Camera _sceneCamera = null;
+        private Camera _sceneCamera;
 
         private Transform _transform;
         private FieldSettings _settings;

@@ -6,7 +6,7 @@ namespace Project.Scripts.MVC.Blocks.GameComponents
     public class BlockParticles : MonoBehaviour
     {
         [SerializeField]
-        private ParticleSystem _particles = null;
+        private ParticleSystem _particles;
 
         public bool IsParticlesPlaying => _particles.isPlaying;
         

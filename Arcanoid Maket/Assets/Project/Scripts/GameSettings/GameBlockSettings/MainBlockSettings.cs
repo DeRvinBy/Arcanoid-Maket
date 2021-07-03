@@ -7,7 +7,7 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
     public class MainBlockSettings : MonoBehaviour
     {
         [SerializeField]
-        private BlockLifeSettings _lifeSettings = null;
+        private BlockLifeSettings _lifeSettings;
         
         [SerializeField]
         private BlockSettingsContainer[] _settingsContainers;
@@ -19,8 +19,12 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
         private void Awake()
         {
             _lifeSettings.Initialize();
-            _settingsMap = new Dictionary<BlockId, IndividualBlockSettings>();
+            CreateSettingMap();
+        }
 
+        private void CreateSettingMap()
+        {
+            _settingsMap = new Dictionary<BlockId, IndividualBlockSettings>();
             foreach (var container in _settingsContainers)
             {
                 _settingsMap.Add(container.BlockID, container.BlockSettings);

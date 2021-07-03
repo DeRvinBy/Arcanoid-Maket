@@ -9,7 +9,7 @@ namespace Project.Scripts.MVC.GameField
 {
     public class FieldModel
     {
-        public Action<FieldGrid> OnGameFieldCreated;
+        public event Action<FieldGrid> OnGameFieldCreated;
 
         private FieldGrid _grid;
         private LevelParser _levelParser;

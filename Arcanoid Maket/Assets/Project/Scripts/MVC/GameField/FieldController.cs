@@ -9,13 +9,13 @@ namespace Project.Scripts.MVC.GameField
     public class FieldController : SceneEntitiesController, IMainGameStateEvent
     {
         [SerializeField]
-        private Camera _sceneCamera = null;
+        private Camera _sceneCamera;
         
         [SerializeField]
-        private FieldSettings _fieldSettings = null;
+        private FieldSettings _fieldSettings;
         
         [SerializeField]
-        private FieldView _fieldView = null;
+        private FieldView _view;
 
         [SerializeField]
         private FieldBorders _borders;
@@ -26,8 +26,8 @@ namespace Project.Scripts.MVC.GameField
         {
             _fieldModel = new FieldModel();
             _fieldModel.Initialize(_sceneCamera, _fieldSettings);
-            _fieldModel.OnGameFieldCreated += _fieldView.CreateBlocksInField;
             _borders.Initialize(_fieldSettings);
+            _fieldModel.OnGameFieldCreated += _view.CreateBlocksInField;
 
             EventBus.Subscribe(this);
         }

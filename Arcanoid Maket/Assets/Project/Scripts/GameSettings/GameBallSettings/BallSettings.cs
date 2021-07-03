@@ -9,10 +9,8 @@ namespace Project.Scripts.GameSettings.GameBallSettings
 
         [SerializeField]
         private int _ballDamage = 1;
-
-
+        
         public float StartVelocity => _startVelocity;
-
         public int BallDamage => _ballDamage;
     }
 }

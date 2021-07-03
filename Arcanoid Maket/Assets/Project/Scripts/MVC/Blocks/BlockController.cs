@@ -10,6 +10,8 @@ namespace Project.Scripts.MVC.Blocks
 {
     public class BlockController : MonoBehaviour, IPoolObject
     {
+        private const int DestroyLifeCount = 1;
+        
         [SerializeField]
         private BlockView _view;
 
@@ -24,18 +26,19 @@ namespace Project.Scripts.MVC.Blocks
 
         public void Initialize(MainBlockSettings settings)
         {
-            _model = new BlockModel();
             _mainSettings = settings;
+            _model = new BlockModel();
             _view.Initialize();
+            _model.Initialize(settings.LifeSettings);
             _cracks.Initialize(settings.LifeSettings);
         }
 
         public void SetupBlock(BlockId id)
         {
-            _model.SetLife(_mainSettings.LifeSettings.BlockLife);
             var settings = _mainSettings.GetBlockSettings(id);
             _view.SetSprite(settings.Sprite);
             _particles.SetParticleColor(settings.ParticleColor);
+            _model.SetupModel();
             _cracks.SetupBlockCracks();
         }
 
@@ -45,10 +48,17 @@ namespace Project.Scripts.MVC.Blocks
             _model.OnBlockLifeChanged += DestroyBlock;
             _model.OnBlockLifeChanged += _cracks.UpdateBlockCracks;
         }
+
+        public void Reset()
+        {
+            _view.OnBlockDamaged -= _model.ReduceLife;
+            _model.OnBlockLifeChanged -= DestroyBlock;
+            _model.OnBlockLifeChanged -= _cracks.UpdateBlockCracks;
+        }
         
         private void DestroyBlock(int life)
         {
-            if (life <= 0)
+            if (life <= DestroyLifeCount)
             {
                 StartCoroutine(DestroyBlockAfterParticles());
             }
@@ -60,13 +70,6 @@ namespace Project.Scripts.MVC.Blocks
             _particles.PlayParticle();
             yield return new WaitWhile(() => _particles.IsParticlesPlaying);
             BlockPoolManager.ReturnObject(this);
-        }
-
-        public void Reset()
-        {
-            _view.OnBlockDamaged -= _model.ReduceLife;
-            _model.OnBlockLifeChanged -= DestroyBlock;
-            _model.OnBlockLifeChanged -= _cracks.UpdateBlockCracks;
         }
     }
 }

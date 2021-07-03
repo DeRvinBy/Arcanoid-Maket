@@ -11,7 +11,6 @@ namespace Project.Scripts.GameSettings.GamePlatformSettings
         private float _startSize = 2f;
 
         public float Speed => _speed;
-
         public float StartSize => _startSize;
     }
 }
