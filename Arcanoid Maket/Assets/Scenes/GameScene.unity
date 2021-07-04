@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be1beb5f1334708b6d5f291a8fd26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7.5
+  _speed: 5
   _startSize: 1.5
 --- !u!114 &345307105
 MonoBehaviour:
@@ -414,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441305653}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.73, z: 0}
+  m_LocalPosition: {x: 0, y: -4.608, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 820954346}
@@ -511,7 +511,7 @@ GameObject:
   m_Component:
   - component: {fileID: 603372305}
   m_Layer: 0
-  m_Name: ________GAME ENTITIES
+  m_Name: ________ENTITIES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b93a25c3fa24c95b565072c628dc326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startVelocity: 6
+  _startVelocity: 4
   _ballDamage: 1
 --- !u!1 &1087048871
 GameObject:
