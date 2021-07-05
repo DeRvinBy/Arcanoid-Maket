@@ -21,8 +21,7 @@ namespace Project.Scripts.MVC.Platform
         
         private void CreateSpawnBallOnPlatform()
         {
-            _currentBall = BallPoolManager.GetObject(_spawnBallTransform.position);
-            _currentBall.transform.parent = _spawnBallTransform;
+            _currentBall = BallPoolManager.GetObject(_spawnBallTransform.position, _spawnBallTransform);
         }
 
         public void PushBall()

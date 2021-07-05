@@ -660,9 +660,9 @@ GameObject:
   m_Component:
   - component: {fileID: 441305657}
   - component: {fileID: 441305655}
+  - component: {fileID: 441305658}
   - component: {fileID: 441305654}
   - component: {fileID: 441305656}
-  - component: {fileID: 441305658}
   m_Layer: 0
   m_Name: PLATOFRM
   m_TagString: Untagged
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0e0db9eb974e87813e3fdedf09074e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnBallTransform: {fileID: 0}
+  _spawnBallTransform: {fileID: 646748949}
 --- !u!1 &495158602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
   _input: {fileID: 425358118}
   _settings: {fileID: 345307104}
   _view: {fileID: 441305655}
-  _spawnBallBehaviour: {fileID: 0}
+  _spawnBallBehaviour: {fileID: 441305658}
 --- !u!1 &820954345
 GameObject:
   m_ObjectHideFlags: 0
