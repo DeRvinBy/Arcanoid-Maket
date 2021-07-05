@@ -8,6 +8,7 @@ namespace Project.Scripts.MVC.Platform
         private const int MouseButton = 0;
         
         public event Action<Vector2> OnMousePositionUpdated;
+        public event Action OnMouseButtonUp;
 
         private bool _isInputActive;
         
@@ -21,6 +22,7 @@ namespace Project.Scripts.MVC.Platform
 
             if (Input.GetMouseButtonUp(MouseButton))
             {
+                OnMouseButtonUp?.Invoke();
                 _isInputActive = false;
                 return;
             }

@@ -14,13 +14,6 @@ namespace Project.Scripts.MVC.Platform
         [SerializeField]
         private Rigidbody2D _rigidbody;
         
-        [SerializeField]
-        private PlatformSpawnBallSettings _spawnBallSettings;
-        
-        [SerializeField]
-        private Transform _spawnBallTransform = null;
-
-        private readonly Vector3 _spawnDirectionUp = Vector3.up;
         private PlatformModel _model;
         private Transform _transform;
 
@@ -42,7 +35,6 @@ namespace Project.Scripts.MVC.Platform
         public void StartView()
         {
             SetupScale();
-            StartCoroutine(SpawnBallWithDelay());
         }
 
         private void SetupScale()
@@ -50,28 +42,6 @@ namespace Project.Scripts.MVC.Platform
             var scale = _transform.localScale;
             scale.x *= _model.Size;
             _transform.localScale = scale;
-        }
-
-        private IEnumerator SpawnBallWithDelay()
-        {
-            var ball = CreateSpawnBallOnPlatform();
-            yield return new WaitForSeconds(_spawnBallSettings.DelayToSpawnBall);
-            StartBallInDirection(ball);
-        }
-
-        private BallController CreateSpawnBallOnPlatform()
-        {
-            var ball = BallPoolManager.GetObject(_spawnBallTransform.position);
-            ball.transform.parent = _spawnBallTransform;
-            return ball;
-        }
-
-        private void StartBallInDirection(BallController ball)
-        {
-            var angle = _spawnBallSettings.RandomAngle;
-            var direction = Quaternion.Euler(0, 0, angle) * _spawnDirectionUp;
-            ball.SetStartDirection(direction);
-            ball.transform.parent = null;
         }
     }
 }

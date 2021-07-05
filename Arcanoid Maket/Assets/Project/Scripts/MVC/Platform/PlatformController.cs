@@ -17,6 +17,9 @@ namespace Project.Scripts.MVC.Platform
         [SerializeField]
         private PlatformView _view;
 
+        [SerializeField]
+        private PlatformSpawnBallBehaviour _spawnBallBehaviour;
+
         private PlatformModel _model;
         
         public override void Initialize()
@@ -31,8 +34,10 @@ namespace Project.Scripts.MVC.Platform
         public void StartController()
         {
             _input.OnMousePositionUpdated += _view.UpdatePlatformPosition;
+            _input.OnMouseButtonUp += _spawnBallBehaviour.PushBall;
             _model.StartModel();
             _view.StartView();
+            _spawnBallBehaviour.StartBehaviour();;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using Project.Scripts.GameSettings.GameFieldSettings;
+﻿using Project.Scripts.GameSettings.GameFieldSettings;
 using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
@@ -46,7 +45,7 @@ namespace Project.Scripts.MVC.GameField
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            print(other.gameObject.name);
+            
         }
     }
 }
