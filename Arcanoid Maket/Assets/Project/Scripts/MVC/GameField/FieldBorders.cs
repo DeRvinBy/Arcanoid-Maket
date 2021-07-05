@@ -1,4 +1,6 @@
 ﻿using Project.Scripts.GameSettings.GameFieldSettings;
+using Project.Scripts.MVC.GameField.EventInterfaces;
+using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
@@ -41,6 +43,11 @@ namespace Project.Scripts.MVC.GameField
             var position = _transform.position;
             position.y -= _worldScale.y * _settings.TopOffset;
             _transform.position = position;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            EventBus.RaiseEvent<IBallOutBorderEvent>(a => a.OnBallOut());
         }
     }
 }

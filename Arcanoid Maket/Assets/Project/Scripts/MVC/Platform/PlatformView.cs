@@ -1,12 +1,12 @@
-﻿using System.Collections;
-using Project.Scripts.GameSettings.GamePlatformSettings;
-using Project.Scripts.MVC.Ball;
-using Project.Scripts.MVC.Ball.Creation;
+﻿using System;
+using System.Collections;
+using Project.Scripts.MVC.GameField.EventInterfaces;
+using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.MVC.Platform
 {
-    public class PlatformView : MonoBehaviour
+    public class PlatformView : MonoBehaviour, IBallOutBorderEvent
     {
         [SerializeField]
         private Camera _sceneCamera;
@@ -14,64 +14,85 @@ namespace Project.Scripts.MVC.Platform
         [SerializeField]
         private Rigidbody2D _rigidbody;
         
-        [SerializeField]
-        private PlatformSpawnBallSettings _spawnBallSettings;
-        
-        [SerializeField]
-        private Transform _spawnBallTransform = null;
-
-        private readonly Vector3 _spawnDirectionUp = Vector3.up;
         private PlatformModel _model;
         private Transform _transform;
-
+        private Vector3 _initialPosition;
+        private float _worldSizeX;
+        private bool _isMove;
+        
         public void Initialize(PlatformModel model)
         {
             _model = model;
             _transform = transform;
+            _initialPosition = _transform.position;
+            _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
+            
+            EventBus.Subscribe(this);
         }
 
-        public void UpdatePlatformPosition(Vector2 mousePosition)
-        {
-            var targetPosition = _sceneCamera.ScreenToWorldPoint(mousePosition);
-            var currentPosition = _transform.position;
-            targetPosition.y = currentPosition.y;
-            var movement = Vector3.Lerp( currentPosition, targetPosition, _model.Speed * Time.deltaTime);
-            _rigidbody.MovePosition(movement);
-        }
-        
         public void StartView()
         {
-            SetupScale();
-            StartCoroutine(SpawnBallWithDelay());
+            SetPlatformScale();
+            _isMove = true;
         }
 
-        private void SetupScale()
+        private void SetPlatformScale()
         {
             var scale = _transform.localScale;
             scale.x *= _model.Size;
             _transform.localScale = scale;
         }
-
-        private IEnumerator SpawnBallWithDelay()
+        
+        public void OnBallOut()
         {
-            var ball = CreateSpawnBallOnPlatform();
-            yield return new WaitForSeconds(_spawnBallSettings.DelayToSpawnBall);
-            StartBallInDirection(ball);
+            _isMove = false;
         }
 
-        private BallController CreateSpawnBallOnPlatform()
+        public IEnumerator ResetPlatformPosition()
         {
-            var ball = BallPoolManager.GetObject(_spawnBallTransform.position);
-            ball.transform.parent = _spawnBallTransform;
-            return ball;
-        }
+            while (Math.Abs(_transform.position.x - _initialPosition.x) > 0.01f)
+            {
+                MoveToTargetPosition(_initialPosition);
+                yield return new WaitForEndOfFrame();
+            }
 
-        private void StartBallInDirection(BallController ball)
+            _isMove = true;
+        }
+        
+        public void UpdatePlatformPosition(Vector2 mousePosition)
         {
-            var angle = _spawnBallSettings.RandomAngle;
-            var direction = Quaternion.Euler(0, 0, angle) * _spawnDirectionUp;
-            ball.SetStartDirection(direction);
-            ball.transform.parent = null;
+            if (!_isMove) return;
+            
+            var targetPosition = _sceneCamera.ScreenToWorldPoint(mousePosition);
+            targetPosition.y = _transform.position.y;
+            MoveToTargetPosition(targetPosition);
+            LimitPosition();
+        }
+        
+        private void LimitPosition()
+        {
+            var position = _transform.position;
+            var halfSize = _model.Size / 2f;
+            var positionX = Mathf.Abs(position.x) + halfSize;
+            if (positionX > _worldSizeX)
+            {
+                if (position.x > 0)
+                {
+                    position.x = _worldSizeX - halfSize;
+                }
+                else
+                {
+                    position.x = - _worldSizeX + halfSize;
+                }
+            }
+
+            _transform.position = position;
+        }
+        
+        private void MoveToTargetPosition(Vector3 targetPosition)
+        {
+            var movement = Vector3.Lerp( _transform.position, targetPosition, _model.Speed * Time.deltaTime);
+            _rigidbody.MovePosition(movement);
         }
     }
 }

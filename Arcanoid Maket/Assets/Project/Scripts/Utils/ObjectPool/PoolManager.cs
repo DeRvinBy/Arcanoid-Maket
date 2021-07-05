@@ -32,17 +32,28 @@ namespace Project.Scripts.Utils.ObjectPool
         }
         
         public static T GetObject(Vector3 position) =>
-            _instance.GenerateObject(position, Quaternion.identity);
+            _instance.GenerateObject(position, Quaternion.identity, Vector3.one, _instance._objectCreator.transform);
         
         public static T GetObject(Vector3 position, Quaternion rotation) =>
-            _instance.GenerateObject(position, Quaternion.identity);
+            _instance.GenerateObject(position, rotation, Vector3.one, _instance._objectCreator.transform);
         
-        private T GenerateObject(Vector3 position, Quaternion rotation)
+        public static T GetObject(Vector3 position, Quaternion rotation, Vector3 scale) =>
+            _instance.GenerateObject(position, rotation, scale, _instance._objectCreator.transform);
+        
+        public static T GetObject(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent) =>
+            _instance.GenerateObject(position, rotation, scale, parent);
+        
+        public static T GetObject(Vector3 position, Transform parent) =>
+            _instance.GenerateObject(position, Quaternion.identity, Vector3.one, parent);
+        
+        private T GenerateObject(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)
         {
             var go = _container.GetFromPool();
             var goTransform = go.transform;
             goTransform.position = position;
             goTransform.rotation = rotation;
+            goTransform.localScale = scale;
+            goTransform.parent = parent;
             return go;
         }
         
