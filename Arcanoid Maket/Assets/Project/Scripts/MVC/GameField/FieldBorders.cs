@@ -1,4 +1,5 @@
-﻿using Project.Scripts.GameSettings.GameFieldSettings;
+﻿using System;
+using Project.Scripts.GameSettings.GameFieldSettings;
 using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
@@ -41,6 +42,11 @@ namespace Project.Scripts.MVC.GameField
             var position = _transform.position;
             position.y -= _worldScale.y * _settings.TopOffset;
             _transform.position = position;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            print(other.gameObject.name);
         }
     }
 }
