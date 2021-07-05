@@ -1,23 +1,19 @@
-﻿using System;
-using Project.Scripts.GameSettings.PlayerSettings;
+﻿using Project.Scripts.GameSettings.PlayerSettings;
 
 namespace Project.Scripts.MVC.Player
 {
     public class LifeModel
     {
-        public event Action<int> OnLifeCountChanged;
-
-        private int _lifeCount;
+        public int LifeCount { get; private set; }
 
         public void Initialize(LifeSettings settings)
         {
-            _lifeCount = settings.StartLifeCount;
+            LifeCount = settings.StartLifeCount;
         }
 
         public void ReduceLifeByOne()
         {
-            _lifeCount--;
-            OnLifeCountChanged?.Invoke(_lifeCount);
+            LifeCount--;
         }
     }
 }

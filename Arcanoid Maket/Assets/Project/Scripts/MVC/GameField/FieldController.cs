@@ -1,5 +1,5 @@
-﻿using Project.Scripts.EventInterfaces.StatesInterfaces;
-using Project.Scripts.GameSettings.GameFieldSettings;
+﻿using Project.Scripts.GameSettings.GameFieldSettings;
+using Project.Scripts.GameStates.States.EventInterfaces;
 using Project.Scripts.MVC.Abstract;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
@@ -32,7 +32,7 @@ namespace Project.Scripts.MVC.GameField
             EventBus.Subscribe(this);
         }
 
-        public void StartController()
+        public void StartGame()
         {
             _fieldModel.StartModel();
         }

@@ -1,6 +1,6 @@
-﻿using Project.Scripts.EventInterfaces.StatesInterfaces;
-using Project.Scripts.GameStates.Abstract;
+﻿using Project.Scripts.GameStates.Abstract;
 using Project.Scripts.GameStates.Interfaces;
+using Project.Scripts.GameStates.States.EventInterfaces;
 using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.GameStates.States
@@ -13,7 +13,7 @@ namespace Project.Scripts.GameStates.States
 
         public override void Enter()
         {
-            EventBus.RaiseEvent<IMainGameStateEvent>(a => a.StartController());
+            EventBus.RaiseEvent<IMainGameStateEvent>(a => a.StartGame());
         }
 
         public override void Exit()

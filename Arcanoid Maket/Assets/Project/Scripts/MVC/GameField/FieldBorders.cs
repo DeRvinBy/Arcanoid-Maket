@@ -1,4 +1,6 @@
 ﻿using Project.Scripts.GameSettings.GameFieldSettings;
+using Project.Scripts.MVC.GameField.EventInterfaces;
+using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.MVC.GameField
@@ -45,7 +47,7 @@ namespace Project.Scripts.MVC.GameField
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            
+            EventBus.RaiseEvent<IBallOutBorderEvent>(a => a.OnBallOut());
         }
     }
 }
