@@ -17,27 +17,49 @@ namespace Project.Scripts.MVC.Platform
         private PlatformModel _model;
         private Transform _transform;
 
+        private float _worldSizeX;
+        
         public void Initialize(PlatformModel model)
         {
             _model = model;
             _transform = transform;
+            _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
         }
 
         public void UpdatePlatformPosition(Vector2 mousePosition)
         {
             var targetPosition = _sceneCamera.ScreenToWorldPoint(mousePosition);
-            var currentPosition = _transform.position;
-            targetPosition.y = currentPosition.y;
-            var movement = Vector3.Lerp( currentPosition, targetPosition, _model.Speed * Time.deltaTime);
+            targetPosition = LimitTargetPosition(targetPosition);
+            var movement = Vector3.Lerp( _transform.position, targetPosition, _model.Speed * Time.deltaTime);
             _rigidbody.MovePosition(movement);
+        }
+
+        private Vector3 LimitTargetPosition(Vector3 targetPosition)
+        {
+            var halfSize = _model.Size / 2f;
+            var positionX = Mathf.Abs(targetPosition.x) + halfSize;
+            if (positionX > _worldSizeX)
+            {
+                if (targetPosition.x > 0)
+                {
+                    targetPosition.x = _worldSizeX - halfSize;
+                }
+                else
+                {
+                    targetPosition.x = - _worldSizeX + halfSize;
+                }
+            }
+            targetPosition.y = _transform.position.y;
+
+            return targetPosition;
         }
         
         public void StartView()
         {
-            SetupScale();
+            SetPlatformScale();
         }
 
-        private void SetupScale()
+        private void SetPlatformScale()
         {
             var scale = _transform.localScale;
             scale.x *= _model.Size;

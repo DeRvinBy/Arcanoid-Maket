@@ -5,7 +5,7 @@ namespace Project.Scripts.GameSettings.GameFieldSettings
     public class FieldSettings : MonoBehaviour
     {
         [SerializeField]
-        [Range(0f, 0.25f)]
+        [Range(0.14f, 0.25f)]
         private float _topOffset = 0.15f;
 
         [SerializeField]
