@@ -64,28 +64,29 @@ namespace Project.Scripts.MVC.Platform
             if (!_isMove) return;
             
             var targetPosition = _sceneCamera.ScreenToWorldPoint(mousePosition);
-            targetPosition = LimitTargetPosition(targetPosition);
+            targetPosition.y = _transform.position.y;
             MoveToTargetPosition(targetPosition);
+            LimitPosition();
         }
         
-        private Vector3 LimitTargetPosition(Vector3 targetPosition)
+        private void LimitPosition()
         {
+            var position = _transform.position;
             var halfSize = _model.Size / 2f;
-            var positionX = Mathf.Abs(targetPosition.x) + halfSize;
+            var positionX = Mathf.Abs(position.x) + halfSize;
             if (positionX > _worldSizeX)
             {
-                if (targetPosition.x > 0)
+                if (position.x > 0)
                 {
-                    targetPosition.x = _worldSizeX - halfSize;
+                    position.x = _worldSizeX - halfSize;
                 }
                 else
                 {
-                    targetPosition.x = - _worldSizeX + halfSize;
+                    position.x = - _worldSizeX + halfSize;
                 }
             }
-            targetPosition.y = _transform.position.y;
 
-            return targetPosition;
+            _transform.position = position;
         }
         
         private void MoveToTargetPosition(Vector3 targetPosition)
