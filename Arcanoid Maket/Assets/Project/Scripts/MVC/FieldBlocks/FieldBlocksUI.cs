@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Animations;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Project.Scripts.MVC.FieldBlocks
@@ -8,6 +9,9 @@ namespace Project.Scripts.MVC.FieldBlocks
         [SerializeField]
         private Slider _blocksSlider;
 
+        [SerializeField]
+        private ValueAnimation _valueAnimation;
+        
         private int _initialBlockCount;
         
         public void SetupSlider(int blockCount)
@@ -18,7 +22,14 @@ namespace Project.Scripts.MVC.FieldBlocks
 
         public void UpdateSlider(int currentBlockCount)
         {
-            _blocksSlider.value = _initialBlockCount - currentBlockCount;
+            var from = _blocksSlider.value;
+            var to = _initialBlockCount - currentBlockCount;
+            _valueAnimation.PlayAnimation(from, to, UpdateSliderValue);
+        }
+
+        public void UpdateSliderValue(float value)
+        {
+            _blocksSlider.value = value;
         }
     }
 }
