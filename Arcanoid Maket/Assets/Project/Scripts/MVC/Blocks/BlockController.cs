@@ -2,7 +2,9 @@
 using Project.Scripts.GameSettings.GameBlockSettings;
 using Project.Scripts.MVC.Blocks.Creation;
 using Project.Scripts.MVC.Blocks.Enumerations;
+using Project.Scripts.MVC.Blocks.EventInterfaces;
 using Project.Scripts.MVC.Blocks.GameComponents;
+using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.ObjectPool.Interfaces;
 using UnityEngine;
 
@@ -62,6 +64,7 @@ namespace Project.Scripts.MVC.Blocks
             {
                 _cracks.DisableBlockCracks();
                 StartCoroutine(DestroyBlockAfterParticles());
+                EventBus.RaiseEvent<IBlockDestroyedEvent>(a => a.OnBlockDestroyed());
             }
         }
 
