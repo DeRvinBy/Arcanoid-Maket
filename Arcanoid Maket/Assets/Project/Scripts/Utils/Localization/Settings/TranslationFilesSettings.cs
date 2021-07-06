@@ -10,9 +10,9 @@ namespace Project.Scripts.Utils.Localization.Settings
         private SystemLanguage _language;
 
         [SerializeField]
-        private string translationFileName = "";
+        private string _translationFileName = "";
 
         public SystemLanguage Language => _language;
-        public string TranslationFileName => translationFileName;
+        public string TranslationFileName => _translationFileName;
     }
 }

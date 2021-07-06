@@ -6,16 +6,16 @@ namespace Project.Scripts.MVC.Player.GameComponents
     public class LifeImageUI : MonoBehaviour
     {
         [SerializeField]
-        private Image icon;
+        private Image _icon;
         
         public void ShowLife()
         {
-            icon.enabled = true;
+            _icon.enabled = true;
         }
 
         public void HideLife()
         {
-            icon.enabled = false;
+            _icon.enabled = false;
         }
     }
 }

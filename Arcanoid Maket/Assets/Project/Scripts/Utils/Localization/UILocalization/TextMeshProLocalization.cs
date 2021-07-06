@@ -11,7 +11,7 @@ namespace Project.Scripts.Utils.Localization.UILocalization
         private TMP_Text _tmpText = null;
 
         [SerializeField]
-        private string translationName = "";
+        private string _translationName = "";
 
         private void OnEnable()
         {
@@ -25,7 +25,7 @@ namespace Project.Scripts.Utils.Localization.UILocalization
 
         public void OnLanguageChanged()
         {
-            _tmpText.text = LocalizationManager.GetCurrentTranslation(translationName);
+            _tmpText.text = LocalizationManager.GetCurrentTranslation(_translationName);
         }
     }
 }

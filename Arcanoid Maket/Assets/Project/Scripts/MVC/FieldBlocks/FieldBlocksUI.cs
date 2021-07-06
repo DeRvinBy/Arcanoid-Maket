@@ -22,12 +22,12 @@ namespace Project.Scripts.MVC.FieldBlocks
 
         public void UpdateSlider(int currentBlockCount)
         {
-            var from = _blocksSlider.value;
-            var to = _initialBlockCount - currentBlockCount;
-            _valueAnimation.PlayAnimation(from, to, UpdateSliderValue);
+            var fromValue = _blocksSlider.value;
+            var toValue = _initialBlockCount - currentBlockCount;
+            _valueAnimation.PlayAnimation(fromValue, toValue, UpdateSliderValue);
         }
 
-        public void UpdateSliderValue(float value)
+        private void UpdateSliderValue(float value)
         {
             _blocksSlider.value = value;
         }
