@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project.Scripts.GameStates.Abstract;
+using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.Architecture.Scenes;
 using Project.Scripts.GameStates.States;
-using Project.Scripts.Scenes;
 
 namespace Project.Scripts.GameStates.StateMachines
 {

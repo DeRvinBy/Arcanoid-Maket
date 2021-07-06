@@ -1,6 +1,7 @@
-﻿using Project.Scripts.GameStates.Abstract;
-using Project.Scripts.GameStates.Interfaces;
-using Project.Scripts.GameStates.States.EventInterfaces;
+﻿using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.Architecture.Interfaces;
+using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.GameStates.States
@@ -14,7 +15,7 @@ namespace Project.Scripts.GameStates.States
 
         public override void Enter()
         {
-            EventBus.RaiseEvent<IMainGameStateEvent>(a => a.StartGame());
+            EventBus.RaiseEvent<IMainGameStateStartHandler>(a => a.OnStartGame());
         }
 
         public override void Exit()
@@ -22,12 +23,12 @@ namespace Project.Scripts.GameStates.States
             
         }
 
-        public void WinGame()
+        public void OnWinGame()
         {
             _stateSwitcher.SwitchState<WinGameState>();
         }
 
-        public void EndGame()
+        public void OnEndGame()
         {
             _stateSwitcher.SwitchState<LoseGameState>();
         }

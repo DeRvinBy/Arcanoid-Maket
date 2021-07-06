@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116689090}
   m_Layer: 0
-  m_Name: ________SCENE
+  m_Name: SCENE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -481,7 +481,7 @@ GameObject:
   - component: {fileID: 376653952}
   - component: {fileID: 376653951}
   m_Layer: 5
-  m_Name: ________UI
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -880,7 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517714959}
   m_Layer: 0
-  m_Name: ________CONTROLLERS
+  m_Name: CONTROLLERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,7 +1004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 603372305}
   m_Layer: 0
-  m_Name: ________ENTITIES
+  m_Name: ENTITIES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1392,7 +1392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874676440}
   m_Layer: 0
-  m_Name: ________POOLS
+  m_Name: POOLS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2065,7 +2065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1404385753}
   m_Layer: 0
-  m_Name: ________SETTINGS
+  m_Name: SETTINGS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2415,7 +2415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2096baf334f4a6bbc01459477351cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popups: []
+  _popups:
+  - {fileID: 1196982762}
+  - {fileID: 1923724314}
 --- !u!1 &1923724312
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,6 +2993,7 @@ MonoBehaviour:
   - {fileID: 782805973}
   - {fileID: 1936782566}
   - {fileID: 837585704}
+  - {fileID: 1702834248}
 --- !u!4 &2100000742
 Transform:
   m_ObjectHideFlags: 0

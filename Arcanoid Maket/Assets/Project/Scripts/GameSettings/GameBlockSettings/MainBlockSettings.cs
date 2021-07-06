@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.MVC.Blocks.Enumerations;
+using Project.Scripts.GameEntities.Blocks.Enumerations;
 using UnityEngine;
 
 namespace Project.Scripts.GameSettings.GameBlockSettings

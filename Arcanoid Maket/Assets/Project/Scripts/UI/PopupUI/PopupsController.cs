@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
-using Project.Scripts.MVC.Abstract;
+using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.UI.PopupUI.Abstract;
 using UnityEngine;
 

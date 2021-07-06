@@ -1,6 +1,6 @@
-﻿using Project.Scripts.GameStates.Abstract;
-using Project.Scripts.GameStates.Interfaces;
-using Project.Scripts.Scenes;
+﻿using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.Architecture.Interfaces;
+using Project.Scripts.Architecture.Scenes;
 using Project.Scripts.UI.PopupUI;
 
 namespace Project.Scripts.GameStates.States
