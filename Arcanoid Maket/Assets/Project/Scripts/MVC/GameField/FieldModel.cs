@@ -9,7 +9,7 @@ namespace Project.Scripts.MVC.GameField
 {
     public class FieldModel
     {
-        public event Action<FieldGrid> OnGameFieldCreated;
+        public event Action<FieldGrid> OnGameFieldLoaded;
 
         private FieldGrid _grid;
         private LevelParser _levelParser;
@@ -24,7 +24,7 @@ namespace Project.Scripts.MVC.GameField
         {
             var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1", 1);
             _grid.CreateGameField(levelData);
-            OnGameFieldCreated?.Invoke(_grid);
+            OnGameFieldLoaded?.Invoke(_grid);
         }
     }
 }
