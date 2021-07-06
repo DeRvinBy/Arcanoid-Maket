@@ -22,7 +22,7 @@ namespace Project.Scripts.MVC.GameField
 
         public void StartModel()
         {
-            var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1", 1);
+            var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1", 5);
             _grid.CreateGameField(levelData);
             OnGameFieldLoaded?.Invoke(_grid);
         }

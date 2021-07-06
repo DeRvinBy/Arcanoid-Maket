@@ -15,11 +15,11 @@ namespace Project.Scripts.Scenes
 
         public void Initialize()
         {
-            InitializeController();
+            InitializeControllers();
             InitializeStateMachine();
         }
         
-        private void InitializeController()
+        private void InitializeControllers()
         {
             foreach (var controller in _controllers)
             {
@@ -29,7 +29,12 @@ namespace Project.Scripts.Scenes
         
         private void InitializeStateMachine()
         {
-            _stateMachine.Initialize();
+            _stateMachine.Initialize(this);
+        }
+
+        public T GetController<T>() where T : SceneEntitiesController
+        {
+            return (T) _controllers.First(c => c is T);
         }
     }
 }

@@ -5,18 +5,18 @@ using Project.Scripts.UI.PopupUI;
 
 namespace Project.Scripts.GameStates.States
 {
-    public class WinGameState : GameState
+    public class LoseGameState : GameState
     {
         private PopupsController _popupsController;
         
-        public WinGameState(Scene scene, IStateSwitcher stateSwitcher) : base(stateSwitcher)
+        public LoseGameState(Scene scene, IStateSwitcher stateSwitcher) : base(stateSwitcher)
         {
             _popupsController = scene.GetController<PopupsController>();
         }
 
         public override void Enter()
         {
-            _popupsController.ShowPopup<WinPopup>();
+            _popupsController.ShowPopup<LosePopup>();
         }
 
         public override void Exit()

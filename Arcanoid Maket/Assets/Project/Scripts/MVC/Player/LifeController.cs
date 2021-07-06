@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.GameSettings.PlayerSettings;
+using Project.Scripts.GameStates.States.EventInterfaces;
 using Project.Scripts.MVC.Abstract;
 using Project.Scripts.MVC.GameField.EventInterfaces;
 using Project.Scripts.MVC.Player.EventInterfaces;
@@ -35,7 +36,7 @@ namespace Project.Scripts.MVC.Player
             
             if (_model.LifeCount <= EndGameLifeCount)
             {
-                EventBus.RaiseEvent<IEndGameEvent>(a => a.OnEndGame());
+                EventBus.RaiseEvent<IEndGameHandler>(a => a.EndGame());
             }
             else
             {
