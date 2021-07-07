@@ -13,6 +13,11 @@ namespace Project.Scripts.Utils.Localization.UILocalization
         [SerializeField]
         private string _translationName = "";
 
+        private void OnValidate()
+        {
+            _tmpText.text = _translationName;
+        }
+
         private void OnEnable()
         {
             EventBus.Subscribe(this);

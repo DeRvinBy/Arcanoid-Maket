@@ -58,11 +58,11 @@ namespace Project.Scripts.Animations.UI
             _hideTransformTween = _rectTransform.DOAnchorPos(_hidePosition, _animationDuration).SetAs(tweenParams);
             _hideTransformTween.Pause();
             _showTransformTween = _rectTransform.DOAnchorPos(_showPosition, _animationDuration).SetAs(tweenParams);
-            _hideTransformTween.Pause();
+            _showTransformTween.Pause();
             _hideCanvasTween = _canvas.DOFade(_hideAlpha, _animationDuration).SetAs(tweenParams);
             _hideCanvasTween.Pause();
             _showCanvasTween = _canvas.DOFade(_showAlpha, _animationDuration).SetAs(tweenParams);
-            _hideCanvasTween.Pause();
+            _showCanvasTween.Pause();
         }
 
         public IEnumerator PlayHideAnimation()

@@ -11,17 +11,20 @@ namespace Project.Scripts.UI.PopupUI.Abstract
         
         public void Initialize()
         {
+            gameObject.SetActive(false);
             _animation.SetupAnimation();
         }
 
         public IEnumerator ShowPopup()
         {
-            return _animation.PlayShowAnimation();
+            gameObject.SetActive(true);
+            yield return _animation.PlayShowAnimation();
         }
 
         public IEnumerator HidePopup()
         {
-            return _animation.PlayHideAnimation();
+            yield return _animation.PlayHideAnimation();
+            gameObject.SetActive(false);
         }
 
         public abstract void StartPopup();
