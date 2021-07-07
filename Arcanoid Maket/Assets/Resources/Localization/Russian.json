@@ -1,5 +1,4 @@
 ﻿{
-  "win_text" : "Уровень пройден!",
   "lose_text" : "Вы проиграли!",
   "continue_button" : "Продолжить",
   "restart_button" : "Заново"

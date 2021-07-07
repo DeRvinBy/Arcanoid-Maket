@@ -22,8 +22,12 @@ namespace Project.Scripts.UI.PopupUI
         public IEnumerator ShowPopup<T>() where T : Popup
         {
             var popup = _popups.First(p => p is T);
-            popup.StartPopup();
             return popup.ShowPopup();
+        }
+        
+        public void StartPopup<T>() where T : Popup
+        {
+             _popups.First(p => p is T).StartPopup();
         }
         
         public IEnumerator HidePopup<T>() where T : Popup

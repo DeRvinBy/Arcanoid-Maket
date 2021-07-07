@@ -1,5 +1,4 @@
 {
-  "win_text" : "Level Complete!",
   "lose_text" : "You lose!",
   "continue_button" : "Continue",
   "restart_button" : "Restart"
