@@ -1,4 +1,5 @@
-﻿using Project.Scripts.EventInterfaces.GameFieldEvents;
+﻿using Project.Scripts.EventInterfaces.BallEvents;
+using Project.Scripts.GameEntities.Ball;
 using Project.Scripts.GameSettings.GameFieldSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
@@ -47,7 +48,8 @@ namespace Project.Scripts.GameEntities.GameField.Components
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            EventBus.RaiseEvent<IBallOutBorderHandler>(a => a.OnBallOut());
+            var ball = other.GetComponent<BallController>();
+            EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnBallDestroyed(ball));
         }
     }
 }

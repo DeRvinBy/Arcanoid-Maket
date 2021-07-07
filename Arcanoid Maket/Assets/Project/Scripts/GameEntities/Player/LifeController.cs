@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IBallOutBorderHandler
+    public class LifeController : SceneEntitiesController, IPlayerBallsEndedHandler
     {
         private const int EndGameLifeCount = 0;
         
@@ -24,11 +24,11 @@ namespace Project.Scripts.GameEntities.Player
             _model = new LifeModel();
             _model.Initialize(_settings);
             _lifeUI.Initialize(_settings);
-
+            
             EventBus.Subscribe(this);
         }
 
-        public void OnBallOut()
+        public void OnPlayerBallsEnded()
         {
             _model.ReduceLifeByOne();
             _lifeUI.SetLifeCountInUI(_model.LifeCount);

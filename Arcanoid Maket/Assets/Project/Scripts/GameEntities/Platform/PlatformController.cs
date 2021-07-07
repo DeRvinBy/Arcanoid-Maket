@@ -57,7 +57,7 @@ namespace Project.Scripts.GameEntities.Platform
 
         private void SpawnBall()
         {
-            EventBus.RaiseEvent<IBallSpawnHandler>(a => 
+            EventBus.RaiseEvent<IBallSceneHandler>(a => 
                 a.OnSpawnBallAtPosition(_spawnPlatformTransform.position, _spawnPlatformTransform));
         }
     }

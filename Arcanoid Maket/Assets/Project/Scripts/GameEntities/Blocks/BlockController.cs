@@ -12,7 +12,7 @@ namespace Project.Scripts.GameEntities.Blocks
 {
     public class BlockController : MonoBehaviour, IPoolObject
     {
-        private const int DestroyLifeCount = 1;
+        private const int DestroyLifeCount = 0;
         
         [SerializeField]
         private BlockView _view;

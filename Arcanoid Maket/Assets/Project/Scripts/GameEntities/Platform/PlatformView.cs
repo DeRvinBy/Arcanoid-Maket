@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
-using Project.Scripts.EventInterfaces.GameFieldEvents;
-using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Platform
 {
-    public class PlatformView : MonoBehaviour, IBallOutBorderHandler
+    public class PlatformView : MonoBehaviour
     {
         [SerializeField]
         private Camera _sceneCamera;
@@ -26,8 +24,6 @@ namespace Project.Scripts.GameEntities.Platform
             _transform = transform;
             _initialPosition = _transform.position;
             _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
-            
-            EventBus.Subscribe(this);
         }
 
         public void StartView()
@@ -42,14 +38,10 @@ namespace Project.Scripts.GameEntities.Platform
             scale.x *= _model.Size;
             _transform.localScale = scale;
         }
-        
-        public void OnBallOut()
-        {
-            _isMove = false;
-        }
 
         public IEnumerator ResetPlatformPosition()
         {
+            _isMove = false;
             while (Math.Abs(_transform.position.x - _initialPosition.x) > 0.01f)
             {
                 MoveToTargetPosition(_initialPosition);

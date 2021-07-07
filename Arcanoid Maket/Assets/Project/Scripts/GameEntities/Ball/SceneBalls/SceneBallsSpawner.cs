@@ -20,5 +20,10 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
             _currentBall.transform.parent = null;
             _currentBall = null;
         }
+        
+        public void DestroyBall(BallController ball)
+        {
+            BallPoolManager.Instance.ReturnObject(ball);
+        }
     }
 }
