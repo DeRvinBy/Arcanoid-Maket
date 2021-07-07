@@ -21,7 +21,7 @@ namespace Project.Scripts.GameEntities.Platform
         
         private void CreateSpawnBallOnPlatform()
         {
-            _currentBall = BallPoolManager.GetObject(_spawnBallTransform.position, _spawnBallTransform);
+            _currentBall = BallPoolManager.Instance.GetObject(_spawnBallTransform.position, _spawnBallTransform);
         }
 
         public void PushBall()

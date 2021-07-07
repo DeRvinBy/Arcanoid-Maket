@@ -73,7 +73,7 @@ namespace Project.Scripts.GameEntities.Blocks
             _view.DisableView();
             _particles.PlayParticle();
             yield return new WaitWhile(() => _particles.IsParticlesPlaying);
-            BlockPoolManager.ReturnObject(this);
+            BlockPoolManager.Instance.ReturnObject(this);
         }
     }
 }

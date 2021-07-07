@@ -35,7 +35,7 @@ namespace Project.Scripts.GameEntities.GameField
 
         private void CreateBlock(FieldCell cell, Vector2 cellSize)
         {
-            var block = BlockPoolManager.GetObject(cell.Position);
+            var block = BlockPoolManager.Instance.GetObject(cell.Position);
             block.transform.localScale = cellSize;
             block.SetupBlock(cell.BlockId);
         }

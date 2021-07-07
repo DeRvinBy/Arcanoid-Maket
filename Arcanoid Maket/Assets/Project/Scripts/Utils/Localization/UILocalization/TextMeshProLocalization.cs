@@ -25,7 +25,7 @@ namespace Project.Scripts.Utils.Localization.UILocalization
 
         public void OnLanguageChanged()
         {
-            _tmpText.text = LocalizationManager.GetCurrentTranslation(_translationName);
+            _tmpText.text = LocalizationManager.Instance.GetCurrentTranslation(_translationName);
         }
     }
 }

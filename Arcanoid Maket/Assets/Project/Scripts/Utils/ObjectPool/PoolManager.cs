@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Utils.ObjectPool
 {
-    public class PoolManager<T> : Singleton<PoolManager<T>> where T : MonoBehaviour, IPoolObject
+    public class PoolManager<T> : Singleton<PoolManager<T>> where T : MonoBehaviour, IPoolObject 
     {
         [SerializeField]
         private PoolObjectCreator<T> _objectCreator;
@@ -15,8 +15,9 @@ namespace Project.Scripts.Utils.ObjectPool
 
         private PoolContainer<T> _container;
 
-        protected override void OnAwake()
+        protected override void Awake()
         {
+            base.Awake();
             CreatePool();
         }
 
@@ -31,20 +32,20 @@ namespace Project.Scripts.Utils.ObjectPool
             }
         }
         
-        public static T GetObject(Vector3 position) =>
-            _instance.GenerateObject(position, Quaternion.identity, Vector3.one, _instance._objectCreator.transform);
+        public T GetObject(Vector3 position) =>
+            GenerateObject(position, Quaternion.identity, Vector3.one, _objectCreator.transform);
         
-        public static T GetObject(Vector3 position, Quaternion rotation) =>
-            _instance.GenerateObject(position, rotation, Vector3.one, _instance._objectCreator.transform);
+        public T GetObject(Vector3 position, Quaternion rotation) =>
+            GenerateObject(position, rotation, Vector3.one, _objectCreator.transform);
         
-        public static T GetObject(Vector3 position, Quaternion rotation, Vector3 scale) =>
-            _instance.GenerateObject(position, rotation, scale, _instance._objectCreator.transform);
+        public T GetObject(Vector3 position, Quaternion rotation, Vector3 scale) =>
+            GenerateObject(position, rotation, scale, _objectCreator.transform);
         
-        public static T GetObject(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent) =>
-            _instance.GenerateObject(position, rotation, scale, parent);
+        public T GetObject(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent) =>
+            GenerateObject(position, rotation, scale, parent);
         
-        public static T GetObject(Vector3 position, Transform parent) =>
-            _instance.GenerateObject(position, Quaternion.identity, Vector3.one, parent);
+        public T GetObject(Vector3 position, Transform parent) =>
+            GenerateObject(position, Quaternion.identity, Vector3.one, parent);
         
         private T GenerateObject(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)
         {
@@ -56,11 +57,8 @@ namespace Project.Scripts.Utils.ObjectPool
             goTransform.parent = parent;
             return go;
         }
-        
-        public static void ReturnObject(T go) => 
-            _instance.ReturnObjectToPool(go);
-        
-        private void ReturnObjectToPool(T go)
+
+        public void ReturnObject(T go)
         {
             _container.PushToPool(go);
         }
