@@ -2,9 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.Scripts.GameEntities.FieldBlocks
+namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class FieldBlocksUI : MonoBehaviour
+    public class SceneBlocksUI : MonoBehaviour
     {
         [SerializeField]
         private Slider _blocksSlider;

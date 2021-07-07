@@ -5,19 +5,19 @@ using Project.Scripts.EventInterfaces.GameFieldEvents;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Project.Scripts.GameEntities.FieldBlocks
+namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class FieldBlocksController : SceneEntitiesController, IGameFieldCreatedHandler, IBlockDestroyedHandler
+    public class SceneBlocksController : SceneEntitiesController, IGameFieldCreatedHandler, IBlockDestroyedHandler
     {
         [SerializeField]
-        private FieldBlocksUI _blocksUI;
+        private SceneBlocksUI _sceneBlocksUI;
 
-        private FieldBlocksModel _model;
+        private SceneBlocksModel _model;
 
         public override void Initialize()
         {
-            _model = new FieldBlocksModel();
-            _model.OnBlockCountReduced += _blocksUI.UpdateSlider;
+            _model = new SceneBlocksModel();
+            _model.OnBlockCountReduced += _sceneBlocksUI.UpdateSlider;
             _model.OnBlockCountReduced += CompleteLevel;
 
             EventBus.Subscribe(this);
@@ -26,7 +26,7 @@ namespace Project.Scripts.GameEntities.FieldBlocks
         public void OnBlocksCreated(int blockCount)
         {
             _model.SetBlockCount(blockCount);
-            _blocksUI.SetupSlider(blockCount);
+            _sceneBlocksUI.SetupSlider(blockCount);
         }
 
         public void OnBlockDestroyed()

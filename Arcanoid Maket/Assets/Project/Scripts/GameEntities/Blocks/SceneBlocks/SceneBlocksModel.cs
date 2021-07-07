@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Project.Scripts.GameEntities.FieldBlocks
+namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class FieldBlocksModel
+    public class SceneBlocksModel
     {
         public event Action<int> OnBlockCountReduced;
         

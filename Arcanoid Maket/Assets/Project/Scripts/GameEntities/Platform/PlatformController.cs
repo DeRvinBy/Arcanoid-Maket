@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.GamePlatformSettings;
@@ -21,7 +22,7 @@ namespace Project.Scripts.GameEntities.Platform
         private PlatformView _view;
 
         [SerializeField]
-        private PlatformSpawnBallBehaviour _spawnBallBehaviour;
+        private Transform _spawnPlatformTransform;
 
         private PlatformModel _model;
         
@@ -37,22 +38,27 @@ namespace Project.Scripts.GameEntities.Platform
         public void OnStartGame()
         {
             _input.OnMousePositionUpdated += _view.UpdatePlatformPosition;
-            _input.OnMouseButtonUp += _spawnBallBehaviour.PushBall;
             _model.StartModel();
             _view.StartView();
-            _spawnBallBehaviour.StartBehaviour();
+            SpawnBall();
         }
 
         public void OnContinueGame()
         {
-            StartCoroutine(WaitToSpawnBall());
+            StartCoroutine(ResetPlatform());
+        }
+        
+        private IEnumerator ResetPlatform()
+        {
+            var coroutine = _view.ResetPlatformPosition();
+            yield return StartCoroutine(coroutine);
+            SpawnBall();
         }
 
-        private IEnumerator WaitToSpawnBall()
+        private void SpawnBall()
         {
-            var coroutine = StartCoroutine(_view.ResetPlatformPosition());
-            yield return coroutine;
-            _spawnBallBehaviour.StartBehaviour();
+            EventBus.RaiseEvent<IBallSpawnHandler>(a => 
+                a.OnSpawnBallAtPosition(_spawnPlatformTransform.position, _spawnPlatformTransform));
         }
     }
 }
