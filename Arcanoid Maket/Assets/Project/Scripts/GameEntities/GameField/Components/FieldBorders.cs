@@ -47,7 +47,7 @@ namespace Project.Scripts.GameEntities.GameField.Components
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            EventBus.RaiseEvent<IBallOutBorderEvent>(a => a.OnBallOut());
+            EventBus.RaiseEvent<IBallOutBorderHandler>(a => a.OnBallOut());
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IBallOutBorderEvent
+    public class LifeController : SceneEntitiesController, IBallOutBorderHandler
     {
         private const int EndGameLifeCount = 0;
         
@@ -39,7 +39,7 @@ namespace Project.Scripts.GameEntities.Player
             }
             else
             {
-                EventBus.RaiseEvent<IContinueGameEvent>(a => a.OnContinueGame());
+                EventBus.RaiseEvent<IContinueGameHandler>(a => a.OnContinueGame());
             }
         }
     }

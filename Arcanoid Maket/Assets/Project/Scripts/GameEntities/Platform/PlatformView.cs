@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Platform
 {
-    public class PlatformView : MonoBehaviour, IBallOutBorderEvent
+    public class PlatformView : MonoBehaviour, IBallOutBorderHandler
     {
         [SerializeField]
         private Camera _sceneCamera;

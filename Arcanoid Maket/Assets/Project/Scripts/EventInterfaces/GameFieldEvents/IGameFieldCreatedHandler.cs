@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.EventInterfaces.GameFieldEvents
 {
-    public interface IGameFieldCreatedEvent : IGlobalSubscriber
+    public interface IGameFieldCreatedHandler : IGlobalSubscriber
     {
         void OnBlocksCreated(int blockCount);
     }

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.FieldBlocks
 {
-    public class FieldBlocksController : SceneEntitiesController, IGameFieldCreatedEvent, IBlockDestroyedHandler
+    public class FieldBlocksController : SceneEntitiesController, IGameFieldCreatedHandler, IBlockDestroyedHandler
     {
         [SerializeField]
         private FieldBlocksUI _blocksUI;

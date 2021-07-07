@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Platform
 {
-    public class PlatformController : SceneEntitiesController, IMainGameStateStartHandler, IContinueGameEvent
+    public class PlatformController : SceneEntitiesController, IMainGameStateStartHandler, IContinueGameHandler
     {
         [SerializeField]
         private MouseInput _input;

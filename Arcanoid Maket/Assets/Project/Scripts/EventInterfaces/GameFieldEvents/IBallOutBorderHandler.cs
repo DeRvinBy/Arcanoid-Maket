@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.EventInterfaces.GameFieldEvents
 {
-    public interface IBallOutBorderEvent : IGlobalSubscriber
+    public interface IBallOutBorderHandler : IGlobalSubscriber
     {
         void OnBallOut();
     }

@@ -21,7 +21,7 @@ namespace Project.Scripts.GameEntities.GameField
 
         public void StartModel()
         {
-            var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1", 5);
+            var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1/level1");
             _grid.CreateGameField(levelData);
             OnGameFieldLoaded?.Invoke(_grid);
         }

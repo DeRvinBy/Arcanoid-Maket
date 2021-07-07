@@ -30,7 +30,7 @@ namespace Project.Scripts.GameEntities.GameField
                 }    
             }
             
-            EventBus.RaiseEvent<IGameFieldCreatedEvent>(a => a.OnBlocksCreated(blockCount));
+            EventBus.RaiseEvent<IGameFieldCreatedHandler>(a => a.OnBlocksCreated(blockCount));
         }
 
         private void CreateBlock(FieldCell cell, Vector2 cellSize)

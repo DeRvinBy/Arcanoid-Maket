@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
@@ -7,56 +6,39 @@ namespace Project.Scripts.GameEntities.GameField.Data.Level
 {
     public class LevelParser
     {
-        private int _leftStart;
-        private int _leftEnd;
-        private int _topStart;
-        private int _topEnd;
-        
         private int _horizontalCount;
         private int _verticalCount;
-
         private int[,] _data;
         
-        public LevelData GetLevelDataFromFile(string path, int levelID)
+        public LevelData GetLevelDataFromFile(string path)
         {
             var jsonFile = Resources.Load<TextAsset>(path);
-            var jsonObject = JObject.Parse(jsonFile.text);
-
-            var layer = (JObject) jsonObject[JsonTokens.Layers][levelID];
-            ReadLayerProperties(layer);
-            ReadLayerData(layer);
+            var level = JObject.Parse(jsonFile.text);
+            ReadFieldSize(level);
+            ReadLayerData(level);
 
             return new LevelData(_verticalCount, _horizontalCount, _data);
         }
 
-        private void ReadLayerProperties(JObject layer)
+        private void ReadFieldSize(JObject level)
         {
-            var properties = layer[JsonTokens.Properties].Children();
-            _leftStart = GetPropertyValue(properties, JsonTokens.KeyLeftStart);
-            _leftEnd = GetPropertyValue(properties, JsonTokens.KeyLeftEnd);
-            _topStart = GetPropertyValue(properties, JsonTokens.KeyTopStart);
-            _topEnd = GetPropertyValue(properties, JsonTokens.KeyTopEnd);
-            _verticalCount = _topEnd - _topStart + 1;
-            _horizontalCount = _leftEnd - _leftStart + 1;
-        }
-        
-        private int GetPropertyValue(IEnumerable<JToken> properties, string key)
-        {
-            return (int)properties.First(t => (string) t[JsonTokens.PropertyName] == key)[JsonTokens.PropertyValue];
+            _verticalCount = (int) level[JsonTokens.LevelHeight];
+            _horizontalCount = (int) level[JsonTokens.LevelWidth];
         }
 
-        private void ReadLayerData(JObject layer)
+        private void ReadLayerData(JObject level)
         {
-            var layerData = layer[JsonTokens.LayerData].Select(d => (int)d).ToArray();
-            var layerWidth = (int) layer[JsonTokens.LayerWidth];
+            var levelLayer = (JObject) level[JsonTokens.Layers][JsonTokens.LevelLayerID];
+            var layerData = levelLayer[JsonTokens.LayerData].Select(d => (int)d).ToArray();
+            
             _data = new int[_verticalCount, _horizontalCount];
 
-            for (int i = 0, row = _topStart - 1; row < _topEnd; i++, row++)
+            for (int i = 0; i < _verticalCount; i++)
             {
-                var line = row * layerWidth;
-                for (int j = 0, column = _leftStart - 1; column < _leftEnd; j++, column++)
+                var line = i * _horizontalCount;
+                for (int j = 0; j < _horizontalCount; j++)
                 {
-                    _data[i, j] = layerData[line + column]; 
+                    _data[i, j] = layerData[line + j]; 
                 }
             }
         }

@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.EventInterfaces.GameEvents
 {
-    public interface IContinueGameEvent : IGlobalSubscriber
+    public interface IContinueGameHandler : IGlobalSubscriber
     {
         void OnContinueGame();
     }
