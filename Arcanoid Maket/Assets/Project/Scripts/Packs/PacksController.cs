@@ -18,7 +18,7 @@ namespace Project.Scripts.Packs
         {
             _model = new PacksModel();
             _model.Initialize(_gamePacks);
-            StartPack("tree house");
+            StartPack("tree_house");
             StartLevel();
         }
 
