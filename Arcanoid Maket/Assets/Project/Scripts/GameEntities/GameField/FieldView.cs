@@ -1,8 +1,6 @@
 ﻿using Project.Scripts.EntitiesCreation.BlockCreation;
-using Project.Scripts.EventInterfaces.GameFieldEvents;
 using Project.Scripts.GameEntities.Blocks.Enumerations;
 using Project.Scripts.GameEntities.GameField.Data.Grid;
-using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.GameField
@@ -14,7 +12,6 @@ namespace Project.Scripts.GameEntities.GameField
         public void CreateBlocksInGameField(FieldGrid grid)
         {
             _gridDebug = grid;
-            var blockCount = 0;
             var cellSize = grid.CellSize;
             var cells = grid.Cells;
             for (int i = 0; i < grid.VerticalCount; i++)
@@ -25,12 +22,9 @@ namespace Project.Scripts.GameEntities.GameField
                     if (cell.BlockId != BlockId.Empty)
                     {
                         CreateBlock(cell, cellSize);
-                        blockCount++;
                     }
                 }    
             }
-            
-            EventBus.RaiseEvent<IGameFieldCreatedHandler>(a => a.OnBlocksCreated(blockCount));
         }
 
         private void CreateBlock(FieldCell cell, Vector2 cellSize)

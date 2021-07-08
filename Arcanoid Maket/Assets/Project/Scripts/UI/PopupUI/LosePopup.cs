@@ -1,5 +1,6 @@
-﻿using Project.Scripts.UI.PopupUI.Abstract;
-using UnityEngine;
+﻿using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.UI.PopupUI.Abstract;
+using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.UI.PopupUI
 {
@@ -7,7 +8,12 @@ namespace Project.Scripts.UI.PopupUI
     {
         public override void StartPopup()
         {
-            Debug.Log("Start Lose Popup");
+            
+        }
+        
+        public void OnRestartButtonPressed()
+        {
+            EventBus.RaiseEvent<IStartGameProccesHandler>(a => a.OnStartGameProcess());
         }
     }
 }

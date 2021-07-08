@@ -1,14 +1,12 @@
-﻿using Project.Scripts.GameSettings.PlayerSettings;
-
-namespace Project.Scripts.GameEntities.Player
+﻿namespace Project.Scripts.GameEntities.Player
 {
     public class LifeModel
     {
         public int LifeCount { get; private set; }
 
-        public void Initialize(LifeSettings settings)
+        public void SetLifeCount(int lifeCount)
         {
-            LifeCount = settings.StartLifeCount;
+            LifeCount = lifeCount;
         }
 
         public void ReduceLifeByOne()

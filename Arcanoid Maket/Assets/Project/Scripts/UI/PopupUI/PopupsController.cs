@@ -46,6 +46,7 @@ namespace Project.Scripts.UI.PopupUI
             {
                 yield return popup.HidePopup();
             }
+            _activePopups.Clear();
         }
     }
 }

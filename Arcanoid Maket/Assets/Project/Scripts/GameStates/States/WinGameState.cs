@@ -4,6 +4,7 @@ using Project.Scripts.Architecture.Scenes;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.UI.PopupUI;
 using Project.Scripts.Utils.EventSystem;
+using UnityEngine;
 
 namespace Project.Scripts.GameStates.States
 {

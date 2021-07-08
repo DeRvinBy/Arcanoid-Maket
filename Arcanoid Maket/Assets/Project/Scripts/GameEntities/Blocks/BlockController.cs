@@ -49,6 +49,8 @@ namespace Project.Scripts.GameEntities.Blocks
             _view.OnBlockDamaged += _model.ReduceLife;
             _model.OnBlockLifeChanged += DestroyBlock;
             _model.OnBlockLifeChanged += _cracks.UpdateBlockCracks;
+            
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockCreated(this));
         }
 
         public void Reset()
@@ -64,7 +66,7 @@ namespace Project.Scripts.GameEntities.Blocks
             {
                 _cracks.DisableBlockCracks();
                 StartCoroutine(DestroyBlockAfterParticles());
-                EventBus.RaiseEvent<IBlockDestroyedHandler>(a => a.OnBlockDestroyed());
+                EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockDestroyed(this));
             }
         }
 

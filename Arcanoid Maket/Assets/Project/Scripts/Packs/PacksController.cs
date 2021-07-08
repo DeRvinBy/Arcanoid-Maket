@@ -21,17 +21,17 @@ namespace Project.Scripts.Packs
             _model.Initialize(_gamePacks);
             
             EventBus.Subscribe(this);
+            _model.StartPack("test_pack");
         }
         
         public void OnPrepareGame()
         {
-            StartPack("test_pack");
+            StartPack();
             StartLevel();
         }
 
-        public void StartPack(string packName)
+        public void StartPack()
         {
-            _model.StartPack(packName);
             var currentPack = _model.GetCurrentPack();
             
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));

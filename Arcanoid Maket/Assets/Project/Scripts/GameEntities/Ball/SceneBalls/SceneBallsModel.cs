@@ -8,6 +8,11 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
         
         private int _ballCount;
 
+        public void StartModel()
+        {
+            _ballCount = 0;
+        }
+        
         public void IncreaseBallCount()
         {
             _ballCount++;

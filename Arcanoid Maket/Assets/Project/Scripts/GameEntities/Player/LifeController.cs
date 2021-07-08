@@ -1,13 +1,12 @@
 ﻿using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
-using Project.Scripts.EventInterfaces.GameFieldEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IPlayerBallsEndedHandler
+    public class LifeController : SceneEntitiesController, IStartGameProccesHandler, IPlayerBallsEndedHandler
     {
         private const int EndGameLifeCount = 0;
         
@@ -22,12 +21,17 @@ namespace Project.Scripts.GameEntities.Player
         public override void Initialize()
         {
             _model = new LifeModel();
-            _model.Initialize(_settings);
             _lifeUI.Initialize(_settings);
             
             EventBus.Subscribe(this);
         }
 
+        public void OnStartGameProcess()
+        {
+            _model.SetLifeCount(_settings.StartLifeCount);
+            _lifeUI.SetLifeCountInUI(_model.LifeCount);
+        }
+        
         public void OnPlayerBallsEnded()
         {
             _model.ReduceLifeByOne();

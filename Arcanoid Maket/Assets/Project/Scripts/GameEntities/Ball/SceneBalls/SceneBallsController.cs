@@ -1,4 +1,5 @@
-﻿using Project.Scripts.Architecture.Abstract;
+﻿using System;
+using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
@@ -33,6 +34,7 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
         public void OnEndGame()
         {
             _spawner.DestroyAllBalls();
+            _model.StartModel();
         }
 
         private void BallCountCheck(int ballCount)

@@ -69,8 +69,8 @@ namespace Project.Scripts.Animations.UI
         {
             _rectTransform.anchoredPosition = _showPosition;
             _canvas.alpha = _showAlpha;
-            _hideTransformTween.Play();
-            _hideCanvasTween.Play();
+            _hideTransformTween.Restart();
+            _hideCanvasTween.Restart();
             yield return _hideTransformTween.WaitForCompletion();
             yield return _hideCanvasTween.WaitForCompletion();
         }
@@ -79,8 +79,8 @@ namespace Project.Scripts.Animations.UI
         {
             _rectTransform.anchoredPosition = _hidePosition;
             _canvas.alpha = _hideAlpha;
-            _showTransformTween.Play();
-            _showCanvasTween.Play();
+            _showTransformTween.Restart();
+            _showCanvasTween.Restart();
             yield return _showTransformTween.WaitForCompletion();
             yield return _showCanvasTween.WaitForCompletion();
         }
