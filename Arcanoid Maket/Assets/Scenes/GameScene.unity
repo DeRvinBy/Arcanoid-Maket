@@ -675,7 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
-  _startLifeCount: 3
+  _startLifeCount: 2
 --- !u!1 &200949510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeSettings:
-    _blockLife: 3
+    _blockLife: 1
     _cracksSprites:
     - {fileID: -4411952460908225232, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: -6082135074782123902, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
@@ -3038,14 +3038,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b640e56c1a54f20ac12f8d5f2f6edf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 0
-  _easeMode: 1
+  _animationDuration: 1
+  _easeMode: 28
   _rectTransform: {fileID: 1196982760}
-  _hidePosition: {x: 0, y: 0}
+  _hidePosition: {x: 0, y: 1920.0001}
   _showPosition: {x: 0, y: 0}
   _canvas: {fileID: 1196982763}
   _hideAlpha: 0
-  _showAlpha: 0
+  _showAlpha: 1
 --- !u!114 &1196982762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3055,7 +3055,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1196982759}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d9e948a2a1d4d1990fa313e10fd3b8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3dda9cc8fdda48d98d48b26e13d8b850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 1196982761}
@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.3
+  m_fontSize: 45.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4864,14 +4864,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b640e56c1a54f20ac12f8d5f2f6edf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 0
-  _easeMode: 1
+  _animationDuration: 1
+  _easeMode: 28
   _rectTransform: {fileID: 2075395202}
-  _hidePosition: {x: 0, y: 0}
+  _hidePosition: {x: 0, y: 1920}
   _showPosition: {x: 0, y: 0}
   _canvas: {fileID: 2075395205}
   _hideAlpha: 0
-  _showAlpha: 0
+  _showAlpha: 1
 --- !u!114 &2075395204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4881,7 +4881,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2075395201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dda9cc8fdda48d98d48b26e13d8b850, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d9e948a2a1d4d1990fa313e10fd3b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 2075395203}
@@ -5003,13 +5003,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stateMachine: {fileID: 917610688}
   _controllers:
+  - {fileID: 1905000244}
+  - {fileID: 1702834248}
   - {fileID: 495158604}
   - {fileID: 782805973}
   - {fileID: 1936782566}
   - {fileID: 837585704}
-  - {fileID: 1702834248}
   - {fileID: 1931055811}
-  - {fileID: 0}
 --- !u!4 &2100000742
 Transform:
   m_ObjectHideFlags: 0
@@ -5058,8 +5058,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 480, y: -1085}
-  m_SizeDelta: {x: 960, y: 250}
+  m_AnchoredPosition: {x: 540, y: -1085}
+  m_SizeDelta: {x: 1080, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2100662232
 CanvasRenderer:

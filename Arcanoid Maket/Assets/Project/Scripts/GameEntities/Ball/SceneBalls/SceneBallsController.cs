@@ -1,13 +1,14 @@
 ﻿using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Input;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class SceneBallsController : SceneEntitiesController, IBallSceneHandler
+    public class SceneBallsController : SceneEntitiesController, IBallSceneHandler, IMainGameStateEndHandler
     {
         private const int LoseBallCount = 0;
         
@@ -27,6 +28,11 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
             _input.OnMouseButtonUp += () => OnPushBallInDirection(_ballDirectionOfMouseEvent);
 
             EventBus.Subscribe(this);
+        }
+        
+        public void OnEndGame()
+        {
+            _spawner.DestroyAllBalls();
         }
 
         private void BallCountCheck(int ballCount)

@@ -7,16 +7,19 @@ namespace Project.Scripts.GameStates.States
 {
     public class WinGameState : GameState
     {
+        private Scene _scene;
         private PopupsController _popupsController;
         
         public WinGameState(Scene scene, IStateSwitcher stateSwitcher) : base(stateSwitcher)
         {
-            _popupsController = scene.GetController<PopupsController>();
+            _scene = scene;
+            _popupsController = _scene.GetController<PopupsController>();
         }
 
         public override void Enter()
         {
-            _popupsController.ShowPopup<WinPopup>();
+            var routine = _popupsController.ShowPopup<WinPopup>();
+            _scene.StartCoroutine(routine);
         }
 
         public override void Exit()

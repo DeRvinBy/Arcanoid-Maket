@@ -18,9 +18,10 @@ namespace Project.Scripts.Utils.Localization.UILocalization
             _tmpText.text = _translationName;
         }
 
-        private void OnEnable()
+        private void Start()
         {
             EventBus.Subscribe(this);
+            OnLanguageChanged();
         }
 
         private void OnDisable()

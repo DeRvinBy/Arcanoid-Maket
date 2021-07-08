@@ -45,7 +45,7 @@ namespace Project.Scripts.Animations.UI
             _hideAlpha = _canvas.alpha;
         }
         
-        [ContextMenu("Set hide parameters by current parameters")]
+        [ContextMenu("Set show parameters by current parameters")]
         public void SetShowParameters()
         {
             _showPosition = _rectTransform.anchoredPosition;
@@ -54,7 +54,7 @@ namespace Project.Scripts.Animations.UI
 
         public void SetupAnimation()
         {
-            var tweenParams = new TweenParams().SetEase(_easeMode).SetLoops(-1).SetAutoKill(false);
+            var tweenParams = new TweenParams().SetEase(_easeMode).SetAutoKill(false);
             _hideTransformTween = _rectTransform.DOAnchorPos(_hidePosition, _animationDuration).SetAs(tweenParams);
             _hideTransformTween.Pause();
             _showTransformTween = _rectTransform.DOAnchorPos(_showPosition, _animationDuration).SetAs(tweenParams);
@@ -67,6 +67,8 @@ namespace Project.Scripts.Animations.UI
 
         public IEnumerator PlayHideAnimation()
         {
+            _rectTransform.anchoredPosition = _showPosition;
+            _canvas.alpha = _showAlpha;
             _hideTransformTween.Play();
             _hideCanvasTween.Play();
             yield return _hideTransformTween.WaitForCompletion();
@@ -75,6 +77,8 @@ namespace Project.Scripts.Animations.UI
         
         public IEnumerator PlayShowAnimation()
         {
+            _rectTransform.anchoredPosition = _hidePosition;
+            _canvas.alpha = _hideAlpha;
             _showTransformTween.Play();
             _showCanvasTween.Play();
             yield return _showTransformTween.WaitForCompletion();

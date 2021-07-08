@@ -1,13 +1,14 @@
 ﻿using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Game;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : SceneEntitiesController, IPrepareGameHandler, IWinGameHandler
+    public class PacksController : SceneEntitiesController, IPrepareStateHandler, IWinGameHandler
     {
         [SerializeField]
         private GamePacks _gamePacks;

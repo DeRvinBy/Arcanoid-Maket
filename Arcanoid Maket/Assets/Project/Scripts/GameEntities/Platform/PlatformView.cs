@@ -32,6 +32,12 @@ namespace Project.Scripts.GameEntities.Platform
             _isMove = true;
         }
 
+        public void DisablePlatform()
+        {
+            StartCoroutine(ResetPlatformPosition());
+            _isMove = false;
+        }
+
         private void SetPlatformScale()
         {
             var scale = _transform.localScale;

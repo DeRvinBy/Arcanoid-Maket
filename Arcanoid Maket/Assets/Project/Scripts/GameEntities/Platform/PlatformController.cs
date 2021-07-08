@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Platform
 {
-    public class PlatformController : SceneEntitiesController, IMainGameStateStartHandler, IContinueGameHandler
+    public class PlatformController : SceneEntitiesController, IMainGameStateStartHandler, IMainGameStateEndHandler, IContinueGameHandler
     {
         [SerializeField]
         private MouseInput _input;
@@ -48,10 +48,15 @@ namespace Project.Scripts.GameEntities.Platform
             StartCoroutine(ResetPlatform());
         }
         
+        public void OnEndGame()
+        {
+            _view.DisablePlatform();
+        }
+        
         private IEnumerator ResetPlatform()
         {
-            var coroutine = _view.ResetPlatformPosition();
-            yield return StartCoroutine(coroutine);
+            var routine = _view.ResetPlatformPosition();
+            yield return StartCoroutine(routine);
             SpawnBall();
         }
 

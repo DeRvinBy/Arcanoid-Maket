@@ -7,16 +7,19 @@ namespace Project.Scripts.GameStates.States
 {
     public class LoseGameState : GameState
     {
+        private Scene _scene;
         private PopupsController _popupsController;
         
         public LoseGameState(Scene scene, IStateSwitcher stateSwitcher) : base(stateSwitcher)
         {
+            _scene = scene;
             _popupsController = scene.GetController<PopupsController>();
         }
 
         public override void Enter()
         {
-            _popupsController.ShowPopup<LosePopup>();
+            var routine = _popupsController.ShowPopup<LosePopup>();
+            _scene.StartCoroutine(routine);
         }
 
         public override void Exit()

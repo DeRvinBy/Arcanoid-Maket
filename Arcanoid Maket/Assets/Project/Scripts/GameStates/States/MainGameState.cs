@@ -20,7 +20,7 @@ namespace Project.Scripts.GameStates.States
 
         public override void Exit()
         {
-            
+            EventBus.RaiseEvent<IMainGameStateEndHandler>(a => a.OnEndGame());
         }
 
         public void OnWinGame()
