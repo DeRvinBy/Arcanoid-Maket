@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.Packs.Data.Game;
 using Project.Scripts.Packs.Data.Player;
+using Project.Scripts.Packs.EventArguments;
+using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
@@ -10,7 +12,6 @@ namespace Project.Scripts.Packs
     {
         private Dictionary<string, Pack> _packsMap;
         private PlayerPacksSave _playerPacksSave;
-
         private Pack _currentPack;
         private int _currentLevelId;
 
@@ -44,9 +45,19 @@ namespace Project.Scripts.Packs
             }
         }
 
-        public int GetCurrentLevelId()
+        public LevelArguments GetLevelArguments()
         {
-            return _currentLevelId;
+            return new LevelArguments {CurrentLevel = _currentLevelId + 1, LevelCountInPack = _currentPack.LevelCount};
+        }
+        
+        public TextAsset GetCurrentLevelFile()
+        {
+            return _currentPack.GetLevelFileById(_currentLevelId);
+        }
+
+        public Pack GetCurrentPack()
+        {
+            return _currentPack;
         }
 
         private void SetNextPack()

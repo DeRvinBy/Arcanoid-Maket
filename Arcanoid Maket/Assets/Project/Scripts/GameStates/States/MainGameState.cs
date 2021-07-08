@@ -6,7 +6,7 @@ using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.GameStates.States
 {
-    public class MainGameState : GameState, IEndGameHandler
+    public class MainGameState : GameState, IWinGameHandler, ILoseGameHandler
     {
         public MainGameState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
         {
@@ -28,7 +28,7 @@ namespace Project.Scripts.GameStates.States
             _stateSwitcher.SwitchState<WinGameState>();
         }
 
-        public void OnEndGame()
+        public void OnLoseGame()
         {
             _stateSwitcher.SwitchState<LoseGameState>();
         }

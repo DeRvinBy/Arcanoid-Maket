@@ -35,7 +35,7 @@ namespace Project.Scripts.GameEntities.Player
             
             if (_model.LifeCount <= EndGameLifeCount)
             {
-                EventBus.RaiseEvent<IEndGameHandler>(a => a.OnEndGame());
+                EventBus.RaiseEvent<ILoseGameHandler>(a => a.OnLoseGame());
             }
             else
             {

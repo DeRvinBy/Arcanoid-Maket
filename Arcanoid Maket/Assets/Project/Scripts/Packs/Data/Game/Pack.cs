@@ -20,7 +20,7 @@ namespace Project.Scripts.Packs.Data.Game
 
         public int LevelCount => _levels.Length;
         
-        public TextAsset GetTextAssetById(int id)
+        public TextAsset GetLevelFileById(int id)
         {
             return _levels[id];
         }

@@ -266,7 +266,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12045609}
-  - component: {fileID: 12045610}
   m_Layer: 0
   m_Name: GAME
   m_TagString: Untagged
@@ -288,22 +287,10 @@ Transform:
   - {fileID: 495158603}
   - {fileID: 782805972}
   - {fileID: 1936782565}
+  - {fileID: 1905000243}
   m_Father: {fileID: 517714959}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &12045610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12045608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe87833fc8844209a6b7fc3f204d9f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gamePacks: {fileID: 0}
 --- !u!1 &32947724
 GameObject:
   m_ObjectHideFlags: 0
@@ -4127,6 +4114,50 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1905000242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905000243}
+  - component: {fileID: 1905000244}
+  m_Layer: 0
+  m_Name: LevelsController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1905000243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905000242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 12045609}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1905000244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905000242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe87833fc8844209a6b7fc3f204d9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gamePacks: {fileID: 11400000, guid: 2521302060d563a4e8e7abd7b41b9bf4, type: 2}
 --- !u!1 &1931055809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4978,6 +5009,7 @@ MonoBehaviour:
   - {fileID: 837585704}
   - {fileID: 1702834248}
   - {fileID: 1931055811}
+  - {fileID: 0}
 --- !u!4 &2100000742
 Transform:
   m_ObjectHideFlags: 0

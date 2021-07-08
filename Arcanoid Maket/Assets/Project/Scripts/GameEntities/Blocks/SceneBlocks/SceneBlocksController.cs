@@ -38,7 +38,7 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         {
             if (blockCount <= 0)
             {
-                EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());
+                EventBus.RaiseEvent<IWinGameHandler>(a => a.OnWinGame());
             }
         }
     }
