@@ -14,8 +14,9 @@ namespace Project.Scripts.Utils.Localization
         
         private LocalizationData _localization;
         
-        protected override void OnAwake()
+        protected override void Awake()
         {
+            base.Awake();
             _localization = new LocalizationData();
             _localization.Initialize(_settings);
         }
@@ -30,14 +31,14 @@ namespace Project.Scripts.Utils.Localization
             _localization.SaveUserLanguage();
         }
 
-        public static string GetCurrentTranslation(string itemName)
+        public string GetCurrentTranslation(string itemName)
         {
-            return _instance._localization.GetTranslation(itemName);
+            return _localization.GetTranslation(itemName);
         }
 
-        public static void SetCurrentLanguage(SystemLanguage language)
+        public void SetCurrentLanguage(SystemLanguage language)
         {
-            _instance._localization.SetLanguage(language);
+            _localization.SetLanguage(language);
             EventBus.RaiseEvent<ILanguageChangedEvent>((a) => a.OnLanguageChanged());
         }
     }

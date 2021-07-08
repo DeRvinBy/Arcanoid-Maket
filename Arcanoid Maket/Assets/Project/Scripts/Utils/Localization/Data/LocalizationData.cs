@@ -27,13 +27,17 @@ namespace Project.Scripts.Utils.Localization.Data
         
         private void LoadUserLanguage()
         {
-            _currentLanguage = SystemLanguage.English;
-            
             if (PlayerPrefs.HasKey(LanguageKey))
             {
                 var language = PlayerPrefs.GetString(LanguageKey);
                 Enum.TryParse(language, out _currentLanguage);
+                if (_settings.IsLanguageSupported(_currentLanguage))
+                {
+                    return;
+                }
             }
+            
+            _currentLanguage = SystemLanguage.English;
         }
 
         private void LoadTranslations()

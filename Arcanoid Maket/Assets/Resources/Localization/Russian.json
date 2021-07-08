@@ -1,4 +1,8 @@
 ﻿{
-  "testName1" : "Тестовое значение 1",
-  "testName2" : "Тестовое значение 2"
+  "lose_text" : "Вы проиграли!",
+  "continue_button" : "Продолжить",
+  "restart_button" : "Заново",
+  "header_level" : "Уровень",
+  "test_pack" : "Тестовый пак",
+  "tree_house_pack" : "Домик на дереве"
 }
