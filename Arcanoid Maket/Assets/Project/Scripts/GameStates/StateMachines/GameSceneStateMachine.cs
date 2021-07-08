@@ -12,7 +12,7 @@ namespace Project.Scripts.GameStates.StateMachines
         {
             var map = new Dictionary<Type, GameState>()
             {
-                {typeof(PreparationState), new PreparationState(this)},
+                {typeof(PreparationState), new PreparationState(scene, this)},
                 {typeof(MainGameState), new MainGameState(this)},
                 {typeof(LoseGameState), new LoseGameState(scene, this)},
                 {typeof(WinGameState), new WinGameState(scene, this)}

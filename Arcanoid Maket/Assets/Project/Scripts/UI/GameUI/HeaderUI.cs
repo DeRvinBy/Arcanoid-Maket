@@ -1,7 +1,5 @@
-﻿using System;
-using Project.Scripts.EventInterfaces.PacksEvents;
+﻿using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.Packs.Data.Game;
-using Project.Scripts.Packs.EventArguments;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
 using UnityEngine;
@@ -27,10 +25,9 @@ namespace Project.Scripts.UI.GameUI
             EventBus.Unsubscribe(this);
         }
 
-        public void OnLevelChanged(LevelArguments levelArguments)
+        public void OnLevelChanged(int currentLevel)
         {
-            var currentLevel = levelArguments.CurrentLevel.ToString();
-            _levelText.SetValue(currentLevel);
+            _levelText.SetValue(currentLevel.ToString());
         }
 
         public void OnPackChanged(Pack currentPack)

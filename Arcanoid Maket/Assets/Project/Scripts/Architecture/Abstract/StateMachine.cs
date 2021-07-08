@@ -24,6 +24,11 @@ namespace Project.Scripts.Architecture.Abstract
 
         public void SwitchState<T>() where T : GameState
         {
+            if (_currentState is T)
+            {
+                return;
+            }
+            
             var type = typeof(T);
             _currentState.Exit();
             _currentState = _statesMap[type];

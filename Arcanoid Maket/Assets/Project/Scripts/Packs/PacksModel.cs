@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.Packs.Data.Game;
 using Project.Scripts.Packs.Data.Player;
-using Project.Scripts.Packs.EventArguments;
 using UnityEngine;
 
 namespace Project.Scripts.Packs
@@ -45,14 +44,9 @@ namespace Project.Scripts.Packs
             }
         }
 
-        public LevelArguments GetLevelArguments()
+        public int GetCurrentLevel()
         {
-            return new LevelArguments
-            {
-                CurrentLevel = _currentLevelId + 1, 
-                LevelCountInPack = _currentPack.LevelCount,
-                LevelFile = _currentPack.GetLevelFileById(_currentLevelId)
-            };
+            return _currentLevelId + 1;
         }
         
         public TextAsset GetCurrentLevelFile()

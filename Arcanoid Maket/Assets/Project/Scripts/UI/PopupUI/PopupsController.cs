@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.UI.PopupUI.Abstract;
@@ -11,17 +12,26 @@ namespace Project.Scripts.UI.PopupUI
         [SerializeField]
         private Popup[] _popups;
 
+        private List<Popup> _activePopups;
+        
         public override void Initialize()
         {
+            _activePopups = new List<Popup>();
             foreach (var popup in _popups)
             {
                 popup.Initialize();
             }
         }
 
+        public bool IsExistActivePopups()
+        {
+            return _activePopups.Count != 0;
+        }
+        
         public IEnumerator ShowPopup<T>() where T : Popup
         {
             var popup = _popups.First(p => p is T);
+            _activePopups.Add(popup);
             return popup.ShowPopup();
         }
         
@@ -30,9 +40,12 @@ namespace Project.Scripts.UI.PopupUI
              _popups.First(p => p is T).StartPopup();
         }
         
-        public IEnumerator HidePopup<T>() where T : Popup
+        public IEnumerator HideAllActivePopups()
         {
-            return _popups.First(p => p is T).HidePopup();
+            foreach (var popup in _activePopups)
+            {
+                yield return popup.HidePopup();
+            }
         }
     }
 }

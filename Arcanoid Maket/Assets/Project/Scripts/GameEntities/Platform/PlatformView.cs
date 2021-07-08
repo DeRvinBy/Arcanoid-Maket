@@ -41,7 +41,7 @@ namespace Project.Scripts.GameEntities.Platform
         private void SetPlatformScale()
         {
             var scale = _transform.localScale;
-            scale.x *= _model.Size;
+            scale.x = _model.Size;
             _transform.localScale = scale;
         }
 

@@ -2,5 +2,7 @@
   "lose_text" : "You lose!",
   "continue_button" : "Continue",
   "restart_button" : "Restart",
-  "header_level" : "Level"
+  "header_level" : "Level",
+  "test_pack" : "Test pack",
+  "tree_house_pack" : "Tree house"
 }

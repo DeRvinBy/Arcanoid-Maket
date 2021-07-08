@@ -16,6 +16,7 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         
         public void SetupSlider(int blockCount)
         {
+            _blocksSlider.value = 0;
             _initialBlockCount = blockCount;
             _blocksSlider.maxValue = _initialBlockCount;
         }

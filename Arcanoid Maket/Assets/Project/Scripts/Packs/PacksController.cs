@@ -25,7 +25,7 @@ namespace Project.Scripts.Packs
         
         public void OnPrepareGame()
         {
-            StartPack("test");
+            StartPack("test_pack");
             StartLevel();
         }
 
@@ -39,8 +39,10 @@ namespace Project.Scripts.Packs
 
         public void StartLevel()
         {
-            var levelArgs = _model.GetLevelArguments();
-            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelArgs));
+            var levelId = _model.GetCurrentLevel();
+            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
+            var levelFile = _model.GetCurrentLevelFile();
+            EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelFile));
         }
 
         public void OnWinGame()
@@ -48,8 +50,8 @@ namespace Project.Scripts.Packs
             _model.CompleteLevel();
             var currentPack = _model.GetCurrentPack();
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
-            var levelArgs = _model.GetLevelArguments();
-            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelArgs));
+            var levelId = _model.GetCurrentLevel();
+            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
         }
     }
 }

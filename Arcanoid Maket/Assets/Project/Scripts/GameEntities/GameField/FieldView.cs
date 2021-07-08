@@ -11,7 +11,7 @@ namespace Project.Scripts.GameEntities.GameField
     {
         private FieldGrid _gridDebug;
         
-        public void DOCreateBlocksIn(FieldGrid grid)
+        public void CreateBlocksInGameField(FieldGrid grid)
         {
             _gridDebug = grid;
             var blockCount = 0;

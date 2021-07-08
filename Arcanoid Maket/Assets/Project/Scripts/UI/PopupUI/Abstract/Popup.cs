@@ -9,7 +9,7 @@ namespace Project.Scripts.UI.PopupUI.Abstract
         [SerializeField]
         private PopupAnimation _animation;
         
-        public void Initialize()
+        public virtual void Initialize()
         {
             gameObject.SetActive(false);
             _animation.SetupAnimation();

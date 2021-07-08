@@ -2,5 +2,7 @@
   "lose_text" : "Вы проиграли!",
   "continue_button" : "Продолжить",
   "restart_button" : "Заново",
-  "header_level" : "Уровень"
+  "header_level" : "Уровень",
+  "test_pack" : "Тестовый пак",
+  "tree_house_pack" : "Домик на дереве"
 }
