@@ -12,6 +12,7 @@ namespace Project.Scripts.GameStates.StateMachines
         {
             var map = new Dictionary<Type, GameState>()
             {
+                {typeof(PreparationState), new PreparationState(this)},
                 {typeof(MainGameState), new MainGameState(this)},
                 {typeof(LoseGameState), new LoseGameState(scene, this)},
                 {typeof(WinGameState), new WinGameState(scene, this)}
@@ -21,7 +22,7 @@ namespace Project.Scripts.GameStates.StateMachines
 
         protected override Type GetStartStateType()
         {
-            return typeof(MainGameState);
+            return typeof(PreparationState);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿{
   "lose_text" : "Вы проиграли!",
   "continue_button" : "Продолжить",
-  "restart_button" : "Заново"
+  "restart_button" : "Заново",
+  "header_level" : "Уровень"
 }

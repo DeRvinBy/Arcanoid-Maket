@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Project.Scripts.Utils.Localization.UILocalization
 {
-    public class TextMeshProLocalization : MonoBehaviour, ILanguageChangedEvent
+    public class TMProTextLocalization : MonoBehaviour, ILanguageChangedEvent
     {
         [SerializeField]
-        private TMP_Text _tmpText = null;
+        protected TMP_Text _tmpText = null;
 
         [SerializeField]
-        private string _translationName = "";
+        protected string _translationName = "";
 
         private void OnValidate()
         {
@@ -28,7 +28,7 @@ namespace Project.Scripts.Utils.Localization.UILocalization
             EventBus.Unsubscribe(this);
         }
 
-        public void OnLanguageChanged()
+        public virtual void OnLanguageChanged()
         {
             _tmpText.text = LocalizationManager.Instance.GetCurrentTranslation(_translationName);
         }

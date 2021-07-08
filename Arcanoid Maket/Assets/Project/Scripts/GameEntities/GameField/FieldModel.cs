@@ -10,6 +10,7 @@ namespace Project.Scripts.GameEntities.GameField
     {
         public event Action<FieldGrid> OnGameFieldLoaded;
 
+        private LevelData _levelData;
         private FieldGrid _grid;
         private LevelParser _levelParser;
         
@@ -19,10 +20,14 @@ namespace Project.Scripts.GameEntities.GameField
             _levelParser = new LevelParser();
         }
 
+        public void SetupLevelDataFromFile(TextAsset level)
+        {
+            _levelData = _levelParser.GetLevelDataFromJson(level.text);   
+        }
+
         public void StartModel()
         {
-            var levelData = _levelParser.GetLevelDataFromFile("Levels/pack1/level1");
-            _grid.CreateGameField(levelData);
+            _grid.CreateGameField(_levelData);
             OnGameFieldLoaded?.Invoke(_grid);
         }
     }

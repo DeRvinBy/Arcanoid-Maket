@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : SceneEntitiesController, IWinGameHandler
+    public class PacksController : SceneEntitiesController, IPrepareGameHandler, IWinGameHandler
     {
         [SerializeField]
         private GamePacks _gamePacks;
@@ -18,7 +18,13 @@ namespace Project.Scripts.Packs
         {
             _model = new PacksModel();
             _model.Initialize(_gamePacks);
-            StartPack("tree_house");
+            
+            EventBus.Subscribe(this);
+        }
+        
+        public void OnPrepareGame()
+        {
+            StartPack("test");
             StartLevel();
         }
 
@@ -33,7 +39,6 @@ namespace Project.Scripts.Packs
         public void StartLevel()
         {
             var levelArgs = _model.GetLevelArguments();
-            
             EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelArgs));
         }
 

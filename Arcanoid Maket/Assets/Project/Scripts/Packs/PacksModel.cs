@@ -47,7 +47,12 @@ namespace Project.Scripts.Packs
 
         public LevelArguments GetLevelArguments()
         {
-            return new LevelArguments {CurrentLevel = _currentLevelId + 1, LevelCountInPack = _currentPack.LevelCount};
+            return new LevelArguments
+            {
+                CurrentLevel = _currentLevelId + 1, 
+                LevelCountInPack = _currentPack.LevelCount,
+                LevelFile = _currentPack.GetLevelFileById(_currentLevelId)
+            };
         }
         
         public TextAsset GetCurrentLevelFile()

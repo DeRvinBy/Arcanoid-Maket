@@ -10,10 +10,9 @@ namespace Project.Scripts.GameEntities.GameField.Data.Level
         private int _verticalCount;
         private int[,] _data;
         
-        public LevelData GetLevelDataFromFile(string path)
+        public LevelData GetLevelDataFromJson(string jsonText)
         {
-            var jsonFile = Resources.Load<TextAsset>(path);
-            var level = JObject.Parse(jsonFile.text);
+            var level = JObject.Parse(jsonText);
             ReadFieldSize(level);
             ReadLayerData(level);
 

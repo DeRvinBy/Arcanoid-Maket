@@ -1,5 +1,6 @@
 {
   "lose_text" : "You lose!",
   "continue_button" : "Continue",
-  "restart_button" : "Restart"
+  "restart_button" : "Restart",
+  "header_level" : "Level"
 }
