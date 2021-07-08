@@ -4,6 +4,6 @@ namespace Project.Scripts.Architecture.Abstract
 {
     public abstract class SceneEntitiesController : MonoBehaviour
     {
-        public abstract void Initialize();
+        public virtual void Initialize() {}
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
@@ -9,23 +9,21 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class SceneBallsController : SceneEntitiesController, IBallSceneHandler, IMainGameStateEndHandler
+    public class BallsController : SceneEntitiesController, IBallSceneHandler, IMainGameStateEndHandler
     {
-        private const int LoseBallCount = 0;
-        
         [SerializeField]
         private MouseInput _input;
 
         [SerializeField]
-        private SceneBallsSpawner _spawner;
+        private BallsSpawner _spawner;
 
-        private readonly Vector3 _ballDirectionOfMouseEvent = Vector3.up;
-        private SceneBallsModel _model;
+        private List<BallEntity> _ballOnScene;
         
+        private readonly Vector3 _ballDirectionOfMouseEvent = Vector3.up;
+
         public override void Initialize()
         {
-            _model = new SceneBallsModel();
-            _model.OnBallCountReduced += BallCountCheck;
+            _ballOnScene = new List<BallEntity>();
             _input.OnMouseButtonUp += () => OnPushBallInDirection(_ballDirectionOfMouseEvent);
 
             EventBus.Subscribe(this);
@@ -33,22 +31,22 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
         
         public void OnEndGame()
         {
-            _spawner.DestroyAllBalls();
-            _model.StartModel();
+            DestroyAllBalls();
         }
 
-        private void BallCountCheck(int ballCount)
+        private void DestroyAllBalls()
         {
-            if (ballCount <= LoseBallCount)
+            foreach (var ball in _ballOnScene)
             {
-                EventBus.RaiseEvent<IPlayerBallsEndedHandler>(a => a.OnPlayerBallsEnded());
+                _spawner.DestroyBall(ball);
             }
+            _ballOnScene.Clear();
         }
-        
+
         public void OnSpawnBallAtPosition(Vector3 spawnPosition, Transform spawnTransform)
         {
-            _spawner.SpawnBallAtPosition(spawnPosition, spawnTransform);
-            _model.IncreaseBallCount();
+            var ball = _spawner.SpawnBallAtPosition(spawnPosition, spawnTransform);
+            _ballOnScene.Add(ball);
         }
 
         public void OnPushBallInDirection(Vector2 direction)
@@ -56,10 +54,15 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
             _spawner.PushBallInDirection(direction);
         }
 
-        public void OnBallDestroyed(BallController ball)
+        public void OnBallDestroyed(BallEntity ball)
         {
             _spawner.DestroyBall(ball);
-            _model.ReduceBallCount();
+            _ballOnScene.Remove(ball);
+            
+            if (_ballOnScene.Count <= 0)
+            {
+                EventBus.RaiseEvent<IPlayerBallsEndedHandler>(a => a.OnPlayerBallsEnded());
+            }
         }
     }
 }

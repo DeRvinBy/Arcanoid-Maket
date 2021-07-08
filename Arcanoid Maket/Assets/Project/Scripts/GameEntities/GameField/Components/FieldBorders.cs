@@ -48,7 +48,7 @@ namespace Project.Scripts.GameEntities.GameField.Components
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var ball = other.GetComponent<BallController>();
+            var ball = other.GetComponent<BallEntity>();
             EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnBallDestroyed(ball));
         }
     }

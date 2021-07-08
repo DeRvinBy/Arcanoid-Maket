@@ -1,15 +1,14 @@
 ﻿using Project.Scripts.Architecture.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IStartGameProccesHandler, IPlayerBallsEndedHandler
+    public class LifeController : SceneEntitiesController, IMainGameStateStartHandler, IPlayerBallsEndedHandler
     {
-        private const int EndGameLifeCount = 0;
-        
         [SerializeField]
         private LifeSettings _settings;
 
@@ -26,7 +25,7 @@ namespace Project.Scripts.GameEntities.Player
             EventBus.Subscribe(this);
         }
 
-        public void OnStartGameProcess()
+        public void OnStartGame()
         {
             _model.SetLifeCount(_settings.StartLifeCount);
             _lifeUI.SetLifeCountInUI(_model.LifeCount);
@@ -37,7 +36,7 @@ namespace Project.Scripts.GameEntities.Player
             _model.ReduceLifeByOne();
             _lifeUI.SetLifeCountInUI(_model.LifeCount);
             
-            if (_model.LifeCount <= EndGameLifeCount)
+            if (_model.LifeCount <= 0)
             {
                 EventBus.RaiseEvent<ILoseGameHandler>(a => a.OnLoseGame());
             }

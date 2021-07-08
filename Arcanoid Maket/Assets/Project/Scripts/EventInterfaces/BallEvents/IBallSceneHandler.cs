@@ -8,6 +8,6 @@ namespace Project.Scripts.EventInterfaces.BallEvents
     {
         void OnSpawnBallAtPosition(Vector3 spawnPosition, Transform spawnTransform);
         void OnPushBallInDirection(Vector2 direction);
-        void OnBallDestroyed(BallController ball);
+        void OnBallDestroyed(BallEntity ball);
     }
 }

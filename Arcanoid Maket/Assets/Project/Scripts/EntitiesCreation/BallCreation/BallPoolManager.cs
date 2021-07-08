@@ -3,7 +3,7 @@ using Project.Scripts.Utils.ObjectPool;
 
 namespace Project.Scripts.EntitiesCreation.BallCreation
 {
-    public class BallPoolManager : PoolManager<BallController>
+    public class BallPoolManager : PoolManager<BallEntity>
     {
         
     }

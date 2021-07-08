@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
-  _startLifeCount: 2
+  _startLifeCount: 3
 --- !u!1 &200949510
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Project.Scripts.EntitiesCreation.BallCreation
 {
-    public class BallCreator : PoolObjectCreator<BallController>
+    public class BallCreator : PoolObjectCreator<BallEntity>
     {
         [SerializeField]
         private BallSettings _ballSettings;
         
-        public override BallController Instantiate()
+        public override BallEntity Instantiate()
         {
             var instance = Instantiate(_prefab, transform);
             instance.Initialize(_ballSettings);
