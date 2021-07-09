@@ -2,8 +2,8 @@
 
 namespace Project.Scripts.EventInterfaces.GameEvents
 {
-    public interface ILoseGameHandler : IGlobalSubscriber
+    public interface ILevelCompleteHandler : IGlobalSubscriber
     {
-        public void OnLoseGame();
+        void OnLevelComplete();
     }
 }

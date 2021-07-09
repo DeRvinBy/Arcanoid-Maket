@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Architecture.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : SceneEntitiesController, IPrepareStateHandler, IWinGameHandler
+    public class PacksController : EntityController, IPrepareStateHandler, ILevelCompleteHandler
     {
         [SerializeField]
         private GamePacks _gamePacks;
@@ -45,9 +45,10 @@ namespace Project.Scripts.Packs
             EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelFile));
         }
 
-        public void OnWinGame()
+        public void OnLevelComplete()
         {
             _model.CompleteLevel();
+            
             var currentPack = _model.GetCurrentPack();
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
             var levelId = _model.GetCurrentLevel();

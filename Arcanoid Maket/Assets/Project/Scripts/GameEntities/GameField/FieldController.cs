@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Architecture.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameEntities.GameField.Components;
@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.GameField
 {
-    public class FieldController : SceneEntitiesController, IMainGameStateStartHandler, ILevelFileChangedHandler
+    public class FieldController : EntityController, IMainGameStateStartHandler, ILevelFileChangedHandler
     {
         [SerializeField]
         private Camera _sceneCamera;

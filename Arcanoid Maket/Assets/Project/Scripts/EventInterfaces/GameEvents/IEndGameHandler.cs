@@ -2,8 +2,9 @@
 
 namespace Project.Scripts.EventInterfaces.GameEvents
 {
-    public interface IStartGameProccesHandler : IGlobalSubscriber
+    public interface IEndGameHandler : IGlobalSubscriber
     {
-        void OnStartGameProcess();
+        void OnWinGame();
+        void OnLoseGame();
     }
 }

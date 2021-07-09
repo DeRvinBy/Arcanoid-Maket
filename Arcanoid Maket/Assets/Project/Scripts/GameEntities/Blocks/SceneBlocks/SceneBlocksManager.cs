@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EntitiesCreation.BlockCreation;
 using Project.Scripts.EventInterfaces.BlockEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class SceneBlocksManager : SceneEntitiesController, IMainGameStateEndHandler, IBlockOnSceneHandler
+    public class SceneBlocksManager : EntityController, IMainGameStateEndHandler, IBlockOnSceneHandler, IPrepareStateHandler
     {
         [SerializeField]
         private SceneBlocksUI _sceneBlocksUI;
@@ -35,8 +35,13 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
             _sceneBlocksUI.UpdateSlider(_blocksOnScene.Count);
             if (_blocksOnScene.Count <= 0)
             {
-                EventBus.RaiseEvent<IWinGameHandler>(a => a.OnWinGame());
+                EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());
             }
+        }
+        
+        public void OnPrepareGame()
+        {
+            _sceneBlocksUI.SetupSlider(_blocksOnScene.Count);
         }
 
         public void OnEndGame()

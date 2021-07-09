@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class BallsController : SceneEntitiesController, IBallSceneHandler, IMainGameStateEndHandler
+    public class BallsController : EntityController, IBallSceneHandler, IMainGameStateEndHandler
     {
         [SerializeField]
         private MouseInput _input;

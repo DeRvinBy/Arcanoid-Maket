@@ -1,4 +1,4 @@
-﻿using Project.Scripts.Architecture.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IMainGameStateStartHandler, IPlayerBallsEndedHandler
+    public class LifeController : EntityController, IMainGameStateStartHandler, IPlayerBallsEndedHandler
     {
         [SerializeField]
         private LifeSettings _settings;
@@ -38,7 +38,7 @@ namespace Project.Scripts.GameEntities.Player
             
             if (_model.LifeCount <= 0)
             {
-                EventBus.RaiseEvent<ILoseGameHandler>(a => a.OnLoseGame());
+                EventBus.RaiseEvent<IEndGameHandler>(a => a.OnLoseGame());
             }
             else
             {

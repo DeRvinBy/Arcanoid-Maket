@@ -28,7 +28,7 @@ namespace Project.Scripts.UI.PopupUI
 
         public override void StartPopup()
         {
-            
+            EventBus.RaiseEvent<ILevelCompleteHandler>(a => a.OnLevelComplete());
         }
 
         public void OnPackChanged(Pack currentPack)
@@ -45,7 +45,7 @@ namespace Project.Scripts.UI.PopupUI
 
         public void OnContinueButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameProccesHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGameProcess());
         }
     }
 }
