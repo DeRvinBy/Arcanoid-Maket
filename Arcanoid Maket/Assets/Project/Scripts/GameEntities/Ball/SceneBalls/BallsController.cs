@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class BallsController : EntityController, IBallSceneHandler, IMainGameStateEndHandler
+    public class BallsController : EntityController, IBallSceneHandler, IEndGameplayHandler
     {
         [SerializeField]
         private MouseInput _input;

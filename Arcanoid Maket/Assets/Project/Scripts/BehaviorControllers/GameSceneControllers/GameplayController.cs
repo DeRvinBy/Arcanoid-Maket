@@ -4,10 +4,11 @@ using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.UI.PopupUI;
 using Project.Scripts.Utils.EventSystem;
+using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class GameplayController : GameController, IEndGameHandler, IStartGameplayHandler
+    public class GameplayController : GameController, IEndGameHandler, EventInterfaces.GameEvents.IStartGameplayHandler
     {
         private PopupsController _popupsController;
         
@@ -35,9 +36,9 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 
         private IEnumerator PrepareAndStartGame()
         {
-            EventBus.RaiseEvent<IPrepareStateHandler>(a => a.OnPrepareGame());
+            EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
             yield return _popupsController.HideAllActivePopups();
-            EventBus.RaiseEvent<IMainGameStateStartHandler>(a => a.OnStartGame());
+            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
         }
 
         public void OnWinGame()
@@ -52,7 +53,7 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 
         private void EndGame()
         {
-            EventBus.RaiseEvent<IMainGameStateEndHandler>(a => a.OnEndGame());
+            EventBus.RaiseEvent<IEndGameplayHandler>(a => a.OnEndGame());
         }
     }
 }

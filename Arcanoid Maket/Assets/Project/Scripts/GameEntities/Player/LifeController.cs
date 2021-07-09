@@ -4,10 +4,11 @@ using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
+using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : EntityController, IMainGameStateStartHandler, IPlayerBallsEndedHandler
+    public class LifeController : EntityController, IStartGameplayHandler, IPlayerBallsEndedHandler
     {
         [SerializeField]
         private LifeSettings _settings;

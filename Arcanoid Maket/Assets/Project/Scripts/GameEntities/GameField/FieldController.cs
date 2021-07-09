@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.GameField
 {
-    public class FieldController : EntityController, IMainGameStateStartHandler, ILevelFileChangedHandler
+    public class FieldController : EntityController, IStartGameplayHandler, ILevelFileChangedHandler
     {
         [SerializeField]
         private Camera _sceneCamera;

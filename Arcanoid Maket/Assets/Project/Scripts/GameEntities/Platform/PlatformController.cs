@@ -7,10 +7,11 @@ using Project.Scripts.GameSettings.GamePlatformSettings;
 using Project.Scripts.Input;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
+using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
 namespace Project.Scripts.GameEntities.Platform
 {
-    public class PlatformController : EntityController, IMainGameStateStartHandler, IMainGameStateEndHandler, IContinueGameHandler
+    public class PlatformController : EntityController, IStartGameplayHandler, IEndGameplayHandler, IContinueGameHandler
     {
         [SerializeField]
         private MouseInput _input;

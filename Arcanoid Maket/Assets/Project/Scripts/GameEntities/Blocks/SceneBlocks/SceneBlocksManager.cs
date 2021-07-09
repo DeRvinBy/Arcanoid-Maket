@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class SceneBlocksManager : EntityController, IMainGameStateEndHandler, IBlockOnSceneHandler, IPrepareStateHandler
+    public class SceneBlocksManager : EntityController, IEndGameplayHandler, IBlockOnSceneHandler, IPrepareGameplayHandler
     {
         [SerializeField]
         private SceneBlocksUI _sceneBlocksUI;

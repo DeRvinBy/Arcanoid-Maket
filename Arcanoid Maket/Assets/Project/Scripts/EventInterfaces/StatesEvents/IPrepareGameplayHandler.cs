@@ -2,8 +2,8 @@
 
 namespace Project.Scripts.EventInterfaces.StatesEvents
 {
-    public interface IMainGameStateStartHandler : IGlobalSubscriber
+    public interface IPrepareGameplayHandler : IGlobalSubscriber
     {
-        void OnStartGame();
+        void OnPrepareGame();
     }
 }

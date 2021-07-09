@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : EntityController, IPrepareStateHandler, ILevelCompleteHandler
+    public class PacksController : EntityController, IPrepareGameplayHandler, ILevelCompleteHandler
     {
         [SerializeField]
         private GamePacks _gamePacks;
