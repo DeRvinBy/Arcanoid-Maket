@@ -1,18 +1,18 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Project.Scripts.Utils.Localization.Settings
+namespace Project.Scripts.Utils.Localization.Config
 {
     [Serializable]
-    public class TranslationFilesSettings
+    public class TranslationFilesConfig
     {
         [SerializeField]
         private SystemLanguage _language;
 
         [SerializeField]
-        private string _translationFileName = "";
+        private TextAsset _translationFile;
 
         public SystemLanguage Language => _language;
-        public string TranslationFileName => _translationFileName;
+        public TextAsset TranslationFile => _translationFile;
     }
 }

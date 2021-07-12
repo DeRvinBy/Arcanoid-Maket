@@ -767,7 +767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309705a3d124c21be68a440c3492f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settings: {fileID: 647404618}
 --- !u!1 &331123669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,55 +1943,6 @@ Transform:
   m_Father: {fileID: 441305657}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &647404616
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 647404617}
-  - component: {fileID: 647404618}
-  m_Layer: 0
-  m_Name: LocalizationSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &647404617
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647404616}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1404385753}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &647404618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 647404616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c112221b2cd34143ab2ea8ff481aaaa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _translationsFolder: Localization
-  _translationFileSettings:
-  - _language: 10
-    _translationFileName: English
-  - _language: 30
-    _translationFileName: Russian
 --- !u!1 &654496145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,7 +3327,6 @@ Transform:
   - {fileID: 345307103}
   - {fileID: 955476805}
   - {fileID: 184778294}
-  - {fileID: 647404617}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

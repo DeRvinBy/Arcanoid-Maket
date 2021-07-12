@@ -6,9 +6,8 @@ namespace Project.Scripts.Utils.Localization.Data
 {
     public class LocalizationParser
     {
-        public Dictionary<string, string> GetTranslationsFromJSON(string path)
+        public Dictionary<string, string> GetTranslationsFromJSON(TextAsset data)
         {
-            var data = Resources.Load<TextAsset>(path);
             return JsonConvert.DeserializeObject<Dictionary<string, string>>(data.text);
         }
     }
