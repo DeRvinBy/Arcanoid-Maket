@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.EventInterfaces.Input;
+using Project.Scripts.Utils.EventSystem;
+using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class BallPlatformSpawn
+    public class BallPlatformSpawn : IPushBallHandler
     {
         private readonly Vector3 _ballDirectionUp = Vector3.up;
         private BallEntity _currentBall;
@@ -10,9 +12,11 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
         public void SetBallToPlatform(BallEntity ball)
         {
             _currentBall = ball;
+            
+            EventBus.Subscribe(this);
         }
 
-        public void PushBallFromPlatform()
+        public void OnPush()
         {
             if (_currentBall == null) return;
             

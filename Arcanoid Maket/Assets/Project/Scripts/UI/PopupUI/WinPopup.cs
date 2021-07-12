@@ -45,7 +45,7 @@ namespace Project.Scripts.UI.PopupUI
 
         public void OnContinueButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
     }
 }

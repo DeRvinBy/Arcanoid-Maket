@@ -8,7 +8,7 @@ using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStar
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class GameplayController : GameController, IEndGameHandler, EventInterfaces.GameEvents.IStartGameplayHandler
+    public class GameController : Abstract.GameController, IEndGameHandler, EventInterfaces.GameEvents.IStartGameHandler
     {
         private PopupsController _popupsController;
         

@@ -5,7 +5,7 @@ using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class UIController : GameController, IEndGameHandler
+    public class UIController : Abstract.GameController, IEndGameHandler
     {
         private PopupsController _popupsController;
 

@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.EventInterfaces.GameEvents
 {
-    public interface IStartGameplayHandler : IGlobalSubscriber
+    public interface IStartGameHandler : IGlobalSubscriber
     {
         void OnStartGameProcess();
     }

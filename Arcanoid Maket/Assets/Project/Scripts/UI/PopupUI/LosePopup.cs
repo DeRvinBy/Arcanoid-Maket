@@ -13,7 +13,7 @@ namespace Project.Scripts.UI.PopupUI
         
         public void OnRestartButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
     }
 }
