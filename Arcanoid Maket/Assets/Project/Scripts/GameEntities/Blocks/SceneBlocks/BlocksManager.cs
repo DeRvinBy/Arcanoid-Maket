@@ -9,30 +9,30 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class SceneBlocksManager : EntityController, IEndGameplayHandler, IBlockOnSceneHandler, IPrepareGameplayHandler
+    public class BlocksManager : EntityController, IEndGameplayHandler, IBlockOnSceneHandler, IPrepareGameplayHandler
     {
         [SerializeField]
-        private SceneBlocksUI _sceneBlocksUI;
+        private BlocksProgressUI _blocksProgressUI;
 
-        private List<BlockController> _blocksOnScene;
+        private List<BlockEntity> _blocksOnScene;
 
         public override void Initialize()
         {
-            _blocksOnScene = new List<BlockController>();
+            _blocksOnScene = new List<BlockEntity>();
 
             EventBus.Subscribe(this);
         }
 
-        public void OnBlockCreated(BlockController block)
+        public void OnBlockCreated(BlockEntity block)
         {
             _blocksOnScene.Add(block);
-            _sceneBlocksUI.SetupSlider(_blocksOnScene.Count);
+            _blocksProgressUI.SetupSlider(_blocksOnScene.Count);
         }
 
-        public void OnBlockDestroyed(BlockController block)
+        public void OnBlockDestroyed(BlockEntity block)
         {
             _blocksOnScene.Remove(block);
-            _sceneBlocksUI.UpdateSlider(_blocksOnScene.Count);
+            _blocksProgressUI.UpdateSlider(_blocksOnScene.Count);
             if (_blocksOnScene.Count <= 0)
             {
                 EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());
@@ -41,7 +41,7 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         
         public void OnPrepareGame()
         {
-            _sceneBlocksUI.SetupSlider(_blocksOnScene.Count);
+            _blocksProgressUI.SetupSlider(_blocksOnScene.Count);
         }
 
         public void OnEndGame()

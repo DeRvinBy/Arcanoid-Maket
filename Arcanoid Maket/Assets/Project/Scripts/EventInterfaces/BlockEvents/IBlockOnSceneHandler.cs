@@ -5,7 +5,7 @@ namespace Project.Scripts.EventInterfaces.BlockEvents
 {
     public interface IBlockOnSceneHandler : IGlobalSubscriber
     {
-        void OnBlockCreated(BlockController block);
-        void OnBlockDestroyed(BlockController block);
+        void OnBlockCreated(BlockEntity block);
+        void OnBlockDestroyed(BlockEntity block);
     }
 }

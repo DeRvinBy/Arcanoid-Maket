@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class SceneBlocksUI : MonoBehaviour
+    public class BlocksProgressUI : MonoBehaviour
     {
         [SerializeField]
-        private Slider _blocksSlider;
+        private Slider _slider;
 
         [SerializeField]
         private ValueAnimation _valueAnimation;
@@ -16,21 +16,21 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         
         public void SetupSlider(int blockCount)
         {
-            _blocksSlider.value = 0;
+            _slider.value = 0;
             _initialBlockCount = blockCount;
-            _blocksSlider.maxValue = _initialBlockCount;
+            _slider.maxValue = _initialBlockCount;
         }
 
         public void UpdateSlider(int currentBlockCount)
         {
-            var fromValue = _blocksSlider.value;
+            var fromValue = _slider.value;
             var toValue = _initialBlockCount - currentBlockCount;
             _valueAnimation.PlayAnimation(fromValue, toValue, UpdateSliderValue);
         }
 
         private void UpdateSliderValue(float value)
         {
-            _blocksSlider.value = value;
+            _slider.value = value;
         }
     }
 }

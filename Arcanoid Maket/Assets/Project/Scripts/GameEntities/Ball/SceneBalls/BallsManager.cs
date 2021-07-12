@@ -9,22 +9,21 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class BallsController : EntityController, IBallSceneHandler, IEndGameplayHandler
+    public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler
     {
         [SerializeField]
         private MouseInput _input;
-
-        [SerializeField]
-        private BallsSpawner _spawner;
-
-        private List<BallEntity> _ballOnScene;
         
-        private readonly Vector3 _ballDirectionOfMouseEvent = Vector3.up;
+        private BallsSpawner _spawner;
+        private BallPlatformSpawn _platformSpawn;
+        private List<BallEntity> _ballOnScene;
 
         public override void Initialize()
         {
             _ballOnScene = new List<BallEntity>();
-            _input.OnMouseButtonUp += () => OnPushBallInDirection(_ballDirectionOfMouseEvent);
+            _spawner = new BallsSpawner();
+            _platformSpawn = new BallPlatformSpawn();
+            _input.OnMouseButtonUp += _platformSpawn.PushBallFromPlatform;
 
             EventBus.Subscribe(this);
         }
@@ -46,12 +45,8 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
         public void OnSpawnBallAtPosition(Vector3 spawnPosition, Transform spawnTransform)
         {
             var ball = _spawner.SpawnBallAtPosition(spawnPosition, spawnTransform);
+            _platformSpawn.SetBallToPlatform(ball);
             _ballOnScene.Add(ball);
-        }
-
-        public void OnPushBallInDirection(Vector2 direction)
-        {
-            _spawner.PushBallInDirection(direction);
         }
 
         public void OnBallDestroyed(BallEntity ball)
