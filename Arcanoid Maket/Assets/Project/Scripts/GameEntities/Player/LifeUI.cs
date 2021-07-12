@@ -9,12 +9,7 @@ namespace Project.Scripts.GameEntities.Player
     {
         private IList<LifeImageUI> _lifeImages;
 
-        public void Initialize(LifeSettings settings)
-        {
-            CreateLifeContainers(settings);
-        }
-
-        private void CreateLifeContainers(LifeSettings settings)
+        public void CreateLifeContainers(LifeSettings settings)
         {
             _lifeImages = new List<LifeImageUI>();
 

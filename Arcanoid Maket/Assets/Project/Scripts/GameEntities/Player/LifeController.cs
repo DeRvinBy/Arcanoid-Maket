@@ -20,6 +20,7 @@ namespace Project.Scripts.GameEntities.Player
         
         public override void Initialize()
         {
+            _lifeUI.CreateLifeContainers(_settings);
             EventBus.Subscribe(this);
         }
 

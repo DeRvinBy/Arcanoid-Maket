@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
-  _startLifeCount: 1
+  _startLifeCount: 2
 --- !u!1 &200949510
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be1beb5f1334708b6d5f291a8fd26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 5
   _startSize: 1.5
 --- !u!1 &348017618
 GameObject:
@@ -1279,7 +1279,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -1287,7 +1287,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &441305655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1302,8 +1302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneCamera: {fileID: 1972407940}
   _rigidbody: {fileID: 441305654}
---- !u!70 &441305656
-CapsuleCollider2D:
+--- !u!68 &441305656
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1316,8 +1316,17 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.75, y: 0.4}
-  m_Direction: 1
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.4, y: 0}
+  - {x: -0.3, y: 0.15}
+  - {x: 0, y: 0.2}
+  - {x: 0.3, y: 0.15}
+  - {x: 0.4, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!4 &441305657
 Transform:
   m_ObjectHideFlags: 0
