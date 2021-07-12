@@ -1,24 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.Packs.Data.Game;
+using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Packs.Data.Player;
+using Project.Scripts.Packs.Data.Player.SaveLoader;
 using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksModel
+    public class PacksService
     {
         private Dictionary<string, Pack> _packsMap;
         private PlayerPacksSave _playerPacksSave;
         private Pack _currentPack;
         private int _currentLevelId;
 
-        public void Initialize(GamePacks packs)
+        public void Initialize(PacksContainer packsContainer)
         {
-            _packsMap = packs.GetPacksMap();
-            _playerPacksSave = new PlayerPacksSave();
-            _playerPacksSave.Initialize(packs.FirstPack.Key);
+            _packsMap = packsContainer.GetPacksMap();
+            _playerPacksSave = new PlayerPacksSave(new PlayerPrefsLoader());
+            _playerPacksSave.LoadPacksSave(packsContainer.FirstPack.Key);
+        }
+        
+        public int GetCurrentLevel()
+        {
+            return _currentLevelId + 1;
+        }
+        
+        public TextAsset GetCurrentLevelFile()
+        {
+            return _currentPack.GetLevelFileById(_currentLevelId);
+        }
+
+        public Pack GetCurrentPack()
+        {
+            return _currentPack;
         }
 
         public void StartPack(string packKey)
@@ -43,22 +59,7 @@ namespace Project.Scripts.Packs
                 _playerPacksSave.SetCurrentLevelId(_currentPack.Key, _currentLevelId);
             }
         }
-
-        public int GetCurrentLevel()
-        {
-            return _currentLevelId + 1;
-        }
         
-        public TextAsset GetCurrentLevelFile()
-        {
-            return _currentPack.GetLevelFileById(_currentLevelId);
-        }
-
-        public Pack GetCurrentPack()
-        {
-            return _currentPack;
-        }
-
         private void SetNextPack()
         {
             var keys = _packsMap.Keys.ToArray();

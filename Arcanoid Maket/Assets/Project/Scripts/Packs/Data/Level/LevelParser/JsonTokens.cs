@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.GameEntities.GameField.Data.Level
+﻿namespace Project.Scripts.Packs.Data.Level
 {
     public static class JsonTokens
     {

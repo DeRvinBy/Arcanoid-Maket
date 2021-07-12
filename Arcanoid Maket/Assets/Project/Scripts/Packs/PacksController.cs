@@ -1,8 +1,8 @@
 ﻿using Project.Scripts.BehaviorControllers.Abstract;
-using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
-using Project.Scripts.Packs.Data.Game;
+using Project.Scripts.Packs.Data.Level.LevelParser;
+using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 
@@ -11,17 +11,19 @@ namespace Project.Scripts.Packs
     public class PacksController : EntityController, IPrepareGameplayHandler, ILevelCompleteHandler
     {
         [SerializeField]
-        private GamePacks _gamePacks;
+        private PacksContainer _packsContainer;
 
-        private PacksModel _model;
+        private PacksService _service;
+        private ILevelParser _parser;
         
         public override void Initialize()
         {
-            _model = new PacksModel();
-            _model.Initialize(_gamePacks);
+            _service = new PacksService();
+            _service.Initialize(_packsContainer);
+            _parser = new JsonParser();
             
             EventBus.Subscribe(this);
-            _model.StartPack("test_pack");
+            _service.StartPack("test_pack");
         }
         
         public void OnPrepareGame()
@@ -32,26 +34,27 @@ namespace Project.Scripts.Packs
 
         public void StartPack()
         {
-            var currentPack = _model.GetCurrentPack();
+            var currentPack = _service.GetCurrentPack();
             
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
         }
 
         public void StartLevel()
         {
-            var levelId = _model.GetCurrentLevel();
+            var levelId = _service.GetCurrentLevel();
             EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
-            var levelFile = _model.GetCurrentLevelFile();
-            EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelFile));
+            var levelFile = _service.GetCurrentLevelFile();
+            var levelData = _parser.ParseLevelData(levelFile.text);
+            EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelData));
         }
 
         public void OnLevelComplete()
         {
-            _model.CompleteLevel();
+            _service.CompleteLevel();
             
-            var currentPack = _model.GetCurrentPack();
+            var currentPack = _service.GetCurrentPack();
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
-            var levelId = _model.GetCurrentLevel();
+            var levelId = _service.GetCurrentLevel();
             EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
         }
     }

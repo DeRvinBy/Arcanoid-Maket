@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.Packs.Data.Player
 {
-    public class PacksSave
+    public class PacksSaveContainer
     {
         public Dictionary<string, PackSaveItem> Packs { get; set; }
     }

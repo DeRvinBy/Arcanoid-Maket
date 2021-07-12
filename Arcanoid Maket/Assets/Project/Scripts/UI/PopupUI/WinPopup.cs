@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
-using Project.Scripts.Packs.Data.Game;
+using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.UI.PopupUI.Abstract;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;

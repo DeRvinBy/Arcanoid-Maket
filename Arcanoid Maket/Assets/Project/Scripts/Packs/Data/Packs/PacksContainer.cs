@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Project.Scripts.Packs.Data.Game
+namespace Project.Scripts.Packs.Data.Packs
 {
-    [CreateAssetMenu(fileName = "New GamePacks", menuName = "Game Packs")]
-    public class GamePacks : ScriptableObject
+    [CreateAssetMenu(fileName = "New PacksContainer", menuName = "Packs Container")]
+    public class PacksContainer : ScriptableObject
     {
         [SerializeField]
         private Pack[] _packs;

@@ -1,18 +1,17 @@
 ﻿using System.Linq;
 using Newtonsoft.Json.Linq;
-using UnityEngine;
 
-namespace Project.Scripts.GameEntities.GameField.Data.Level
+namespace Project.Scripts.Packs.Data.Level.LevelParser
 {
-    public class LevelParser
+    public class JsonParser : ILevelParser
     {
         private int _horizontalCount;
         private int _verticalCount;
         private int[,] _data;
         
-        public LevelData GetLevelDataFromJson(string jsonText)
+        public LevelData ParseLevelData(string text)
         {
-            var level = JObject.Parse(jsonText);
+            var level = JObject.Parse(text);
             ReadFieldSize(level);
             ReadLayerData(level);
 

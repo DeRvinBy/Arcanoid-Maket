@@ -1,10 +1,10 @@
-﻿namespace Project.Scripts.GameEntities.GameField.Data.Level
+﻿namespace Project.Scripts.Packs.Data.Level
 {
     public class LevelData
     {
-        public int HorizontalCount { get; private set; }
-        public int VerticalCount { get; private set; }
-        public int[,] Data { get; private set; }
+        public int HorizontalCount { get; }
+        public int VerticalCount { get; }
+        public int[,] Data { get; }
         
         public LevelData(int verticalCount, int horizontalCount, int[,] data)
         {

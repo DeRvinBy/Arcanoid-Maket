@@ -1,5 +1,5 @@
 ﻿using Project.Scripts.EventInterfaces.PacksEvents;
-using Project.Scripts.Packs.Data.Game;
+using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
 using UnityEngine;

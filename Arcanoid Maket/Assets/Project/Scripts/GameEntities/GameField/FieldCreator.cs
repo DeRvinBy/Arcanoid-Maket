@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.GameField
 {
-    public class FieldView : MonoBehaviour
+    public class FieldCreator : MonoBehaviour
     {
         private FieldGrid _gridDebug;
         
