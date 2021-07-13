@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.Animations;
+using Project.Scripts.Animations.Configs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,15 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         private Slider _slider;
 
         [SerializeField]
+        private BaseAnimationConfig _baseAnimationConfig;
+
         private ValueAnimation _valueAnimation;
-        
         private int _initialBlockCount;
+
+        public void Initialize()
+        {
+            _valueAnimation = new ValueAnimation(_baseAnimationConfig.Duration, _baseAnimationConfig.EaseMode);
+        }
         
         public void SetupSlider(int blockCount)
         {

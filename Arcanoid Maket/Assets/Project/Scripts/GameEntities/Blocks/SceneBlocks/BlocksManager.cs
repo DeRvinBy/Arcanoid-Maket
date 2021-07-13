@@ -19,6 +19,7 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         public override void Initialize()
         {
             _blocksOnScene = new List<BlockEntity>();
+            _blocksProgressUI.Initialize();
 
             EventBus.Subscribe(this);
         }
