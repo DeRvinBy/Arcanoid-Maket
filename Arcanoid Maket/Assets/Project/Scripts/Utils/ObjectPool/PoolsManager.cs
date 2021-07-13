@@ -13,9 +13,8 @@ namespace Project.Scripts.Utils.ObjectPool
 
         private Dictionary<Type, PoolContainer> _poolsMap;
 
-        protected override void Awake()
+        protected override void Initialize()
         {
-            base.Awake();
             CreatePools();
         }
 
@@ -23,7 +22,7 @@ namespace Project.Scripts.Utils.ObjectPool
         {
             var config = Resources.Load<PoolsConfig>(PoolsConfigPath);
             _poolsMap = new Dictionary<Type, PoolContainer>();
-
+            
             foreach (var creatorConfig in config.CreatorConfigs)
             {
                 var creator = creatorConfig.Creator;
