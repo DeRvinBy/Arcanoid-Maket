@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Utils.ObjectPool.Abstract;
+using UnityEngine;
 
 namespace Project.Scripts.GameSettings.GameBallSettings
 {
-    public class BallSettings : MonoBehaviour
+    public class BallSettings : AbstractSettings
     {
         [SerializeField]
         private float _startVelocity = 25f;

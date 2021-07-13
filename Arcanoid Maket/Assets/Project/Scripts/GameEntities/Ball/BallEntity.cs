@@ -1,10 +1,10 @@
 ﻿using Project.Scripts.GameSettings.GameBallSettings;
-using Project.Scripts.Utils.ObjectPool.Interfaces;
+using Project.Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball
 {
-    public class BallEntity : MonoBehaviour, IPoolObject
+    public class BallEntity : PoolObject
     {
         [SerializeField]
         private BallMovement _movement;
@@ -21,11 +21,10 @@ namespace Project.Scripts.GameEntities.Ball
             var velocity = startDirection * _settings.StartVelocity;
             _movement.StartBallWithVelocity(velocity);
         }
-        
-        public void Setup() { }
 
-        public void Reset()
+        public override void Reset()
         {
+            base.Reset();
             _movement.DisableMovement();
         }
     }

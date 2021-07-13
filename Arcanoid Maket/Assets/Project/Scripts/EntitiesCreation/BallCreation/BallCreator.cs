@@ -1,19 +1,17 @@
-﻿using Project.Scripts.GameEntities.Ball;
+﻿using System;
+using Project.Scripts.GameEntities.Ball;
 using Project.Scripts.GameSettings.GameBallSettings;
 using Project.Scripts.Utils.ObjectPool.Abstract;
-using UnityEngine;
 
 namespace Project.Scripts.EntitiesCreation.BallCreation
 {
-    public class BallCreator : PoolObjectCreator<BallEntity>
+    public class BallCreator : PoolObjectCreator<BallEntity, BallSettings>
     {
-        [SerializeField]
-        private BallSettings _ballSettings;
-        
-        public override BallEntity Instantiate()
+        public override Type ObjectType => typeof(BallEntity);
+        public override PoolObject Instantiate<T>()
         {
-            var instance = Instantiate(_prefab, transform);
-            instance.Initialize(_ballSettings);
+            var instance = Instantiate(_prefab, _parent);
+            instance.Initialize(_settings);
             return instance;
         }
     }
