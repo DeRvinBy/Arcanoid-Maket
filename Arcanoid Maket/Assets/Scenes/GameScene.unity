@@ -2939,9 +2939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dda9cc8fdda48d98d48b26e13d8b850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 1196982761}
+  _popupAnimation: {fileID: 1196982761}
   _packImage: {fileID: 657706138}
   _packText: {fileID: 1741237750}
+  _nextButton: {fileID: 1694901187}
   _slider: {fileID: 1878500349}
 --- !u!225 &1196982763
 CanvasGroup:
@@ -3437,6 +3438,8 @@ GameObject:
   - component: {fileID: 1694901185}
   - component: {fileID: 1694901184}
   - component: {fileID: 1694901183}
+  - component: {fileID: 1694901187}
+  - component: {fileID: 1694901186}
   m_Layer: 5
   m_Name: ButtonNextLevel
   m_TagString: Untagged
@@ -3483,7 +3486,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3507,19 +3510,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1694901184}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1196982762}
-        m_TargetAssemblyTypeName: Project.Scripts.UI.PopupUI.WinPopup, Assembly-CSharp
-        m_MethodName: OnContinueButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1694901184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3558,6 +3549,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1694901181}
   m_CullTransparentMesh: 1
+--- !u!114 &1694901186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694901181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4269517f58a74e2bac488661cd4094ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseConfig: {fileID: 11400000, guid: 510c5155775eeac4fa88c6fe235a158a, type: 2}
+  _scaleConfig: {fileID: 11400000, guid: d0150bb759f8f114da003d95b0895361, type: 2}
+  _colorConfig: {fileID: 11400000, guid: 0604ba24e4c5dd94cbea523c2635ce86, type: 2}
+  _rectTransform: {fileID: 1694901182}
+  _image: {fileID: 1694901184}
+--- !u!114 &1694901187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694901181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3737e26810864accba82b6cf0def81df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation: {fileID: 1694901186}
+  _button: {fileID: 1694901183}
 --- !u!1 &1702834246
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,6 +4482,8 @@ GameObject:
   - component: {fileID: 2018201542}
   - component: {fileID: 2018201541}
   - component: {fileID: 2018201540}
+  - component: {fileID: 2018201544}
+  - component: {fileID: 2018201543}
   m_Layer: 5
   m_Name: ButtonRestartLevel
   m_TagString: Untagged
@@ -4530,19 +4554,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2018201541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2075395204}
-        m_TargetAssemblyTypeName: Project.Scripts.UI.PopupUI.LosePopup, Assembly-CSharp
-        m_MethodName: OnRestartButtonPressed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2018201541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4581,6 +4593,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018201538}
   m_CullTransparentMesh: 1
+--- !u!114 &2018201543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018201538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4269517f58a74e2bac488661cd4094ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseConfig: {fileID: 11400000, guid: 510c5155775eeac4fa88c6fe235a158a, type: 2}
+  _scaleConfig: {fileID: 11400000, guid: d0150bb759f8f114da003d95b0895361, type: 2}
+  _colorConfig: {fileID: 11400000, guid: 0604ba24e4c5dd94cbea523c2635ce86, type: 2}
+  _rectTransform: {fileID: 2018201539}
+  _image: {fileID: 2018201541}
+--- !u!114 &2018201544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018201538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3737e26810864accba82b6cf0def81df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animation: {fileID: 2018201543}
+  _button: {fileID: 2018201540}
 --- !u!1 &2075395201
 GameObject:
   m_ObjectHideFlags: 0
@@ -4652,7 +4695,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9e948a2a1d4d1990fa313e10fd3b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animation: {fileID: 2075395203}
+  _popupAnimation: {fileID: 2075395203}
+  _restartButton: {fileID: 2018201544}
 --- !u!225 &2075395205
 CanvasGroup:
   m_ObjectHideFlags: 0

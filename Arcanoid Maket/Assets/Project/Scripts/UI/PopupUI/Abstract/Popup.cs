@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using Project.Scripts.Animations.UI;
 using UnityEngine;
 
 namespace Project.Scripts.UI.PopupUI.Abstract
@@ -7,26 +6,36 @@ namespace Project.Scripts.UI.PopupUI.Abstract
     public abstract class Popup : MonoBehaviour
     {
         [SerializeField]
-        private PopupAnimation _animation;
+        private AbstractPopupAnimation _popupAnimation;
         
         public virtual void Initialize()
         {
             gameObject.SetActive(false);
-            _animation.SetupAnimation();
+            if (_popupAnimation != null)
+            {
+                _popupAnimation?.SetupAnimation();
+            }
         }
 
         public IEnumerator ShowPopup()
         {
             gameObject.SetActive(true);
-            yield return _animation.PlayShowAnimation();
+            if (_popupAnimation != null)
+            {
+                yield return _popupAnimation.PlayShowAnimation();
+            }
+
             StartPopup();
         }
 
         public IEnumerator HidePopup()
         {
-            yield return _animation.PlayHideAnimation();
-            gameObject.SetActive(false);
             ResetPopup();
+            if (_popupAnimation != null)
+            {
+                yield return _popupAnimation.PlayHideAnimation();
+            }
+            gameObject.SetActive(false);
         }
 
         protected virtual void StartPopup() {}

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using Project.Scripts.UI.PopupUI.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.Animations.UI
 {
-    public class PopupAnimation : MonoBehaviour
+    public class PopupPopupAnimation : AbstractPopupAnimation
     {
         [Header("Animation parameters")]
         [SerializeField]
@@ -52,7 +53,7 @@ namespace Project.Scripts.Animations.UI
             _showAlpha = _canvas.alpha;
         }
 
-        public void SetupAnimation()
+        public override void SetupAnimation()
         {
             var tweenParams = new TweenParams().SetEase(_easeMode).SetAutoKill(false);
             _hideTransformTween = _rectTransform.DOAnchorPos(_hidePosition, _animationDuration).SetAs(tweenParams);
@@ -65,7 +66,7 @@ namespace Project.Scripts.Animations.UI
             _showCanvasTween.Pause();
         }
 
-        public IEnumerator PlayHideAnimation()
+        public override IEnumerator PlayHideAnimation()
         {
             _rectTransform.anchoredPosition = _showPosition;
             _canvas.alpha = _showAlpha;
@@ -75,7 +76,7 @@ namespace Project.Scripts.Animations.UI
             yield return _hideCanvasTween.WaitForCompletion();
         }
         
-        public IEnumerator PlayShowAnimation()
+        public override IEnumerator PlayShowAnimation()
         {
             _rectTransform.anchoredPosition = _hidePosition;
             _canvas.alpha = _hideAlpha;

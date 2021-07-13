@@ -2,6 +2,7 @@
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.UI.PopupUI.Abstract;
+using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
 using UnityEngine;
@@ -18,17 +19,29 @@ namespace Project.Scripts.UI.PopupUI
         private TMProCustomTextLocalization _packText;
 
         [SerializeField]
+        private EventButton _nextButton;
+        
+        [SerializeField]
         private Slider _slider;
 
         public override void Initialize()
         {
             base.Initialize();
+            _nextButton.Initialize();
+            _nextButton.OnButtonPressed += OnContinueButtonPressed;
+            
             EventBus.Subscribe(this);
         }
 
         protected override void StartPopup()
         {
             EventBus.RaiseEvent<ILevelCompleteHandler>(a => a.OnLevelComplete());
+            _nextButton.Enable();
+        }
+
+        protected override void ResetPopup()
+        {
+            _nextButton.Disable();
         }
 
         public void OnPackChanged(Pack currentPack)
