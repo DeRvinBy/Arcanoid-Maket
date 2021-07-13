@@ -23,14 +23,11 @@ namespace Project.Scripts.GameEntities.Platform
         private float _worldSizeX;
         private bool _isMove;
 
-        private Vector3 _targetPosition;
-
         public void Initialize(PlatformProperties platformProperties)
         {
             _properties = platformProperties;
             _transform = transform;
             _initialPosition = _transform.position;
-            _targetPosition = _initialPosition;
             _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
             
             EventBus.Subscribe(this);
@@ -73,39 +70,41 @@ namespace Project.Scripts.GameEntities.Platform
             if (!_isMove) return;
 
             var targetPosition = _sceneCamera.ScreenToWorldPoint(position);
-            targetPosition.y = _transform.position.y;
+            targetPosition = LimitTargetPosition(targetPosition);
             MoveToTargetPosition(targetPosition);
-            LimitPosition();
         }
 
-        private void MoveToTargetPosition(Vector2 targetPosition)
+        private Vector3 LimitTargetPosition(Vector3 targetPosition)
         {
-            Vector2 currentPosition = transform.position;
-            var distance = (targetPosition - currentPosition).x;
-            var direction = Mathf.Clamp(distance, -_properties.Speed, _properties.Speed);
-            _targetPosition.x = currentPosition.x + direction * Time.fixedDeltaTime;
-            
-            _rigidbody.MovePosition(_targetPosition);
-        }
-
-        private void LimitPosition()
-        {
-            var position = _transform.position;
+            targetPosition.y = _transform.position.y;
             var halfSize = _properties.Size / 2f;
-            var positionX = Mathf.Abs(position.x) + halfSize;
+            var positionX = Mathf.Abs(targetPosition.x) + halfSize;
+
             if (positionX > _worldSizeX)
             {
-                if (position.x > 0)
+                if (targetPosition.x > 0)
                 {
-                    position.x = _worldSizeX - halfSize;
+                    targetPosition.x = _worldSizeX - halfSize;
                 }
                 else
                 {
-                    position.x = - _worldSizeX + halfSize;
+                    targetPosition.x = - _worldSizeX + halfSize;
                 }
             }
 
-            _transform.position = position;
+            return targetPosition;
+        }
+        
+        private void MoveToTargetPosition(Vector2 targetPosition)
+        {
+            if (Mathf.Abs(_transform.position.x - targetPosition.x) > ThresholdDeltaChanged)
+            {
+                Vector2 currentPosition = transform.position;
+                var distanceX = (targetPosition - currentPosition).normalized.x * _properties.Speed;
+                targetPosition.x = currentPosition.x + distanceX * Time.fixedDeltaTime;
+                    
+                _rigidbody.MovePosition(targetPosition);
+            }
         }
     }
 }

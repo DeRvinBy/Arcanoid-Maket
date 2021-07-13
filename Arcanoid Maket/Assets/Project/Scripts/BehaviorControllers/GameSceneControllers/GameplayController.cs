@@ -4,11 +4,10 @@ using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.UI.PopupUI;
 using Project.Scripts.Utils.EventSystem;
-using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class GameController : Abstract.GameController, IEndGameHandler, EventInterfaces.GameEvents.IStartGameHandler
+    public class GameplayController : GameController, IStartGameHandler,IEndGameHandler
     {
         private PopupsController _popupsController;
         
