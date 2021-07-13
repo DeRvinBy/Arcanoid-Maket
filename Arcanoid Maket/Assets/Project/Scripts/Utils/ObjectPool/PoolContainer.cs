@@ -1,34 +1,28 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.Utils.Extensions;
 using Project.Scripts.Utils.ObjectPool.Abstract;
-using Project.Scripts.Utils.ObjectPool.Interfaces;
-using UnityEngine;
 
 namespace Project.Scripts.Utils.ObjectPool
 {
-    public class PoolContainer<T> where T : MonoBehaviour, IPoolObject
+    public class PoolContainer
     {
-        private Stack<T> _container;
-        private PoolObjectCreator<T> _objectCreator;
+        private Stack<PoolObject> _container;
+        private PoolObjectCreator<PoolObject> _poolObjectCreator;
 
-        public PoolContainer(PoolObjectCreator<T> creator)
+        public PoolContainer(PoolObjectCreator<PoolObject> creator)
         {
-            _objectCreator = creator;
-            _container = new Stack<T>();
+            _poolObjectCreator = creator;
+            _container = new Stack<PoolObject>();
         }
 
-        public void PushToPool(T obj)
+        public void PushToPool(PoolObject obj)
         {
             obj.Reset();
-            obj.SetActive(false);
-            obj.transform.parent = _objectCreator.transform;
             _container.Push(obj);
         }
 
-        public T GetFromPool()
+        public PoolObject GetFromPool()
         {
-            var result = _container.Count == 0 ? _objectCreator.Instantiate() : _container.Pop();
-            result.SetActive(true);
+            var result = _container.Count == 0 ? _poolObjectCreator.Instantiate() : _container.Pop();
             result.Setup();
             return result;
         }

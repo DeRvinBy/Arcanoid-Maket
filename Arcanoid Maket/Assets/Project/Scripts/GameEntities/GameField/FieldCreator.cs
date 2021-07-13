@@ -1,6 +1,8 @@
 ﻿using Project.Scripts.EntitiesCreation.BlockCreation;
+using Project.Scripts.GameEntities.Blocks;
 using Project.Scripts.GameEntities.Blocks.Enumerations;
 using Project.Scripts.GameEntities.GameField.Data.Grid;
+using Project.Scripts.Utils.ObjectPool;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.GameField
@@ -29,7 +31,7 @@ namespace Project.Scripts.GameEntities.GameField
 
         private void CreateBlock(FieldCell cell, Vector2 cellSize)
         {
-            var block = BlockPoolManager.Instance.GetObject(cell.Position);
+            var block = PoolsManager.Instance.GetObject<BlockEntity>(cell.Position);
             block.transform.localScale = cellSize;
             block.SetupBlock(cell.BlockId);
         }

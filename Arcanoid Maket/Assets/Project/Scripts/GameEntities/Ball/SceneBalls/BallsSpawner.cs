@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.EntitiesCreation.BallCreation;
+using Project.Scripts.Utils.ObjectPool;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
@@ -7,12 +8,12 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
     {
         public BallEntity SpawnBallAtPosition(Vector3 spawnPosition, Transform spawnTransform)
         {
-            return BallPoolManager.Instance.GetObject(spawnPosition, spawnTransform);
+            return PoolsManager.Instance.GetObject<BallEntity>(spawnPosition, spawnTransform);
         }
 
         public void DestroyBall(BallEntity ball)
         {
-            BallPoolManager.Instance.ReturnObject(ball);
+            PoolsManager.Instance.ReturnObject(ball);
         }
     }
 }

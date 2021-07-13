@@ -9,7 +9,7 @@ namespace Project.Scripts.EntitiesCreation.BallCreation
     {
         [SerializeField]
         private BallSettings _ballSettings;
-        
+
         public override BallEntity Instantiate()
         {
             var instance = Instantiate(_prefab, transform);

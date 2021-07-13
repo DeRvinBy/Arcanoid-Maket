@@ -9,7 +9,7 @@ namespace Project.Scripts.EntitiesCreation.BlockCreation
     {
         [SerializeField]
         private MainBlockSettings _blockSettings;
-        
+
         public override BlockEntity Instantiate()
         {
             var instance = Instantiate(_prefab, transform);

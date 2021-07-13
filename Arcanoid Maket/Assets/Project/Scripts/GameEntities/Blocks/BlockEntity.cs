@@ -1,16 +1,16 @@
 ﻿using System.Collections;
-using Project.Scripts.EntitiesCreation.BlockCreation;
 using Project.Scripts.EventInterfaces.BlockEvents;
 using Project.Scripts.GameEntities.Blocks.Components;
 using Project.Scripts.GameEntities.Blocks.Enumerations;
 using Project.Scripts.GameSettings.GameBlockSettings;
 using Project.Scripts.Utils.EventSystem;
-using Project.Scripts.Utils.ObjectPool.Interfaces;
+using Project.Scripts.Utils.ObjectPool;
+using Project.Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks
 {
-    public class BlockEntity : MonoBehaviour, IPoolObject
+    public class BlockEntity : PoolObject
     {
         [SerializeField]
         private BlockView _view;
@@ -41,15 +41,17 @@ namespace Project.Scripts.GameEntities.Blocks
             _cracks.SetupBlockCracks();
         }
 
-        public void Setup()
+        public override void Setup()
         {
+            base.Setup();
             _view.OnBlockDamaged += ReduceLifeCount;
 
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockCreated(this));
         }
 
-        public void Reset()
+        public override void Reset()
         {
+            base.Reset();
             _view.OnBlockDamaged -= ReduceLifeCount;
         }
         
@@ -69,7 +71,7 @@ namespace Project.Scripts.GameEntities.Blocks
             _cracks.DisableBlockCracks();
             _particles.PlayParticle();
             yield return new WaitWhile(() => _particles.IsParticlesPlaying);
-            BlockPoolManager.Instance.ReturnObject(this);
+            PoolsManager.Instance.ReturnObject(this);
         }
     }
 }

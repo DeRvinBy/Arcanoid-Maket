@@ -5,6 +5,7 @@ using Project.Scripts.EventInterfaces.BlockEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Utils.EventSystem;
+using Project.Scripts.Utils.ObjectPool;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
@@ -48,7 +49,7 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         {
             foreach (var block in _blocksOnScene)
             {
-                BlockPoolManager.Instance.ReturnObject(block);
+                PoolsManager.Instance.ReturnObject(block);
             }
             _blocksOnScene.Clear();
         }
