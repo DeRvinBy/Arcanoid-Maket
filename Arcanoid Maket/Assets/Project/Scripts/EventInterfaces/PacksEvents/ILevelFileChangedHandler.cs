@@ -1,10 +1,10 @@
-﻿using Project.Scripts.Utils.EventSystem;
-using UnityEngine;
+﻿using Project.Scripts.Packs.Data.Level;
+using Project.Scripts.Utils.EventSystem;
 
 namespace Project.Scripts.EventInterfaces.PacksEvents
 {
     public interface ILevelFileChangedHandler : IGlobalSubscriber
     {
-        void OnLevelFileChanged(TextAsset levelFile);
+        void OnLevelFileChanged(LevelData levelData);
     }
 }

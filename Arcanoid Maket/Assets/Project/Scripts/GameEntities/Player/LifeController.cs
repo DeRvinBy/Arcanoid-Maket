@@ -1,45 +1,43 @@
-﻿using Project.Scripts.Architecture.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
+using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
 namespace Project.Scripts.GameEntities.Player
 {
-    public class LifeController : SceneEntitiesController, IStartGameProccesHandler, IPlayerBallsEndedHandler
+    public class LifeController : EntityController, IStartGameplayHandler, IPlayerBallsEndedHandler
     {
-        private const int EndGameLifeCount = 0;
-        
         [SerializeField]
         private LifeSettings _settings;
 
         [SerializeField]
         private LifeUI _lifeUI;
 
-        private LifeModel _model;
+        private int _lifeCount;
         
         public override void Initialize()
         {
-            _model = new LifeModel();
-            _lifeUI.Initialize(_settings);
-            
+            _lifeUI.CreateLifeContainers(_settings);
             EventBus.Subscribe(this);
         }
 
-        public void OnStartGameProcess()
+        public void OnStartGame()
         {
-            _model.SetLifeCount(_settings.StartLifeCount);
-            _lifeUI.SetLifeCountInUI(_model.LifeCount);
+            _lifeCount = _settings.StartLifeCount;
+            _lifeUI.SetLifeCountInUI(_lifeCount);
         }
         
         public void OnPlayerBallsEnded()
         {
-            _model.ReduceLifeByOne();
-            _lifeUI.SetLifeCountInUI(_model.LifeCount);
+            _lifeCount--;
+            _lifeUI.SetLifeCountInUI(_lifeCount);
             
-            if (_model.LifeCount <= EndGameLifeCount)
+            if (_lifeCount <= 0)
             {
-                EventBus.RaiseEvent<ILoseGameHandler>(a => a.OnLoseGame());
+                EventBus.RaiseEvent<IEndGameHandler>(a => a.OnLoseGame());
             }
             else
             {

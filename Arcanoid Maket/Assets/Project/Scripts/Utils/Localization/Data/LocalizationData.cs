@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Project.Scripts.Utils.Localization.Settings;
+using Project.Scripts.Utils.Localization.Config;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.Localization.Data
@@ -11,16 +11,16 @@ namespace Project.Scripts.Utils.Localization.Data
         private const string MissingTranslation = "Translation not found!";
         
         private LocalizationParser _parser;
-        private LocalizationSettings _settings;
+        private LocalizationConfig _config;
         private Dictionary<SystemLanguage, Dictionary<string, string>> _translationsMap;
         private SystemLanguage _currentLanguage;
 
-        public void Initialize(LocalizationSettings settings)
+        public void Initialize(LocalizationConfig config)
         {
-            _settings = settings;
+            _config = config;
             _parser = new LocalizationParser();
             _translationsMap = new Dictionary<SystemLanguage, Dictionary<string, string>>();
-            _settings.CreateTranslationPathMap();
+            _config.CreateTranslationPathMap();
             LoadUserLanguage();
             LoadTranslations();
         }
@@ -31,7 +31,7 @@ namespace Project.Scripts.Utils.Localization.Data
             {
                 var language = PlayerPrefs.GetString(LanguageKey);
                 Enum.TryParse(language, out _currentLanguage);
-                if (_settings.IsLanguageSupported(_currentLanguage))
+                if (_config.IsLanguageSupported(_currentLanguage))
                 {
                     return;
                 }
@@ -44,7 +44,7 @@ namespace Project.Scripts.Utils.Localization.Data
         {
             if (_translationsMap.ContainsKey(_currentLanguage)) return;
             
-            var jsonPath = _settings.GetPathToTranslation(_currentLanguage);
+            var jsonPath = _config.GetTranslationFile(_currentLanguage);
             _translationsMap[_currentLanguage] = _parser.GetTranslationsFromJSON(jsonPath);
         }
 
@@ -67,7 +67,7 @@ namespace Project.Scripts.Utils.Localization.Data
 
         public void SetLanguage(SystemLanguage language)
         {
-            if (_settings.IsLanguageSupported(language))
+            if (_config.IsLanguageSupported(language))
             {
                 _currentLanguage = language;
                 LoadTranslations();

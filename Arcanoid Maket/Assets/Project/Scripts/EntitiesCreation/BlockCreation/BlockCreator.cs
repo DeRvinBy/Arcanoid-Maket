@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Project.Scripts.EntitiesCreation.BlockCreation
 {
-    public class BlockCreator : PoolObjectCreator<BlockController>
+    public class BlockCreator : PoolObjectCreator<BlockEntity>
     {
         [SerializeField]
         private MainBlockSettings _blockSettings;
         
-        public override BlockController Instantiate()
+        public override BlockEntity Instantiate()
         {
             var instance = Instantiate(_prefab, transform);
             instance.Initialize(_blockSettings);

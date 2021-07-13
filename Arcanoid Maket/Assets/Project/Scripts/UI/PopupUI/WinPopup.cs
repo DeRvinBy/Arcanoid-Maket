@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
-using Project.Scripts.Packs.Data.Game;
+using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.UI.PopupUI.Abstract;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
@@ -28,7 +28,7 @@ namespace Project.Scripts.UI.PopupUI
 
         public override void StartPopup()
         {
-            
+            EventBus.RaiseEvent<ILevelCompleteHandler>(a => a.OnLevelComplete());
         }
 
         public void OnPackChanged(Pack currentPack)
@@ -45,7 +45,7 @@ namespace Project.Scripts.UI.PopupUI
 
         public void OnContinueButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameProccesHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
     }
 }

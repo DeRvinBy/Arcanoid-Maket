@@ -4,17 +4,20 @@ using UnityEngine;
 
 namespace Project.Scripts.Animations
 {
-    public class ValueAnimation : MonoBehaviour
+    public class ValueAnimation
     {
-        [SerializeField]
-        private float _animationDuration = 1f;
+        private float _duration;
+        private Ease _easeMode;
 
-        [SerializeField]
-        private Ease _easeMode = Ease.Linear;
+        public ValueAnimation(float duration, Ease easeMode)
+        {
+            _duration = duration;
+            _easeMode = easeMode;
+        }
         
         public void PlayAnimation(float from, float to, Action<float> updateAction)
         {
-            var tween = DOVirtual.Float(from, to, _animationDuration, (v) => updateAction(v));
+            var tween = DOVirtual.Float(from, to, _duration, (v) => updateAction(v));
             tween.SetEase(_easeMode);
             tween.OnComplete(() => tween.Kill());
         }

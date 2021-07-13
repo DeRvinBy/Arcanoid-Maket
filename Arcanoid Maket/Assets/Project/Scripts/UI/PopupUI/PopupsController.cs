@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Project.Scripts.Architecture.Abstract;
+using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.UI.PopupUI.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.UI.PopupUI
 {
-    public class PopupsController : SceneEntitiesController
+    public class PopupsController : EntityController
     {
         [SerializeField]
         private Popup[] _popups;
@@ -28,18 +28,19 @@ namespace Project.Scripts.UI.PopupUI
             return _activePopups.Count != 0;
         }
         
-        public IEnumerator ShowPopup<T>() where T : Popup
+        public void ShowPopup<T>() where T : Popup
         {
             var popup = _popups.First(p => p is T);
             _activePopups.Add(popup);
-            return popup.ShowPopup();
+            StartCoroutine(StartPopup(popup));
         }
-        
-        public void StartPopup<T>() where T : Popup
+
+        private IEnumerator StartPopup(Popup popup)
         {
-             _popups.First(p => p is T).StartPopup();
+            yield return popup.ShowPopup();
+            popup.StartPopup();
         }
-        
+
         public IEnumerator HideAllActivePopups()
         {
             foreach (var popup in _activePopups)

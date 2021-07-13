@@ -11,13 +11,14 @@ namespace Project.Scripts.GameEntities.GameField.Components
         [SerializeField]
         private Camera _sceneCamera;
 
-        private Transform _transform;
+        [SerializeField]
         private FieldSettings _settings;
+        
+        private Transform _transform;
         private Vector2 _worldScale;
         
-        public void Initialize(FieldSettings settings)
+        public void Initialize()
         {
-            _settings = settings;
             _transform = transform;
             
             SetWorldScale();
@@ -48,7 +49,7 @@ namespace Project.Scripts.GameEntities.GameField.Components
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var ball = other.GetComponent<BallController>();
+            var ball = other.GetComponent<BallEntity>();
             EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnBallDestroyed(ball));
         }
     }
