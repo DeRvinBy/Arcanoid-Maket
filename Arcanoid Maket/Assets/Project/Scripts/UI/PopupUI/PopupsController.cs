@@ -12,42 +12,43 @@ namespace Project.Scripts.UI.PopupUI
         [SerializeField]
         private Popup[] _popups;
 
-        private List<Popup> _activePopups;
+        private Stack<Popup> _popupsStack;
         
         public override void Initialize()
         {
-            _activePopups = new List<Popup>();
+            _popupsStack = new Stack<Popup>();
             foreach (var popup in _popups)
             {
                 popup.Initialize();
             }
         }
 
-        public bool IsExistActivePopups()
-        {
-            return _activePopups.Count != 0;
-        }
-        
-        public void ShowPopup<T>() where T : Popup
+        public IEnumerator ShowPopup<T>() where T : Popup
         {
             var popup = _popups.First(p => p is T);
-            _activePopups.Add(popup);
-            StartCoroutine(StartPopup(popup));
+            _popupsStack.Push(popup);
+            yield return popup.ShowPopup();
         }
 
-        private IEnumerator StartPopup(Popup popup)
+        public IEnumerator PushPopup<T>() where T : Popup
         {
-            yield return popup.ShowPopup();
-            popup.StartPopup();
+            yield return HideLastPopup();
+            yield return ShowPopup<T>();
+        }
+
+        public IEnumerator HideLastPopup()
+        {
+            var popup = _popupsStack.Pop();
+            yield return popup.HidePopup();
         }
 
         public IEnumerator HideAllActivePopups()
         {
-            foreach (var popup in _activePopups)
+            foreach (var popup in _popupsStack)
             {
                 yield return popup.HidePopup();
             }
-            _activePopups.Clear();
+            _popupsStack.Clear();
         }
     }
 }

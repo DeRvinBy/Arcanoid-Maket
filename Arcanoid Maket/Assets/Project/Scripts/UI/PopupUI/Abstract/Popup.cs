@@ -19,14 +19,17 @@ namespace Project.Scripts.UI.PopupUI.Abstract
         {
             gameObject.SetActive(true);
             yield return _animation.PlayShowAnimation();
+            StartPopup();
         }
 
         public IEnumerator HidePopup()
         {
             yield return _animation.PlayHideAnimation();
             gameObject.SetActive(false);
+            ResetPopup();
         }
 
-        public abstract void StartPopup();
+        protected virtual void StartPopup() {}
+        protected virtual void ResetPopup() {}
     }
 }

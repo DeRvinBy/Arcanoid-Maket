@@ -26,7 +26,7 @@ namespace Project.Scripts.UI.PopupUI
             EventBus.Subscribe(this);
         }
 
-        public override void StartPopup()
+        protected override void StartPopup()
         {
             EventBus.RaiseEvent<ILevelCompleteHandler>(a => a.OnLevelComplete());
         }

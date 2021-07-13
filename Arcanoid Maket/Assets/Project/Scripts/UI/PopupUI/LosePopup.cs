@@ -6,11 +6,6 @@ namespace Project.Scripts.UI.PopupUI
 {
     public class LosePopup : Popup
     {
-        public override void StartPopup()
-        {
-            
-        }
-        
         public void OnRestartButtonPressed()
         {
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());

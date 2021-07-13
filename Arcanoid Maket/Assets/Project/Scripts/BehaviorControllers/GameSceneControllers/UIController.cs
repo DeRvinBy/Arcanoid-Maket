@@ -18,12 +18,12 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 
         public void OnWinGame()
         {
-            _popupsController.ShowPopup<WinPopup>();
+            StartCoroutine(_popupsController.ShowPopup<WinPopup>());
         }
 
         public void OnLoseGame()
         {
-            _popupsController.ShowPopup<LosePopup>();
+            StartCoroutine(_popupsController.ShowPopup<LosePopup>());
         }
     }
 }
