@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using Project.Scripts.GameEntities.Blocks.Enumerations;
+using Project.Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.GameSettings.GameBlockSettings
 {
-    public class MainBlockSettings : MonoBehaviour
+    public class MainBlockSettings : AbstractSettings
     {
         [SerializeField]
         private BlockLifeSettings _lifeSettings;
@@ -16,7 +17,7 @@ namespace Project.Scripts.GameSettings.GameBlockSettings
         
         private Dictionary<BlockId, IndividualBlockSettings> _settingsMap;
 
-        private void Awake()
+        public void Initialize()
         {
             _lifeSettings.Initialize();
             CreateSettingMap();

@@ -7,19 +7,24 @@ namespace Project.Scripts.Animations
     public class ValueAnimation
     {
         private float _duration;
-        private Ease _easeMode;
+        private Ease _tweenParams;
 
-        public ValueAnimation(float duration, Ease easeMode)
+        private Tween _tween;
+        
+        public ValueAnimation(Ease tweenParams, float duration)
         {
+            _tweenParams = tweenParams;
             _duration = duration;
-            _easeMode = easeMode;
         }
         
         public void PlayAnimation(float from, float to, Action<float> updateAction)
         {
-            var tween = DOVirtual.Float(from, to, _duration, (v) => updateAction(v));
-            tween.SetEase(_easeMode);
-            tween.OnComplete(() => tween.Kill());
+            _tween = DOVirtual.Float(from, to, _duration, (v) => updateAction(v)).SetEase(_tweenParams);
+        }
+
+        public void KillAnimation()
+        {
+            _tween?.Kill();
         }
     }
 }

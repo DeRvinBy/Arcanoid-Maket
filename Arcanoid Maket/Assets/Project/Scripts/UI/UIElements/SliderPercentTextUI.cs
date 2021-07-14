@@ -10,14 +10,14 @@ namespace Project.Scripts.UI.UIElements
         
         [SerializeField]
         private Slider _slider;
-
-
+        
         [SerializeField]
         private TMP_Text _sliderText;
 
         private void Start()
         {
             _slider.onValueChanged.AddListener(OnSliderValueChanged);
+            OnSliderValueChanged(_slider.value);
         }
 
         private void OnDestroy()
@@ -25,7 +25,7 @@ namespace Project.Scripts.UI.UIElements
             _slider.onValueChanged.RemoveListener(OnSliderValueChanged);
         }
 
-        public void OnSliderValueChanged(float value)
+        private void OnSliderValueChanged(float value)
         {
             var percent = (value - _slider.minValue) / (_slider.maxValue - _slider.minValue) * 100;
             _sliderText.text = string.Format(PercentTextFormat, percent);

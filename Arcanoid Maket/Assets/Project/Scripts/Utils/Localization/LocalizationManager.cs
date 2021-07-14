@@ -12,10 +12,9 @@ namespace Project.Scripts.Utils.Localization
         private const string TranslationsPath = "Data/translations";
         
         private LocalizationData _localization;
-        
-        protected override void Awake()
+
+        protected override void Initialize()
         {
-            base.Awake();
             InitializeLocalization();
         }
 

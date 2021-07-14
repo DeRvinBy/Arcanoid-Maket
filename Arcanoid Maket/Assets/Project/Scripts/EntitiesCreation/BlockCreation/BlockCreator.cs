@@ -1,19 +1,25 @@
-﻿using Project.Scripts.GameEntities.Blocks;
+﻿using System;
+using Project.Scripts.GameEntities.Blocks;
 using Project.Scripts.GameSettings.GameBlockSettings;
 using Project.Scripts.Utils.ObjectPool.Abstract;
+using Project.Scripts.Utils.ObjectPool.Config;
 using UnityEngine;
 
 namespace Project.Scripts.EntitiesCreation.BlockCreation
 {
-    public class BlockCreator : PoolObjectCreator<BlockEntity>
+    public class BlockCreator : PoolObjectCreator<BlockEntity, MainBlockSettings>
     {
-        [SerializeField]
-        private MainBlockSettings _blockSettings;
-        
-        public override BlockEntity Instantiate()
+        public override void Initialize(ObjectCreatorConfig<PoolObject, AbstractCreator, AbstractSettings> config, Transform parent)
         {
-            var instance = Instantiate(_prefab, transform);
-            instance.Initialize(_blockSettings);
+            base.Initialize(config, parent);
+            _settings.Initialize();
+        }
+
+        public override Type ObjectType => typeof(BlockEntity);
+        public override PoolObject Instantiate<T>()
+        {
+            var instance = Instantiate(_prefab, _parent);
+            instance.Initialize(_settings);
             return instance;
         }
     }

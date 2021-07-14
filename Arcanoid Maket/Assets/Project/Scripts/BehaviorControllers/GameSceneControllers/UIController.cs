@@ -1,7 +1,8 @@
 ﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
-using Project.Scripts.UI.PopupUI;
+using Project.Scripts.UI.Popups;
 using Project.Scripts.Utils.EventSystem;
+using Project.Scripts.Utils.UI.Popup;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
@@ -18,12 +19,12 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 
         public void OnWinGame()
         {
-            _popupsController.ShowPopup<WinPopup>();
+            StartCoroutine(_popupsController.ShowPopup<WinPopup>());
         }
 
         public void OnLoseGame()
         {
-            _popupsController.ShowPopup<LosePopup>();
+            StartCoroutine(_popupsController.ShowPopup<LosePopup>());
         }
     }
 }

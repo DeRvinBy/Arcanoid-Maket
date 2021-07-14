@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls
 {
-    public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler
+    public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler, IPrepareGameplayHandler
     {
         private BallsSpawner _spawner;
         private BallPlatformSpawn _platformSpawn;
@@ -39,6 +39,11 @@ namespace Project.Scripts.GameEntities.Ball.SceneBalls
             {
                 EventBus.RaiseEvent<IPlayerBallsEndedHandler>(a => a.OnPlayerBallsEnded());
             }
+        }
+
+        public void OnPrepareGame()
+        {
+            DestroyAllBalls();
         }
         
         public void OnEndGame()

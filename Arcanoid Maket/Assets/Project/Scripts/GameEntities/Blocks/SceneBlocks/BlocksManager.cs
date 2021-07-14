@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Project.Scripts.BehaviorControllers.Abstract;
-using Project.Scripts.EntitiesCreation.BlockCreation;
 using Project.Scripts.EventInterfaces.BlockEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
@@ -9,11 +8,12 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class BlocksManager : EntityController, IEndGameplayHandler, IBlockOnSceneHandler, IPrepareGameplayHandler
+    public class BlocksManager : EntityController, IBlockOnSceneHandler, IPrepareGameplayHandler, IStartGameplayHandler
     {
         [SerializeField]
         private BlocksProgressUI _blocksProgressUI;
 
+        private int _blockCount;
         private List<BlockEntity> _blocksOnScene;
 
         public override void Initialize()
@@ -27,31 +27,43 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         public void OnBlockCreated(BlockEntity block)
         {
             _blocksOnScene.Add(block);
-            _blocksProgressUI.SetupSlider(_blocksOnScene.Count);
+            _blockCount++;
         }
 
-        public void OnBlockDestroyed(BlockEntity block)
+        public void OnBlockStartDestroyed()
         {
-            _blocksOnScene.Remove(block);
-            _blocksProgressUI.UpdateSlider(_blocksOnScene.Count);
-            if (_blocksOnScene.Count <= 0)
+            _blockCount--;
+            _blocksProgressUI.UpdateSlider(_blockCount);
+            if (_blockCount <= 0)
             {
                 EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());
             }
         }
+
+        public void OnBlockEndDestroyed(BlockEntity block)
+        {
+            _blocksOnScene.Remove(block);
+        }
         
         public void OnPrepareGame()
         {
-            _blocksProgressUI.SetupSlider(_blocksOnScene.Count);
+            DestroyAllBalls();
+            _blocksProgressUI.ResetSlider();
         }
-
-        public void OnEndGame()
+        
+        private void DestroyAllBalls()
         {
             foreach (var block in _blocksOnScene)
             {
-                BlockPoolManager.Instance.ReturnObject(block);
+                block.DestroyBlockImmediate();
             }
             _blocksOnScene.Clear();
+            _blockCount = 0;
+        }
+        
+        public void OnStartGame()
+        {
+            _blocksProgressUI.SetupSlider(_blockCount);  
         }
     }
 }
