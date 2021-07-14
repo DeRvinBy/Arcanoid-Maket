@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
 {
-    public class BlocksManager : EntityController, IBlockOnSceneHandler, IPrepareGameplayHandler
+    public class BlocksManager : EntityController, IBlockOnSceneHandler, IPrepareGameplayHandler, IStartGameplayHandler
     {
         [SerializeField]
         private BlocksProgressUI _blocksProgressUI;
@@ -28,7 +28,6 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         {
             _blocksOnScene.Add(block);
             _blockCount++;
-            _blocksProgressUI.SetupSlider(_blockCount);  
         }
 
         public void OnBlockStartDestroyed()
@@ -45,11 +44,11 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         {
             _blocksOnScene.Remove(block);
         }
-
+        
         public void OnPrepareGame()
         {
-            _blockCount = 0;
             DestroyAllBalls();
+            _blocksProgressUI.ResetSlider();
         }
         
         private void DestroyAllBalls()
@@ -59,6 +58,12 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
                 block.DestroyBlockImmediate();
             }
             _blocksOnScene.Clear();
+            _blockCount = 0;
+        }
+        
+        public void OnStartGame()
+        {
+            _blocksProgressUI.SetupSlider(_blockCount);  
         }
     }
 }

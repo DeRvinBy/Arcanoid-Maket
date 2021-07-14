@@ -1,14 +1,14 @@
-﻿using System;
-using Project.Scripts.EventInterfaces.PacksEvents;
+﻿using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
+using Project.Scripts.Utils.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.Scripts.UI.GameUI
+namespace Project.Scripts.UI.Header
 {
     public class HeaderUI : MonoBehaviour, IStartGameplayHandler, IEndGameplayHandler, ILevelChangedHandler, IPackChangedHandler
     {

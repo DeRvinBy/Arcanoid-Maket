@@ -1,7 +1,7 @@
 {
   "lose_text" : "You lose!",
   "pause_text" : "Pause",
-  "back_button" : "Back",
+  "back_button" : "Choose Pack",
   "continue_button" : "Continue",
   "restart_button" : "Restart",
   "header_level" : "Level",

@@ -1,14 +1,15 @@
 ﻿using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.Packs.Data.Packs;
-using Project.Scripts.UI.PopupUI.Abstract;
 using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
+using Project.Scripts.Utils.UI.Button;
+using Project.Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.Scripts.UI.PopupUI
+namespace Project.Scripts.UI.Popups
 {
     public class WinPopup : AbstractPopup, IPackChangedHandler, ILevelChangedHandler
     {

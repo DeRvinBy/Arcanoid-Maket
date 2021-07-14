@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Project.Scripts.BehaviorControllers.Abstract;
-using Project.Scripts.UI.PopupUI.Abstract;
+using Project.Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 
-namespace Project.Scripts.UI.PopupUI
+namespace Project.Scripts.Utils.UI.Popup
 {
     public class PopupsController : EntityController
     {
@@ -14,8 +14,6 @@ namespace Project.Scripts.UI.PopupUI
 
         private Stack<AbstractPopup> _popupsStack;
 
-        private bool _isAnimate;
-        
         public override void Initialize()
         {
             _popupsStack = new Stack<AbstractPopup>();
@@ -46,7 +44,6 @@ namespace Project.Scripts.UI.PopupUI
 
         public IEnumerator HideAllActivePopups()
         {
-            //print("hide");
             for (int i = 0; i < _popupsStack.Count; i++)
             {
                 var popup = _popupsStack.Pop();

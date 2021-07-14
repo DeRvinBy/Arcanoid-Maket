@@ -1,23 +1,22 @@
 ﻿using System;
-using Project.Scripts.Animations.UI;
+using Project.Scripts.Utils.UI.Button.Abstract;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Project.Scripts.UI.UIElements
+namespace Project.Scripts.Utils.UI.Button
 {
     public class EventButton : MonoBehaviour
     {
         public event Action OnButtonPressed;
 
         [SerializeField]
-        private ButtonAnimation _animation;
+        private AbstractButtonAnimation _animation;
         
         [SerializeField]
-        private Button _button;
+        private UnityEngine.UI.Button _button;
 
         public void Initialize()
         {
-            _animation.Initialize();
+            _animation.SetupAnimation();
             _button.onClick.AddListener(OnClick);
         }
 

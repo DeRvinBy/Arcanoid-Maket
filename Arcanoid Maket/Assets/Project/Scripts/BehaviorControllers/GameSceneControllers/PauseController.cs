@@ -2,8 +2,9 @@
 using System.Collections;
 using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.StatesEvents;
-using Project.Scripts.UI.PopupUI;
+using Project.Scripts.UI.Popups;
 using Project.Scripts.Utils.EventSystem;
+using Project.Scripts.Utils.UI.Popup;
 using UnityEngine;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers

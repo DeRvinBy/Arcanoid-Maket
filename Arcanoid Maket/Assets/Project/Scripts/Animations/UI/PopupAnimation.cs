@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using Project.Scripts.Animations.Configs;
-using Project.Scripts.UI.PopupUI.Abstract;
+using Project.Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.Animations.UI

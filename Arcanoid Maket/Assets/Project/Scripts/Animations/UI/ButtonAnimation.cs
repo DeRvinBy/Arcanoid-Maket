@@ -1,11 +1,12 @@
 ﻿using DG.Tweening;
 using Project.Scripts.Animations.Configs;
+using Project.Scripts.Utils.UI.Button.Abstract;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Project.Scripts.Animations.UI
 {
-    public class ButtonAnimation : MonoBehaviour
+    public class ButtonAnimation : AbstractButtonAnimation
     {
         [SerializeField]
         private BaseAnimationConfig _baseConfig;
@@ -24,7 +25,7 @@ namespace Project.Scripts.Animations.UI
         
         private Sequence _sequence;
 
-        public void Initialize()
+        public override void SetupAnimation()
         {
             _image.color = _colorConfig.StartColor;
             CreateAnimation();
@@ -51,7 +52,7 @@ namespace Project.Scripts.Animations.UI
             _sequence.OnComplete(() => _sequence.Rewind());
         }
         
-        public void PlayAnimation(TweenCallback callback)
+        public override void PlayAnimation(TweenCallback callback)
         {
             if (!_sequence.IsPlaying())
             {

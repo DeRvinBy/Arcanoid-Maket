@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Project.Scripts.UI.PopupUI.Abstract
+namespace Project.Scripts.Utils.UI.Popup.Abstract
 {
     public abstract class AbstractPopup : MonoBehaviour
     {

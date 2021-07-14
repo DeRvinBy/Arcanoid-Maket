@@ -2,8 +2,8 @@
 using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
-using Project.Scripts.UI.PopupUI;
 using Project.Scripts.Utils.EventSystem;
+using Project.Scripts.Utils.UI.Popup;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
