@@ -12,7 +12,11 @@ namespace Project.Scripts.Animations.Configs
         [SerializeField]
         private Ease _easeMode = Ease.Linear;
 
+        [SerializeField]
+        private bool _isUpdate = true;
+
         public float Duration => _duration;
         public Ease EaseMode => _easeMode;
+        public bool IsUpdate => _isUpdate;
     }
 }

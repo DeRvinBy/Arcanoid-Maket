@@ -11,14 +11,14 @@ namespace Project.Scripts.GameEntities.Blocks.SceneBlocks
         private Slider _slider;
 
         [SerializeField]
-        private BaseAnimationConfig _baseAnimationConfig;
+        private BaseAnimationConfig _baseConfig;
 
         private ValueAnimation _valueAnimation;
         private int _initialBlockCount;
 
         public void Initialize()
         {
-            _valueAnimation = new ValueAnimation(_baseAnimationConfig.Duration, _baseAnimationConfig.EaseMode);
+            _valueAnimation = new ValueAnimation(_baseConfig.EaseMode, _baseConfig.Duration);
         }
         
         public void SetupSlider(int blockCount)

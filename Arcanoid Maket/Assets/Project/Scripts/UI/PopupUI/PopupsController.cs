@@ -10,27 +10,29 @@ namespace Project.Scripts.UI.PopupUI
     public class PopupsController : EntityController
     {
         [SerializeField]
-        private Popup[] _popups;
+        private AbstractPopup[] _popups;
 
-        private Stack<Popup> _popupsStack;
+        private Stack<AbstractPopup> _popupsStack;
+
+        private bool _isAnimate;
         
         public override void Initialize()
         {
-            _popupsStack = new Stack<Popup>();
+            _popupsStack = new Stack<AbstractPopup>();
             foreach (var popup in _popups)
             {
                 popup.Initialize();
             }
         }
 
-        public IEnumerator ShowPopup<T>() where T : Popup
+        public IEnumerator ShowPopup<T>() where T : AbstractPopup
         {
             var popup = _popups.First(p => p is T);
             _popupsStack.Push(popup);
             yield return popup.ShowPopup();
         }
 
-        public IEnumerator PushPopup<T>() where T : Popup
+        public IEnumerator PushPopup<T>() where T : AbstractPopup
         {
             yield return HideLastPopup();
             yield return ShowPopup<T>();
@@ -44,8 +46,10 @@ namespace Project.Scripts.UI.PopupUI
 
         public IEnumerator HideAllActivePopups()
         {
-            foreach (var popup in _popupsStack)
+            //print("hide");
+            for (int i = 0; i < _popupsStack.Count; i++)
             {
+                var popup = _popupsStack.Pop();
                 yield return popup.HidePopup();
             }
             _popupsStack.Clear();

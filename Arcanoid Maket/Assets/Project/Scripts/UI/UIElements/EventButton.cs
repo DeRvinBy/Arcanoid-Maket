@@ -18,17 +18,16 @@ namespace Project.Scripts.UI.UIElements
         public void Initialize()
         {
             _animation.Initialize();
+            _button.onClick.AddListener(OnClick);
         }
 
         public void Enable()
         {
-            _button.onClick.AddListener(OnClick);
             _button.interactable = true;
         }
         
         public void Disable()
         {
-            _button.onClick.RemoveListener(OnClick);
             _button.interactable = false;
         }
         

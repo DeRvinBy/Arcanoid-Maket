@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Project.Scripts.UI.PopupUI
 {
-    public class LosePopup : Popup
+    public class LosePopup : AbstractPopup
     {
         [SerializeField]
         private EventButton _restartButton;
@@ -28,7 +28,7 @@ namespace Project.Scripts.UI.PopupUI
             _restartButton.Disable();
         }
 
-        public void OnRestartButtonPressed()
+        private void OnRestartButtonPressed()
         {
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }

@@ -62,7 +62,7 @@ namespace Project.Scripts.GameEntities.Blocks
             if (_lifeCount > 0) return;
             
             StartCoroutine(DestroyBlock());
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockDestroyed(this));
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());
         }
 
         private IEnumerator DestroyBlock()
@@ -71,6 +71,13 @@ namespace Project.Scripts.GameEntities.Blocks
             _cracks.DisableBlockCracks();
             _particles.PlayParticle();
             yield return new WaitWhile(() => _particles.IsParticlesPlaying);
+            PoolsManager.Instance.ReturnObject(this);
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockEndDestroyed(this));
+        }
+
+        public void DestroyBlockImmediate()
+        {
+            StopAllCoroutines();
             PoolsManager.Instance.ReturnObject(this);
         }
     }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Project.Scripts.Animations.Configs;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,7 +34,8 @@ namespace Project.Scripts.Animations.UI
         {
             var localScale = _rectTransform.localScale;
             var halfDuration = _baseConfig.Duration / 2f;
-            var scaleParams = new TweenParams().SetEase(_baseConfig.EaseMode);
+            var scaleParams = new TweenParams().SetEase(_baseConfig.EaseMode).SetUpdate(_baseConfig.IsUpdate);
+            var colorParams = new TweenParams().SetUpdate(_baseConfig.IsUpdate);
 
             _sequence = DOTween.Sequence();
             _sequence.Pause();
@@ -44,10 +43,10 @@ namespace Project.Scripts.Animations.UI
             
             var scale = localScale * _scaleConfig.TargetScale;
             _sequence.Append(_rectTransform.DOScale(scale , halfDuration).SetAs(scaleParams));
-            _sequence.Join(_image.DOColor(_colorConfig.TargetColor, halfDuration));
+            _sequence.Join(_image.DOColor(_colorConfig.TargetColor, halfDuration)).SetAs(colorParams);
             scale = localScale * _scaleConfig.StartScale;
             _sequence.Append(_rectTransform.DOScale(scale, halfDuration).SetAs(scaleParams));
-            _sequence.Join(_image.DOColor(_colorConfig.StartColor, halfDuration));
+            _sequence.Join(_image.DOColor(_colorConfig.StartColor, halfDuration)).SetAs(colorParams);
             
             _sequence.OnComplete(() => _sequence.Rewind());
         }
@@ -62,7 +61,7 @@ namespace Project.Scripts.Animations.UI
 
         private void OnDestroy()
         {
-            _sequence.Kill(false);
+            _sequence.Kill();
         }
     }
 }

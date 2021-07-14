@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using Project.Scripts.Animations.Configs;
 using Project.Scripts.UI.PopupUI.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.Animations.UI
 {
-    public class PopupPopupAnimation : AbstractPopupAnimation
+    public class PopupAnimation : AbstractPopupAnimation
     {
         [Header("Animation parameters")]
         [SerializeField]
-        private float _animationDuration;
-
-        [SerializeField]
-        private Ease _easeMode = Ease.Linear;
+        private BaseAnimationConfig _baseConfig;
 
         [Header("Rect Transform parameters")]
         [SerializeField]
@@ -55,14 +53,14 @@ namespace Project.Scripts.Animations.UI
 
         public override void SetupAnimation()
         {
-            var tweenParams = new TweenParams().SetEase(_easeMode).SetAutoKill(false);
-            _hideTransformTween = _rectTransform.DOAnchorPos(_hidePosition, _animationDuration).SetAs(tweenParams);
+            var tweenParams = new TweenParams().SetEase(_baseConfig.EaseMode).SetUpdate(_baseConfig.IsUpdate).SetAutoKill(false);
+            _hideTransformTween = _rectTransform.DOAnchorPos(_hidePosition, _baseConfig.Duration).SetAs(tweenParams);
             _hideTransformTween.Pause();
-            _showTransformTween = _rectTransform.DOAnchorPos(_showPosition, _animationDuration).SetAs(tweenParams);
+            _showTransformTween = _rectTransform.DOAnchorPos(_showPosition, _baseConfig.Duration).SetAs(tweenParams);
             _showTransformTween.Pause();
-            _hideCanvasTween = _canvas.DOFade(_hideAlpha, _animationDuration).SetAs(tweenParams);
+            _hideCanvasTween = _canvas.DOFade(_hideAlpha, _baseConfig.Duration).SetAs(tweenParams);
             _hideCanvasTween.Pause();
-            _showCanvasTween = _canvas.DOFade(_showAlpha, _animationDuration).SetAs(tweenParams);
+            _showCanvasTween = _canvas.DOFade(_showAlpha, _baseConfig.Duration).SetAs(tweenParams);
             _showCanvasTween.Pause();
         }
 

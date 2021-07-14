@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Project.Scripts.UI.PopupUI.Abstract
 {
-    public abstract class Popup : MonoBehaviour
+    public abstract class AbstractPopup : MonoBehaviour
     {
         [SerializeField]
         private AbstractPopupAnimation _popupAnimation;
@@ -13,7 +13,7 @@ namespace Project.Scripts.UI.PopupUI.Abstract
             gameObject.SetActive(false);
             if (_popupAnimation != null)
             {
-                _popupAnimation?.SetupAnimation();
+                _popupAnimation.SetupAnimation();
             }
         }
 

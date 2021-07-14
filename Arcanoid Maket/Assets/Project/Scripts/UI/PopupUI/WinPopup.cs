@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.UI.PopupUI
 {
-    public class WinPopup : Popup, IPackChangedHandler, ILevelChangedHandler
+    public class WinPopup : AbstractPopup, IPackChangedHandler, ILevelChangedHandler
     {
         [SerializeField]
         private Image _packImage;
@@ -56,7 +56,7 @@ namespace Project.Scripts.UI.PopupUI
             _slider.value = currentLevel;
         }
 
-        public void OnContinueButtonPressed()
+        private void OnContinueButtonPressed()
         {
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }

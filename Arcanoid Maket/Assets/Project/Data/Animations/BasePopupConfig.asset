@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55ce17225d33486a8bb234e9a77f4353, type: 3}
-  m_Name: BlockProgress
+  m_Name: BasePopupConfig
   m_EditorClassIdentifier: 
-  _duration: 1
-  _easeMode: 9
+  _duration: 1.5
+  _easeMode: 28
   _isUpdate: 1
