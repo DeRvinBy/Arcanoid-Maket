@@ -1,4 +1,5 @@
 ﻿using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.GameEvents.UIEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
@@ -53,7 +54,7 @@ namespace Project.Scripts.UI.Popups
 
         private void OnBackButtonPressed()
         {
-            print("chose pack");
+            EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
         }
 
         private void OnContinueButtonPressed()

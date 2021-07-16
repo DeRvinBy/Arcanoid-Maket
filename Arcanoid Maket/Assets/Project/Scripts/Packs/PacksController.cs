@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : EntityController, IPrepareGameplayHandler, ILevelCompleteHandler
+    public class PacksController : EntityController, IPrepareGameplayHandler
     {
         [SerializeField]
         private PacksContainer _packsContainer;
@@ -48,7 +48,7 @@ namespace Project.Scripts.Packs
             EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelData));
         }
 
-        public void OnLevelComplete()
+        public void CompleteLevel()
         {
             _service.CompleteLevel();
             
@@ -56,6 +56,12 @@ namespace Project.Scripts.Packs
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
             var levelId = _service.GetCurrentLevel();
             EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
+        }
+
+        public void UpdatePacksInfo()
+        {
+            var packsInfo = _service.GetPacksInfo();
+            EventBus.RaiseEvent<IPacksInfoHandler>(a => a.OnPacksInfoUpdated(packsInfo));
         }
     }
 }

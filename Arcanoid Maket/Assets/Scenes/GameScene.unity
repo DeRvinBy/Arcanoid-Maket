@@ -2537,6 +2537,7 @@ MonoBehaviour:
   - {fileID: 712845659}
   - {fileID: 530566932}
   - {fileID: 322059362}
+  - {fileID: 634692067}
   _entityControllers:
   - {fileID: 1702834248}
   - {fileID: 837585704}
@@ -2705,7 +2706,7 @@ GameObject:
   - component: {fileID: 530566933}
   - component: {fileID: 530566932}
   m_Layer: 0
-  m_Name: UIController
+  m_Name: UIGameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3323,6 +3324,49 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4d0551b9f22458dac9a8b46269f09d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &634692065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634692066}
+  - component: {fileID: 634692067}
+  m_Layer: 0
+  m_Name: UIPacksChoosing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &634692066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634692065}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2082769578}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &634692067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634692065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d951396fd65b4c3e8db0813ae2e71f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &646748948
@@ -8145,6 +8189,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629422245}
   - component: {fileID: 1629422247}
+  - component: {fileID: 1629422248}
   - component: {fileID: 1629422246}
   m_Layer: 5
   m_Name: PackChoosingPopup
@@ -8188,10 +8233,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseConfig: {fileID: 11400000, guid: 95b4084abc5341c499857245eeb550eb, type: 2}
-  _rectTransform: {fileID: 1196982760}
-  _hidePosition: {x: 0, y: 1920.0001}
+  _rectTransform: {fileID: 1629422245}
+  _hidePosition: {x: 0, y: -1920}
   _showPosition: {x: 0, y: 0}
-  _canvas: {fileID: 1196982763}
+  _canvas: {fileID: 1629422247}
   _hideAlpha: 0
   _showAlpha: 1
 --- !u!225 &1629422247
@@ -8206,6 +8251,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1629422248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629422244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e8419e28aa4cdcae76ff9b8ff72995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popupAnimation: {fileID: 1629422246}
 --- !u!1 &1638352473
 GameObject:
   m_ObjectHideFlags: 0
@@ -8824,6 +8882,7 @@ MonoBehaviour:
   - {fileID: 1196982762}
   - {fileID: 2075395204}
   - {fileID: 2068725987}
+  - {fileID: 1629422248}
 --- !u!1 &1741237746
 GameObject:
   m_ObjectHideFlags: 0
@@ -10666,7 +10725,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.3
+  m_fontSize: 45.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11309,6 +11368,7 @@ Transform:
   - {fileID: 712845658}
   - {fileID: 530566933}
   - {fileID: 322059361}
+  - {fileID: 634692066}
   m_Father: {fileID: 517714959}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

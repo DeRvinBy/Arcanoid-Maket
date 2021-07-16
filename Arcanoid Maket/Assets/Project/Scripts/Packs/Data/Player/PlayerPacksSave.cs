@@ -51,9 +51,9 @@ namespace Project.Scripts.Packs.Data.Player
         
         public bool IsPackComplete(string key)
         {
-            return _packsSaveContainer.Packs[key].IsOpen;
+            return _packsSaveContainer.Packs[key].IsComplete;
         }
-        
+
         public int GetCurrentLevelId(string key)
         {
             return _packsSaveContainer.Packs[key].CurrentLevelId;
@@ -68,7 +68,5 @@ namespace Project.Scripts.Packs.Data.Player
         {
             _packsSaveContainer.Packs[key].CurrentLevelId = id;
         }
-
-
     }
 }

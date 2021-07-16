@@ -36,7 +36,6 @@ namespace Project.Scripts.UI.Popups
 
         protected override void StartPopup()
         {
-            EventBus.RaiseEvent<ILevelCompleteHandler>(a => a.OnLevelComplete());
             _nextButton.Enable();
         }
 

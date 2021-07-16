@@ -11,6 +11,7 @@ namespace Project.Scripts.Packs
     public class PacksService
     {
         private Dictionary<string, Pack> _packsMap;
+        private Dictionary<string, PackInfo> _packsInfoMap;
         private PlayerPacksSave _playerPacksSave;
         private Pack _currentPack;
         private int _currentLevelId;
@@ -20,8 +21,27 @@ namespace Project.Scripts.Packs
             _packsMap = packsContainer.GetPacksMap();
             _playerPacksSave = new PlayerPacksSave(new PlayerPrefsLoader());
             _playerPacksSave.LoadPacksSave(packsContainer.FirstPack.Key);
+            
+            _packsInfoMap = new Dictionary<string, PackInfo>();
+            foreach (var packKey in _packsMap.Keys)
+            {
+                var packInfo = new PackInfo();
+                _packsInfoMap.Add(packKey, packInfo);
+                UpdatePackInfo(packKey);
+            }
         }
-        
+
+        private void UpdatePackInfo(string key)
+        {
+            if (!_playerPacksSave.IsPackExist(key)) return;
+            
+            var packInfo = _packsInfoMap[key];
+            var isComplete = _playerPacksSave.IsPackComplete(key);
+            packInfo.CurrentLevelInPack = isComplete ? _packsMap[key].LevelCount : _playerPacksSave.GetCurrentLevelId(key) + 1;
+            packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
+            packInfo.GamePack = _packsMap[key];
+        }
+
         public int GetCurrentLevel()
         {
             return _currentLevelId + 1;
@@ -37,6 +57,11 @@ namespace Project.Scripts.Packs
             return _currentPack;
         }
 
+        public Dictionary<string, PackInfo> GetPacksInfo()
+        {
+            return _packsInfoMap;
+        }
+
         public void StartPack(string packKey)
         {
             _currentPack = _packsMap[packKey];
@@ -50,14 +75,20 @@ namespace Project.Scripts.Packs
             {
                 _currentLevelId = 0;
                 _playerPacksSave.SetCurrentLevelId(_currentPack.Key, _currentLevelId);
-                _playerPacksSave.CompletePack(_currentPack.Key);
+                if (!_playerPacksSave.IsPackComplete(_currentPack.Key))
+                {
+                    _playerPacksSave.CompletePack(_currentPack.Key);
+                    _playerPacksSave.AddOpenSavePack(_currentPack.Key);
+                    UpdatePackInfo(_currentPack.Key);
+                }
                 SetNextPack();
-                _playerPacksSave.AddOpenSavePack(_currentPack.Key);
             }
             else
             {
                 _playerPacksSave.SetCurrentLevelId(_currentPack.Key, _currentLevelId);
             }
+
+            UpdatePackInfo(_currentPack.Key);
         }
         
         private void SetNextPack()
