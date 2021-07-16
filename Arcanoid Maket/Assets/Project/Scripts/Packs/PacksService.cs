@@ -33,13 +33,15 @@ namespace Project.Scripts.Packs
 
         private void UpdatePackInfo(string key)
         {
-            if (!_playerPacksSave.IsPackExist(key)) return;
-            
             var packInfo = _packsInfoMap[key];
-            var isComplete = _playerPacksSave.IsPackComplete(key);
-            packInfo.CurrentLevelInPack = isComplete ? _packsMap[key].LevelCount : _playerPacksSave.GetCurrentLevelId(key) + 1;
-            packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
             packInfo.GamePack = _packsMap[key];
+            
+            if (_playerPacksSave.IsPackExist(key))
+            {
+                var isComplete = _playerPacksSave.IsPackComplete(key);
+                packInfo.CurrentLevelInPack = isComplete ? _packsMap[key].LevelCount : _playerPacksSave.GetCurrentLevelId(key) + 1;
+                packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
+            }
         }
 
         public int GetCurrentLevel()

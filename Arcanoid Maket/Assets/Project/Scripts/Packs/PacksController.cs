@@ -23,7 +23,7 @@ namespace Project.Scripts.Packs
             _parser = new JsonParser();
             
             EventBus.Subscribe(this);
-            _service.StartPack("test_pack");
+            UpdatePacksInfo();
         }
         
         public void OnPrepareGame()
@@ -32,14 +32,14 @@ namespace Project.Scripts.Packs
             StartLevel();
         }
 
-        public void StartPack()
+        private void StartPack()
         {
             var currentPack = _service.GetCurrentPack();
             
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
         }
 
-        public void StartLevel()
+        private void StartLevel()
         {
             var levelId = _service.GetCurrentLevel();
             EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
@@ -62,6 +62,11 @@ namespace Project.Scripts.Packs
         {
             var packsInfo = _service.GetPacksInfo();
             EventBus.RaiseEvent<IPacksInfoHandler>(a => a.OnPacksInfoUpdated(packsInfo));
+        }
+
+        public void SetCurrentPack(string packName)
+        {
+            _service.StartPack(packName);
         }
     }
 }

@@ -3,7 +3,7 @@ using Project.Scripts.GameEntities.Ball;
 using Project.Scripts.GameSettings.GameBallSettings;
 using Project.Scripts.Utils.ObjectPool.Abstract;
 
-namespace Project.Scripts.EntitiesCreation.BallCreation
+namespace Project.Scripts.EntitiesCreation
 {
     public class BallCreator : PoolObjectCreator<BallEntity, BallSettings>
     {

@@ -1,4 +1,4 @@
-﻿namespace Project.Scripts.Packs.Data.Level
+﻿namespace Project.Scripts.Packs.Data.Level.LevelParser
 {
     public static class JsonTokens
     {

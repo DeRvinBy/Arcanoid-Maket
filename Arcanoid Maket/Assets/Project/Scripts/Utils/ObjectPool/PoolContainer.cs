@@ -17,7 +17,7 @@ namespace Project.Scripts.Utils.ObjectPool
         public void PushToPool(PoolObject obj)
         {
             obj.Reset();
-            obj.transform.parent = _objectCreator.Parent;
+            obj.transform.SetParent(_objectCreator.Parent);
             _container.Push(obj);
         }
 

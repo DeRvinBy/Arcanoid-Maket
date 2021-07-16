@@ -1,10 +1,14 @@
 {
   "lose_text" : "You lose!",
   "pause_text" : "Pause",
+  "choose_pack_text" : "Choosing pack",
   "back_button" : "Choose Pack",
   "continue_button" : "Continue",
   "restart_button" : "Restart",
   "header_level" : "Level",
+  "unknown_pack" : "???",
   "test_pack" : "Test pack",
-  "tree_house_pack" : "Tree house"
+  "tree_house_pack" : "Tree house",
+  "dog_pack" : "Pug Dog",
+  "ice_cream_watermelon_pack" : "Watermelon ice cream"
 }
