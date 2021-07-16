@@ -16,8 +16,6 @@ MonoBehaviour:
   _icon: {fileID: 8101914074050339455, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
   _color: {r: 0.9811321, g: 0.49519405, b: 0.49519405, a: 1}
   _levels:
-  - {fileID: 4900000, guid: 3a86a1d38c4cbb14483cb1d59c1d90c5, type: 3}
-  - {fileID: 4900000, guid: 5ae1928af09730940a9ccd976ae02455, type: 3}
-  - {fileID: 4900000, guid: fce7bf3e7e74e3a49834c40b59319780, type: 3}
-  - {fileID: 4900000, guid: 87e3c64fa1311c149980e9c05e9b1085, type: 3}
-  - {fileID: 4900000, guid: 1c24fea32b489e94ab602a3f783b856b, type: 3}
+  - {fileID: 4900000, guid: 4cf27e6045ad4b443abe04a1ba1ea954, type: 3}
+  - {fileID: 4900000, guid: 0ee18fadf82acc149b75b03d001342f2, type: 3}
+  - {fileID: 4900000, guid: 8ea47d51140633141bb6a7fb70244885, type: 3}
