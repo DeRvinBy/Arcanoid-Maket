@@ -28,7 +28,6 @@ namespace Project.Scripts.UI.Popups
         public override void Initialize()
         {
             base.Initialize();
-            _nextButton.Initialize();
             _nextButton.OnButtonPressed += OnContinueButtonPressed;
             
             EventBus.Subscribe(this);

@@ -10,15 +10,15 @@
      "export":
         {
          "format":"json",
-         "target":"level3.json"
+         "target":"level2.json"
         }
     },
- "height":7,
+ "height":5,
  "infinite":false,
  "layers":[
         {
-         "data":[5, 4, 5, 4, 5, 4, 6, 4, 6, 4, 5, 4, 5, 4, 5, 4, 6, 4, 6, 4, 5, 4, 5, 4, 5, 4, 6, 4, 6, 4, 0, 4, 0, 4, 0],
-         "height":7,
+         "data":[0, 0, 5, 0, 0, 0, 5, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":5,
          "id":3,
          "name":"level1",
          "opacity":1,

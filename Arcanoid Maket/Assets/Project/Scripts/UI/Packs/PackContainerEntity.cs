@@ -1,4 +1,4 @@
-﻿using Project.Scripts.EventInterfaces.GameEvents.UIEvents;
+﻿using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PackContainerSettings;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
@@ -32,7 +32,7 @@ namespace Project.Scripts.UI.Packs
         {
             var pack = packInfo.GamePack;
             _containerUI.SetButtonInteractable(true);
-            _containerUI.AddButtonCallback(
+            _containerUI.SetButtonCallback(
                 () => EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnPackChoose(pack.Key)));
             _containerUI.SetButtonColor(pack.Color);
             _containerUI.SetPackIcon(pack.Icon);

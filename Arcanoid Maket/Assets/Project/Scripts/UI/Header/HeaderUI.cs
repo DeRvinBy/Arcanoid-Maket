@@ -23,7 +23,6 @@ namespace Project.Scripts.UI.Header
 
         private void Awake()
         {
-            _pauseButton.Initialize();
             _pauseButton.OnButtonPressed += OnPauseButtonPressed;
         }
         

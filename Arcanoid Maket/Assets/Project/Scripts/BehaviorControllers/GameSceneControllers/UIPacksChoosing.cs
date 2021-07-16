@@ -1,5 +1,6 @@
 ﻿using Project.Scripts.BehaviorControllers.Abstract;
-using Project.Scripts.EventInterfaces.GameEvents.UIEvents;
+using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs;
 using Project.Scripts.UI.Popups;
 using Project.Scripts.Utils.EventSystem;
@@ -34,7 +35,8 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         public void OnPackChoose(string packKey)
         {
             _packsController.SetCurrentPack(packKey);
-            StartCoroutine(_popupsController.HideAllActivePopups());
+            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
 
         public void OnCancelChoosePack()

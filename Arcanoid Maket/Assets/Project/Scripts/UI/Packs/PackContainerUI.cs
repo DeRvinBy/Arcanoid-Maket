@@ -26,6 +26,8 @@ namespace Project.Scripts.UI.Packs
         
         [SerializeField]
         private string _levelsFormat = "{0}/{1}";
+
+        private bool _isCallbackSet;
         
         public void SetButtonInteractable(bool isInteractable)
         {
@@ -44,9 +46,13 @@ namespace Project.Scripts.UI.Packs
             _buttonImage.color = color;
         }
 
-        public void AddButtonCallback(Action callback)
+        public void SetButtonCallback(Action callback)
         {
-            _button.OnButtonPressed += callback;
+            if (!_isCallbackSet)
+            {
+                _button.OnButtonPressed += callback;
+                _isCallbackSet = true;
+            }
         }
 
         public void SetPackIcon(Sprite icon)

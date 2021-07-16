@@ -1,6 +1,6 @@
 ﻿using Project.Scripts.Utils.EventSystem;
 
-namespace Project.Scripts.EventInterfaces.GameEvents.UIEvents
+namespace Project.Scripts.EventInterfaces.StatesEvents
 {
     public interface IPacksUIHandler : IGlobalSubscriber
     {

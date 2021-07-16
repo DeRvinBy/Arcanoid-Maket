@@ -80,10 +80,13 @@ namespace Project.Scripts.Packs
                 if (!_playerPacksSave.IsPackComplete(_currentPack.Key))
                 {
                     _playerPacksSave.CompletePack(_currentPack.Key);
-                    _playerPacksSave.AddOpenSavePack(_currentPack.Key);
                     UpdatePackInfo(_currentPack.Key);
                 }
                 SetNextPack();
+                if (!_playerPacksSave.IsPackExist(_currentPack.Key))
+                {
+                    _playerPacksSave.AddOpenSavePack(_currentPack.Key);
+                }
             }
             else
             {

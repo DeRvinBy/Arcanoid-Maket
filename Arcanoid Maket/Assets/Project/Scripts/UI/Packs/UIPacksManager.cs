@@ -8,7 +8,7 @@ namespace Project.Scripts.UI.Packs
     public class UIPacksManager : MonoBehaviour
     {
         private Dictionary<string, PackContainerEntity> _packContainersMap;
-        
+
         public void UpdatePackContainers(Dictionary<string, PackInfo> packsInfo)
         {
             if (_packContainersMap == null)
