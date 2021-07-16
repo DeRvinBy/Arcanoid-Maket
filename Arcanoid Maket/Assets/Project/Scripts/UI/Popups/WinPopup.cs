@@ -52,18 +52,18 @@ namespace Project.Scripts.UI.Popups
             _packText.SetTranslationName(currentPack.GamePack.Key);
             _slider.maxValue = currentPack.GamePack.LevelCount + 1;
             _slider.value = currentPack.CurrentLevel;
-            _isSwitchPack = currentPack.IsSwitchToNextPack;
+            _isSwitchPack = currentPack.IsSwitchToNextPack && !currentPack.IsLastPack;
         }
 
         private void OnContinueButtonPressed()
         {
             if (_isSwitchPack)
             {
-                EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
+                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
             }
             else
             {
-                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
+                EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
             }
         }
     }
