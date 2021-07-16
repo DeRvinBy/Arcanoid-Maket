@@ -82,7 +82,6 @@ namespace Project.Scripts.Packs
                     _playerPacksSave.CompletePack(_currentPackKey);
                     UpdatePackInfo(_currentPackKey);
                     SetNextPack();
-                    _playerPacksSave.AddOpenSavePack(_currentPackKey);
                 }
             }
             else
@@ -102,6 +101,11 @@ namespace Project.Scripts.Packs
             if (currentKey < keys.Length)
             {
                 _currentPackKey = keys[currentKey];
+                _playerPacksSave.AddOpenSavePack(_currentPackKey);
+            }
+            else
+            {
+                _packsInfoMap[_currentPackKey].IsLastPack = true;
             }
         }
 
