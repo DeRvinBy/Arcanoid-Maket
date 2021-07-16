@@ -44,7 +44,6 @@ namespace Project.Scripts.Packs
                 packInfo.IsComplete = isComplete;
                 packInfo.CurrentLevel = currentLevel + 1;
                 packInfo.PackProgressLevel = isComplete ? packsLevelCount : currentLevel;
-                packInfo.IsSwitchToNextPack = currentLevel > packsLevelCount && !isComplete;
                 packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
             }
         }
@@ -83,10 +82,15 @@ namespace Project.Scripts.Packs
                     UpdatePackInfo(_currentPackKey);
                     SetNextPack();
                 }
+                else
+                {
+                    _packsInfoMap[_currentPackKey].IsPackReplayed = true;
+                }
             }
             else
             {
                 _playerPacksSave.SetCurrentLevelId(_currentPackKey, _currentLevelId);
+                _packsInfoMap[_currentPackKey].IsPackReplayed = false;
             }
 
             UpdatePackInfo(_currentPackKey);

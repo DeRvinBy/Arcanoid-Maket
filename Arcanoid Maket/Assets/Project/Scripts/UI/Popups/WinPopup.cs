@@ -2,7 +2,6 @@
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Packs;
-using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.Localization.UILocalization;
 using Project.Scripts.Utils.UI.Button;
@@ -26,7 +25,7 @@ namespace Project.Scripts.UI.Popups
         [SerializeField]
         private Slider _slider;
 
-        private bool _isSwitchPack;
+        private bool _isNeedChoosePack;
         
         public override void Initialize()
         {
@@ -52,18 +51,18 @@ namespace Project.Scripts.UI.Popups
             _packText.SetTranslationName(currentPack.GamePack.Key);
             _slider.maxValue = currentPack.GamePack.LevelCount + 1;
             _slider.value = currentPack.CurrentLevel;
-            _isSwitchPack = currentPack.IsSwitchToNextPack && !currentPack.IsLastPack;
+            _isNeedChoosePack = currentPack.IsPackReplayed || currentPack.IsLastPack;
         }
 
         private void OnContinueButtonPressed()
         {
-            if (_isSwitchPack)
+            if (_isNeedChoosePack)
             {
-                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
+                EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
             }
             else
             {
-                EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
+                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
             }
         }
     }
