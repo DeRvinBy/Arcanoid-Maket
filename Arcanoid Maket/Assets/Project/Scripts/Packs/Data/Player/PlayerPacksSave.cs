@@ -13,12 +13,12 @@ namespace Project.Scripts.Packs.Data.Player
             _loader = loader;
         }
         
-        public void SavePacksSave()
+        public void SavePacksToSave()
         {
             _loader.Save(_packsSaveContainer);
         }
         
-        public void LoadPacksSave(string startPackKey)
+        public void LoadPacksFromSave(string startPackKey)
         {
             _packsSaveContainer = _loader.Load();
             if (_packsSaveContainer == null)

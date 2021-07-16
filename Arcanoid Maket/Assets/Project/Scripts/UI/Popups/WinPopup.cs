@@ -1,5 +1,6 @@
 ﻿using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.PacksEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.UI.UIElements;
 using Project.Scripts.Utils.EventSystem;
@@ -11,7 +12,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.UI.Popups
 {
-    public class WinPopup : AbstractPopup, IPackChangedHandler, ILevelChangedHandler
+    public class WinPopup : AbstractPopup, IPackChangedHandler
     {
         [SerializeField]
         private Image _packImage;
@@ -25,6 +26,8 @@ namespace Project.Scripts.UI.Popups
         [SerializeField]
         private Slider _slider;
 
+        private bool _isSwitchPack;
+        
         public override void Initialize()
         {
             base.Initialize();
@@ -43,21 +46,25 @@ namespace Project.Scripts.UI.Popups
             _nextButton.Disable();
         }
 
-        public void OnPackChanged(Pack currentPack)
+        public void OnPackChanged(PackInfo currentPack)
         {
-            _packImage.sprite = currentPack.Icon;
-            _packText.SetTranslationName(currentPack.Key);
-            _slider.maxValue = currentPack.LevelCount + 1;
-        }
-
-        public void OnLevelChanged(int currentLevel)
-        {
-            _slider.value = currentLevel;
+            _packImage.sprite = currentPack.GamePack.Icon;
+            _packText.SetTranslationName(currentPack.GamePack.Key);
+            _slider.maxValue = currentPack.GamePack.LevelCount + 1;
+            _slider.value = currentPack.CurrentLevel;
+            _isSwitchPack = currentPack.IsSwitchToNextPack;
         }
 
         private void OnContinueButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
+            if (_isSwitchPack)
+            {
+                EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
+            }
+            else
+            {
+                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
+            }
         }
     }
 }

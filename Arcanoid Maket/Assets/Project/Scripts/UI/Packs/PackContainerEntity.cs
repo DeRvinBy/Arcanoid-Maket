@@ -36,8 +36,8 @@ namespace Project.Scripts.UI.Packs
                 () => EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnPackChoose(pack.Key)));
             _containerUI.SetButtonColor(pack.Color);
             _containerUI.SetPackIcon(pack.Icon);
-            _containerUI.SetPackName(pack.Key);
-            _containerUI.SetLevels(packInfo.CurrentLevelInPack, pack.LevelCount);
+            _containerUI.SetPackName(pack.Key); ;
+            _containerUI.SetLevels(packInfo.PackProgressLevel, pack.LevelCount);
         }
     }
 }

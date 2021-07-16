@@ -4,6 +4,9 @@
     {
         public Pack GamePack { get; set; }
         public bool IsOpen { get; set; }
-        public int CurrentLevelInPack { get; set; }
+        public bool IsComplete { get; set; }
+        public int CurrentLevel { get; set; }
+        public int PackProgressLevel{ get; set; }
+        public bool IsSwitchToNextPack { get; set; }
     }
 }
