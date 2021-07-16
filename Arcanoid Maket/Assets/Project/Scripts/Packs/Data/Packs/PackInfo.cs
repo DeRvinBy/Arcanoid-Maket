@@ -8,5 +8,6 @@
         public int CurrentLevel { get; set; }
         public int PackProgressLevel{ get; set; }
         public bool IsSwitchToNextPack { get; set; }
+        public bool IsLastPack { get; set; }
     }
 }
