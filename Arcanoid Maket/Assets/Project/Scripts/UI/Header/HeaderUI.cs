@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Project.Scripts.UI.Header
 {
-    public class HeaderUI : MonoBehaviour, IStartGameplayHandler, IEndGameplayHandler, ILevelChangedHandler, IPackChangedHandler
+    public class HeaderUI : MonoBehaviour, IStartGameplayHandler, IEndGameplayHandler, IPackChangedHandler
     {
         [SerializeField]
         private Image _packImage;
@@ -23,7 +23,6 @@ namespace Project.Scripts.UI.Header
 
         private void Awake()
         {
-            _pauseButton.Initialize();
             _pauseButton.OnButtonPressed += OnPauseButtonPressed;
         }
         
@@ -52,14 +51,10 @@ namespace Project.Scripts.UI.Header
             _pauseButton.Disable();
         }
 
-        public void OnLevelChanged(int currentLevel)
+        public void OnPackChanged(PackInfo currentPack)
         {
-            _levelText.SetValue(currentLevel.ToString());
-        }
-
-        public void OnPackChanged(Pack currentPack)
-        {
-            _packImage.sprite = currentPack.Icon;
+            _packImage.sprite = currentPack.GamePack.Icon;
+            _levelText.SetValue(currentPack.CurrentLevel.ToString());
         }
     }
 }

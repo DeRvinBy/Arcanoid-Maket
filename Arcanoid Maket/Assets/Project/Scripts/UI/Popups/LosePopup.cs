@@ -15,7 +15,6 @@ namespace Project.Scripts.UI.Popups
         public override void Initialize()
         {
             base.Initialize();
-            _restartButton.Initialize();
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
         }
 

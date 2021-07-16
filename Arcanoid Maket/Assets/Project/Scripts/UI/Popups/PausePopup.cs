@@ -22,10 +22,7 @@ namespace Project.Scripts.UI.Popups
         public override void Initialize()
         {
             base.Initialize();
-            _restartButton.Initialize();
-            _backButton.Initialize();
-            _continueButton.Initialize();
-            
+
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
             _backButton.OnButtonPressed += OnBackButtonPressed;
             _continueButton.OnButtonPressed += OnContinueButtonPressed;
@@ -53,7 +50,7 @@ namespace Project.Scripts.UI.Popups
 
         private void OnBackButtonPressed()
         {
-            print("chose pack");
+            EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnStartChoosePack());
         }
 
         private void OnContinueButtonPressed()

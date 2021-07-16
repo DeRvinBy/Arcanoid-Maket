@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs.Data.Packs
 {
-    [CreateAssetMenu(fileName = "New PacksContainer", menuName = "Packs Container")]
+    [CreateAssetMenu(fileName = "New PacksContainer", menuName = "Packs/Packs Container")]
     public class PacksContainer : ScriptableObject
     {
         [SerializeField]

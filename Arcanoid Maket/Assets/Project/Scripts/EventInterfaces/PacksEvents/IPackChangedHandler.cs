@@ -5,6 +5,6 @@ namespace Project.Scripts.EventInterfaces.PacksEvents
 {
     public interface IPackChangedHandler : IGlobalSubscriber
     {
-        void OnPackChanged(Pack currentPack);
+        void OnPackChanged(PackInfo currentPack);
     }
 }

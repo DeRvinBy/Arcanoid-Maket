@@ -33,7 +33,6 @@ namespace Project.Scripts.Utils.ObjectPool
                 for (int i = 0; i < creatorConfig.InitialCount; i++)
                 {
                     var instance = creator.Instantiate<PoolObject>();
-                    instance.transform.parent = parent;
                     container.PushToPool(instance);
                 }
                 
@@ -84,7 +83,7 @@ namespace Project.Scripts.Utils.ObjectPool
 
         private void SetParent(PoolObject go, Transform parent)
         {
-            go.transform.parent = parent;
+            go.transform.SetParent(parent);
         }
 
         public void ReturnObject<T>(T go) where T : PoolObject

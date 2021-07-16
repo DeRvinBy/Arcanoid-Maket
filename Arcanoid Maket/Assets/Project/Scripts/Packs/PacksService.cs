@@ -11,65 +11,103 @@ namespace Project.Scripts.Packs
     public class PacksService
     {
         private Dictionary<string, Pack> _packsMap;
+        private Dictionary<string, PackInfo> _packsInfoMap;
         private PlayerPacksSave _playerPacksSave;
-        private Pack _currentPack;
+        private string _currentPackKey;
         private int _currentLevelId;
 
         public void Initialize(PacksContainer packsContainer)
         {
             _packsMap = packsContainer.GetPacksMap();
             _playerPacksSave = new PlayerPacksSave(new PlayerPrefsLoader());
-            _playerPacksSave.LoadPacksSave(packsContainer.FirstPack.Key);
-        }
-        
-        public int GetCurrentLevel()
-        {
-            return _currentLevelId + 1;
-        }
-        
-        public TextAsset GetCurrentLevelFile()
-        {
-            return _currentPack.GetLevelFileById(_currentLevelId);
+            _playerPacksSave.LoadPacksFromSave(packsContainer.FirstPack.Key);
+            
+            _packsInfoMap = new Dictionary<string, PackInfo>();
+            foreach (var packKey in _packsMap.Keys)
+            {
+                var packInfo = new PackInfo();
+                _packsInfoMap.Add(packKey, packInfo);
+                UpdatePackInfo(packKey);
+            }
         }
 
-        public Pack GetCurrentPack()
+        private void UpdatePackInfo(string key)
         {
-            return _currentPack;
+            var packInfo = _packsInfoMap[key];
+            packInfo.GamePack = _packsMap[key];
+            
+            if (_playerPacksSave.IsPackExist(key))
+            {
+                var isComplete = _playerPacksSave.IsPackComplete(key);
+                var currentLevel = _playerPacksSave.GetCurrentLevelId(key);
+                var packsLevelCount = _packsMap[key].LevelCount;
+                packInfo.IsComplete = isComplete;
+                packInfo.CurrentLevel = currentLevel + 1;
+                packInfo.PackProgressLevel = isComplete ? packsLevelCount : currentLevel;
+                packInfo.IsSwitchToNextPack = currentLevel > packsLevelCount && !isComplete;
+                packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
+            }
+        }
+
+        public TextAsset GetCurrentLevelFile()
+        {
+            return _packsMap[_currentPackKey].GetLevelFileById(_currentLevelId);
+        }
+
+        public PackInfo GetCurrentPackInfo()
+        {
+            return _packsInfoMap[_currentPackKey];
+        }
+
+        public Dictionary<string, PackInfo> GetPacksInfo()
+        {
+            return _packsInfoMap;
         }
 
         public void StartPack(string packKey)
         {
-            _currentPack = _packsMap[packKey];
+            _currentPackKey = packKey;
             _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
         }
 
         public void CompleteLevel()
         {
             _currentLevelId++;
-            if (_currentLevelId >= _currentPack.LevelCount)
+            if (_currentLevelId >= _packsMap[_currentPackKey].LevelCount)
             {
                 _currentLevelId = 0;
-                _playerPacksSave.SetCurrentLevelId(_currentPack.Key, _currentLevelId);
-                _playerPacksSave.CompletePack(_currentPack.Key);
-                SetNextPack();
-                _playerPacksSave.AddOpenSavePack(_currentPack.Key);
+                _playerPacksSave.SetCurrentLevelId(_currentPackKey, _currentLevelId);
+                if (!_playerPacksSave.IsPackComplete(_currentPackKey))
+                {
+                    _playerPacksSave.CompletePack(_currentPackKey);
+                    UpdatePackInfo(_currentPackKey);
+                    SetNextPack();
+                    _playerPacksSave.AddOpenSavePack(_currentPackKey);
+                }
             }
             else
             {
-                _playerPacksSave.SetCurrentLevelId(_currentPack.Key, _currentLevelId);
+                _playerPacksSave.SetCurrentLevelId(_currentPackKey, _currentLevelId);
             }
+
+            UpdatePackInfo(_currentPackKey);
         }
         
         private void SetNextPack()
         {
             var keys = _packsMap.Keys.ToArray();
-            var currentKeyIndex = Array.IndexOf(keys, _currentPack.Key);
+            var currentKeyIndex = Array.IndexOf(keys, _currentPackKey);
             var currentKey = currentKeyIndex + 1;
             
             if (currentKey < keys.Length)
             {
-                _currentPack = _packsMap[keys[currentKey]];
+                _currentPackKey = keys[currentKey];
             }
+        }
+
+        public void SavePlayerPacks()
+        {
+            _playerPacksSave.SavePacksToSave();
         }
     }
 }

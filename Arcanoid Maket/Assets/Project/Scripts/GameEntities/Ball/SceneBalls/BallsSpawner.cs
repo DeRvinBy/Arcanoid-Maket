@@ -1,5 +1,4 @@
-﻿using Project.Scripts.EntitiesCreation.BallCreation;
-using Project.Scripts.Utils.ObjectPool;
+﻿using Project.Scripts.Utils.ObjectPool;
 using UnityEngine;
 
 namespace Project.Scripts.GameEntities.Ball.SceneBalls

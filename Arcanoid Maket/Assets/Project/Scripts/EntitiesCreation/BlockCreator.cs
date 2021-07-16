@@ -5,7 +5,7 @@ using Project.Scripts.Utils.ObjectPool.Abstract;
 using Project.Scripts.Utils.ObjectPool.Config;
 using UnityEngine;
 
-namespace Project.Scripts.EntitiesCreation.BlockCreation
+namespace Project.Scripts.EntitiesCreation
 {
     public class BlockCreator : PoolObjectCreator<BlockEntity, MainBlockSettings>
     {

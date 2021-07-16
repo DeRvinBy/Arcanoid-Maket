@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c435bf99bd2443c2b42012423927afd3, type: 3}
-  m_Name: TestPack
+  m_Name: Pack2
   m_EditorClassIdentifier: 
-  _key: test_pack
-  _icon: {fileID: -6456279491224675847, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
+  _key: dog_pack
+  _icon: {fileID: 1429365977012017853, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
+  _color: {r: 0.8773585, g: 0.84502006, b: 0.55869526, a: 1}
   _levels:
   - {fileID: 4900000, guid: 79624f7d6143ad6488133e22652ec3da, type: 3}
   - {fileID: 4900000, guid: d4dee23826ed7524db36719625e92789, type: 3}

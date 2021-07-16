@@ -1,4 +1,5 @@
-﻿using Project.Scripts.BehaviorControllers.Abstract;
+﻿using System;
+using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Level.LevelParser;
@@ -8,14 +9,19 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : EntityController, IPrepareGameplayHandler, ILevelCompleteHandler
+    public class PacksController : EntityController, IPrepareGameplayHandler
     {
         [SerializeField]
         private PacksContainer _packsContainer;
 
         private PacksService _service;
         private ILevelParser _parser;
-        
+
+        private void OnApplicationQuit()
+        {
+            _service.SavePlayerPacks();
+        }
+
         public override void Initialize()
         {
             _service = new PacksService();
@@ -23,7 +29,7 @@ namespace Project.Scripts.Packs
             _parser = new JsonParser();
             
             EventBus.Subscribe(this);
-            _service.StartPack("test_pack");
+            UpdatePacksInfo();
         }
         
         public void OnPrepareGame()
@@ -32,30 +38,37 @@ namespace Project.Scripts.Packs
             StartLevel();
         }
 
-        public void StartPack()
+        private void StartPack()
         {
-            var currentPack = _service.GetCurrentPack();
+            var currentPack = _service.GetCurrentPackInfo();
             
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
         }
 
-        public void StartLevel()
+        private void StartLevel()
         {
-            var levelId = _service.GetCurrentLevel();
-            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
             var levelFile = _service.GetCurrentLevelFile();
             var levelData = _parser.ParseLevelData(levelFile.text);
             EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelData));
         }
 
-        public void OnLevelComplete()
+        public void CompleteLevel()
         {
             _service.CompleteLevel();
             
-            var currentPack = _service.GetCurrentPack();
+            var currentPack = _service.GetCurrentPackInfo();
             EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
-            var levelId = _service.GetCurrentLevel();
-            EventBus.RaiseEvent<ILevelChangedHandler>(a => a.OnLevelChanged(levelId));
+        }
+
+        public void UpdatePacksInfo()
+        {
+            var packsInfo = _service.GetPacksInfo();
+            EventBus.RaiseEvent<IPacksInfoHandler>(a => a.OnPacksInfoUpdated(packsInfo));
+        }
+
+        public void SetCurrentPack(string packName)
+        {
+            _service.StartPack(packName);
         }
     }
 }
