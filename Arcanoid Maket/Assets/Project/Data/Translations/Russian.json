@@ -2,6 +2,7 @@
   "lose_text" : "Вы проиграли!",
   "pause_text" : "Пауза",
   "choose_pack_text" : "Выбор пака",
+  "play_button" : "Играть",
   "back_button" : "Выберите пак",
   "continue_button" : "Продолжить",
   "restart_button" : "Заново",

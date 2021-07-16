@@ -2,6 +2,7 @@
   "lose_text" : "You lose!",
   "pause_text" : "Pause",
   "choose_pack_text" : "Choosing pack",
+  "play_button" : "Play",
   "back_button" : "Choose Pack",
   "continue_button" : "Continue",
   "restart_button" : "Restart",

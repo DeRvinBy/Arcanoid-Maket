@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using Project.Scripts.Utils.Localization.Config;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ namespace Project.Scripts.Utils.Localization.Data
         {
             if (PlayerPrefs.HasKey(LanguageKey))
             {
+                Debug.Log("Load Russian");
                 var language = PlayerPrefs.GetString(LanguageKey);
                 Enum.TryParse(language, out _currentLanguage);
                 if (_config.IsLanguageSupported(_currentLanguage))
@@ -36,7 +38,7 @@ namespace Project.Scripts.Utils.Localization.Data
                     return;
                 }
             }
-            
+            Debug.Log("Load English");
             _currentLanguage = SystemLanguage.English;
         }
 
@@ -65,6 +67,11 @@ namespace Project.Scripts.Utils.Localization.Data
             return translation;
         }
 
+        public SystemLanguage GetCurrentLanguage()
+        {
+            return _currentLanguage;
+        }
+        
         public void SetLanguage(SystemLanguage language)
         {
             if (_config.IsLanguageSupported(language))

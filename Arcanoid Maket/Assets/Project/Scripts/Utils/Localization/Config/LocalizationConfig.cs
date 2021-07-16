@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.Localization.Config
@@ -25,6 +26,11 @@ namespace Project.Scripts.Utils.Localization.Config
             return _translationPathMap[language];
         }
 
+        public List<SystemLanguage> GetSupportedLanguages()
+        {
+            return _translationPathMap.Keys.ToList();
+        }
+        
         public bool IsLanguageSupported(SystemLanguage language)
         {
             return _translationPathMap.ContainsKey(language);
