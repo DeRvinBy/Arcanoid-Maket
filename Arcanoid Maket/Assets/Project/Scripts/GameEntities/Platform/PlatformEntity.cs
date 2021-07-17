@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using Project.Scripts.BehaviorControllers.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.BallEvents;
 using Project.Scripts.EventInterfaces.GameEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
@@ -40,8 +39,7 @@ namespace Project.Scripts.GameEntities.Platform
 
         private void SpawnBall()
         {
-            EventBus.RaiseEvent<IBallSceneHandler>(a => 
-                a.OnSpawnBallAtPosition(_spawnPlatformTransform.position, _spawnPlatformTransform));
+            EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnSpawnBallAtPlatform(_spawnPlatformTransform));
         }
 
         public void OnContinueGame()

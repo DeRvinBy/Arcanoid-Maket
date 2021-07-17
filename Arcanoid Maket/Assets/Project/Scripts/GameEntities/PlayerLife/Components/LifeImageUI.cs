@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Project.Scripts.GameEntities.Player.Components
+namespace Project.Scripts.GameEntities.PlayerLife.Components
 {
     public class LifeImageUI : MonoBehaviour
     {

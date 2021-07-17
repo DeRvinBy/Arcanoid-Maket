@@ -1,4 +1,4 @@
-﻿using Project.Scripts.GameEntities.Player.Components;
+﻿using Project.Scripts.GameEntities.PlayerLife.Components;
 using UnityEngine;
 
 namespace Project.Scripts.GameSettings.PlayerSettings

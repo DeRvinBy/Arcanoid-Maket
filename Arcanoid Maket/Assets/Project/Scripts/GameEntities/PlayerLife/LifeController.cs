@@ -1,12 +1,11 @@
 ﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
-using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PlayerSettings;
 using Project.Scripts.Utils.EventSystem;
 using UnityEngine;
 using IStartGameplayHandler = Project.Scripts.EventInterfaces.StatesEvents.IStartGameplayHandler;
 
-namespace Project.Scripts.GameEntities.Player
+namespace Project.Scripts.GameEntities.PlayerLife
 {
     public class LifeController : EntityController, IStartGameplayHandler, IPlayerBallsEndedHandler
     {

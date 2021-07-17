@@ -1,4 +1,5 @@
-﻿using Project.Scripts.GameSettings.GameBallSettings;
+﻿using Project.Scripts.GameEntities.Ball.Behaviour;
+using Project.Scripts.GameSettings.GameBallSettings;
 using Project.Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using Project.Scripts.EventInterfaces.BlockEvents;
-using Project.Scripts.GameEntities.Blocks.Components;
+using Project.Scripts.GameEntities.Blocks.Behaviour;
 using Project.Scripts.GameEntities.Blocks.Enumerations;
 using Project.Scripts.GameSettings.GameBlockSettings;
 using Project.Scripts.Utils.EventSystem;
@@ -45,8 +45,6 @@ namespace Project.Scripts.GameEntities.Blocks
         {
             base.Setup();
             _view.OnBlockDamaged += ReduceLifeCount;
-
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockCreated(this));
         }
 
         public override void Reset()
@@ -59,10 +57,11 @@ namespace Project.Scripts.GameEntities.Blocks
         {
             _lifeCount -= reducingCount;
             _cracks.UpdateBlockCracks(_lifeCount);
-            if (_lifeCount > 0) return;
-            
-            StartCoroutine(DestroyBlock());
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());
+            if (_lifeCount <= 0)
+            {
+                StartCoroutine(DestroyBlock());
+                EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());    
+            }
         }
 
         private IEnumerator DestroyBlock()
@@ -71,14 +70,7 @@ namespace Project.Scripts.GameEntities.Blocks
             _cracks.DisableBlockCracks();
             _particles.PlayParticle();
             yield return new WaitWhile(() => _particles.IsParticlesPlaying);
-            PoolsManager.Instance.ReturnObject(this);
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockEndDestroyed(this));
-        }
-
-        public void DestroyBlockImmediate()
-        {
-            StopAllCoroutines();
-            PoolsManager.Instance.ReturnObject(this);
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Project.Scripts.EventInterfaces.BallEvents
 {
     public interface IBallSceneHandler : IGlobalSubscriber
     {
-        void OnSpawnBallAtPosition(Vector3 spawnPosition, Transform spawnTransform);
-        void OnBallDestroyed(BallEntity ball);
+        void OnSpawnBallAtPlatform(Transform platformTransform);
+        void OnDestroyBall(BallEntity ball);
     }
 }

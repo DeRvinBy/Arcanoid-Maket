@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.GameEntities.Player.Components;
+using Project.Scripts.GameEntities.PlayerLife.Components;
 using Project.Scripts.GameSettings.PlayerSettings;
 using UnityEngine;
 
-namespace Project.Scripts.GameEntities.Player
+namespace Project.Scripts.GameEntities.PlayerLife
 {
     public class LifeUI : MonoBehaviour
     {
