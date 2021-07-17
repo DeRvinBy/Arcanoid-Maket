@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Project.Scripts.BehaviorControllers.Abstract;
+using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.UI.Popups;
 using Project.Scripts.Utils.EventSystem;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class PauseController : GameController, IPauseGameHandler
+    public class PauseController : GameController, IPauseGameHandler, IPackButtonPressedHandler
     {
         private PopupsController _popupsController;
         
@@ -35,6 +36,11 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         {
             yield return _popupsController.HideAllActivePopups();
             Time.timeScale = 1;
+        }
+
+        public void OnPackButtonPressed()
+        {
+            OnContinue();
         }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs.Data.Packs
 {
-    [CreateAssetMenu(fileName = "New PacksContainer", menuName = "Packs/Packs Container")]
-    public class PacksContainer : ScriptableObject
+    [CreateAssetMenu(fileName = "New PacksConfig", menuName = "Packs/Packs Config")]
+    public class PacksConfig : ScriptableObject
     {
         [SerializeField]
         private Pack[] _packs;

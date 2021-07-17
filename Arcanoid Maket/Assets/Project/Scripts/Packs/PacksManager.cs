@@ -1,6 +1,4 @@
-﻿using Project.Scripts.BehaviorControllers.Abstract;
-using Project.Scripts.EventInterfaces.PacksEvents;
-using Project.Scripts.EventInterfaces.StatesEvents;
+﻿using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.Packs.Data.Level.LevelParser;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
@@ -9,10 +7,10 @@ using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : Singleton<PacksController>, IPrepareGameplayHandler
+    public class PacksManager : Singleton<PacksManager>
     {
-        [SerializeField]
-        private PacksContainer _packsContainer;
+        private const string PacksConfigPath = "Data/packs";
+        private const string DebugPack = "test_pack";
 
         private PacksService _service;
         private ILevelParser _parser;
@@ -26,15 +24,16 @@ namespace Project.Scripts.Packs
         {
             base.Initialize();
             
+            var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
-            _service.Initialize(_packsContainer);
+            _service.Initialize(config);
+            _service.StartPack(DebugPack);
             _parser = new JsonParser();
             
-            EventBus.Subscribe(this);
             UpdatePacksInfo();
         }
 
-        public void OnPrepareGame()
+        public void PreparePack()
         {
             StartPack();
             StartLevel();

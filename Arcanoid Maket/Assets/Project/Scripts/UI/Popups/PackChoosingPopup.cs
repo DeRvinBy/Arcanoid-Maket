@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Project.Scripts.BehaviorControllers.GameSceneControllers;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Packs;

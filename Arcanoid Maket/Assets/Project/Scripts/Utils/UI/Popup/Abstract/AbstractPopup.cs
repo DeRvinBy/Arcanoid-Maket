@@ -1,9 +1,10 @@
 ﻿using System.Collections;
+using Project.Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace Project.Scripts.Utils.UI.Popup.Abstract
 {
-    public abstract class AbstractPopup : MonoBehaviour
+    public abstract class AbstractPopup : PoolObject
     {
         [SerializeField]
         private AbstractPopupAnimation _popupAnimation;

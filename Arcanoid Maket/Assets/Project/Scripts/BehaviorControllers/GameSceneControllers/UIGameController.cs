@@ -27,7 +27,7 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         private IEnumerator WinGame()
         {
             yield return _popupsController.ShowPopup<WinPopup>();
-            PacksController.Instance.CompleteLevel();
+            PacksManager.Instance.CompleteLevel();
         }
 
         public void OnLoseGame()

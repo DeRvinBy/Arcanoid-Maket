@@ -16,11 +16,11 @@ namespace Project.Scripts.Packs
         private string _currentPackKey;
         private int _currentLevelId;
 
-        public void Initialize(PacksContainer packsContainer)
+        public void Initialize(PacksConfig packsConfig)
         {
-            _packsMap = packsContainer.GetPacksMap();
+            _packsMap = packsConfig.GetPacksMap();
             _playerPacksSave = new PlayerPacksSave(new PlayerPrefsLoader());
-            _playerPacksSave.LoadPacksFromSave(packsContainer.FirstPack.Key);
+            _playerPacksSave.LoadPacksFromSave(packsConfig.FirstPack.Key);
             
             _packsInfoMap = new Dictionary<string, PackInfo>();
             foreach (var packKey in _packsMap.Keys)

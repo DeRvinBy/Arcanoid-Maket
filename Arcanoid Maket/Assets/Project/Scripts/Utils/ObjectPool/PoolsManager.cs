@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Project.Scripts.Utils.Extensions;
 using Project.Scripts.Utils.ObjectPool.Abstract;
 using Project.Scripts.Utils.ObjectPool.Config;
 using Project.Scripts.Utils.Singleton;
@@ -25,9 +26,9 @@ namespace Project.Scripts.Utils.ObjectPool
             
             foreach (var creatorConfig in config.CreatorConfigs)
             {
-                var creator = creatorConfig.Creator;
-                var parent = Instantiate(creator, transform).transform;
-                creator.Initialize(creatorConfig, parent);
+                var creatorPrefab = creatorConfig.Creator;
+                var creator = Instantiate(creatorPrefab, transform);
+                creator.Initialize(creatorConfig, creator.transform);
                 var container = new PoolContainer(creator);
 
                 for (int i = 0; i < creatorConfig.InitialCount; i++)
@@ -42,35 +43,31 @@ namespace Project.Scripts.Utils.ObjectPool
 
         public T GetObject<T>(Vector3 position) where T : PoolObject
         {
-            return GenerateObject<T>(position, Quaternion.identity, Vector3.one);
+            return GenerateObject<T>(position, Quaternion.identity, Vector3.one, null);
         }
 
         public T GetObject<T>(Vector3 position, Quaternion rotation) where T : PoolObject
         {
-            return GenerateObject<T>(position, rotation, Vector3.one);
+            return GenerateObject<T>(position, rotation, Vector3.one, null);
         }
 
         public T GetObject<T>(Vector3 position, Quaternion rotation, Vector3 scale) where T : PoolObject
         {
-            return GenerateObject<T>(position, rotation, scale);
+            return GenerateObject<T>(position, rotation, scale, null);
         }
 
         public T GetObject<T>(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent)
             where T : PoolObject
         {
-            var go = GenerateObject<T>(position, rotation, scale);
-            SetParent(go, parent);
-            return go;
+            return GenerateObject<T>(position, rotation, scale, parent);
         }
 
         public T GetObject<T>(Vector3 position, Transform parent) where T : PoolObject
         {
-            var go = GenerateObject<T>(position, Quaternion.identity, Vector3.one);
-            SetParent(go, parent);
-            return go;
+            return GenerateObject<T>(position, Quaternion.identity, Vector3.one, parent);
         }
         
-        private T GenerateObject<T>(Vector3 position, Quaternion rotation, Vector3 scale) where T : PoolObject
+        private T GenerateObject<T>(Vector3 position, Quaternion rotation, Vector3 scale, Transform parent) where T : PoolObject
         {
             var type = typeof(T);
             var go = _poolsMap[type].GetFromPool();
@@ -78,6 +75,7 @@ namespace Project.Scripts.Utils.ObjectPool
             goTransform.position = position;
             goTransform.rotation = rotation;
             goTransform.localScale = scale;
+            SetParent(go, parent);
             return go as T;
         }
 
@@ -89,6 +87,11 @@ namespace Project.Scripts.Utils.ObjectPool
         public void ReturnObject<T>(T go) where T : PoolObject
         {
             var type = typeof(T);
+            _poolsMap[type].PushToPool(go);
+        }
+        
+        public void ReturnObject<T>(Type type, T go) where T : PoolObject
+        {
             _poolsMap[type].PushToPool(go);
         }
     }

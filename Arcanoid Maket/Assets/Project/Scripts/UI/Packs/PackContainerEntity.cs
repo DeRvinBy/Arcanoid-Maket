@@ -1,4 +1,5 @@
-﻿using Project.Scripts.EventInterfaces.StatesEvents;
+﻿using Project.Scripts.EventInterfaces.PacksEvents;
+using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.GameSettings.PackContainerSettings;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
@@ -32,12 +33,17 @@ namespace Project.Scripts.UI.Packs
         {
             var pack = packInfo.GamePack;
             _containerUI.SetButtonInteractable(true);
-            _containerUI.SetButtonCallback(
-                () => EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnPackChoose(pack.Key)));
+            _containerUI.SetButtonCallback(() => OnPackButtonPressed(pack.Key));
             _containerUI.SetButtonColor(pack.Color);
             _containerUI.SetPackIcon(pack.Icon);
             _containerUI.SetPackName(pack.Key); ;
             _containerUI.SetLevels(packInfo.PackProgressLevel, pack.LevelCount);
+        }
+
+        private void OnPackButtonPressed(string packKey)
+        {
+            EventBus.RaiseEvent<IPacksUIHandler>(a => a.OnPackChoose(packKey));
+            EventBus.RaiseEvent<IPackButtonPressedHandler>(a => a.OnPackButtonPressed());
         }
     }
 }

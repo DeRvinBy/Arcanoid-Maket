@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.GameEvents;
+using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
+using Project.Scripts.Packs;
 using Project.Scripts.Utils.EventSystem;
 using Project.Scripts.Utils.UI.Popup;
 
 namespace Project.Scripts.BehaviorControllers.GameSceneControllers
 {
-    public class GameplayController : GameController, IStartGameHandler, IEndGameHandler
+    public class GameplayController : GameController, IStartGameHandler, IEndGameHandler, IPackButtonPressedHandler
     {
         private PopupsController _popupsController;
         
@@ -19,6 +21,11 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         }
         
         public void OnStartGameProcess()
+        {
+            StartGame();
+        }
+        
+        public void OnPackButtonPressed()
         {
             StartGame();
         }
@@ -36,6 +43,7 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         private IEnumerator PrepareAndStartGame()
         {
             EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
+            PacksManager.Instance.PreparePack();
             yield return _popupsController.HideAllActivePopups();
             EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
         }
