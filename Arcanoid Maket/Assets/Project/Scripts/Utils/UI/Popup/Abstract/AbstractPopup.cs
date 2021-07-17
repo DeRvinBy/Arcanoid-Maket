@@ -24,7 +24,7 @@ namespace Project.Scripts.Utils.UI.Popup.Abstract
             {
                 yield return _popupAnimation.PlayShowAnimation();
             }
-
+            
             StartPopup();
         }
 

@@ -1,15 +1,15 @@
-﻿using System;
-using Project.Scripts.BehaviorControllers.Abstract;
+﻿using Project.Scripts.BehaviorControllers.Abstract;
 using Project.Scripts.EventInterfaces.PacksEvents;
 using Project.Scripts.EventInterfaces.StatesEvents;
 using Project.Scripts.Packs.Data.Level.LevelParser;
 using Project.Scripts.Packs.Data.Packs;
 using Project.Scripts.Utils.EventSystem;
+using Project.Scripts.Utils.Singleton;
 using UnityEngine;
 
 namespace Project.Scripts.Packs
 {
-    public class PacksController : EntityController, IPrepareGameplayHandler
+    public class PacksController : Singleton<PacksController>, IPrepareGameplayHandler
     {
         [SerializeField]
         private PacksContainer _packsContainer;
@@ -22,8 +22,10 @@ namespace Project.Scripts.Packs
             _service.SavePlayerPacks();
         }
 
-        public override void Initialize()
+        protected override void Initialize()
         {
+            base.Initialize();
+            
             _service = new PacksService();
             _service.Initialize(_packsContainer);
             _parser = new JsonParser();
@@ -31,7 +33,7 @@ namespace Project.Scripts.Packs
             EventBus.Subscribe(this);
             UpdatePacksInfo();
         }
-        
+
         public void OnPrepareGame()
         {
             StartPack();

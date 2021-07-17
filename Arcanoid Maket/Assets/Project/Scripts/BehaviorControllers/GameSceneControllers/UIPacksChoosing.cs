@@ -15,26 +15,24 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         private string _debugPack = "test_pack";
         
         private PopupsController _popupsController;
-        private PacksController _packsController;
-        
+
         public override void Initialize(ControllersManager controllersManager)
         {
             _popupsController = controllersManager.GetEntityController<PopupsController>();
-            _packsController = controllersManager.GetEntityController<PacksController>();
-            _packsController.SetCurrentPack(_debugPack);
+            PacksController.Instance.SetCurrentPack(_debugPack);
             
             EventBus.Subscribe(this);
         }
         
         public void OnStartChoosePack()
         {
-            _packsController.UpdatePacksInfo();
+            PacksController.Instance.UpdatePacksInfo();
             StartCoroutine(_popupsController.ShowPopup<PackChoosingPopup>());
         }
 
         public void OnPackChoose(string packKey)
         {
-            _packsController.SetCurrentPack(packKey);
+            PacksController.Instance.SetCurrentPack(packKey);
             EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }

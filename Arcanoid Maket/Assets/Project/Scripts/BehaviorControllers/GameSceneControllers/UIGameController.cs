@@ -11,12 +11,10 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
     public class UIGameController : GameController, IEndGameHandler
     {
         private PopupsController _popupsController;
-        private PacksController _packsController;
 
         public override void Initialize(ControllersManager controllersManager)
         {
             _popupsController = controllersManager.GetEntityController<PopupsController>();
-            _packsController = controllersManager.GetEntityController<PacksController>();
 
             EventBus.Subscribe(this);
         }
@@ -29,7 +27,7 @@ namespace Project.Scripts.BehaviorControllers.GameSceneControllers
         private IEnumerator WinGame()
         {
             yield return _popupsController.ShowPopup<WinPopup>();
-            _packsController.CompleteLevel();
+            PacksController.Instance.CompleteLevel();
         }
 
         public void OnLoseGame()
