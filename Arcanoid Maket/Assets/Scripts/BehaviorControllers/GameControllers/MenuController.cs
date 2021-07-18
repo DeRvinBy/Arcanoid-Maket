@@ -1,6 +1,8 @@
 ﻿using Scripts.BehaviorControllers.Abstract;
 using Scripts.BehaviorControllers.EntitiesControllers;
 using Scripts.EventInterfaces.PacksEvents;
+using Scripts.EventInterfaces.StatesEvents;
+using Scripts.GamePacks;
 using Scripts.UI.Popups;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
@@ -8,7 +10,7 @@ using UnityEngine;
 
 namespace Scripts.BehaviorControllers.GameControllers
 {
-    public class MenuController : GameController, IPackButtonPressedHandler
+    public class MenuController : GameController, IPackButtonPressedHandler, IStartGameplayHandler
     {
         [SerializeField]
         private int _gameSceneID = 1;
@@ -35,6 +37,19 @@ namespace Scripts.BehaviorControllers.GameControllers
         {
             _popupsController = controllersManager.GetEntityController<PopupsController>();
             _scenesController = controllersManager.GetEntityController<ScenesController>();
+        }
+        
+        public void OnStartGame()
+        {
+            var isSaveExist = PacksManager.Instance.IsSaveExist();
+            if (isSaveExist)
+            {
+                EventBus.RaiseEvent<IPacksChoosingHandler>(a => a.OnStartChoosePack());
+            }
+            else
+            {
+                StartGameScene();
+            }
         }
         
         public void OnPackButtonPressed()

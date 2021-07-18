@@ -15,11 +15,14 @@ namespace Scripts.GamePacks.Data
         private PlayerPacksSave _playerPacksSave;
         private string _currentPackKey;
         private int _currentLevelId;
+        private bool _isSaveExist;
 
         public void Initialize(PacksConfig packsConfig)
         {
             _packsMap = packsConfig.GetPacksMap();
-            _playerPacksSave = new PlayerPacksSave(new PlayerPrefsLoader());
+            var loader = new PlayerPrefsLoader();
+            _isSaveExist = loader.IsSaveExist();
+            _playerPacksSave = new PlayerPacksSave(loader);
             _playerPacksSave.LoadPacksFromSave(packsConfig.FirstPack.Key);
             
             _packsInfoMap = new Dictionary<string, PackInfo>();
@@ -29,6 +32,11 @@ namespace Scripts.GamePacks.Data
                 _packsInfoMap.Add(packKey, packInfo);
                 UpdatePackInfo(packKey);
             }
+        }
+
+        public bool IsSaveExit()
+        {
+            return _isSaveExist;
         }
 
         private void UpdatePackInfo(string key)

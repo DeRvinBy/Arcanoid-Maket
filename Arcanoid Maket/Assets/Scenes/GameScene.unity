@@ -243,7 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0861f8cabceb4b958c373fe3fa3a160b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
   _startLifeCount: 3
 --- !u!1 &200949510
 GameObject:
@@ -2360,6 +2359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0645c8567a6e42aeb488fc150a977419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ballParent: {fileID: 603372305}
 --- !u!1 &1936782564
 GameObject:
   m_ObjectHideFlags: 0

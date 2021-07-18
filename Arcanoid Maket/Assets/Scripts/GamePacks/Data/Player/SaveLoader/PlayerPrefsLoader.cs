@@ -7,6 +7,11 @@ namespace Scripts.GamePacks.Data.Player.SaveLoader
     {
         private const string SaveKey = "PacksSaveJSON";
 
+        public bool IsSaveExist()
+        {
+            return PlayerPrefs.HasKey(SaveKey);
+        }
+
         public PacksSaveContainer Load()
         {
             if (!PlayerPrefs.HasKey(SaveKey)) return null;

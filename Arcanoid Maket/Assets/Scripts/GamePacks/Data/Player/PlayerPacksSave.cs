@@ -20,17 +20,20 @@ namespace Scripts.GamePacks.Data.Player
         
         public void LoadPacksFromSave(string startPackKey)
         {
-            _packsSaveContainer = _loader.Load();
-            if (_packsSaveContainer == null)
+            if (_loader.IsSaveExist())
             {
-                CreateDefaultSave(startPackKey);
+                _packsSaveContainer = _loader.Load();
+            }
+            else
+            {
+                CreateDefaultSave(startPackKey);             
             }
         }
 
         private void CreateDefaultSave(string startPackKey)
         {
             _packsSaveContainer = new PacksSaveContainer {Packs = new Dictionary<string, PackSaveItem>()};
-            AddOpenSavePack(startPackKey);
+            AddOpenSavePack(startPackKey); 
         }
 
         public void AddOpenSavePack(string key)

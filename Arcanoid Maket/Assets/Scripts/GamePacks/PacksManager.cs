@@ -31,6 +31,11 @@ namespace Scripts.GamePacks
             
             UpdatePacksInfo();
         }
+
+        public bool IsSaveExist()
+        {
+            return _service.IsSaveExit();
+        }
         
         public void UpdatePacksInfo()
         {

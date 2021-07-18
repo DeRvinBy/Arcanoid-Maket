@@ -44,7 +44,7 @@ namespace Scripts.UI.Popups
 
         private void OnPlayButtonPressed()
         {
-            EventBus.RaiseEvent<IPacksChoosingHandler>(a => a.OnStartChoosePack());
+            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
         }
     }
 }
