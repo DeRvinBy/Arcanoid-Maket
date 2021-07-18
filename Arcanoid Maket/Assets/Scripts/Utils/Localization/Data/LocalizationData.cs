@@ -12,14 +12,14 @@ namespace Scripts.Utils.Localization.Data
         
         private LocalizationParser _parser;
         private LocalizationConfig _config;
-        private Dictionary<SystemLanguage, Dictionary<string, string>> _translationsMap;
+        private Dictionary<string, string> _translations;
         private SystemLanguage _currentLanguage;
 
         public void Initialize(LocalizationConfig config)
         {
             _config = config;
             _parser = new LocalizationParser();
-            _translationsMap = new Dictionary<SystemLanguage, Dictionary<string, string>>();
+            _translations = new Dictionary<string, string>();
             _config.CreateTranslationPathMap();
             LoadUserLanguage();
             LoadTranslations();
@@ -41,10 +41,8 @@ namespace Scripts.Utils.Localization.Data
 
         private void LoadTranslations()
         {
-            if (_translationsMap.ContainsKey(_currentLanguage)) return;
-            
             var jsonPath = _config.GetTranslationFile(_currentLanguage);
-            _translationsMap[_currentLanguage] = _parser.GetTranslationsFromJSON(jsonPath);
+            _translations = _parser.GetTranslationsFromJSON(jsonPath);
         }
 
         public void SaveUserLanguage()
@@ -54,11 +52,10 @@ namespace Scripts.Utils.Localization.Data
 
         public string GetTranslation(string itemName)
         {
-            var translations = _translationsMap[_currentLanguage];
             var translation = MissingTranslation;
-            if (translations.ContainsKey(itemName))
+            if (_translations.ContainsKey(itemName))
             {
-                translation = translations[itemName];
+                translation = _translations[itemName];
             }
 
             return translation;
