@@ -9,7 +9,8 @@ namespace Scripts.GameComponents.Balls
     {
         private readonly Vector2 _ballDirectionUp = Vector2.up;
         private BallEntity _currentBall;
-
+        private Transform _parentOfPushedBall;
+        
         public BallPlatformSpawn()
         {
             EventBus.Subscribe(this);
@@ -18,6 +19,11 @@ namespace Scripts.GameComponents.Balls
         ~BallPlatformSpawn()
         {
             EventBus.Unsubscribe(this);
+        }
+
+        public void SetParentForPushingBall(Transform parent)
+        {
+            _parentOfPushedBall = parent;
         }
         
         public void SetBallToPlatform(BallEntity ball, Transform platformTransform)
@@ -31,7 +37,7 @@ namespace Scripts.GameComponents.Balls
             if (_currentBall == null) return;
             
             _currentBall.MoveBallInDirection(_ballDirectionUp);
-            _currentBall.transform.SetParent(null);
+            _currentBall.transform.SetParent(_parentOfPushedBall);
             _currentBall = null;
         }
     }

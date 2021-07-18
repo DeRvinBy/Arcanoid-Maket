@@ -12,6 +12,9 @@ namespace Scripts.BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
     public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler, IPrepareGameplayHandler
     {
+        [SerializeField]
+        private Transform _ballParent;
+    
         private BallsSpawner _spawner;
         private BallPlatformSpawn _platformSpawn;
         private List<BallEntity> _ballOnScene;
@@ -30,6 +33,7 @@ namespace Scripts.BehaviorControllers.EntitiesControllers.EntitiesManagers
         {
             _spawner = new BallsSpawner();
             _platformSpawn = new BallPlatformSpawn();
+            _platformSpawn.SetParentForPushingBall(_ballParent);
             _ballOnScene = new List<BallEntity>();
         }
 
