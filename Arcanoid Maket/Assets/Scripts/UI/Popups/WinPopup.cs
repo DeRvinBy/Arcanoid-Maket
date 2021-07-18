@@ -1,0 +1,67 @@
+﻿using Scripts.EventInterfaces.GameEvents;
+using Scripts.EventInterfaces.PacksEvents;
+using Scripts.EventInterfaces.StatesEvents;
+using Scripts.GamePacks.Data.Packs;
+using Scripts.UI.Packs;
+using Scripts.Utils.EventSystem;
+using Scripts.Utils.UI.Button;
+using Scripts.Utils.UI.Popup.Abstract;
+using UnityEngine;
+
+namespace Scripts.UI.Popups
+{
+    public class WinPopup : AbstractPopup, IPackChangedHandler
+    {
+        [SerializeField]
+        private WinPopupPackUI _popupPackUI;
+        
+        [SerializeField]
+        private EventButton _nextButton;
+        
+        private bool _isNeedChoosePack;
+
+        private void OnEnable()
+        {
+            EventBus.Subscribe(this);
+        }
+
+        private void OnDisable()
+        {
+            EventBus.Unsubscribe(this);
+        }
+
+        protected override void StartPopup()
+        {
+            _nextButton.Enable();
+            _nextButton.OnButtonPressed += OnContinueButtonPressed;
+        }
+
+        protected override void ResetPopup()
+        {
+            _nextButton.Disable();
+            _nextButton.OnButtonPressed -= OnContinueButtonPressed;
+        }
+
+        public void OnPackChanged(PackInfo currentPack)
+        {
+            _popupPackUI.SetPackImage(currentPack.GamePack.Icon);
+            _popupPackUI.SetPackName(currentPack.GamePack.Key);
+            var maxValue = currentPack.GamePack.LevelCount + 1;
+            var value = currentPack.CurrentLevel;
+            _popupPackUI.UpdateSlider(value, maxValue);
+            _isNeedChoosePack = currentPack.IsPackReplayed || currentPack.IsLastPack;
+        }
+
+        private void OnContinueButtonPressed()
+        {
+            if (_isNeedChoosePack)
+            {
+                EventBus.RaiseEvent<IPacksChoosingHandler>(a => a.OnStartChoosePack());
+            }
+            else
+            {
+                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
+            }
+        }
+    }
+}
