@@ -46,16 +46,17 @@ namespace Scripts.GameComponents.Platform.Behaviour
             var scale = _transform.localScale;
             scale.x = _properties.Size;
             _transform.localScale = scale;
+            _transform.position = _initialPosition;
 
             _isMove = true;
         }
 
-        public void ResetPlatform(Action callback)
+        public void ResetPlatformWithCallback(Action callback)
         {
             StartCoroutine(ResetPlatformPosition(callback));
         }
         
-        public void DisablePlatform()
+        public void ResetPlatform()
         {
             StartCoroutine(ResetPlatformPosition(() => _isMove = false));
         }

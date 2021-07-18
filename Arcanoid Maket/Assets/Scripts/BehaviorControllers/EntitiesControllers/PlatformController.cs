@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace Scripts.BehaviorControllers.EntitiesControllers
 {
-    public class PlatformController : EntityController, IStartGameplayHandler, IEndGameplayHandler, IContinueGameHandler
+    public class PlatformController : EntityController, IPrepareGameplayHandler, IStartGameplayHandler, IEndGameplayHandler, IContinueGameHandler
     {
         [SerializeField]
         private PlatformSettings _settings;
@@ -39,10 +39,14 @@ namespace Scripts.BehaviorControllers.EntitiesControllers
             _behaviour.Initialize(_properties);
         }
         
-        public void OnStartGame()
+        public void OnPrepareGame()
         {
             _properties.SetupProperties(_settings);
             _behaviour.SetupPlatform();
+        }
+        
+        public void OnStartGame()
+        {
             SpawnBall();
         }
 
@@ -53,12 +57,12 @@ namespace Scripts.BehaviorControllers.EntitiesControllers
 
         public void OnContinueGame()
         {
-            _behaviour.ResetPlatform(SpawnBall);
+            _behaviour.ResetPlatformWithCallback(SpawnBall);
         }
 
         public void OnEndGame()
         {
-            _behaviour.DisablePlatform();
+            _behaviour.ResetPlatform();
         }
     }
 }

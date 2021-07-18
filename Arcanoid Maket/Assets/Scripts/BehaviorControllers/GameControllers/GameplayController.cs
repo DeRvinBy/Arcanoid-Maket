@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Scripts.BehaviorControllers.Abstract;
 using Scripts.EventInterfaces.GameEvents;
+using Scripts.EventInterfaces.Input;
 using Scripts.EventInterfaces.PacksEvents;
 using Scripts.EventInterfaces.StatesEvents;
 using Scripts.GamePacks;
@@ -34,6 +35,7 @@ namespace Scripts.BehaviorControllers.GameControllers
             PacksManager.Instance.PreparePack();
             yield return _popupsController.HideAllActivePopups();
             EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
         }
         
         private void OnDisable()
@@ -69,6 +71,7 @@ namespace Scripts.BehaviorControllers.GameControllers
         private void EndGame()
         {
             EventBus.RaiseEvent<IEndGameplayHandler>(a => a.OnEndGame());
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnDisableInput());
         }
     }
 }

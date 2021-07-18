@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Scripts.BehaviorControllers.Abstract;
+using Scripts.EventInterfaces.Input;
 using Scripts.EventInterfaces.PacksEvents;
 using Scripts.EventInterfaces.StatesEvents;
 using Scripts.UI.Popups;
@@ -31,6 +32,7 @@ namespace Scripts.BehaviorControllers.GameControllers
         public void OnPause()
         {
             Time.timeScale = 0;
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnDisableInput());
             StartCoroutine(_popupsController.ShowPopup<PausePopup>());
         }
         
@@ -47,6 +49,7 @@ namespace Scripts.BehaviorControllers.GameControllers
         private IEnumerator ContinueGame()
         {
             yield return _popupsController.HideAllActivePopups();
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
             Time.timeScale = 1;
         }
     }
