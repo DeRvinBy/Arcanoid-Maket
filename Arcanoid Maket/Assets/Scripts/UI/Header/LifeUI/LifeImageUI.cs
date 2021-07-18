@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Scripts.Utils.ObjectPool.Abstract;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Scripts.UI.Header.LifeUI
 {
-    public class LifeImageUI : MonoBehaviour
+    public class LifeImageUI : PoolObject
     {
         [SerializeField]
         private Image _icon;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Scripts.GameSettings.PlayerSettings;
+using Scripts.GameSettings.LifeSettings;
+using Scripts.Utils.ObjectPool;
 using UnityEngine;
 
 namespace Scripts.UI.Header.LifeUI
@@ -14,7 +15,8 @@ namespace Scripts.UI.Header.LifeUI
 
             for (int i = 0; i < settings.StartLifeCount; i++)
             {
-                var imageUI = Instantiate(settings.Prefab, transform);
+                var imageUI = PoolsManager.Instance.GetObject<LifeImageUI>(Vector3.zero, transform);
+                imageUI.transform.localScale = Vector3.one;
                 _lifeImages.Add(imageUI);
             }
         }

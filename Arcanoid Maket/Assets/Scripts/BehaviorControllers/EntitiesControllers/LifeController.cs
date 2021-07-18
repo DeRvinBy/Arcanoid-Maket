@@ -1,7 +1,7 @@
 ﻿using Scripts.BehaviorControllers.Abstract;
 using Scripts.EventInterfaces.GameEvents;
 using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GameSettings.PlayerSettings;
+using Scripts.GameSettings.LifeSettings;
 using Scripts.UI.Header.LifeUI;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
