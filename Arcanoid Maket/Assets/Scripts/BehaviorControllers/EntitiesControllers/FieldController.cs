@@ -1,4 +1,5 @@
 ﻿using Scripts.BehaviorControllers.Abstract;
+using Scripts.EventInterfaces.FieldEvents;
 using Scripts.EventInterfaces.PacksEvents;
 using Scripts.GameComponents.Field;
 using Scripts.GamePacks.Data.Level;
@@ -33,6 +34,7 @@ namespace Scripts.BehaviorControllers.EntitiesControllers
         public override void Initialize()
         {
             _fieldGrid = new FieldGrid();
+            _properties.Initialize();
             _fieldGrid.Initialize(_properties);
             _borders.Initialize();
         }

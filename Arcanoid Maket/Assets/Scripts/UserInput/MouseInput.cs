@@ -1,13 +1,15 @@
-﻿using Scripts.EventInterfaces.Input;
+﻿using Scripts.EventInterfaces.FieldEvents;
+using Scripts.EventInterfaces.Input;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Scripts.UserInput
 {
-    public class MouseInput : MonoBehaviour, IInputEnabledHandler
+    public class MouseInput : MonoBehaviour, IInputEnabledHandler, IFieldPropertiesHandler
     {
         private const int MouseButton = 0;
 
+        private float _availableScreenHeight;
         private bool _isInputActive;
         private bool _isInputOccur;
 
@@ -40,10 +42,24 @@ namespace Scripts.UserInput
 
             if (_isInputOccur)
             {
-                EventBus.RaiseEvent<IMoveToTargetHandler>(a => a.OnMoveToMouse(Input.mousePosition));
+                UpdateMousePosition();
             }
         }
 
+        private void UpdateMousePosition()
+        {
+            var position = Input.mousePosition;
+            if (position.y < _availableScreenHeight)
+            {
+                EventBus.RaiseEvent<IMoveToTargetHandler>(a => a.OnMoveToMouse(position));
+            }
+        }
+
+        public void OnFieldScreenHeightSetup(float height)
+        {
+            _availableScreenHeight = height;
+        }
+        
         public void OnEnableInput()
         {
             _isInputActive = true;

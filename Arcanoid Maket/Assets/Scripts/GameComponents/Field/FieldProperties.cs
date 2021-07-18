@@ -1,4 +1,6 @@
-﻿using Scripts.GameSettings.GameFieldSettings;
+﻿using Scripts.EventInterfaces.FieldEvents;
+using Scripts.GameSettings.GameFieldSettings;
+using Scripts.Utils.EventSystem;
 using UnityEngine;
 
 namespace Scripts.GameComponents.Field
@@ -11,17 +13,30 @@ namespace Scripts.GameComponents.Field
         [SerializeField]
         private FieldSettings _settings;
 
+        private Vector2 _startPosition;
+
+        public void Initialize()
+        {
+            var fieldHeight = Screen.height - Screen.height * _settings.TopOffset;
+            EventBus.RaiseEvent<IFieldPropertiesHandler>(a => a.OnFieldScreenHeightSetup(fieldHeight));
+            SetupStartPosition(fieldHeight);
+        }
+
+        private void SetupStartPosition(float fieldHeight)
+        {
+            var screenSideOffset = Screen.width * _settings.SideOffset;
+            var screenPosition = new Vector2(screenSideOffset, fieldHeight);
+            _startPosition = _sceneCamera.ScreenToWorldPoint(screenPosition);
+        }
+        
         public float GetCellMargin()
         {
             return _settings.CellMargin;
         }
-        
+
         public Vector2 GetStartPosition()
         {
-            var screenSideOffset = Screen.width * _settings.SideOffset;
-            var screenTopOffset = Screen.height - (Screen.height * _settings.TopOffset);
-            var screenPosition = new Vector2(screenSideOffset, screenTopOffset);
-            return _sceneCamera.ScreenToWorldPoint(screenPosition);
+            return _startPosition;
         }
 
         public Vector2 GetCellSize(int horizontalCount)
