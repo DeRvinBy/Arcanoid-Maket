@@ -39,6 +39,7 @@ namespace Scripts.Utils.UI.Popup
                 var popup = PoolsManager.Instance.GetObject<T>(Vector3.zero, _popupsUIContainer);
                 var rectTransform = (RectTransform)popup.transform;
                 rectTransform.anchoredPosition = Vector2.zero;
+                rectTransform.localScale = Vector3.one;
                 rectTransform.sizeDelta = Vector2.zero;
                 _popupsMap.Add(type, popup);
             }
