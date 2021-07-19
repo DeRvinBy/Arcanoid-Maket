@@ -1,7 +1,7 @@
 ﻿using EventInterfaces.BlockEvents;
 using GameComponents.Field.Data;
 using GameEntities.Blocks.Enumerations;
-using Scripts.Utils.EventSystem;
+using Library.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Field

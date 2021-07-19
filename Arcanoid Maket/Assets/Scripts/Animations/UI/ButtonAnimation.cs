@@ -1,6 +1,6 @@
 ﻿using Animations.Configs;
 using DG.Tweening;
-using Scripts.Utils.UI.Button.Abstract;
+using Library.UI.Button.Abstract;
 using UnityEngine;
 using UnityEngine.UI;
 

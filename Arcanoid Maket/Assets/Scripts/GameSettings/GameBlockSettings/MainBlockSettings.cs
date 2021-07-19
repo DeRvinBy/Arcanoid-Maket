@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameEntities.Blocks.Enumerations;
-using Scripts.Utils.ObjectPool.Abstract;
+using Library.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameSettings.GameBlockSettings

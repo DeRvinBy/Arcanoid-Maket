@@ -3,8 +3,8 @@ using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks;
-using Scripts.Utils.EventSystem;
-using Scripts.Utils.UI.Popup;
+using Library.EventSystem;
+using Library.UI.Popup;
 using UI.Popups;
 using UnityEngine;
 

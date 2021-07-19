@@ -3,8 +3,8 @@ using EventInterfaces.BlockEvents;
 using GameEntities.Blocks.Behaviour;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
-using Scripts.Utils.EventSystem;
-using Scripts.Utils.ObjectPool.Abstract;
+using Library.EventSystem;
+using Library.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameEntities.Blocks

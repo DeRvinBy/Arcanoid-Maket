@@ -1,6 +1,6 @@
 ﻿using System;
 using GameSettings.LifeSettings;
-using Scripts.Utils.ObjectPool.Abstract;
+using Library.ObjectPool.Abstract;
 using UI.Header.LifeUI;
 
 namespace EntitiesCreation

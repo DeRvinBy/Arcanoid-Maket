@@ -2,8 +2,8 @@
 using GamePacks.Data;
 using GamePacks.Data.Level.LevelParser;
 using GamePacks.Data.Packs;
-using Scripts.Utils.EventSystem;
-using Scripts.Utils.Singleton;
+using Library.EventSystem;
+using Library.Singleton;
 using UnityEngine;
 
 namespace GamePacks

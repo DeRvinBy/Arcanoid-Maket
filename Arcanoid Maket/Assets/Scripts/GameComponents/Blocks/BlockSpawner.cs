@@ -1,5 +1,5 @@
 ﻿using GameEntities.Blocks;
-using Scripts.Utils.ObjectPool;
+using Library.ObjectPool;
 using UnityEngine;
 
 namespace GameComponents.Blocks

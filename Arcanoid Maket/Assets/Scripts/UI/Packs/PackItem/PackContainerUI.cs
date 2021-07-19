@@ -1,6 +1,6 @@
 ﻿using System;
-using Scripts.Utils.Localization.UILocalization;
-using Scripts.Utils.UI.Button;
+using Library.Localization.UILocalization;
+using Library.UI.Button;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

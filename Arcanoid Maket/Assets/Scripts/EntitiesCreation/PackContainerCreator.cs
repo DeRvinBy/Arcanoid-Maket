@@ -1,6 +1,6 @@
 ﻿using System;
 using GameSettings.PackContainerSettings;
-using Scripts.Utils.ObjectPool.Abstract;
+using Library.ObjectPool.Abstract;
 using UI.Packs.PackItem;
 
 namespace EntitiesCreation

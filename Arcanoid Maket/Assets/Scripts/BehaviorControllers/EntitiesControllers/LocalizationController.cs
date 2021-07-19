@@ -1,4 +1,4 @@
-﻿using Scripts.Utils.Localization;
+﻿using Library.Localization;
 using UI.Menu;
 using UnityEngine;
 

@@ -2,9 +2,9 @@
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks.Data.Packs;
-using Scripts.Utils.EventSystem;
-using Scripts.Utils.UI.Button;
-using Scripts.Utils.UI.Popup.Abstract;
+using Library.EventSystem;
+using Library.UI.Button;
+using Library.UI.Popup.Abstract;
 using UI.Packs;
 using UnityEngine;
 

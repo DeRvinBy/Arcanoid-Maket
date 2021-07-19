@@ -1,8 +1,8 @@
 ﻿using BehaviorControllers.Abstract;
 using EventInterfaces.StatesEvents;
 using GamePacks;
-using Scripts.Utils.EventSystem;
-using Scripts.Utils.UI.Popup;
+using Library.EventSystem;
+using Library.UI.Popup;
 using UI.Popups;
 
 namespace BehaviorControllers.GameControllers

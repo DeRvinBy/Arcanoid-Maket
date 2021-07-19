@@ -1,8 +1,8 @@
 ﻿using System;
 using GameEntities.Blocks;
 using GameSettings.GameBlockSettings;
-using Scripts.Utils.ObjectPool.Abstract;
-using Scripts.Utils.ObjectPool.Config;
+using Library.ObjectPool.Abstract;
+using Library.ObjectPool.Config;
 using UnityEngine;
 
 namespace EntitiesCreation

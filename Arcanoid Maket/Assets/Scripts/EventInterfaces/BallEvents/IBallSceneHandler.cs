@@ -1,5 +1,5 @@
 ﻿using GameEntities.Ball;
-using Scripts.Utils.EventSystem;
+using Library.EventSystem;
 using UnityEngine;
 
 namespace EventInterfaces.BallEvents

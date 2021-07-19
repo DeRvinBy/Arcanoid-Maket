@@ -1,4 +1,4 @@
-﻿using Scripts.Utils.ObjectPool.Abstract;
+﻿using Library.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameSettings.PackContainerSettings

@@ -1,4 +1,4 @@
-﻿using Scripts.Utils.EventSystem;
+﻿using Library.EventSystem;
 
 namespace EventInterfaces.PacksEvents
 {

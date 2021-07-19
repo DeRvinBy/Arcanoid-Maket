@@ -1,6 +1,6 @@
 ﻿using EventInterfaces.Input;
 using GameEntities.Ball;
-using Scripts.Utils.EventSystem;
+using Library.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Balls

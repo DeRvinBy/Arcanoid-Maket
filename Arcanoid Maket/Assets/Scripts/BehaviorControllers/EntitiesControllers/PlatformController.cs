@@ -5,7 +5,7 @@ using EventInterfaces.StatesEvents;
 using GameComponents.Platform.Behaviour;
 using GameComponents.Platform.Data;
 using GameSettings.GamePlatformSettings;
-using Scripts.Utils.EventSystem;
+using Library.EventSystem;
 using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers

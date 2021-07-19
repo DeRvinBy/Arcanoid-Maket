@@ -1,5 +1,5 @@
 ﻿using GameEntities.Ball;
-using Scripts.Utils.ObjectPool;
+using Library.ObjectPool;
 using UnityEngine;
 
 namespace GameComponents.Balls
