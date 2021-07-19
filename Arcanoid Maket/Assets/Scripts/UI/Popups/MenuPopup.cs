@@ -1,12 +1,12 @@
-﻿using Scripts.BehaviorControllers.EntitiesControllers;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.UI.Menu;
+﻿using BehaviorControllers.EntitiesControllers;
+using EventInterfaces.StatesEvents;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Button;
 using Scripts.Utils.UI.Popup.Abstract;
+using UI.Menu;
 using UnityEngine;
 
-namespace Scripts.UI.Popups
+namespace UI.Popups
 {
     public class MenuPopup : AbstractPopup
     {

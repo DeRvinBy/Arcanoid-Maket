@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.GameSettings.LifeSettings
+namespace GameSettings.LifeSettings
 {
     public class LifeSettings : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Scripts.GamePacks.Data.Packs
+﻿namespace GamePacks.Data.Packs
 {
     public class PackInfo
     {

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Newtonsoft.Json.Linq;
 
-namespace Scripts.GamePacks.Data.Level.LevelParser
+namespace GamePacks.Data.Level.LevelParser
 {
     public class JsonParser : ILevelParser
     {

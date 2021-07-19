@@ -1,7 +1,7 @@
-﻿using Scripts.GameEntities.Blocks.Enumerations;
+﻿using GameEntities.Blocks.Enumerations;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Field.Data
+namespace GameComponents.Field.Data
 {
     public class FieldCell
     {

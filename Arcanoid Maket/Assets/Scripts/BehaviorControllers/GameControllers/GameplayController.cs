@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.Input;
-using Scripts.EventInterfaces.PacksEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GamePacks;
+using BehaviorControllers.Abstract;
+using EventInterfaces.GameEvents;
+using EventInterfaces.Input;
+using EventInterfaces.PacksEvents;
+using EventInterfaces.StatesEvents;
+using GamePacks;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
 
-namespace Scripts.BehaviorControllers.GameControllers
+namespace BehaviorControllers.GameControllers
 {
     public class GameplayController : GameController, IStartGameHandler, IPackButtonPressedHandler, IEndGameHandler
     {

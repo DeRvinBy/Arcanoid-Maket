@@ -1,7 +1,7 @@
 ﻿using DG.Tweening;
 using UnityEngine;
 
-namespace Scripts.Animations.Configs
+namespace Animations.Configs
 {
     [CreateAssetMenu(fileName = "New Base Animation Config", menuName = "Animations Config/Base Animation Config")]
     public class BaseAnimationConfig : ScriptableObject

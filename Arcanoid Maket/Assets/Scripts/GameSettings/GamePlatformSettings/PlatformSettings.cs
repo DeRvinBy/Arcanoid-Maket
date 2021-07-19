@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.GameSettings.GamePlatformSettings
+namespace GameSettings.GamePlatformSettings
 {
     public class PlatformSettings : MonoBehaviour
     {

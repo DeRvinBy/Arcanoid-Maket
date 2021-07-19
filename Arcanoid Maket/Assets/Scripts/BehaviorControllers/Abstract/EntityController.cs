@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.BehaviorControllers.Abstract
+namespace BehaviorControllers.Abstract
 {
     public abstract class EntityController : MonoBehaviour
     {

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.BlockEvents;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GameComponents.Blocks;
-using Scripts.GameEntities.Blocks;
-using Scripts.GameEntities.Blocks.Enumerations;
-using Scripts.UI.Header.BlocksUI;
+using BehaviorControllers.Abstract;
+using EventInterfaces.BlockEvents;
+using EventInterfaces.GameEvents;
+using EventInterfaces.StatesEvents;
+using GameComponents.Blocks;
+using GameEntities.Blocks;
+using GameEntities.Blocks.Enumerations;
 using Scripts.Utils.EventSystem;
+using UI.Header.BlocksUI;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers.EntitiesManagers
+namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
     public class BlocksManager : EntityController, IBlockOnSceneHandler, IPrepareGameplayHandler, IStartGameplayHandler
     {

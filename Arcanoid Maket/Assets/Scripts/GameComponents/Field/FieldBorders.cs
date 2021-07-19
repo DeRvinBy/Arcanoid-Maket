@@ -1,10 +1,10 @@
-﻿using Scripts.EventInterfaces.BallEvents;
-using Scripts.GameEntities.Ball;
-using Scripts.GameSettings.GameFieldSettings;
+﻿using EventInterfaces.BallEvents;
+using GameEntities.Ball;
+using GameSettings.GameFieldSettings;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Field
+namespace GameComponents.Field
 {
     public class FieldBorders : MonoBehaviour
     {

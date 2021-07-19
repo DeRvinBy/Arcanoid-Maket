@@ -1,9 +1,9 @@
-﻿using Scripts.GameEntities.Blocks;
-using Scripts.GameEntities.Blocks.Enumerations;
+﻿using GameEntities.Blocks;
+using GameEntities.Blocks.Enumerations;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.EventInterfaces.BlockEvents
+namespace EventInterfaces.BlockEvents
 {
     public interface IBlockOnSceneHandler : IGlobalSubscriber
     {

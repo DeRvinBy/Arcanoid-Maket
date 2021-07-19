@@ -1,6 +1,6 @@
 ﻿using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.Input
+namespace EventInterfaces.Input
 {
     public interface IPushBallHandler : IGlobalSubscriber
     {

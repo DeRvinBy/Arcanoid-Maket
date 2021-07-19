@@ -1,14 +1,14 @@
-﻿using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.BallEvents;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GameComponents.Platform.Behaviour;
-using Scripts.GameComponents.Platform.Data;
-using Scripts.GameSettings.GamePlatformSettings;
+﻿using BehaviorControllers.Abstract;
+using EventInterfaces.BallEvents;
+using EventInterfaces.GameEvents;
+using EventInterfaces.StatesEvents;
+using GameComponents.Platform.Behaviour;
+using GameComponents.Platform.Data;
+using GameSettings.GamePlatformSettings;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers
+namespace BehaviorControllers.EntitiesControllers
 {
     public class PlatformController : EntityController, IPrepareGameplayHandler, IStartGameplayHandler, IEndGameplayHandler, IContinueGameHandler
     {

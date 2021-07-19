@@ -1,6 +1,6 @@
-﻿using Scripts.GameSettings.GamePlatformSettings;
+﻿using GameSettings.GamePlatformSettings;
 
-namespace Scripts.GameComponents.Platform.Data
+namespace GameComponents.Platform.Data
 {
     public class PlatformProperties
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Scripts.GamePacks.Data.Player
+namespace GamePacks.Data.Player
 {
     public class PacksSaveContainer
     {

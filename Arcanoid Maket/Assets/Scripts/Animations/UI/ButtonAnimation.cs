@@ -1,10 +1,10 @@
-﻿using DG.Tweening;
-using Scripts.Animations.Configs;
+﻿using Animations.Configs;
+using DG.Tweening;
 using Scripts.Utils.UI.Button.Abstract;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.Animations.UI
+namespace Animations.UI
 {
     public class ButtonAnimation : AbstractButtonAnimation
     {

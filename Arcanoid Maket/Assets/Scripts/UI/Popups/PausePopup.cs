@@ -1,11 +1,11 @@
-﻿using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.StatesEvents;
+﻿using EventInterfaces.GameEvents;
+using EventInterfaces.StatesEvents;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Button;
 using Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 
-namespace Scripts.UI.Popups
+namespace UI.Popups
 {
     public class PausePopup : AbstractPopup
     {

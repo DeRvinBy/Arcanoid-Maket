@@ -1,9 +1,9 @@
-﻿using Scripts.EventInterfaces.FieldEvents;
-using Scripts.EventInterfaces.Input;
+﻿using EventInterfaces.FieldEvents;
+using EventInterfaces.Input;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.UserInput
+namespace UserInput
 {
     public class MouseInput : MonoBehaviour, IInputEnabledHandler, IFieldPropertiesHandler
     {

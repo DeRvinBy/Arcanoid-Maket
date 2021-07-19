@@ -1,9 +1,9 @@
 ﻿using System;
-using Scripts.GameEntities.Ball;
-using Scripts.GameSettings.GameBallSettings;
+using GameEntities.Ball;
+using GameSettings.GameBallSettings;
 using Scripts.Utils.ObjectPool.Abstract;
 
-namespace Scripts.EntitiesCreation
+namespace EntitiesCreation
 {
     public class BallCreator : PoolObjectCreator<BallEntity, BallSettings>
     {

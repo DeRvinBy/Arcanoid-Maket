@@ -1,9 +1,9 @@
-﻿using Scripts.GameEntities.Ball.Behaviour;
-using Scripts.GameSettings.GameBallSettings;
+﻿using GameEntities.Ball.Behaviour;
+using GameSettings.GameBallSettings;
 using Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
-namespace Scripts.GameEntities.Ball
+namespace GameEntities.Ball
 {
     public class BallEntity : PoolObject
     {

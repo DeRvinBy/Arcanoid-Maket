@@ -1,10 +1,10 @@
-﻿using Scripts.EventInterfaces.GameEvents;
+﻿using EventInterfaces.GameEvents;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Button;
 using Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 
-namespace Scripts.UI.Popups
+namespace UI.Popups
 {
     public class LosePopup : AbstractPopup
     {

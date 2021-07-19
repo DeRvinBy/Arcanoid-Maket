@@ -1,7 +1,7 @@
-﻿using Scripts.GamePacks.Data.Packs;
+﻿using GamePacks.Data.Packs;
 using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.PacksEvents
+namespace EventInterfaces.PacksEvents
 {
     public interface IPackChangedHandler : IGlobalSubscriber
     {

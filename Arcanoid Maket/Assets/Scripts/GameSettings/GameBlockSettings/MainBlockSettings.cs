@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Scripts.GameEntities.Blocks.Enumerations;
+using GameEntities.Blocks.Enumerations;
 using Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
-namespace Scripts.GameSettings.GameBlockSettings
+namespace GameSettings.GameBlockSettings
 {
     public class MainBlockSettings : AbstractSettings
     {

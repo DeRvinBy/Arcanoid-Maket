@@ -1,7 +1,7 @@
-﻿using Scripts.GamePacks.Data.Level;
+﻿using GamePacks.Data.Level;
 using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.PacksEvents
+namespace EventInterfaces.PacksEvents
 {
     public interface ILevelFileChangedHandler : IGlobalSubscriber
     {

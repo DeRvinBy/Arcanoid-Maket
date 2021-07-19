@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using UnityEngine;
 
-namespace Scripts.GamePacks.Data.Player.SaveLoader
+namespace GamePacks.Data.Player.SaveLoader
 {
     public class PlayerPrefsLoader : ISaveLoader
     {

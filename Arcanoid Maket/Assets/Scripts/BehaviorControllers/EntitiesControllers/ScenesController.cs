@@ -1,7 +1,7 @@
-﻿using Scripts.BehaviorControllers.Abstract;
+﻿using BehaviorControllers.Abstract;
 using UnityEngine.SceneManagement;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers
+namespace BehaviorControllers.EntitiesControllers
 {
     public class ScenesController : EntityController
     {

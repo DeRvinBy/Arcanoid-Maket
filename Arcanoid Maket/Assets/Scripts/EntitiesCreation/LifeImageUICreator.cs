@@ -1,9 +1,9 @@
 ﻿using System;
-using Scripts.GameSettings.LifeSettings;
-using Scripts.UI.Header.LifeUI;
+using GameSettings.LifeSettings;
 using Scripts.Utils.ObjectPool.Abstract;
+using UI.Header.LifeUI;
 
-namespace Scripts.EntitiesCreation
+namespace EntitiesCreation
 {
     public class LifeImageUICreator : PoolObjectCreator<LifeImageUI, LifeImageSettings>
     {

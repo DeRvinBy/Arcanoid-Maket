@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Scripts.GamePacks.Data.Packs
+namespace GamePacks.Data.Packs
 {
     [CreateAssetMenu(fileName = "New PacksConfig", menuName = "Packs/Packs Config")]
     public class PacksConfig : ScriptableObject

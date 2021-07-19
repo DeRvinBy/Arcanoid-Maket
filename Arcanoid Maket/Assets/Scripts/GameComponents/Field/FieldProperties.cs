@@ -1,9 +1,9 @@
-﻿using Scripts.EventInterfaces.FieldEvents;
-using Scripts.GameSettings.GameFieldSettings;
+﻿using EventInterfaces.FieldEvents;
+using GameSettings.GameFieldSettings;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Field
+namespace GameComponents.Field
 {
     public class FieldProperties : MonoBehaviour
     {

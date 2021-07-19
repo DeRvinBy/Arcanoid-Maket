@@ -1,8 +1,8 @@
 ﻿using System;
-using Scripts.GameEntities.Blocks.Enumerations;
+using GameEntities.Blocks.Enumerations;
 using UnityEngine;
 
-namespace Scripts.GameSettings.GameBlockSettings
+namespace GameSettings.GameBlockSettings
 {
     [Serializable]
     public class BlockSettingsContainer

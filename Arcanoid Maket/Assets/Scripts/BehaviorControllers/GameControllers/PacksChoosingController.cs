@@ -1,11 +1,11 @@
-﻿using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GamePacks;
-using Scripts.UI.Popups;
+﻿using BehaviorControllers.Abstract;
+using EventInterfaces.StatesEvents;
+using GamePacks;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
+using UI.Popups;
 
-namespace Scripts.BehaviorControllers.GameControllers
+namespace BehaviorControllers.GameControllers
 {
     public class PacksChoosingController : GameController, IPacksChoosingHandler
     {

@@ -1,11 +1,11 @@
 ﻿using System;
-using Scripts.GameEntities.Blocks;
-using Scripts.GameSettings.GameBlockSettings;
+using GameEntities.Blocks;
+using GameSettings.GameBlockSettings;
 using Scripts.Utils.ObjectPool.Abstract;
 using Scripts.Utils.ObjectPool.Config;
 using UnityEngine;
 
-namespace Scripts.EntitiesCreation
+namespace EntitiesCreation
 {
     public class BlockCreator : PoolObjectCreator<BlockEntity, MainBlockSettings>
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Header.PackUI
+namespace UI.Header.PackUI
 {
     public class HeaderPackUI : MonoBehaviour
     {

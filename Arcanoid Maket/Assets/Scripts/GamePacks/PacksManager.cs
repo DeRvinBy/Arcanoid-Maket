@@ -1,12 +1,12 @@
-﻿using Scripts.EventInterfaces.PacksEvents;
-using Scripts.GamePacks.Data;
-using Scripts.GamePacks.Data.Level.LevelParser;
-using Scripts.GamePacks.Data.Packs;
+﻿using EventInterfaces.PacksEvents;
+using GamePacks.Data;
+using GamePacks.Data.Level.LevelParser;
+using GamePacks.Data.Packs;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.Singleton;
 using UnityEngine;
 
-namespace Scripts.GamePacks
+namespace GamePacks
 {
     public class PacksManager : Singleton<PacksManager>
     {

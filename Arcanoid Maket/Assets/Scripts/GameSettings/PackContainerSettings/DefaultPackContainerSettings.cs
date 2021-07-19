@@ -1,7 +1,7 @@
 ﻿using Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
-namespace Scripts.GameSettings.PackContainerSettings
+namespace GameSettings.PackContainerSettings
 {
     public class DefaultPackContainerSettings : AbstractSettings
     {

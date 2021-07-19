@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Scripts.GamePacks.Data.Player.SaveLoader;
+using GamePacks.Data.Player.SaveLoader;
 
-namespace Scripts.GamePacks.Data.Player
+namespace GamePacks.Data.Player
 {
     public class PlayerPacksSave
     {

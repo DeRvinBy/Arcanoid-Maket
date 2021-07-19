@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.GamePacks.Data.Packs
+namespace GamePacks.Data.Packs
 {
     [CreateAssetMenu(fileName = "New Pack", menuName = "Packs/Pack Data")]
     public class Pack : ScriptableObject

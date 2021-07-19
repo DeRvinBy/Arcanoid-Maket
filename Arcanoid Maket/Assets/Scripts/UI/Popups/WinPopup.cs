@@ -1,14 +1,14 @@
-﻿using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.PacksEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GamePacks.Data.Packs;
-using Scripts.UI.Packs;
+﻿using EventInterfaces.GameEvents;
+using EventInterfaces.PacksEvents;
+using EventInterfaces.StatesEvents;
+using GamePacks.Data.Packs;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Button;
 using Scripts.Utils.UI.Popup.Abstract;
+using UI.Packs;
 using UnityEngine;
 
-namespace Scripts.UI.Popups
+namespace UI.Popups
 {
     public class WinPopup : AbstractPopup, IPackChangedHandler
     {

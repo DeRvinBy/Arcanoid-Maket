@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.Animations.Configs
+namespace Animations.Configs
 {
     [CreateAssetMenu(fileName = "New Scale Animation Config", menuName = "Animations Config/Scale Animation Config")]
     public class ScaleAnimationConfig : ScriptableObject

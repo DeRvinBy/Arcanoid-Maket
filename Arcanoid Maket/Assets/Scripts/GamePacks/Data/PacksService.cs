@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Scripts.GamePacks.Data.Packs;
-using Scripts.GamePacks.Data.Player;
-using Scripts.GamePacks.Data.Player.SaveLoader;
+using GamePacks.Data.Packs;
+using GamePacks.Data.Player;
+using GamePacks.Data.Player.SaveLoader;
 using UnityEngine;
 
-namespace Scripts.GamePacks.Data
+namespace GamePacks.Data
 {
     public class PacksService
     {

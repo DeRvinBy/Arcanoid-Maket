@@ -1,8 +1,8 @@
-﻿using Scripts.GameEntities.Ball;
+﻿using GameEntities.Ball;
 using Scripts.Utils.ObjectPool;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Balls
+namespace GameComponents.Balls
 {
     public class BallsSpawner
     {

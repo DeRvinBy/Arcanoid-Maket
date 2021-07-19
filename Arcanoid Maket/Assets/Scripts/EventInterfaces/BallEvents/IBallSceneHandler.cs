@@ -1,8 +1,8 @@
-﻿using Scripts.GameEntities.Ball;
+﻿using GameEntities.Ball;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.EventInterfaces.BallEvents
+namespace EventInterfaces.BallEvents
 {
     public interface IBallSceneHandler : IGlobalSubscriber
     {

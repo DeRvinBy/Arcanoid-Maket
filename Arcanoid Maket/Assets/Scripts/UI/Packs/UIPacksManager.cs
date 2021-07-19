@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Scripts.GamePacks.Data.Packs;
-using Scripts.UI.Packs.PackItem;
+using GamePacks.Data.Packs;
 using Scripts.Utils.ObjectPool;
+using UI.Packs.PackItem;
 using UnityEngine;
 
-namespace Scripts.UI.Packs
+namespace UI.Packs
 {
     public class UIPacksManager : MonoBehaviour
     {

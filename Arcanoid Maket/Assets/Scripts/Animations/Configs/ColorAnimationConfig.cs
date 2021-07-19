@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.Animations.Configs
+namespace Animations.Configs
 {
     [CreateAssetMenu(fileName = "New Color Animation Config", menuName = "Animations Config/Color Animation Config")]
     public class ColorAnimationConfig : ScriptableObject

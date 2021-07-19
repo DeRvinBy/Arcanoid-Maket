@@ -1,13 +1,13 @@
 ﻿using System.Collections;
-using Scripts.EventInterfaces.BlockEvents;
-using Scripts.GameEntities.Blocks.Behaviour;
-using Scripts.GameEntities.Blocks.Enumerations;
-using Scripts.GameSettings.GameBlockSettings;
+using EventInterfaces.BlockEvents;
+using GameEntities.Blocks.Behaviour;
+using GameEntities.Blocks.Enumerations;
+using GameSettings.GameBlockSettings;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
-namespace Scripts.GameEntities.Blocks
+namespace GameEntities.Blocks
 {
     public class BlockEntity : PoolObject
     {

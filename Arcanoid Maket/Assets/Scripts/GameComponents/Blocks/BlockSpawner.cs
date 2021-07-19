@@ -1,8 +1,8 @@
-﻿using Scripts.GameEntities.Blocks;
+﻿using GameEntities.Blocks;
 using Scripts.Utils.ObjectPool;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Blocks
+namespace GameComponents.Blocks
 {
     public class BlockSpawner
     {

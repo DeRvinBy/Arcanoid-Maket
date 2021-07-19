@@ -1,8 +1,8 @@
-﻿using Scripts.GameSettings.GameBlockSettings;
+﻿using GameSettings.GameBlockSettings;
 using Scripts.Utils.Extensions;
 using UnityEngine;
 
-namespace Scripts.GameEntities.Blocks.Behaviour
+namespace GameEntities.Blocks.Behaviour
 {
     public class BlockCracks : MonoBehaviour
     {

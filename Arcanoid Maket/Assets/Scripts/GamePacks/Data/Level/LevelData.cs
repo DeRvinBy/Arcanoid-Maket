@@ -1,4 +1,4 @@
-﻿namespace Scripts.GamePacks.Data.Level
+﻿namespace GamePacks.Data.Level
 {
     public class LevelData
     {

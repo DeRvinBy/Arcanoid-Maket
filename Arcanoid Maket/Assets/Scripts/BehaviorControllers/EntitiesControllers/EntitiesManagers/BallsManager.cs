@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
-using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.BallEvents;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GameComponents.Balls;
-using Scripts.GameEntities.Ball;
+using BehaviorControllers.Abstract;
+using EventInterfaces.BallEvents;
+using EventInterfaces.GameEvents;
+using EventInterfaces.StatesEvents;
+using GameComponents.Balls;
+using GameEntities.Ball;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers.EntitiesManagers
+namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
     public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler, IPrepareGameplayHandler
     {

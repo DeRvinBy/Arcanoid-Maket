@@ -1,6 +1,6 @@
 ﻿using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.PacksEvents
+namespace EventInterfaces.PacksEvents
 {
     public interface IPackButtonPressedHandler : IGlobalSubscriber
     {

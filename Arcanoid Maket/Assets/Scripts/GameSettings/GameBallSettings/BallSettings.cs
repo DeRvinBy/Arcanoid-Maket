@@ -1,7 +1,7 @@
 ﻿using Scripts.Utils.ObjectPool.Abstract;
 using UnityEngine;
 
-namespace Scripts.GameSettings.GameBallSettings
+namespace GameSettings.GameBallSettings
 {
     public class BallSettings : AbstractSettings
     {

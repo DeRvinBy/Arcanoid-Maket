@@ -1,9 +1,9 @@
-﻿using Scripts.Animations;
-using Scripts.Animations.Configs;
+﻿using Animations;
+using Animations.Configs;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Header.BlocksUI
+namespace UI.Header.BlocksUI
 {
     public class BlocksProgressUI : MonoBehaviour
     {

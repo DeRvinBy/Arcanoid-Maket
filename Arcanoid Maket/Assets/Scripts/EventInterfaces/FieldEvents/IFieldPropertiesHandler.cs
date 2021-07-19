@@ -1,6 +1,6 @@
 ﻿using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.FieldEvents
+namespace EventInterfaces.FieldEvents
 {
     public interface IFieldPropertiesHandler : IGlobalSubscriber
     {

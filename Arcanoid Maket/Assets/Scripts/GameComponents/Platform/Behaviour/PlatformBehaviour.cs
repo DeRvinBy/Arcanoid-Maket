@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
-using Scripts.EventInterfaces.Input;
-using Scripts.GameComponents.Platform.Data;
+using EventInterfaces.Input;
+using GameComponents.Platform.Data;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Platform.Behaviour
+namespace GameComponents.Platform.Behaviour
 {
     public class PlatformBehaviour : MonoBehaviour, IMoveToTargetHandler
     {

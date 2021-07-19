@@ -1,4 +1,4 @@
-﻿namespace Scripts.GamePacks.Data.Player.SaveLoader
+﻿namespace GamePacks.Data.Player.SaveLoader
 {
     public interface ISaveLoader
     {

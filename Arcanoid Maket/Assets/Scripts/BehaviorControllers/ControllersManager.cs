@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Scripts.BehaviorControllers.Abstract;
+using BehaviorControllers.Abstract;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers
+namespace BehaviorControllers
 {
     public class ControllersManager : MonoBehaviour
     {

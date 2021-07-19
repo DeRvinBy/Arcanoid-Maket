@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Scripts.GameEntities.Ball.Behaviour
+namespace GameEntities.Ball.Behaviour
 {
     public class BallMovement : MonoBehaviour
     {

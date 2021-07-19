@@ -2,7 +2,7 @@
 using Scripts.Utils.Extensions;
 using UnityEngine;
 
-namespace Scripts.GameEntities.Blocks.Behaviour
+namespace GameEntities.Blocks.Behaviour
 {
     public class BlockView : MonoBehaviour
     {

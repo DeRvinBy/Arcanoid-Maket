@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Scripts.GameSettings.LifeSettings;
+using GameSettings.LifeSettings;
 using Scripts.Utils.ObjectPool;
 using UnityEngine;
 
-namespace Scripts.UI.Header.LifeUI
+namespace UI.Header.LifeUI
 {
     public class LifeUI : MonoBehaviour
     {

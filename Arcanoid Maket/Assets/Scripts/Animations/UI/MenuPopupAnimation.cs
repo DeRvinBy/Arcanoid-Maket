@@ -1,10 +1,10 @@
 ﻿using System.Collections;
+using Animations.Presets;
 using DG.Tweening;
-using Scripts.Animations.Presets;
 using Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;
 
-namespace Scripts.Animations.UI
+namespace Animations.UI
 {
     public class MenuPopupAnimation : AbstractPopupAnimation
     {

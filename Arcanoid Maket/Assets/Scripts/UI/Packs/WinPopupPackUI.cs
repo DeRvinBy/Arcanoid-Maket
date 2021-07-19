@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Packs
+namespace UI.Packs
 {
     public class WinPopupPackUI : MonoBehaviour
     {

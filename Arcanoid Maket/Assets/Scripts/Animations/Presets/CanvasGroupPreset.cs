@@ -1,9 +1,9 @@
 ﻿using System;
+using Animations.Configs;
 using DG.Tweening;
-using Scripts.Animations.Configs;
 using UnityEngine;
 
-namespace Scripts.Animations.Presets
+namespace Animations.Presets
 {
     [Serializable]
     public class CanvasGroupPreset

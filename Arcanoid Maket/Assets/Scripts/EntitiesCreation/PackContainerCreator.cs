@@ -1,9 +1,9 @@
 ﻿using System;
-using Scripts.GameSettings.PackContainerSettings;
-using Scripts.UI.Packs.PackItem;
+using GameSettings.PackContainerSettings;
 using Scripts.Utils.ObjectPool.Abstract;
+using UI.Packs.PackItem;
 
-namespace Scripts.EntitiesCreation
+namespace EntitiesCreation
 {
     public class PackContainerCreator : 
         PoolObjectCreator<PackContainerEntity, DefaultPackContainerSettings>

@@ -1,14 +1,14 @@
-﻿using Scripts.BehaviorControllers.Abstract;
-using Scripts.BehaviorControllers.EntitiesControllers;
-using Scripts.EventInterfaces.PacksEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GamePacks;
-using Scripts.UI.Popups;
+﻿using BehaviorControllers.Abstract;
+using BehaviorControllers.EntitiesControllers;
+using EventInterfaces.PacksEvents;
+using EventInterfaces.StatesEvents;
+using GamePacks;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
+using UI.Popups;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.GameControllers
+namespace BehaviorControllers.GameControllers
 {
     public class MenuController : GameController, IPackButtonPressedHandler, IStartGameplayHandler
     {

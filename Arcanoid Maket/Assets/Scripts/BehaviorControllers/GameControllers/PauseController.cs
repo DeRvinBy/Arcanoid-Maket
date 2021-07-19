@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.Input;
-using Scripts.EventInterfaces.PacksEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.UI.Popups;
+using BehaviorControllers.Abstract;
+using EventInterfaces.Input;
+using EventInterfaces.PacksEvents;
+using EventInterfaces.StatesEvents;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
+using UI.Popups;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.GameControllers
+namespace BehaviorControllers.GameControllers
 {
     public class PauseController : GameController, IPauseGameHandler, IPackButtonPressedHandler
     {

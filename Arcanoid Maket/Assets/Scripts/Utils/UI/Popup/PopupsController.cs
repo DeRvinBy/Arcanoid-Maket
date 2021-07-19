@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Scripts.BehaviorControllers.Abstract;
+using BehaviorControllers.Abstract;
 using Scripts.Utils.ObjectPool;
 using Scripts.Utils.UI.Popup.Abstract;
 using UnityEngine;

@@ -1,8 +1,8 @@
-﻿using Scripts.UI.Menu;
-using Scripts.Utils.Localization;
+﻿using Scripts.Utils.Localization;
+using UI.Menu;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers
+namespace BehaviorControllers.EntitiesControllers
 {
     public class LocalizationController
     {

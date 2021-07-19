@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Scripts.UI.Packs.PackItem
+namespace UI.Packs.PackItem
 {
     public class PackContainerUI : MonoBehaviour
     {

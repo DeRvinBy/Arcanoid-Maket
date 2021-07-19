@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.Animations.Configs
+namespace Animations.Configs
 {
     [CreateAssetMenu(fileName = "New RectTransform Animation Config", menuName = "Animations Config/RectTransform Animation Config")]
     public class RectTransformAnimationConfig : ScriptableObject

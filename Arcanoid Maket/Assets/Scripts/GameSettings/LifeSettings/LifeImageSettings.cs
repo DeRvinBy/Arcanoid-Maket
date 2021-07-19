@@ -1,6 +1,6 @@
 ﻿using Scripts.Utils.ObjectPool.Abstract;
 
-namespace Scripts.GameSettings.LifeSettings
+namespace GameSettings.LifeSettings
 {
     public class LifeImageSettings : AbstractSettings
     {

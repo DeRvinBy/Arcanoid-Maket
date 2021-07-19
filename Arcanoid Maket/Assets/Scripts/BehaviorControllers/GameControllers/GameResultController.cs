@@ -1,12 +1,12 @@
 ﻿using System.Collections;
-using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.GamePacks;
-using Scripts.UI.Popups;
+using BehaviorControllers.Abstract;
+using EventInterfaces.GameEvents;
+using GamePacks;
 using Scripts.Utils.EventSystem;
 using Scripts.Utils.UI.Popup;
+using UI.Popups;
 
-namespace Scripts.BehaviorControllers.GameControllers
+namespace BehaviorControllers.GameControllers
 {
     public class GameResultController : GameController, IEndGameHandler
     {

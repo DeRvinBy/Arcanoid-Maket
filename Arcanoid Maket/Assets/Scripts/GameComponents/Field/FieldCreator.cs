@@ -1,10 +1,10 @@
-﻿using Scripts.EventInterfaces.BlockEvents;
-using Scripts.GameComponents.Field.Data;
-using Scripts.GameEntities.Blocks.Enumerations;
+﻿using EventInterfaces.BlockEvents;
+using GameComponents.Field.Data;
+using GameEntities.Blocks.Enumerations;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Field
+namespace GameComponents.Field
 {
     public class FieldCreator : MonoBehaviour
     {

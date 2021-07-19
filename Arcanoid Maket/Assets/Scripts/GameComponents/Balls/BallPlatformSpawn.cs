@@ -1,9 +1,9 @@
-﻿using Scripts.EventInterfaces.Input;
-using Scripts.GameEntities.Ball;
+﻿using EventInterfaces.Input;
+using GameEntities.Ball;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Balls
+namespace GameComponents.Balls
 {
     public class BallPlatformSpawn : IPushBallHandler
     {

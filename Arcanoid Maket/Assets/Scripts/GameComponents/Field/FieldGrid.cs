@@ -1,8 +1,8 @@
-﻿using Scripts.GameComponents.Field.Data;
-using Scripts.GamePacks.Data.Level;
+﻿using GameComponents.Field.Data;
+using GamePacks.Data.Level;
 using UnityEngine;
 
-namespace Scripts.GameComponents.Field
+namespace GameComponents.Field
 {
     public class FieldGrid
     {

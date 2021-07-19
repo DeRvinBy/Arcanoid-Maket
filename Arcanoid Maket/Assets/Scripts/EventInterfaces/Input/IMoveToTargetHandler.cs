@@ -1,7 +1,7 @@
 ﻿using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.EventInterfaces.Input
+namespace EventInterfaces.Input
 {
     public interface IMoveToTargetHandler : IGlobalSubscriber
     {

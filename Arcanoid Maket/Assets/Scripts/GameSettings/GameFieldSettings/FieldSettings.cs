@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Scripts.GameSettings.GameFieldSettings
+namespace GameSettings.GameFieldSettings
 {
     public class FieldSettings : MonoBehaviour
     {

@@ -1,12 +1,12 @@
-﻿using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.GameEvents;
-using Scripts.EventInterfaces.StatesEvents;
-using Scripts.GameSettings.LifeSettings;
-using Scripts.UI.Header.LifeUI;
+﻿using BehaviorControllers.Abstract;
+using EventInterfaces.GameEvents;
+using EventInterfaces.StatesEvents;
+using GameSettings.LifeSettings;
 using Scripts.Utils.EventSystem;
+using UI.Header.LifeUI;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers
+namespace BehaviorControllers.EntitiesControllers
 {
     public class LifeController : EntityController, IStartGameplayHandler, IPlayerBallsHandler
     {

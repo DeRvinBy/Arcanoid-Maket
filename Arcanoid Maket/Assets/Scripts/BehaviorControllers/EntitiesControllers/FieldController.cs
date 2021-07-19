@@ -1,12 +1,11 @@
-﻿using Scripts.BehaviorControllers.Abstract;
-using Scripts.EventInterfaces.FieldEvents;
-using Scripts.EventInterfaces.PacksEvents;
-using Scripts.GameComponents.Field;
-using Scripts.GamePacks.Data.Level;
+﻿using BehaviorControllers.Abstract;
+using EventInterfaces.PacksEvents;
+using GameComponents.Field;
+using GamePacks.Data.Level;
 using Scripts.Utils.EventSystem;
 using UnityEngine;
 
-namespace Scripts.BehaviorControllers.EntitiesControllers
+namespace BehaviorControllers.EntitiesControllers
 {
     public class FieldController : EntityController, ILevelFileChangedHandler
     {

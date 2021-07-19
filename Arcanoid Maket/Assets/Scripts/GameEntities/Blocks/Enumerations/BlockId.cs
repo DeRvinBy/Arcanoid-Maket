@@ -1,4 +1,4 @@
-﻿namespace Scripts.GameEntities.Blocks.Enumerations
+﻿namespace GameEntities.Blocks.Enumerations
 {
     public enum BlockId
     {

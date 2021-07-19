@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Scripts.GameSettings.GameBlockSettings
+namespace GameSettings.GameBlockSettings
 {
     [Serializable]
     public class IndividualBlockSettings

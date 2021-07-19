@@ -1,6 +1,6 @@
 ﻿using Scripts.Utils.EventSystem;
 
-namespace Scripts.EventInterfaces.GameEvents
+namespace EventInterfaces.GameEvents
 {
     public interface IStartGameHandler : IGlobalSubscriber
     {
