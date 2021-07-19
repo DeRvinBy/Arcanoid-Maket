@@ -1,0 +1,15 @@
+﻿{
+  "lose_text" : "Вы проиграли!",
+  "pause_text" : "Пауза",
+  "choose_pack_text" : "Выбор пака",
+  "play_button" : "Играть",
+  "back_button" : "Назад",
+  "continue_button" : "Продолжить",
+  "restart_button" : "Заново",
+  "header_level" : "Уровень",
+  "unknown_pack" : "???",
+  "test_pack" : "Тестовый пак",
+  "tree_house_pack" : "Домик на дереве",
+  "dog_pack" : "Мопс",
+  "ice_cream_watermelon_pack" : "Арбузное мороженое"
+}

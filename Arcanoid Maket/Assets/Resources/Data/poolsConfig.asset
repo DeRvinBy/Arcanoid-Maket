@@ -25,3 +25,27 @@ MonoBehaviour:
     _creator: {fileID: 6462661516594291468, guid: e958371dfd033e1489a6b74ebb19eefd, type: 3}
     _settings: {fileID: 8648687904831417207, guid: e958371dfd033e1489a6b74ebb19eefd, type: 3}
     _initialCount: 5
+  - _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
+    _creator: {fileID: 9124875427349615800, guid: 5bf5657fcedbf954fa11504923badcc9, type: 3}
+    _settings: {fileID: 3874569786487812479, guid: 5bf5657fcedbf954fa11504923badcc9, type: 3}
+    _initialCount: 3
+  - _prefab: {fileID: 3846490123035560079, guid: 083dc76edb6593343addfc322b9955d4, type: 3}
+    _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _initialCount: 1
+  - _prefab: {fileID: 7932806303942219909, guid: ef81cdd8d6ec9784aa46b427d0d89d4f, type: 3}
+    _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _initialCount: 1
+  - _prefab: {fileID: 2003415747288394991, guid: f89693567f994a84a8ad4c91ef8d9340, type: 3}
+    _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _initialCount: 1
+  - _prefab: {fileID: 8133989683629180344, guid: 20d7d70e3f904a94abbbd68de1644da0, type: 3}
+    _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _initialCount: 1
+  - _prefab: {fileID: 7847948988675161365, guid: b8a125b8733632a4c83ff626aa43b147, type: 3}
+    _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _initialCount: 1
