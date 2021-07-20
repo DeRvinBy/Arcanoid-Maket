@@ -10,14 +10,14 @@
      "export":
         {
          "format":"json",
-         "target":"..\/Pack3\/level3.json"
+         "target":"level2.json"
         }
     },
  "height":5,
  "infinite":false,
  "layers":[
         {
-         "data":[0, 13, 1, 13, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "data":[0, 3, 13, 3, 0, 0, 13, 5, 13, 0, 0, 5, 3, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":5,
          "id":3,
          "name":"level1",

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using GameEntities.Blocks.Enumerations;
+using GameSettings.GameBlockSettings.Destructible;
+using GameSettings.GameBlockSettings.Indestructible;
 using Library.ObjectPool.Abstract;
 using UnityEngine;
 
@@ -9,12 +11,16 @@ namespace GameSettings.GameBlockSettings
     {
         [SerializeField]
         private BlockLifeSettings _lifeSettings;
+
+        [SerializeField]
+        private IndestructibleBlockSettings _indestructibleSettings;
         
         [SerializeField]
         private DestructibleBlockSettingsContainer[] _settingsContainers;
 
         public BlockLifeSettings LifeSettings => _lifeSettings;
-        
+        public IndestructibleBlockSettings IndestructibleSettings => _indestructibleSettings;
+
         private Dictionary<BlockId, DestructibleBlockSettings> _settingsMap;
 
         public void Initialize()

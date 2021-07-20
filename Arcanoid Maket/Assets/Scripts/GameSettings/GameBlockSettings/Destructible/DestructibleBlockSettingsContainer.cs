@@ -2,7 +2,7 @@
 using GameEntities.Blocks.Enumerations;
 using UnityEngine;
 
-namespace GameSettings.GameBlockSettings
+namespace GameSettings.GameBlockSettings.Destructible
 {
     [Serializable]
     public class DestructibleBlockSettingsContainer

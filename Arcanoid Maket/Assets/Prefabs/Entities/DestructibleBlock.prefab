@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2828554167545141088}
   - component: {fileID: 5425245372202826004}
   m_Layer: 7
-  m_Name: Block
+  m_Name: DestructibleBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

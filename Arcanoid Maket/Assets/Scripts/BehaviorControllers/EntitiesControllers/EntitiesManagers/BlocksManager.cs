@@ -18,7 +18,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         private BlocksProgressUI _blocksProgressUI;
 
         private BlockSpawner _spawner;
-        private List<AbstractBlock> _blocksOnScene;
         private int _blockCount;
 
         private void OnEnable()
@@ -34,7 +33,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         public override void Initialize()
         {
             _spawner = new BlockSpawner();
-            _blocksOnScene = new List<AbstractBlock>();
         }
 
         public void OnDestructibleBlockCreated()
@@ -44,8 +42,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 
         public void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockId blockId)
         {
-            var block = _spawner.SpawnBlock(blockId, position, size, parent);
-            _blocksOnScene.Add(block);
+            _spawner.SpawnBlock(blockId, position, size, parent);
         }
 
         public void OnBlockStartDestroyed()
@@ -61,7 +58,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         public void OnDestroyBlock<T>(T block) where T : AbstractBlock
         {
             _spawner.DestroyBlock(block);
-            _blocksOnScene.Remove(block);
         }
         
         public void OnStartGame()
@@ -71,18 +67,9 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         
         public void OnPrepareGame()
         {
-            DestroyAllBalls();
-            _blocksProgressUI.ResetSlider();
-        }
-        
-        private void DestroyAllBalls()
-        {
-            foreach (var block in _blocksOnScene)
-            {
-                _spawner.DestroyBlock(block);
-            }
-            _blocksOnScene.Clear();
+            _spawner.DestroyAllBlocks();
             _blockCount = 0;
+            _blocksProgressUI.ResetSlider();
         }
     }
 }

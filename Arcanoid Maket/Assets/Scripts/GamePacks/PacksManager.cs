@@ -11,7 +11,7 @@ namespace GamePacks
     public class PacksManager : Singleton<PacksManager>
     {
         private const string PacksConfigPath = "Data/packs";
-        private const string DebugPack = "test_pack";
+        private const string DebugPack = "dog_pack";
 
         private PacksService _service;
         private ILevelParser _parser;
@@ -26,7 +26,7 @@ namespace GamePacks
             var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
             _service.Initialize(config);
-            _service.StartPack(DebugPack);
+            _service.StartDebugPack(DebugPack);
             _parser = new JsonParser();
             
             UpdatePacksInfo();
