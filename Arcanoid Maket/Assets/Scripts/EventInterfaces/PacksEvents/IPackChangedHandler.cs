@@ -1,5 +1,5 @@
 ﻿using GamePacks.Data.Packs;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 
 namespace EventInterfaces.PacksEvents
 {

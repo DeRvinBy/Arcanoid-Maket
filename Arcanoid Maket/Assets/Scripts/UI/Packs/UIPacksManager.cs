@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GamePacks.Data.Packs;
-using Library.ObjectPool;
+using MyLibrary.ObjectPool;
 using UI.Packs.PackItem;
 using UnityEngine;
 

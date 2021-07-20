@@ -1,6 +1,6 @@
 ﻿using GameEntities.Ball.Behaviour;
 using GameSettings.GameBallSettings;
-using Library.ObjectPool.Abstract;
+using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameEntities.Ball

@@ -2,8 +2,8 @@
 using EventInterfaces.StatesEvents;
 using GamePacks.Data.Packs;
 using GameSettings.PackContainerSettings;
-using Library.EventSystem;
-using Library.ObjectPool.Abstract;
+using MyLibrary.EventSystem;
+using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace UI.Packs.PackItem

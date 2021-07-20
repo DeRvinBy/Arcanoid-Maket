@@ -2,7 +2,7 @@
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings.Destructible;
 using GameSettings.GameBlockSettings.Indestructible;
-using Library.ObjectPool.Abstract;
+using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameSettings.GameBlockSettings

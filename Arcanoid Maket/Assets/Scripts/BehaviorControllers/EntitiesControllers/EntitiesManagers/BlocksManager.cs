@@ -6,7 +6,7 @@ using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Enumerations;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UI.Header.BlocksUI;
 using UnityEngine;
 

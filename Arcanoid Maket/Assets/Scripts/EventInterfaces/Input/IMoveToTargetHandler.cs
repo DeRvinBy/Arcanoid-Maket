@@ -1,4 +1,4 @@
-﻿using Library.EventSystem;
+﻿using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace EventInterfaces.Input

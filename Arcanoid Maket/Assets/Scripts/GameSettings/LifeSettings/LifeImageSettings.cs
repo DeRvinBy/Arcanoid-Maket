@@ -1,4 +1,4 @@
-﻿using Library.ObjectPool.Abstract;
+﻿using MyLibrary.ObjectPool.Abstract;
 
 namespace GameSettings.LifeSettings
 {

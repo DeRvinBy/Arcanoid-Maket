@@ -2,8 +2,8 @@
 using GamePacks.Data;
 using GamePacks.Data.Level.LevelParser;
 using GamePacks.Data.Packs;
-using Library.EventSystem;
-using Library.Singleton;
+using MyLibrary.EventSystem;
+using MyLibrary.Singleton;
 using UnityEngine;
 
 namespace GamePacks
@@ -11,7 +11,7 @@ namespace GamePacks
     public class PacksManager : Singleton<PacksManager>
     {
         private const string PacksConfigPath = "Data/packs";
-        private const string DebugPack = "dog_pack";
+        private const string DebugPack = "test_pack";
 
         private PacksService _service;
         private ILevelParser _parser;

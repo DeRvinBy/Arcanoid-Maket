@@ -1,4 +1,4 @@
-﻿using Library.Extensions;
+﻿using MyLibrary.Extensions;
 using UnityEngine;
 
 namespace GameEntities.Blocks.Behaviour

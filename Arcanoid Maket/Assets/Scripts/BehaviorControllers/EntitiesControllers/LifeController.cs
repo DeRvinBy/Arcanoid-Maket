@@ -2,7 +2,7 @@
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameSettings.LifeSettings;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UI.Header.LifeUI;
 using UnityEngine;
 

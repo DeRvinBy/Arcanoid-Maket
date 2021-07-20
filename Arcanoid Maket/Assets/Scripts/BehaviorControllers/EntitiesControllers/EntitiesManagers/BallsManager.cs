@@ -5,7 +5,7 @@ using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Balls;
 using GameEntities.Ball;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers.EntitiesManagers

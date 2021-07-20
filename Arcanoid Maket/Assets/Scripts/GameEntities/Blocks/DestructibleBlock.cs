@@ -4,7 +4,7 @@ using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Behaviour;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameEntities.Blocks

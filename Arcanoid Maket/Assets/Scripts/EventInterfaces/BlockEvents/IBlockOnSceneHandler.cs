@@ -1,6 +1,6 @@
 ﻿using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Enumerations;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace EventInterfaces.BlockEvents

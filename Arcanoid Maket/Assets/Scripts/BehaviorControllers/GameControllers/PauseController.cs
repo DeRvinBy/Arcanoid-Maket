@@ -3,8 +3,8 @@ using BehaviorControllers.Abstract;
 using EventInterfaces.Input;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
-using Library.EventSystem;
-using Library.UI.Popup;
+using MyLibrary.EventSystem;
+using MyLibrary.UI.Popup;
 using UI.Popups;
 using UnityEngine;
 
