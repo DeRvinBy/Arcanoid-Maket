@@ -9,8 +9,16 @@ namespace GamePacks.Data.Packs
         [SerializeField]
         private Pack[] _packs;
 
-        public Pack FirstPack => _packs[0];
+        [SerializeField]
+        private string _debugPack = "test_pack";
         
+        [SerializeField]
+        private int _debugLevelId = 2;
+        
+        public Pack FirstPack => _packs[0];
+        public string DebugPack => _debugPack;
+        public int DebugLevelId => _debugLevelId;
+
         public Dictionary<string, Pack> GetPacksMap()
         {
             var map = new Dictionary<string, Pack>();
