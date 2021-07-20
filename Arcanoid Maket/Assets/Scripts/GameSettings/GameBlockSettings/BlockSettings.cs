@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace GameSettings.GameBlockSettings
 {
-    public class MainBlockSettings : AbstractSettings
+    public class BlockSettings : AbstractSettings
     {
         [SerializeField]
         private BlockLifeSettings _lifeSettings;
         
         [SerializeField]
-        private BlockSettingsContainer[] _settingsContainers;
+        private DestructibleBlockSettingsContainer[] _settingsContainers;
 
         public BlockLifeSettings LifeSettings => _lifeSettings;
         
-        private Dictionary<BlockId, IndividualBlockSettings> _settingsMap;
+        private Dictionary<BlockId, DestructibleBlockSettings> _settingsMap;
 
         public void Initialize()
         {
@@ -25,14 +25,14 @@ namespace GameSettings.GameBlockSettings
 
         private void CreateSettingMap()
         {
-            _settingsMap = new Dictionary<BlockId, IndividualBlockSettings>();
+            _settingsMap = new Dictionary<BlockId, DestructibleBlockSettings>();
             foreach (var container in _settingsContainers)
             {
                 _settingsMap.Add(container.BlockID, container.BlockSettings);
             }
         }
 
-        public IndividualBlockSettings GetBlockSettings(BlockId blockID)
+        public DestructibleBlockSettings GetBlockSettings(BlockId blockID)
         {
             return _settingsMap[blockID];
         }

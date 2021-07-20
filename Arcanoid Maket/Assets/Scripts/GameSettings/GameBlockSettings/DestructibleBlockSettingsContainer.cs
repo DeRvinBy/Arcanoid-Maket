@@ -5,15 +5,15 @@ using UnityEngine;
 namespace GameSettings.GameBlockSettings
 {
     [Serializable]
-    public class BlockSettingsContainer
+    public class DestructibleBlockSettingsContainer
     {
         [SerializeField]
         private BlockId _blockId = BlockId.Red;
 
         [SerializeField]
-        private IndividualBlockSettings _blockSettings;
+        private DestructibleBlockSettings _blockSettings;
 
         public BlockId BlockID => _blockId;
-        public IndividualBlockSettings BlockSettings => _blockSettings;
+        public DestructibleBlockSettings BlockSettings => _blockSettings;
     }
 }

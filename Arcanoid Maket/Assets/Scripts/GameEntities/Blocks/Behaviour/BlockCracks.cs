@@ -29,7 +29,7 @@ namespace GameEntities.Blocks.Behaviour
             _spriteRenderer.sprite = newSprite;
         }
 
-        public void DisableBlockCracks()
+        public void ResetBlockCracks()
         {
             _spriteRenderer.enabled = false;
         }

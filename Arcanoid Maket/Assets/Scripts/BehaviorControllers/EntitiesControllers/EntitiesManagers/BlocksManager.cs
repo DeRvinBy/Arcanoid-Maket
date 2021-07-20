@@ -4,7 +4,7 @@ using EventInterfaces.BlockEvents;
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
-using GameEntities.Blocks;
+using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Enumerations;
 using Library.EventSystem;
 using UI.Header.BlocksUI;
@@ -18,7 +18,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         private BlocksProgressUI _blocksProgressUI;
 
         private BlockSpawner _spawner;
-        private List<BlockEntity> _blocksOnScene;
+        private List<AbstractBlock> _blocksOnScene;
         private int _blockCount;
 
         private void OnEnable()
@@ -34,15 +34,18 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         public override void Initialize()
         {
             _spawner = new BlockSpawner();
-            _blocksOnScene = new List<BlockEntity>();
+            _blocksOnScene = new List<AbstractBlock>();
+        }
+
+        public void OnDestructibleBlockCreated()
+        {
+            _blockCount++;
         }
 
         public void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockId blockId)
         {
-            var block = _spawner.SpawnBlock(position, size, parent);
-            block.SetupBlock(blockId);
+            var block = _spawner.SpawnBlock(blockId, position, size, parent);
             _blocksOnScene.Add(block);
-            _blockCount++;
         }
 
         public void OnBlockStartDestroyed()
@@ -55,7 +58,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             }
         }
 
-        public void OnDestroyBlock(BlockEntity block)
+        public void OnDestroyBlock<T>(T block) where T : AbstractBlock
         {
             _spawner.DestroyBlock(block);
             _blocksOnScene.Remove(block);

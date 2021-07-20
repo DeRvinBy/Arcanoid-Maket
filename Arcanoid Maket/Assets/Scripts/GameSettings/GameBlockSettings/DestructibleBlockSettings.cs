@@ -4,7 +4,7 @@ using UnityEngine;
 namespace GameSettings.GameBlockSettings
 {
     [Serializable]
-    public class IndividualBlockSettings
+    public class DestructibleBlockSettings
     {
         [SerializeField]
         private Sprite _blockSprite;
