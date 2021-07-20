@@ -62,30 +62,32 @@ MonoBehaviour:
     - {fileID: -4411952460908225232, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: -6082135074782123902, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: 8480730808895571315, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
-  _indestructibleSettings:
-    _sprite: {fileID: 3945680786666316028, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   _settingsContainers:
-  - _blockId: 1
+  - _blockId: 0
     _blockSettings:
       _blockSprite: {fileID: 3317128819024105003, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0.9568628, g: 0.15294118, b: 0.2392157, a: 1}
-  - _blockId: 2
+  - _blockId: 1
     _blockSettings:
       _blockSprite: {fileID: -9165667521666509536, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0, g: 0.63529414, b: 0.27058825, a: 1}
-  - _blockId: 3
+  - _blockId: 2
     _blockSettings:
       _blockSprite: {fileID: 5780770534196861083, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0, g: 0.76470596, b: 0.9843138, a: 1}
-  - _blockId: 4
+  - _blockId: 3
     _blockSettings:
       _blockSprite: {fileID: -4966992281954946882, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0.454902, g: 0.36078432, b: 0.5686275, a: 1}
-  - _blockId: 5
+  - _blockId: 4
     _blockSettings:
       _blockSprite: {fileID: -6802198193789874668, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 1, g: 0.5176471, b: 0.18039216, a: 1}
-  - _blockId: 6
+  - _blockId: 5
     _blockSettings:
       _blockSprite: {fileID: -7959136965675241204, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0.87843144, g: 0.5647059, b: 0.9294118, a: 1}
+  - _blockId: 10
+    _blockSettings:
+      _blockSprite: {fileID: 3945680786666316028, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}

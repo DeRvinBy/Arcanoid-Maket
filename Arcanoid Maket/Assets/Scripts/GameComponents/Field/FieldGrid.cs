@@ -1,5 +1,8 @@
 ﻿using GameComponents.Field.Data;
+using GameEntities.Blocks.Data;
+using GameEntities.Blocks.Enumerations;
 using GamePacks.Data.Level;
+using GamePacks.Data.Level.LevelParser.Tiles;
 using UnityEngine;
 
 namespace GameComponents.Field
@@ -30,7 +33,7 @@ namespace GameComponents.Field
             SetupCells(levelData.Data);
         }
         
-        private void SetupCells(int[,] data)
+        private void SetupCells(TileProperties[,] data)
         {
             Cells = new FieldCell[VerticalCount, HorizontalCount];
 
@@ -44,12 +47,23 @@ namespace GameComponents.Field
             {
                 for (int j = 0; j < HorizontalCount; j++)
                 {
-                    Cells[i, j] = new FieldCell(position, data[i, j]);
+                    var properties = CreateBlockProperties(data[i, j]);
+                    Cells[i, j] = new FieldCell(position, properties);
                     position.x += stepX;
                 }
                 position.x = startLineX;
                 position.y += stepY;
             }
+        }
+
+        private BlockProperties CreateBlockProperties(TileProperties properties)
+        {
+            return new BlockProperties
+            {
+                Type = (BlockType) properties.TypeId,
+                SpriteId = (BlockSpriteId) properties.SpriteId,
+                BonusId = properties.BonusId
+            };
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using GameSettings.GameBlockSettings;
-using GameSettings.GameBlockSettings.Destructible;
 using MyLibrary.Extensions;
 using UnityEngine;
 

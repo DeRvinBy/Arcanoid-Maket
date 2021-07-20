@@ -1,12 +1,14 @@
-﻿namespace GamePacks.Data.Level
+﻿using GamePacks.Data.Level.LevelParser.Tiles;
+
+namespace GamePacks.Data.Level
 {
     public class LevelData
     {
         public int HorizontalCount { get; }
         public int VerticalCount { get; }
-        public int[,] Data { get; }
+        public TileProperties[,] Data { get; }
         
-        public LevelData(int verticalCount, int horizontalCount, int[,] data)
+        public LevelData(int verticalCount, int horizontalCount, TileProperties[,] data)
         {
             VerticalCount = verticalCount;
             HorizontalCount = horizontalCount;

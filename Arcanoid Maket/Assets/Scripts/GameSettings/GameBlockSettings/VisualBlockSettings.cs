@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameSettings.GameBlockSettings.Destructible
+namespace GameSettings.GameBlockSettings
 {
     [Serializable]
-    public class DestructibleBlockSettings
+    public class VisualBlockSettings
     {
         [SerializeField]
         private Sprite _blockSprite;

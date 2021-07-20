@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameSettings.GameBlockSettings.Destructible
+namespace GameSettings.GameBlockSettings
 {
     [Serializable]
     public class BlockLifeSettings

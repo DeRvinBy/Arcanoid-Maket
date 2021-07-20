@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
+using GameEntities.Blocks.Data;
 using GameEntities.Blocks.Enumerations;
 using MyLibrary.ObjectPool;
 using UnityEngine;
@@ -17,15 +18,16 @@ namespace GameComponents.Blocks
             _blocksMap = new Dictionary<Type, List<AbstractBlock>>();
         }
         
-        public void SpawnBlock(BlockId id, Vector3 position, Vector3 size, Transform parent)
+        public void SpawnBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
         {
-            if (id == BlockId.Indestructible)
+            switch (properties.Type)
             {
-                CreateIndestructibleBlock(position, size, parent);
-            }
-            else
-            {
-                CreateDestructibleBlock(id, position, size, parent);
+                case BlockType.Destructible:
+                    CreateDestructibleBlock(properties.SpriteId, position, size, parent);
+                    break;
+                case BlockType.Indestructible:
+                    CreateIndestructibleBlock(position, size, parent);
+                    break;
             }
         }
 
@@ -35,11 +37,11 @@ namespace GameComponents.Blocks
             AddPackToMap(typeof(IndestructibleBlock), block);
         }
         
-        private void CreateDestructibleBlock(BlockId id, Vector3 position, Vector3 size, Transform parent)
+        private void CreateDestructibleBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<DestructibleBlock>(position, Quaternion.identity, size, parent);
             AddPackToMap(typeof(DestructibleBlock), block);
-            block.SetupBlock(id);
+            block.SetupBlock(spriteId);
         }
 
         private void AddPackToMap(Type type, AbstractBlock block)

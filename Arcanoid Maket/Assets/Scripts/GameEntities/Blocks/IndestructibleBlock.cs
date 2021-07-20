@@ -1,5 +1,6 @@
 ﻿using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Behaviour;
+using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
 using UnityEngine;
 
@@ -13,7 +14,8 @@ namespace GameEntities.Blocks
         public override void Initialize(BlockSettings settings)
         {
             _sprite.Initialize();
-            _sprite.SetupSprite(settings.IndestructibleSettings.Sprite);
+            var visualSettings = settings.GetBlockSettings(BlockSpriteId.Iron); 
+            _sprite.SetupSprite(visualSettings.Sprite);
         }
     }
 }

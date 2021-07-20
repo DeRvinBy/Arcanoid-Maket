@@ -5,6 +5,7 @@ using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
 using GameEntities.Blocks.Abstract;
+using GameEntities.Blocks.Data;
 using GameEntities.Blocks.Enumerations;
 using MyLibrary.EventSystem;
 using UI.Header.BlocksUI;
@@ -40,9 +41,9 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _blockCount++;
         }
 
-        public void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockId blockId)
+        public void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockProperties properties)
         {
-            _spawner.SpawnBlock(blockId, position, size, parent);
+            _spawner.SpawnBlock(properties, position, size, parent);
         }
 
         public void OnBlockStartDestroyed()

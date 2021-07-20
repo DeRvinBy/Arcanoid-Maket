@@ -12,7 +12,7 @@ namespace GameEntities.Blocks
     public class DestructibleBlock : AbstractBlock
     {
         [SerializeField]
-        private BlockSprite _sprite;
+        private Behaviour.BlockSprite _sprite;
         
         [SerializeField]
         private BlockCollider _collider;
@@ -33,12 +33,12 @@ namespace GameEntities.Blocks
             _cracks.Initialize(_settings.LifeSettings);
         }
 
-        public void SetupBlock(BlockId id)
+        public void SetupBlock(BlockSpriteId spriteId)
         {
             _lifeCount = _settings.LifeSettings.BlockLife;
             _collider.SetupCollider();
             _cracks.SetupBlockCracks();
-            var settings = _settings.GetBlockSettings(id);
+            var settings = _settings.GetBlockSettings(spriteId);
             _sprite.SetupSprite(settings.Sprite);
             _particles.SetParticleColor(settings.ParticleColor);
             

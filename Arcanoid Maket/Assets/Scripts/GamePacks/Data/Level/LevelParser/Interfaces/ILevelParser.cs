@@ -1,4 +1,4 @@
-﻿namespace GamePacks.Data.Level.LevelParser
+﻿namespace GamePacks.Data.Level.LevelParser.Interfaces
 {
     public interface ILevelParser
     {

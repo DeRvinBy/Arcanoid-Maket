@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using GameEntities.Blocks.Enumerations;
-using GameSettings.GameBlockSettings.Destructible;
-using GameSettings.GameBlockSettings.Indestructible;
 using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
 
@@ -13,15 +11,11 @@ namespace GameSettings.GameBlockSettings
         private BlockLifeSettings _lifeSettings;
 
         [SerializeField]
-        private IndestructibleBlockSettings _indestructibleSettings;
-        
-        [SerializeField]
-        private DestructibleBlockSettingsContainer[] _settingsContainers;
+        private VisualBlockSettingsContainer[] _settingsContainers;
 
         public BlockLifeSettings LifeSettings => _lifeSettings;
-        public IndestructibleBlockSettings IndestructibleSettings => _indestructibleSettings;
 
-        private Dictionary<BlockId, DestructibleBlockSettings> _settingsMap;
+        private Dictionary<BlockSpriteId, VisualBlockSettings> _settingsMap;
 
         public void Initialize()
         {
@@ -31,14 +25,14 @@ namespace GameSettings.GameBlockSettings
 
         private void CreateSettingMap()
         {
-            _settingsMap = new Dictionary<BlockId, DestructibleBlockSettings>();
+            _settingsMap = new Dictionary<BlockSpriteId, VisualBlockSettings>();
             foreach (var container in _settingsContainers)
             {
                 _settingsMap.Add(container.BlockID, container.BlockSettings);
             }
         }
 
-        public DestructibleBlockSettings GetBlockSettings(BlockId blockID)
+        public VisualBlockSettings GetBlockSettings(BlockSpriteId blockID)
         {
             return _settingsMap[blockID];
         }

@@ -1,6 +1,8 @@
 ﻿using EventInterfaces.PacksEvents;
 using GamePacks.Data;
 using GamePacks.Data.Level.LevelParser;
+using GamePacks.Data.Level.LevelParser.Interfaces;
+using GamePacks.Data.Level.LevelParser.Json;
 using GamePacks.Data.Packs;
 using MyLibrary.EventSystem;
 using MyLibrary.Singleton;
@@ -11,7 +13,8 @@ namespace GamePacks
     public class PacksManager : Singleton<PacksManager>
     {
         private const string PacksConfigPath = "Data/packs";
-        private const string DebugPack = "test_pack";
+        private const string TilemapFilePath = "Data/tilemap";
+        private const string DebugPack = "dog_pack";
 
         private PacksService _service;
         private ILevelParser _parser;
@@ -27,7 +30,8 @@ namespace GamePacks
             _service = new PacksService();
             _service.Initialize(config);
             _service.StartDebugPack(DebugPack);
-            _parser = new JsonParser();
+            var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
+            _parser = new JsonParser(tilemap.text);
             
             UpdatePacksInfo();
         }
