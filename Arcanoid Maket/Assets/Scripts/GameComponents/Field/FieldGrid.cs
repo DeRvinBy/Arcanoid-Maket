@@ -1,6 +1,7 @@
 ﻿using GameComponents.Field.Data;
 using GameEntities.Blocks.Data;
 using GameEntities.Blocks.Enumerations;
+using GameEntities.Bonuses.Enumerations;
 using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Tiles;
 using UnityEngine;
@@ -62,7 +63,7 @@ namespace GameComponents.Field
             {
                 Type = (BlockType) properties.TypeId,
                 SpriteId = (BlockSpriteId) properties.SpriteId,
-                BonusId = properties.BonusId
+                BonusId = (BonusType) properties.BonusId
             };
         }
     }

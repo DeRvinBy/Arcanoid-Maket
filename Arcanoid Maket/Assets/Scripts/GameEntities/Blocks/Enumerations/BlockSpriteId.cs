@@ -8,6 +8,8 @@
         Purple = 3,
         Orange = 4,
         LightPurple = 5,
-        Iron = 10
+        Iron = 10,
+        BallSpeedUp = 11,
+        BallSpeedDown = 12,
     }
 }

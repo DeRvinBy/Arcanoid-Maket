@@ -28,6 +28,9 @@ namespace GameComponents.Blocks
                 case BlockType.Indestructible:
                     CreateIndestructibleBlock(position, size, parent);
                     break;
+                case BlockType.Bonus:
+                    CreateBonusBlock(properties, position, size, parent);
+                    break;
             }
         }
 
@@ -43,7 +46,15 @@ namespace GameComponents.Blocks
             AddPackToMap(typeof(DestructibleBlock), block);
             block.SetupBlock(spriteId);
         }
-
+        
+        private void CreateBonusBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
+        {
+            var block = PoolsManager.Instance.GetObject<BonusBlock>(position, Quaternion.identity, size, parent);
+            AddPackToMap(typeof(BonusBlock), block);
+            block.SetupBlock(properties.SpriteId);
+            block.SetupBonus(properties.BonusId);
+        }
+        
         private void AddPackToMap(Type type, AbstractBlock block)
         {
             if (!_blocksMap.ContainsKey(type))

@@ -1,4 +1,5 @@
 ﻿using GameEntities.Blocks.Enumerations;
+using GameEntities.Bonuses.Enumerations;
 
 namespace GameEntities.Blocks.Data
 {
@@ -6,6 +7,6 @@ namespace GameEntities.Blocks.Data
     {
         public BlockType Type { get; set; }
         public BlockSpriteId SpriteId { get; set; }
-        public int BonusId { get; set; }
+        public BonusType BonusId { get; set; }
     }
 }

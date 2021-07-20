@@ -12,7 +12,7 @@ namespace GameEntities.Blocks
     public class DestructibleBlock : AbstractBlock
     {
         [SerializeField]
-        private Behaviour.BlockSprite _sprite;
+        private BlockSprite _sprite;
         
         [SerializeField]
         private BlockCollider _collider;
@@ -57,24 +57,34 @@ namespace GameEntities.Blocks
             _collider.OnBlockCollided -= OnBlockDamaged;
         }
 
-        private void OnBlockDamaged(Collision2D other)
+        protected virtual void OnBlockDamaged(Collision2D other)
         {
             _lifeCount -= 1;
             _cracks.UpdateBlockCracks(_lifeCount);
             if (_lifeCount <= 0)
             {
-                StartCoroutine(DestroyBlock());
-                EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());    
+                DestroyBlock();
             }
         }
 
-        private IEnumerator DestroyBlock()
+        public override void DestroyBlock()
+        {
+            StartCoroutine(DestroyBlockAnimate());
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());
+        }
+
+        private IEnumerator DestroyBlockAnimate()
         {
             _sprite.ResetSprite();
             _collider.ResetCollider();
             _cracks.ResetBlockCracks();
             yield return _particles.PlayParticle();
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));
+            OnDestroyBlock();
+        }
+
+        protected virtual void OnDestroyBlock()
+        {
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));   
         }
     }
 }

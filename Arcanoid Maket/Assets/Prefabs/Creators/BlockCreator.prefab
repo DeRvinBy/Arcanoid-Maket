@@ -91,3 +91,11 @@ MonoBehaviour:
     _blockSettings:
       _blockSprite: {fileID: 3945680786666316028, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+  - _blockId: 11
+    _blockSettings:
+      _blockSprite: {fileID: 4034055338128651791, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 1, g: 0.9568628, b: 0.6666667, a: 1}
+  - _blockId: 12
+    _blockSettings:
+      _blockSprite: {fileID: 5623397130100260616, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.85098046, g: 0.86274517, b: 0.6666667, a: 1}
