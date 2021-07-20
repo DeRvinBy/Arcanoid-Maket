@@ -1,5 +1,6 @@
 ﻿using GameSettings.GameBlockSettings;
-using Library.Extensions;
+using GameSettings.GameBlockSettings.Destructible;
+using MyLibrary.Extensions;
 using UnityEngine;
 
 namespace GameEntities.Blocks.Behaviour
@@ -29,7 +30,7 @@ namespace GameEntities.Blocks.Behaviour
             _spriteRenderer.sprite = newSprite;
         }
 
-        public void DisableBlockCracks()
+        public void ResetBlockCracks()
         {
             _spriteRenderer.enabled = false;
         }

@@ -1,4 +1,5 @@
-﻿using Library.Extensions;
+﻿using System.Collections;
+using MyLibrary.Extensions;
 using UnityEngine;
 
 namespace GameEntities.Blocks.Behaviour
@@ -8,16 +9,15 @@ namespace GameEntities.Blocks.Behaviour
         [SerializeField]
         private ParticleSystem _particles;
 
-        public bool IsParticlesPlaying => _particles.isPlaying;
-        
         public void SetParticleColor(Color color)
         {
             _particles.SetParticlesColor(color);
         }
         
-        public void PlayParticle()
+        public IEnumerator PlayParticle()
         {
             _particles.Play();
+            yield return new WaitWhile(() => _particles.isPlaying);
         }
     }
 }

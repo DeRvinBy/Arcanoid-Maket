@@ -1,7 +1,7 @@
 ﻿using System;
 using GameEntities.Ball;
 using GameSettings.GameBallSettings;
-using Library.ObjectPool.Abstract;
+using MyLibrary.ObjectPool.Abstract;
 
 namespace EntitiesCreation
 {

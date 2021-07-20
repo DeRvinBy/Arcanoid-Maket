@@ -1,6 +1,6 @@
 ﻿using EventInterfaces.FieldEvents;
 using GameSettings.GameFieldSettings;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Field

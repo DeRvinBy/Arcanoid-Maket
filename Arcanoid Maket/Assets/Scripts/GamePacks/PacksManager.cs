@@ -2,8 +2,8 @@
 using GamePacks.Data;
 using GamePacks.Data.Level.LevelParser;
 using GamePacks.Data.Packs;
-using Library.EventSystem;
-using Library.Singleton;
+using MyLibrary.EventSystem;
+using MyLibrary.Singleton;
 using UnityEngine;
 
 namespace GamePacks
@@ -26,7 +26,7 @@ namespace GamePacks
             var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
             _service.Initialize(config);
-            _service.StartPack(DebugPack);
+            _service.StartDebugPack(DebugPack);
             _parser = new JsonParser();
             
             UpdatePacksInfo();

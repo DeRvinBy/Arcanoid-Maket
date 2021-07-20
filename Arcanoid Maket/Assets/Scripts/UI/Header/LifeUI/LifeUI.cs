@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameSettings.LifeSettings;
-using Library.ObjectPool;
+using MyLibrary.ObjectPool;
 using UnityEngine;
 
 namespace UI.Header.LifeUI

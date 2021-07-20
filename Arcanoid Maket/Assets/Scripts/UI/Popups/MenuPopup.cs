@@ -1,8 +1,8 @@
 ﻿using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.StatesEvents;
-using Library.EventSystem;
-using Library.UI.Button;
-using Library.UI.Popup.Abstract;
+using MyLibrary.EventSystem;
+using MyLibrary.UI.Button;
+using MyLibrary.UI.Popup.Abstract;
 using UI.Menu;
 using UnityEngine;
 

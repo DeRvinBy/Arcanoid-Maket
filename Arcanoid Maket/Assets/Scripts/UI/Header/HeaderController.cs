@@ -2,8 +2,8 @@
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks.Data.Packs;
-using Library.EventSystem;
-using Library.UI.Button;
+using MyLibrary.EventSystem;
+using MyLibrary.UI.Button;
 using UI.Header.PackUI;
 using UnityEngine;
 

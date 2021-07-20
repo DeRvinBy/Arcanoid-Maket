@@ -8,6 +8,7 @@
         Blue = 3,
         Purple = 4,
         Orange = 5,
-        LightPurple = 6
+        LightPurple = 6,
+        Indestructible = 13,
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GamePacks.Data.Player.SaveLoader;
+using UnityEngine;
 
 namespace GamePacks.Data.Player
 {
@@ -38,6 +39,8 @@ namespace GamePacks.Data.Player
 
         public void AddOpenSavePack(string key)
         {
+            if (_packsSaveContainer.Packs.ContainsKey(key)) return;
+            
             var saveItem = new PackSaveItem {IsOpen = true, IsComplete = false, CurrentLevelId = 0};
             _packsSaveContainer.Packs.Add(key, saveItem);
         }

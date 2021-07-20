@@ -1,7 +1,7 @@
 ﻿using EventInterfaces.BallEvents;
 using GameEntities.Ball;
 using GameSettings.GameFieldSettings;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Field

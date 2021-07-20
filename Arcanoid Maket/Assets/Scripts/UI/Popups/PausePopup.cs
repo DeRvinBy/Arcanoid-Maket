@@ -1,8 +1,8 @@
 ﻿using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
-using Library.EventSystem;
-using Library.UI.Button;
-using Library.UI.Popup.Abstract;
+using MyLibrary.EventSystem;
+using MyLibrary.UI.Button;
+using MyLibrary.UI.Popup.Abstract;
 using UnityEngine;
 
 namespace UI.Popups

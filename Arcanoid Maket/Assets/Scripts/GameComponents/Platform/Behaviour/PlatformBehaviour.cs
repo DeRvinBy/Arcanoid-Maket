@@ -2,7 +2,7 @@
 using System.Collections;
 using EventInterfaces.Input;
 using GameComponents.Platform.Data;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Platform.Behaviour

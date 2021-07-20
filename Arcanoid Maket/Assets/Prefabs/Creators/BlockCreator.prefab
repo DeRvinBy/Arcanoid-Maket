@@ -62,6 +62,8 @@ MonoBehaviour:
     - {fileID: -4411952460908225232, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: -6082135074782123902, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: 8480730808895571315, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+  _indestructibleSettings:
+    _sprite: {fileID: 3945680786666316028, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   _settingsContainers:
   - _blockId: 1
     _blockSettings:

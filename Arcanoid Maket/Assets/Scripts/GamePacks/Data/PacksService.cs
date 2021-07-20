@@ -76,6 +76,13 @@ namespace GamePacks.Data
             _currentPackKey = packKey;
             _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
         }
+        
+        public void StartDebugPack(string packKey)
+        {
+            _playerPacksSave.AddOpenSavePack(packKey);
+            _currentPackKey = packKey;
+            _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
+        }
 
         public void CompleteLevel()
         {

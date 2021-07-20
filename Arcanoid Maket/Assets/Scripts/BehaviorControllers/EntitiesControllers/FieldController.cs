@@ -2,7 +2,7 @@
 using EventInterfaces.PacksEvents;
 using GameComponents.Field;
 using GamePacks.Data.Level;
-using Library.EventSystem;
+using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers
