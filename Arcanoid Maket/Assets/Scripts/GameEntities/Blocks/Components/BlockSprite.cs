@@ -1,7 +1,7 @@
 ﻿using MyLibrary.Extensions;
 using UnityEngine;
 
-namespace GameEntities.Blocks.Behaviour
+namespace GameEntities.Blocks.Components
 {
     public class BlockSprite : MonoBehaviour
     {

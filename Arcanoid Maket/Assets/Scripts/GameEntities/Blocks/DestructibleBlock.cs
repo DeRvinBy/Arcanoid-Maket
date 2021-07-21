@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using EventInterfaces.BlockEvents;
 using GameEntities.Blocks.Abstract;
-using GameEntities.Blocks.Behaviour;
+using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
 using MyLibrary.EventSystem;
@@ -79,10 +79,10 @@ namespace GameEntities.Blocks
             _collider.ResetCollider();
             _cracks.ResetBlockCracks();
             yield return _particles.PlayParticle();
-            OnDestroyBlock();
+            DestroyCompleteBlock();
         }
 
-        protected virtual void OnDestroyBlock()
+        protected virtual void DestroyCompleteBlock()
         {
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));   
         }

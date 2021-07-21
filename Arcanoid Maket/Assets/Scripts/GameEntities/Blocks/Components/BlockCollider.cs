@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameEntities.Blocks.Behaviour
+namespace GameEntities.Blocks.Components
 {
     public class BlockCollider : MonoBehaviour
     {

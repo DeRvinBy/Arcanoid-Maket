@@ -1,4 +1,5 @@
 ﻿using EventInterfaces.BlockEvents;
+using EventInterfaces.BonusEvents;
 using GameEntities.Bonuses.Enumerations;
 using MyLibrary.EventSystem;
 
@@ -16,10 +17,10 @@ namespace GameEntities.Blocks
         public override void DestroyBlock()
         {
             base.DestroyBlock();
-            print("destroy");
+            EventBus.RaiseEvent<IBonusOnSceneHandler>(a => a.OnCreateBonusObject(_bonusType, transform.position));
         }
         
-        protected override void OnDestroyBlock()
+        protected override void DestroyCompleteBlock()
         {
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));   
         }

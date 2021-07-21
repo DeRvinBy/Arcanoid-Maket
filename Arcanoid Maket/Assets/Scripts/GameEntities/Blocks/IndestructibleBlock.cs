@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using EventInterfaces.BlockEvents;
 using GameEntities.Blocks.Abstract;
-using GameEntities.Blocks.Behaviour;
+using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
 using MyLibrary.EventSystem;

@@ -1,5 +1,7 @@
 ﻿using EventInterfaces.BallEvents;
+using EventInterfaces.BonusEvents;
 using GameEntities.Ball;
+using GameEntities.Bonuses;
 using GameSettings.GameFieldSettings;
 using MyLibrary.EventSystem;
 using UnityEngine;
@@ -49,8 +51,15 @@ namespace GameComponents.Field
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            var ball = other.GetComponent<BallEntity>();
-            EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnDestroyBall(ball));
+            if (other.TryGetComponent(out BallEntity ball))
+            {
+                EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnDestroyBall(ball));
+            }
+            
+            if (other.TryGetComponent(out BonusObject bonus))
+            {
+                EventBus.RaiseEvent<IBonusOnSceneHandler>(a => a.OnDestroyBonusObject(bonus));
+            }
         }
     }
 }
