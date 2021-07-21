@@ -4,12 +4,12 @@ namespace MyLibrary.ObjectPool.Abstract
 {
     public abstract class PoolObject : MonoBehaviour
     {
-        public virtual void Setup()
+        public virtual void OnSetup()
         {
             gameObject.SetActive(true);
         }
         
-        public virtual void Reset()
+        public virtual void OnReset()
         {
             gameObject.SetActive(false);
         }

@@ -1,28 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using MyLibrary.CollisionStorage.Colliders2D;
 
 namespace GameEntities.Blocks.Components
 {
-    public class BlockCollider : MonoBehaviour
+    public class BlockCollider : CollisionCollider2D
     {
-        public event Action<Collision2D> OnBlockCollided;
-
-        [SerializeField]
-        private Collider2D _collider;
-        
-        public void SetupCollider()
+        public void EnableCollider()
         {
             _collider.enabled = true;
         }
         
-        public void ResetCollider()
+        public void DisableCollider()
         {
             _collider.enabled = false;
-        }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            OnBlockCollided?.Invoke(other);
         }
     }
 }

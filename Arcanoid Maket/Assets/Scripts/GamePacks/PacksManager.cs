@@ -17,7 +17,7 @@ namespace GamePacks
         private PacksService _service;
         private ILevelParser _parser;
 
-        private void OnApplicationQuit()
+        protected override void OnApplicationQuit()
         {
             _service.SavePlayerPacks();
         }

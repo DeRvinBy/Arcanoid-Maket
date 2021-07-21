@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeSettings:
-    _blockLife: 1
+    _blockLife: 3
     _cracksSprites:
     - {fileID: -4411952460908225232, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
     - {fileID: -6082135074782123902, guid: fa5338999ca421a48be4dfba8947172f, type: 3}

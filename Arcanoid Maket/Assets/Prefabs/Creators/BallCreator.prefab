@@ -57,4 +57,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startVelocity: 6
-  _ballDamage: 1
+  _ballDamage: 2

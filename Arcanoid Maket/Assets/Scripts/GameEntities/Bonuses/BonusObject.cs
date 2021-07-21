@@ -1,6 +1,8 @@
-﻿using EventInterfaces.BonusEvents;
-using GameEntities.Bonuses.Components;
+﻿using BehaviorControllers.EntitiesControllers;
+using EventInterfaces.BonusEvents;
 using GameEntities.Bonuses.Interfaces;
+using MyLibrary.CollisionStorage.Colliders2D;
+using MyLibrary.CollisionStorage.Extensions;
 using MyLibrary.EventSystem;
 using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
@@ -10,24 +12,36 @@ namespace GameEntities.Bonuses
     public class BonusObject : PoolObject
     {
         [SerializeField]
-        private BonusCollider _collider;
+        private TriggerCollider2D _collider;
 
         private IBonusBehaviour _bonusBehaviour;
 
-        public void Initialize()
+        public override void OnSetup()
         {
-            _collider.OnTriggerEntered += ActivateBonus;
+            base.OnSetup();
+            _collider.OnTriggerEnter += ActivateBonus;
+            _collider.RegisterCollider(this);
         }
-        
+
+        public override void OnReset()
+        {
+            base.OnReset();
+            _collider.OnTriggerEnter -= ActivateBonus;
+            _collider.UnregisterCollider(this);
+        }
+
         public void SetupBehaviour(IBonusBehaviour bonusBehaviour)
         {
             _bonusBehaviour = bonusBehaviour;
         }
         
-        private void ActivateBonus()
+        private void ActivateBonus(Collider2D other)
         {
-            _bonusBehaviour.Action();
-            DestroyBonus();
+            if (other.IsColliderHasMonoBehaviour<PlatformController>())
+            {
+                _bonusBehaviour.Action();
+                DestroyBonus();
+            }
         }
         
         public void DestroyBonus()

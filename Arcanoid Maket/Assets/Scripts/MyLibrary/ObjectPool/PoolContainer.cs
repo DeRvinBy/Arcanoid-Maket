@@ -16,7 +16,7 @@ namespace MyLibrary.ObjectPool
 
         public void PushToPool(PoolObject obj)
         {
-            obj.Reset();
+            obj.OnReset();
             obj.transform.SetParent(_objectCreator.Parent);
             _container.Push(obj);
         }
@@ -24,7 +24,7 @@ namespace MyLibrary.ObjectPool
         public PoolObject GetFromPool()
         {
             var result = _container.Count == 0 ? _objectCreator.Instantiate<PoolObject>() : _container.Pop();
-            result.Setup();
+            result.OnSetup();
             return result;
         }
     }

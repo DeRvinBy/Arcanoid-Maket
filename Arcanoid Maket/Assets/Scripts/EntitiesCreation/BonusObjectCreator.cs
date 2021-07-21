@@ -11,7 +11,6 @@ namespace EntitiesCreation
         public override PoolObject Instantiate<T>()
         {
             var instance = Instantiate(_prefab, _parent);
-            instance.Initialize();
             return instance;
         }
     }

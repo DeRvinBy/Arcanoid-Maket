@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using EventInterfaces.BlockEvents;
+using GameEntities.Ball;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
+using MyLibrary.CollisionStorage.Extensions;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -36,8 +38,8 @@ namespace GameEntities.Blocks
         public void SetupBlock(BlockSpriteId spriteId)
         {
             _lifeCount = _settings.LifeSettings.BlockLife;
-            _collider.SetupCollider();
             _cracks.SetupBlockCracks();
+            _collider.EnableCollider();
             var settings = _settings.GetBlockSettings(spriteId);
             _sprite.SetupSprite(settings.Sprite);
             _particles.SetParticleColor(settings.ParticleColor);
@@ -45,21 +47,26 @@ namespace GameEntities.Blocks
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestructibleBlockCreated());
         }
 
-        public override void Setup()
+        public override void OnSetup()
         {
-            base.Setup();
-            _collider.OnBlockCollided += OnBlockDamaged;
+            base.OnSetup();
+            _collider.RegisterCollider(this);
+            _collider.OnCollisionEnter += OnBlockDamaged;
         }
         
-        public override void Reset()
+        public override void OnReset()
         {
-            base.Reset();
-            _collider.OnBlockCollided -= OnBlockDamaged;
+            base.OnReset();
+            _collider.RegisterCollider(this);
+            _collider.OnCollisionEnter -= OnBlockDamaged;
         }
 
-        protected virtual void OnBlockDamaged(Collision2D other)
+        protected virtual void OnBlockDamaged(Collider2D other)
         {
-            _lifeCount -= 1;
+            var ball = other.GetColliderMonoBehaviour<BallEntity>();
+            if (ball == null) return;
+            
+            _lifeCount -= ball.BallDamage;
             _cracks.UpdateBlockCracks(_lifeCount);
             if (_lifeCount <= 0)
             {
@@ -76,7 +83,7 @@ namespace GameEntities.Blocks
         private IEnumerator DestroyBlockAnimate()
         {
             _sprite.ResetSprite();
-            _collider.ResetCollider();
+            _collider.DisableCollider();
             _cracks.ResetBlockCracks();
             yield return _particles.PlayParticle();
             DestroyCompleteBlock();

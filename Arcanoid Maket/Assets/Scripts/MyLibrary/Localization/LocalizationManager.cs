@@ -32,7 +32,7 @@ namespace MyLibrary.Localization
             EventBus.RaiseEvent<ILanguageChangedEvent>((a) => a.OnLanguageChanged());
         }
 
-        private void OnApplicationQuit()
+        protected override void OnApplicationQuit()
         {
             _localization.SaveUserLanguage();
         }

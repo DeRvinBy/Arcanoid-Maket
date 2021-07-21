@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 7637972520900850856}
   - component: {fileID: 7637972520900850854}
   m_Layer: 9
-  m_Name: Physics
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,9 +191,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7637972520900850852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 570479af61664a1c9f1ca2af2e9c0c99, type: 3}
+  m_Script: {fileID: 11500000, guid: 39a04efa50984631a61ae96f69f0bc55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 7637972520900850854}
 --- !u!58 &7637972520900850854
 CircleCollider2D:
   m_ObjectHideFlags: 0

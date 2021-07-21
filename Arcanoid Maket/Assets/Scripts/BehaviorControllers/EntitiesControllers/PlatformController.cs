@@ -5,6 +5,7 @@ using EventInterfaces.StatesEvents;
 using GameComponents.Platform.Behaviour;
 using GameComponents.Platform.Data;
 using GameSettings.GamePlatformSettings;
+using MyLibrary.CollisionStorage.Colliders2D;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -19,6 +20,9 @@ namespace BehaviorControllers.EntitiesControllers
         private PlatformBehaviour _behaviour;
 
         [SerializeField]
+        private GeneralCollider2D _collider;
+        
+        [SerializeField]
         private Transform _spawnPlatformTransform;
 
         private PlatformProperties _properties;
@@ -26,11 +30,13 @@ namespace BehaviorControllers.EntitiesControllers
         private void OnEnable()
         {
             EventBus.Subscribe(this);
+            _collider.RegisterCollider(this);
         }
 
         private void OnDisable()
         {
             EventBus.Unsubscribe(this);
+            _collider.UnregisterCollider(this);
         }
 
         public override void Initialize()
