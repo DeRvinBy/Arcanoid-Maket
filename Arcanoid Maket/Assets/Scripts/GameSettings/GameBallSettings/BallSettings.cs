@@ -6,12 +6,12 @@ namespace GameSettings.GameBallSettings
     public class BallSettings : AbstractSettings
     {
         [SerializeField]
-        private float _startVelocity = 25f;
+        private float _baseVelocity = 25f;
 
         [SerializeField]
         private int _ballDamage = 1;
         
-        public float StartVelocity => _startVelocity;
+        public float BaseVelocity => _baseVelocity;
         public int BallDamage => _ballDamage;
     }
 }

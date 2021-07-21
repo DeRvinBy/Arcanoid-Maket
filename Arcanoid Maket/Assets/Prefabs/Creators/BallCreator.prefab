@@ -56,5 +56,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b93a25c3fa24c95b565072c628dc326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startVelocity: 6
+  _baseVelocity: 6
   _ballDamage: 2

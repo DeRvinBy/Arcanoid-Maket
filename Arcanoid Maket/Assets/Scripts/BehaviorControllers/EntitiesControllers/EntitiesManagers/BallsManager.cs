@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BehaviorControllers.Abstract;
 using EventInterfaces.BallEvents;
 using EventInterfaces.GameEvents;
@@ -14,7 +15,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
     {
         [SerializeField]
         private Transform _ballParent;
-    
+
         private BallsSpawner _spawner;
         private BallPlatformSpawn _platformSpawn;
         private List<BallEntity> _ballOnScene;
@@ -52,6 +53,14 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             if (_ballOnScene.Count <= 0)
             {
                 EventBus.RaiseEvent<IPlayerBallsHandler>(a => a.OnPlayerBallLose());
+            }
+        }
+
+        public void InvokeBallsAction(Action<BallEntity> action)
+        {
+            foreach (var ball in _ballOnScene)
+            {
+                action.Invoke(ball);
             }
         }
         

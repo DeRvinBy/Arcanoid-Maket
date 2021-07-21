@@ -2,8 +2,8 @@
 {
     public enum BonusType
     {
-        BallSpeedUp = 0,
-        BallSpeedDown = 1,
+        BallVelocityUp = 0,
+        BallVelocityDown = 1,
         PlatformSizeUp = 2,
         PlatformSizeDown = 3,
     }

@@ -19,6 +19,11 @@ namespace GameEntities.Ball.Behaviour
             _rigidbody.simulated = true;
         }
 
+        public void SetVelocity(float velocity)
+        {
+            _currentVelocity = velocity;
+        }
+
         public void DisableMovement()
         {
             _rigidbody.simulated = false;

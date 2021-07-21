@@ -24,9 +24,15 @@ namespace GameEntities.Ball
             _settings = settings;
         }
 
+        public void SetAdditionalVelocity(float additionalVelocity)
+        {
+            var velocity = _settings.BaseVelocity + additionalVelocity;
+            _movement.SetVelocity(velocity);
+        }
+        
         public void MoveBallInDirection(Vector2 startDirection)
         {
-            var velocity = startDirection * _settings.StartVelocity;
+            var velocity = startDirection * _settings.BaseVelocity;
             _movement.StartBallWithVelocity(velocity);
         }
 

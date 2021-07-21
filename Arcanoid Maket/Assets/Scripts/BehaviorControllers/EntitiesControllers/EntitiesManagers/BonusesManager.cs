@@ -3,7 +3,6 @@ using EventInterfaces.BonusEvents;
 using GameComponents.Bonus;
 using GameEntities.Bonuses;
 using GameEntities.Bonuses.Enumerations;
-using GameSettings.GameBonusSettings;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -11,9 +10,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
     public class BonusesManager : EntityController, IBonusOnSceneHandler
     {
-        [SerializeField]
-        private BonusesSettingsContainer _settings;
-        
         private BonusBehaviourFactory _behaviourFactory;
         private BonusObjectSpawner _spawner;
 
@@ -29,7 +25,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 
         public override void Initialize()
         {
-            _behaviourFactory = new BonusBehaviourFactory(_settings);
+            _behaviourFactory = new BonusBehaviourFactory();
             _spawner = new BonusObjectSpawner(_behaviourFactory);
         }
 
