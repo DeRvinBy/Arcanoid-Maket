@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BehaviorControllers.Abstract;
 using EventInterfaces.BallEvents;
+using EventInterfaces.BonusEvents;
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Balls;
@@ -43,6 +44,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             var ball = _spawner.SpawnBall(platformTransform.position);
             _platformSpawn.SetBallToPlatform(ball, platformTransform);
             _ballOnScene.Add(ball);
+            EventBus.RaiseEvent<IBallVelocityBonusHandler>(a => a.UpdateVelocityForNewBall(ball));
         }
 
         public void OnDestroyBall(BallEntity ball)

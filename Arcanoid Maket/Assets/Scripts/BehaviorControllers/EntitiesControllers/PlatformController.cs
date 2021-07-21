@@ -3,7 +3,6 @@ using EventInterfaces.BallEvents;
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Platform.Behaviour;
-using GameComponents.Platform.Data;
 using GameSettings.GamePlatformSettings;
 using MyLibrary.CollisionStorage.Colliders2D;
 using MyLibrary.EventSystem;
@@ -25,8 +24,6 @@ namespace BehaviorControllers.EntitiesControllers
         [SerializeField]
         private Transform _spawnPlatformTransform;
 
-        private PlatformProperties _properties;
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -41,16 +38,24 @@ namespace BehaviorControllers.EntitiesControllers
 
         public override void Initialize()
         {
-            _properties = new PlatformProperties();
-            _behaviour.Initialize(_properties);
+            _behaviour.Initialize();
         }
         
         public void OnPrepareGame()
         {
-            _properties.SetupProperties(_settings);
-            _behaviour.SetupPlatform();
+            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.StartSize);
+        }
+
+        public void SetAdditionalSpeed(float value)
+        {
+            _behaviour.UpdatePlatformSpeed(_settings.BaseSpeed + value);
         }
         
+        public void SetAdditionalSize(float value)
+        {
+            _behaviour.UpdatePlatformSize(_settings.StartSize + value);
+        }
+
         public void OnStartGame()
         {
             SpawnBall();

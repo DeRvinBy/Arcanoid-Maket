@@ -15,6 +15,7 @@ namespace GameEntities.Ball
         private GeneralCollider2D _collider;
         
         private BallSettings _settings;
+        private float _currentVelocity;
         private int _currentDamage;
 
         public int BallDamage => _currentDamage;
@@ -26,13 +27,13 @@ namespace GameEntities.Ball
 
         public void SetAdditionalVelocity(float additionalVelocity)
         {
-            var velocity = _settings.BaseVelocity + additionalVelocity;
-            _movement.SetVelocity(velocity);
+            _currentVelocity = _settings.BaseVelocity + additionalVelocity;
+            _movement.SetVelocity(_currentVelocity);
         }
         
         public void MoveBallInDirection(Vector2 startDirection)
         {
-            var velocity = startDirection * _settings.BaseVelocity;
+            var velocity = startDirection * _currentVelocity;
             _movement.StartBallWithVelocity(velocity);
         }
 
@@ -40,6 +41,7 @@ namespace GameEntities.Ball
         {
             base.OnSetup();
             _currentDamage = _settings.BallDamage;
+            _currentVelocity = _settings.BaseVelocity;
             _collider.RegisterCollider(this);
         }
 

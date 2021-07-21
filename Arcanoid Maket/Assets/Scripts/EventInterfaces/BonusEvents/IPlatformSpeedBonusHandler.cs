@@ -3,8 +3,8 @@ using MyLibrary.EventSystem;
 
 namespace EventInterfaces.BonusEvents
 {
-    public interface IBallBonusHandler : IGlobalSubscriber
+    public interface IPlatformSpeedBonusHandler : IGlobalSubscriber
     {
-        void ActivateVelocityBonus(ValueModifer modifer);
+        void ActivateSpeedBonus(ValueModifer modifer);
     }
 }

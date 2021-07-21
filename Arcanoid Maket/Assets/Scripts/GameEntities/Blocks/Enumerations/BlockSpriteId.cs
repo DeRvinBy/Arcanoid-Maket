@@ -11,5 +11,9 @@
         Iron = 10,
         BallSpeedUp = 11,
         BallSpeedDown = 12,
+        PlatformSpeedUp = 13,
+        PlatformSpeedDown = 14,
+        PlatformSizeUp = 15,
+        PlatformSizeDown = 16,
     }
 }

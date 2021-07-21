@@ -4,7 +4,9 @@
     {
         BallVelocityUp = 0,
         BallVelocityDown = 1,
-        PlatformSizeUp = 2,
-        PlatformSizeDown = 3,
+        PlatformSpeedUp = 2,
+        PlatformSpeedDown = 3,
+        PlatformSizeUp = 4,
+        PlatformSizeDown = 5,
     }
 }

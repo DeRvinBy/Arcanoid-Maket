@@ -98,4 +98,20 @@ MonoBehaviour:
   - _blockId: 12
     _blockSettings:
       _blockSprite: {fileID: 5623397130100260616, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
-      _particleColor: {r: 0.85098046, g: 0.86274517, b: 0.6666667, a: 1}
+      _particleColor: {r: 1, g: 0.9568628, b: 0.6666667, a: 1}
+  - _blockId: 13
+    _blockSettings:
+      _blockSprite: {fileID: 2278271463801117439, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0, g: 0.8313726, b: 0.8078432, a: 1}
+  - _blockId: 14
+    _blockSettings:
+      _blockSprite: {fileID: 6359008820898849150, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0, g: 0.8313726, b: 0.8078432, a: 1}
+  - _blockId: 15
+    _blockSettings:
+      _blockSprite: {fileID: -1544374993851896594, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.2627451, g: 0.4901961, b: 0.7803922, a: 1}
+  - _blockId: 16
+    _blockSettings:
+      _blockSprite: {fileID: -4863627427193832344, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.2627451, g: 0.4901961, b: 0.7803922, a: 1}

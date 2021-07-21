@@ -5,12 +5,12 @@ namespace GameSettings.GamePlatformSettings
     public class PlatformSettings : MonoBehaviour
     {
         [SerializeField]
-        private float _speed = 5f;
+        private float _baseSpeed = 5f;
 
         [SerializeField]
         private float _startSize = 2f;
 
-        public float Speed => _speed;
+        public float BaseSpeed => _baseSpeed;
         public float StartSize => _startSize;
     }
 }

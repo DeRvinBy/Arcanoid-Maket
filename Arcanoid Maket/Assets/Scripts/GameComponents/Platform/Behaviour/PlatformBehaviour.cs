@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using EventInterfaces.Input;
-using GameComponents.Platform.Data;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -16,10 +15,11 @@ namespace GameComponents.Platform.Behaviour
         
         [SerializeField]
         private Rigidbody2D _rigidbody;
-
-        private PlatformProperties _properties;
+        
         private Transform _transform;
         private Vector3 _initialPosition;
+        private float _currentSpeed;
+        private float _currentSize;
         private float _worldSizeX;
         private bool _isMove;
 
@@ -33,22 +33,32 @@ namespace GameComponents.Platform.Behaviour
             EventBus.Unsubscribe(this);
         }
 
-        public void Initialize(PlatformProperties platformProperties)
+        public void Initialize()
         {
-            _properties = platformProperties;
             _transform = transform;
             _initialPosition = _transform.position;
             _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
         }
 
-        public void SetupPlatform()
+        public void SetupPlatform(float speed, float size)
         {
-            var scale = _transform.localScale;
-            scale.x = _properties.Size;
-            _transform.localScale = scale;
+            UpdatePlatformSpeed(speed);
+            UpdatePlatformSize(size);
             _transform.position = _initialPosition;
-
             _isMove = true;
+        }
+
+        public void UpdatePlatformSize(float value)
+        {
+            _currentSize = value;
+            var scale = _transform.localScale;
+            scale.x = _currentSize;
+            _transform.localScale = scale;
+        }
+        
+        public void UpdatePlatformSpeed(float value)
+        {
+            _currentSpeed = value;
         }
 
         public void ResetPlatformWithCallback(Action callback)
@@ -86,7 +96,7 @@ namespace GameComponents.Platform.Behaviour
         private Vector3 LimitTargetPosition(Vector3 targetPosition)
         {
             targetPosition.y = _transform.position.y;
-            var halfSize = _properties.Size / 2f;
+            var halfSize = _currentSize / 2f;
             var positionX = Mathf.Abs(targetPosition.x) + halfSize;
 
             if (positionX > _worldSizeX)
@@ -109,7 +119,7 @@ namespace GameComponents.Platform.Behaviour
             if (Mathf.Abs(_transform.position.x - targetPosition.x) > ThresholdDeltaChanged)
             {
                 Vector2 currentPosition = transform.position;
-                var distanceX = (targetPosition - currentPosition).normalized.x * _properties.Speed;
+                var distanceX = (targetPosition - currentPosition).normalized.x * _currentSpeed;
                 targetPosition.x = currentPosition.x + distanceX * Time.fixedDeltaTime;
                     
                 _rigidbody.MovePosition(targetPosition);

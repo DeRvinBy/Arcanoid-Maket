@@ -5,15 +5,15 @@ using MyLibrary.EventSystem;
 
 namespace GameEntities.Bonuses.Behaviour
 {
-    public class BallVelocityBonusBehaviour : ValueModiferBonusBehaviour
+    public class PlatformSpeedBonusBehaviour : ValueModiferBonusBehaviour
     {
-        public BallVelocityBonusBehaviour(ValueModifer modifer) : base(modifer)
+        public PlatformSpeedBonusBehaviour(ValueModifer modifer) : base(modifer)
         {
-        }
+        } 
         
         public override void Action()
         {
-            EventBus.RaiseEvent<IBallVelocityBonusHandler>(a => a.ActivateVelocityBonus(_modifer));
+            EventBus.RaiseEvent<IPlatformSpeedBonusHandler>(a => a.ActivateSpeedBonus(_modifer));
         }
     }
 }
