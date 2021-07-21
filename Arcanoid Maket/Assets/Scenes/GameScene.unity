@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0761c2dba548450eb54e928577293ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _variableValue: 2.5
+  _variableValue: 1.5
   _timeOfEffect: 10
   _maxValue: 5
   _minValue: -5
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be1beb5f1334708b6d5f291a8fd26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 5
+  _baseSpeed: 3.5
   _startSize: 2
 --- !u!1 &366563676
 GameObject:

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
+using EventInterfaces.StatesEvents;
 using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBonusSettings.BonusesSettings;
 using UnityEngine;
 
 namespace GameComponents.Bonus.Effects
 {
-    public class VariableValueEffect : MonoBehaviour
+    public class VariableValueEffect : MonoBehaviour, IPrepareGameplayHandler
     {
         public event Action<float> OnValueChanged;
         
@@ -28,6 +29,11 @@ namespace GameComponents.Bonus.Effects
             yield return new WaitForSeconds(_settings.TimeOfEffect);
             _currentVariableValue -= velocity;
             OnValueChanged?.Invoke(_currentVariableValue);
+        }
+
+        public void OnPrepareGame()
+        {
+            StopAllCoroutines();
         }
     }
 }

@@ -8,7 +8,7 @@ namespace GameComponents.Platform.Behaviour
 {
     public class PlatformBehaviour : MonoBehaviour, IMoveToTargetHandler
     {
-        private const float ThresholdDeltaChanged = 0.05f;
+        private const float ThresholdDeltaChanged = 0.1f;
         
         [SerializeField]
         private Camera _sceneCamera;
