@@ -7,7 +7,7 @@
          "target":"tilemap.json"
         }
     },
- "image":"..\/..\/tilemap.png",
+ "image":"..\/tilemap.png",
  "imageheight":256,
  "imagewidth":256,
  "margin":10,
