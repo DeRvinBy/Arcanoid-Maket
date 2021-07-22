@@ -7,7 +7,7 @@ TextureImporter:
     second: block_1
   - first:
       213: 973544005302042447
-    second: platform
+    second: platform_middle
   - first:
       213: 3317128819024105003
     second: block_0
@@ -56,6 +56,12 @@ TextureImporter:
   - first:
       213: 2578027069697547834
     second: extraBall
+  - first:
+      213: -396235828195074153
+    second: platform_left
+  - first:
+      213: -926302904730658845
+    second: platform_right
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -157,7 +163,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: platform
+      name: platform_middle
       rect:
         serializedVersion: 2
         x: 10
@@ -166,7 +172,7 @@ TextureImporter:
         height: 10
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 2, y: 2, z: 2, w: 2}
+      border: {x: 5, y: 1, z: 5, w: 1}
       outline: []
       physicsShape: []
       tessellationDetail: 0

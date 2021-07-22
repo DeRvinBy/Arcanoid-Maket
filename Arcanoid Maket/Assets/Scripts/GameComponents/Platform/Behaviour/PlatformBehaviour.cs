@@ -15,6 +15,9 @@ namespace GameComponents.Platform.Behaviour
         
         [SerializeField]
         private Rigidbody2D _rigidbody;
+
+        [SerializeField]
+        private PlatformComponentsSize _platformComponentsSize;
         
         private Transform _transform;
         private Vector3 _initialPosition;
@@ -51,9 +54,7 @@ namespace GameComponents.Platform.Behaviour
         public void UpdatePlatformSize(float value)
         {
             _currentSize = value;
-            var scale = _transform.localScale;
-            scale.x = _currentSize;
-            _transform.localScale = scale;
+            _platformComponentsSize.UpdateComponentsSize(value);
         }
         
         public void UpdatePlatformSpeed(float value)
