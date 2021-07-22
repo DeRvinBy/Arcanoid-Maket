@@ -30,13 +30,11 @@ namespace UI.Popups
 
         protected override void StartPopup()
         {
-            _backButton.Enable();
             _backButton.OnButtonPressed += OnBack;
         }
         
         protected override void ResetPopup()
         {
-            _backButton.Disable();
             _backButton.OnButtonPressed -= OnBack;
         }
         

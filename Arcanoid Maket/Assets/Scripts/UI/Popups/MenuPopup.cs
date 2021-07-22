@@ -23,22 +23,15 @@ namespace UI.Popups
             base.Initialize();
             _localization = new LocalizationController();
             _localization.Initialize(_selector);
-            
-            _playButton.Disable();
-            _selector.Disable();
         }
 
         protected override void StartPopup()
         {
-            _playButton.Enable();
-            _selector.Enable();
             _playButton.OnButtonPressed += OnPlayButtonPressed;
         }
 
         protected override void ResetPopup()
         {
-            _playButton.Disable();
-            _selector.Disable();
             _playButton.OnButtonPressed -= OnPlayButtonPressed;
         }
 

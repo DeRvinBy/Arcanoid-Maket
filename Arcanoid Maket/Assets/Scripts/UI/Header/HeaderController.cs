@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace UI.Header
 {
-    public class HeaderController : EntityController, IStartGameplayHandler, IEndGameplayHandler, IPackChangedHandler
+    public class HeaderController : EntityController, IPackChangedHandler
     {
         [SerializeField]
         private HeaderPackUI _headerPackUI;
@@ -35,16 +35,6 @@ namespace UI.Header
         private void OnPauseButtonPressed()
         {
             EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnPause());
-        }
-
-        public void OnStartGame()
-        {
-            _pauseButton.Enable();
-        }
-
-        public void OnEndGame()
-        {
-            _pauseButton.Disable();
         }
 
         public void OnPackChanged(PackInfo currentPack)

@@ -28,6 +28,11 @@ namespace BehaviorControllers.GameControllers
         {
             _popupsController = controllersManager.GetEntityController<PopupsController>();
         }
+        
+        public void OnStartTime()
+        {
+            Time.timeScale = 1;
+        }
 
         public void OnPause()
         {

@@ -12,6 +12,9 @@ namespace MyLibrary.UI.Popup
     {
         [SerializeField]
         private Transform _popupsUIContainer;
+
+        [SerializeField]
+        private PopupsLocker _popupsLocker;
         
         private Dictionary<Type, AbstractPopup> _popupsMap;
 
@@ -27,8 +30,11 @@ namespace MyLibrary.UI.Popup
         {
             var popup = GetPopupByType<T>();
             popup.transform.SetAsLastSibling();
+            _popupsLocker.EnableLocker();
+            _popupsLocker.MoveUpLocker(popup.transform);
             _popupsStack.Push(popup);
             yield return popup.ShowPopup();
+            _popupsLocker.MoveDownLocker(popup.transform);
         }
 
         private AbstractPopup GetPopupByType<T>() where T : AbstractPopup
@@ -56,17 +62,28 @@ namespace MyLibrary.UI.Popup
         public IEnumerator HideLastPopup()
         {
             var popup = _popupsStack.Pop();
+            _popupsLocker.MoveUpLocker(popup.transform);
             yield return popup.HidePopup();
+            if (_popupsStack.Count != 0)
+            {
+                _popupsLocker.MoveDownLocker(popup.transform);
+            }
+            else
+            {
+                _popupsLocker.DisableLocker();
+            }
         }
 
         public IEnumerator HideAllActivePopups()
         {
+            _popupsLocker.MoveOnAllPopups();
             for (int i = 0; i < _popupsStack.Count; i++)
             {
                 var popup = _popupsStack.Pop();
                 yield return popup.HidePopup();
             }
             _popupsStack.Clear();
+            _popupsLocker.DisableLocker();
         }
 
         public void ClearPopups()

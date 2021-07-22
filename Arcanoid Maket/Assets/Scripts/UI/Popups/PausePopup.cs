@@ -20,10 +20,6 @@ namespace UI.Popups
 
         protected override void StartPopup()
         {
-            _restartButton.Enable();
-            _backButton.Enable();
-            _continueButton.Enable();
-            
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
             _backButton.OnButtonPressed += OnBackButtonPressed;
             _continueButton.OnButtonPressed += OnContinueButtonPressed;
@@ -31,10 +27,6 @@ namespace UI.Popups
         
         protected override void ResetPopup()
         {
-            _restartButton.Disable();
-            _backButton.Disable();
-            _continueButton.Disable();
-            
             _restartButton.OnButtonPressed -= OnRestartButtonPressed;
             _backButton.OnButtonPressed -= OnBackButtonPressed;
             _continueButton.OnButtonPressed -= OnContinueButtonPressed;
@@ -42,7 +34,7 @@ namespace UI.Popups
 
         private void OnRestartButtonPressed()
         {
-            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
+            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnStartTime());
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
 

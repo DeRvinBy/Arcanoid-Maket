@@ -13,13 +13,11 @@ namespace UI.Popups
 
         protected override void StartPopup()
         {
-            _restartButton.Enable();
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
         }
 
         protected override void ResetPopup()
         {
-            _restartButton.Disable();
             _restartButton.OnButtonPressed -= OnRestartButtonPressed;
         }
 
