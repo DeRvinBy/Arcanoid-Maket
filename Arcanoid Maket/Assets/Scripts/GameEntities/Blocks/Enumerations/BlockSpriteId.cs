@@ -9,13 +9,10 @@
         Orange = 4,
         LightPurple = 5,
         Iron = 10,
-        BallSpeedUp = 11,
-        BallSpeedDown = 12,
-        PlatformSpeedUp = 13,
-        PlatformSpeedDown = 14,
-        PlatformSizeUp = 15,
-        PlatformSizeDown = 16,
-        RageBall = 17,
-        ExtraBall = 18
+        BallSpeedBonus = 11,
+        PlatformSpeedBonus = 12,
+        PlatformSizeBonus = 13,
+        RageBallBonus = 14,
+        ExtraBallBonus = 15
     }
 }

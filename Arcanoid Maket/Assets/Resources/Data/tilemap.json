@@ -145,7 +145,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":12
+                 "value":11
                 }, 
                 {
                  "name":"blockType",
@@ -164,7 +164,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":13
+                 "value":12
                 }, 
                 {
                  "name":"blockType",
@@ -183,7 +183,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":14
+                 "value":12
                 }, 
                 {
                  "name":"blockType",
@@ -202,7 +202,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":15
+                 "value":13
                 }, 
                 {
                  "name":"blockType",
@@ -221,7 +221,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":16
+                 "value":13
                 }, 
                 {
                  "name":"blockType",
@@ -240,7 +240,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":17
+                 "value":14
                 }, 
                 {
                  "name":"blockType",
@@ -259,7 +259,7 @@
                 {
                  "name":"blockSprite",
                  "type":"int",
-                 "value":18
+                 "value":15
                 }, 
                 {
                  "name":"blockType",

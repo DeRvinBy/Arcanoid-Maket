@@ -2,5 +2,5 @@
 
 namespace MyLibrary.ObjectPool.Abstract
 {
-    public abstract class AbstractSettings : MonoBehaviour {}
+    public abstract class AbstractSettings : ScriptableObject {}
 }

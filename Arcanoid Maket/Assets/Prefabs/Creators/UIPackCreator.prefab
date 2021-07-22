@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2170596433028221748}
   - component: {fileID: 6462661516594291468}
-  - component: {fileID: 8648687904831417207}
   m_Layer: 0
   m_Name: UIPackCreator
   m_TagString: Untagged
@@ -49,19 +48,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7587158442495d86926c6f845e036b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8648687904831417207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8011211296335321515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44db85e309544488e1731d4ade81457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _buttonColor: {r: 0.56078434, g: 0.56078434, b: 0.56078434, a: 1}
-  _packIcon: {fileID: 4813138143842787723, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
-  _packKey: unknown_pack
-  _currentLevel: 0

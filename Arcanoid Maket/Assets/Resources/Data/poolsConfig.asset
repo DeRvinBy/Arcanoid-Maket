@@ -15,49 +15,49 @@ MonoBehaviour:
   _creatorConfigs:
   - _prefab: {fileID: 722622970326697297, guid: bfa9cd5ba1cddd34080bddc5c78d56bb, type: 3}
     _creator: {fileID: 8011211296335321509, guid: f3e7b91d24713f745b298657ced02237, type: 3}
-    _settings: {fileID: 8011211296335321508, guid: f3e7b91d24713f745b298657ced02237, type: 3}
+    _settings: {fileID: 11400000, guid: f8b3f981ffa9c9d4d8dbbb0ea6b076ad, type: 2}
     _initialCount: 3
   - _prefab: {fileID: 5425245372202826004, guid: 92253702f8856204eb44d9ae5cd6ad18, type: 3}
     _creator: {fileID: 8275823155518591653, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
-    _settings: {fileID: 8275823155518591654, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
+    _settings: {fileID: 11400000, guid: 591d1ac58c63cdd4784b02aade93b818, type: 2}
     _initialCount: 10
   - _prefab: {fileID: 44406634261374022, guid: 4f17c556b5f1fbf41b4f0d5b57e68d09, type: 3}
     _creator: {fileID: 8275823155518591653, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
-    _settings: {fileID: 8275823155518591654, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
+    _settings: {fileID: 11400000, guid: 591d1ac58c63cdd4784b02aade93b818, type: 2}
     _initialCount: 5
   - _prefab: {fileID: 5376244985852896591, guid: 1b0df350ba0e4104c9a6d3a0ca8016c0, type: 3}
     _creator: {fileID: 8275823155518591653, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
-    _settings: {fileID: 8275823155518591654, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
+    _settings: {fileID: 11400000, guid: 591d1ac58c63cdd4784b02aade93b818, type: 2}
     _initialCount: 5
   - _prefab: {fileID: 7637972519996528974, guid: 8600802898318804e8691a8c059aed22, type: 3}
     _creator: {fileID: 1401081053756926856, guid: cf15bb8d8b341654fb40eae292dd8f42, type: 3}
-    _settings: {fileID: 1544187539643697659, guid: cf15bb8d8b341654fb40eae292dd8f42, type: 3}
+    _settings: {fileID: 11400000, guid: 3616c30c5eaae314f8faad479cd39ebe, type: 2}
     _initialCount: 3
   - _prefab: {fileID: 8476397366338901943, guid: 4aa790d8228ecad4180bef65251a29d0, type: 3}
     _creator: {fileID: 6462661516594291468, guid: e958371dfd033e1489a6b74ebb19eefd, type: 3}
-    _settings: {fileID: 8648687904831417207, guid: e958371dfd033e1489a6b74ebb19eefd, type: 3}
+    _settings: {fileID: 11400000, guid: 0882b06a00e55c248aebdd3ce1f4f7ee, type: 2}
     _initialCount: 5
   - _prefab: {fileID: 1670827239704794702, guid: 13c2f48a6518e1d41932e53c3b095ea0, type: 3}
     _creator: {fileID: 9124875427349615800, guid: 5bf5657fcedbf954fa11504923badcc9, type: 3}
-    _settings: {fileID: 3874569786487812479, guid: 5bf5657fcedbf954fa11504923badcc9, type: 3}
+    _settings: {fileID: 11400000, guid: 1993a315e7f2f1242be43c4bd24b07fd, type: 2}
     _initialCount: 3
   - _prefab: {fileID: 3846490123035560079, guid: 083dc76edb6593343addfc322b9955d4, type: 3}
     _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
-    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: 3ac0d9913e14b724c8b877b9deda73ab, type: 2}
     _initialCount: 1
   - _prefab: {fileID: 7932806303942219909, guid: ef81cdd8d6ec9784aa46b427d0d89d4f, type: 3}
     _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
-    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: 3ac0d9913e14b724c8b877b9deda73ab, type: 2}
     _initialCount: 1
   - _prefab: {fileID: 2003415747288394991, guid: f89693567f994a84a8ad4c91ef8d9340, type: 3}
     _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
-    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: 3ac0d9913e14b724c8b877b9deda73ab, type: 2}
     _initialCount: 1
   - _prefab: {fileID: 8133989683629180344, guid: 20d7d70e3f904a94abbbd68de1644da0, type: 3}
     _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
-    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: 3ac0d9913e14b724c8b877b9deda73ab, type: 2}
     _initialCount: 1
   - _prefab: {fileID: 7847948988675161365, guid: b8a125b8733632a4c83ff626aa43b147, type: 3}
     _creator: {fileID: 7598532410431313727, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
-    _settings: {fileID: 7598532410431313726, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: 3ac0d9913e14b724c8b877b9deda73ab, type: 2}
     _initialCount: 1

@@ -1,6 +1,11 @@
 ﻿using System;
 using EventInterfaces.BlockEvents;
+using GameEntities.Blocks.Components;
+using GameEntities.Bonuses.Enumerations;
+using GameSettings.GameBlockSettings;
+using GameSettings.GameBonusSettings.ObjectSettings;
 using MyLibrary.EventSystem;
+using UnityEngine;
 
 namespace GameEntities.Blocks
 {
@@ -8,6 +13,24 @@ namespace GameEntities.Blocks
     {
         public event Action OnBlockDestroy;
 
+        [SerializeField]
+        private BlockSprite _blockBonusSprite;
+        
+        private BonusObjectSettings _bonusSettings;
+        
+        public override void Initialize(BlockSettings settings)
+        {
+            base.Initialize(settings);
+            _bonusSettings = settings.BonusObjectSettings;
+            _blockBonusSprite.Initialize();
+        }
+
+        public void SetupBonusBLock(BonusType type)
+        {
+            var sprite = _bonusSettings.GetBonusSprite(type);
+            _blockBonusSprite.SetupSprite(sprite);
+        }
+        
         public override void OnReset()
         {
             base.OnReset();
@@ -17,6 +40,7 @@ namespace GameEntities.Blocks
         public override void DestroyBlock()
         {
             base.DestroyBlock();
+            _blockBonusSprite.ResetSprite();
             OnBlockDestroy?.Invoke();
         }
         

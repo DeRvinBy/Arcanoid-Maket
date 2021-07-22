@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2170596433028221748}
   - component: {fileID: 9124875427349615800}
-  - component: {fileID: 3874569786487812479}
   m_Layer: 0
   m_Name: LifeImageUiCreator
   m_TagString: Untagged
@@ -47,17 +46,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43ddb0d2837142b9b7b1a67d6ca3dcf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3874569786487812479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8011211296335321515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542481bb93044b34a7ac9de338f08d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

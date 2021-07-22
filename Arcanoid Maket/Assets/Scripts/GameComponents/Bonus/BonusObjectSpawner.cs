@@ -21,7 +21,7 @@ namespace GameComponents.Bonus
         {
             var bonus = PoolsManager.Instance.GetObject<BonusObject>(position, parent);
             var behaviour = _behaviourFactory.CreateBehaviour(type,position);
-            bonus.SetupBehaviour(behaviour);
+            bonus.SetupBonusObject(type, behaviour);
             _bonusObjects.Add(bonus);
         }
 

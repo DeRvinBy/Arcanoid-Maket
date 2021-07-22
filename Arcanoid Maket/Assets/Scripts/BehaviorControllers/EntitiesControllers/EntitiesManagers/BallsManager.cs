@@ -43,20 +43,15 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         {
             var ball = _spawner.SpawnBall(position, _ballParent);
             ball.MoveBallInDirection(direction);
-            AddBall(ball);
+            EventBus.RaiseEvent<IBallVelocityBonusHandler>(a => a.UpdateVelocityForNewBall(ball));
+            _ballOnScene.Add(ball);
         }
 
-        private void AddBall(BallEntity ball)
-        {
-            _ballOnScene.Add(ball);
-            EventBus.RaiseEvent<IBallVelocityBonusHandler>(a => a.UpdateVelocityForNewBall(ball));
-        }
-        
         public void OnSpawnBallAtPlatform(Transform platformTransform)
         {
             var ball = _spawner.SpawnBall(platformTransform.position);
             _platformSpawn.SetBallToPlatform(ball, platformTransform);
-            AddBall(ball);
+            _ballOnScene.Add(ball);
         }
 
         public void OnDestroyBall(BallEntity ball)
