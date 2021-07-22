@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using EventInterfaces.BonusEvents;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Data;
 using GameEntities.Blocks.Enumerations;
+using MyLibrary.EventSystem;
 using MyLibrary.ObjectPool;
 using UnityEngine;
 
@@ -28,8 +30,17 @@ namespace GameComponents.Blocks
                 case BlockType.Indestructible:
                     CreateIndestructibleBlock(position, size, parent);
                     break;
-                case BlockType.Bonus:
-                    CreateBonusBlock(properties, position, size, parent);
+                case BlockType.WithSpawningBonus:
+                    var spawningBonusBlock = CreateBonusBLock(properties, position, size, parent);
+                    spawningBonusBlock.OnBlockDestroy += () =>
+                        EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
+                            a.OnCreateBonusObject(properties.BonusId, position));
+                    break;
+                case BlockType.WithInstantBonus:
+                    var instantBonusBlock = CreateBonusBLock(properties, position, size, parent);
+                    instantBonusBlock.OnBlockDestroy += () =>
+                        EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
+                            a.OnStartBonusAtPosition(properties.BonusId, position));
                     break;
             }
         }
@@ -47,14 +58,14 @@ namespace GameComponents.Blocks
             block.SetupBlock(spriteId);
         }
         
-        private void CreateBonusBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
+        private BonusBlock CreateBonusBLock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<BonusBlock>(position, Quaternion.identity, size, parent);
             AddPackToMap(typeof(BonusBlock), block);
             block.SetupBlock(properties.SpriteId);
-            block.SetupBonus(properties.BonusId);
+            return block;
         }
-        
+
         private void AddPackToMap(Type type, AbstractBlock block)
         {
             if (!_blocksMap.ContainsKey(type))

@@ -15,5 +15,7 @@
         PlatformSpeedDown = 14,
         PlatformSizeUp = 15,
         PlatformSizeDown = 16,
+        RageBall = 17,
+        ExtraBall = 18
     }
 }

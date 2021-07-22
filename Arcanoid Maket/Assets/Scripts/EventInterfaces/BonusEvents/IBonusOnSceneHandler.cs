@@ -7,6 +7,7 @@ namespace EventInterfaces.BonusEvents
 {
     public interface IBonusOnSceneHandler : IGlobalSubscriber
     {
+        void OnStartBonusAtPosition(BonusType type, Vector3 position);
         void OnCreateBonusObject(BonusType type, Vector3 position);
         void OnDestroyBonusObject(BonusObject bonus);
     }

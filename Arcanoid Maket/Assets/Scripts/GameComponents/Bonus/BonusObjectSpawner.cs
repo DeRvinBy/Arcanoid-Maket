@@ -20,7 +20,7 @@ namespace GameComponents.Bonus
         public void SpawnBonusObject(BonusType type, Vector3 position, Transform parent)
         {
             var bonus = PoolsManager.Instance.GetObject<BonusObject>(position, parent);
-            var behaviour = _behaviourFactory.CreateBehaviour(type);
+            var behaviour = _behaviourFactory.CreateBehaviour(type,position);
             bonus.SetupBehaviour(behaviour);
             _bonusObjects.Add(bonus);
         }

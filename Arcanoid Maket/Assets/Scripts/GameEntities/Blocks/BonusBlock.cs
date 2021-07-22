@@ -1,23 +1,23 @@
-﻿using EventInterfaces.BlockEvents;
-using EventInterfaces.BonusEvents;
-using GameEntities.Bonuses.Enumerations;
+﻿using System;
+using EventInterfaces.BlockEvents;
 using MyLibrary.EventSystem;
 
 namespace GameEntities.Blocks
 {
     public class BonusBlock : DestructibleBlock
     {
-        private BonusType _bonusType;
-        
-        public void SetupBonus(BonusType bonus)
+        public event Action OnBlockDestroy;
+
+        public override void OnReset()
         {
-            _bonusType = bonus;
+            base.OnReset();
+            OnBlockDestroy = null;
         }
-        
+
         public override void DestroyBlock()
         {
             base.DestroyBlock();
-            EventBus.RaiseEvent<IBonusOnSceneHandler>(a => a.OnCreateBonusObject(_bonusType, transform.position));
+            OnBlockDestroy?.Invoke();
         }
         
         protected override void DestroyCompleteBlock()

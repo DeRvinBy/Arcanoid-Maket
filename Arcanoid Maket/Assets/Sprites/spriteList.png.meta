@@ -50,6 +50,12 @@ TextureImporter:
   - first:
       213: -1544374993851896594
     second: platform_size_up
+  - first:
+      213: 2881854580706628495
+    second: rageBall
+  - first:
+      213: 2578027069697547834
+    second: extraBall
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -587,6 +593,48 @@ TextureImporter:
       bones: []
       spriteID: eec26732027419ae0800000000000000
       internalID: -1544374993851896594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rageBall
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 206
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83d951f8776ef720800000000000000
+      internalID: 2881854580706628495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extraBall
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 206
+        width: 20
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3ed9aef5fdf6c320800000000000000
+      internalID: 2578027069697547834
       vertices: []
       indices: 
       edges: []

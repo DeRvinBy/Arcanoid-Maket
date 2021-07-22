@@ -1,5 +1,6 @@
 ﻿using BehaviorControllers.Abstract;
 using EventInterfaces.BonusEvents;
+using EventInterfaces.StatesEvents;
 using GameComponents.Bonus;
 using GameEntities.Bonuses;
 using GameEntities.Bonuses.Enumerations;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
-    public class BonusesManager : EntityController, IBonusOnSceneHandler
+    public class BonusesManager : EntityController, IPrepareGameplayHandler, IBonusOnSceneHandler
     {
         private BonusBehaviourFactory _behaviourFactory;
         private BonusObjectSpawner _spawner;
@@ -28,6 +29,17 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _behaviourFactory = new BonusBehaviourFactory();
             _spawner = new BonusObjectSpawner(_behaviourFactory);
         }
+        
+        public void OnPrepareGame()
+        {
+            _spawner.DestroyAllBonusObjects();
+        }
+
+        public void OnStartBonusAtPosition(BonusType type, Vector3 position)
+        {
+            var behaviour = _behaviourFactory.CreateBehaviour(type, position);
+            behaviour.Action();
+        }
 
         public void OnCreateBonusObject(BonusType type, Vector3 position)
         {
@@ -38,5 +50,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         {
             _spawner.DestroyBonusObject(bonus);
         }
+
     }
 }

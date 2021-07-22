@@ -1,12 +1,13 @@
 ﻿using GameEntities.Bonuses.Behaviour;
 using GameEntities.Bonuses.Enumerations;
 using GameEntities.Bonuses.Interfaces;
+using UnityEngine;
 
 namespace GameComponents.Bonus
 {
     public class BonusBehaviourFactory
     {
-        public IBonusBehaviour CreateBehaviour(BonusType type)
+        public IBonusBehaviour CreateBehaviour(BonusType type, Vector2 position)
         {
             switch (type)
             {
@@ -22,6 +23,10 @@ namespace GameComponents.Bonus
                     return new PlatformSizeBonusBehaviour(ValueModifer.Increase);
                 case BonusType.PlatformSizeDown:
                     return new PlatformSizeBonusBehaviour(ValueModifer.Decrease);
+                case BonusType.RageBall:
+                    return new ExtraBallBonusBehaviour(position);
+                case BonusType.ExtraBall:
+                    return new ExtraBallBonusBehaviour(position);
             }
 
             return null;

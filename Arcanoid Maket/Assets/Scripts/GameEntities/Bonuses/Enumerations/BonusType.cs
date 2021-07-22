@@ -8,5 +8,7 @@
         PlatformSpeedDown = 3,
         PlatformSizeUp = 4,
         PlatformSizeDown = 5,
+        RageBall = 6,
+        ExtraBall = 7,
     }
 }

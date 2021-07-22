@@ -5,6 +5,7 @@
         Empty = 0,
         Destructible = 1,
         Indestructible = 2,
-        Bonus = 3
+        WithSpawningBonus = 3,
+        WithInstantBonus = 4,
     }
 }
