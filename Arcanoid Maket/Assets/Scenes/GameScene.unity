@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0761c2dba548450eb54e928577293ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _variableValue: 1
+  _variableValue: 2
   _timeOfEffect: 10
   _maxValue: 4
   _minValue: -2

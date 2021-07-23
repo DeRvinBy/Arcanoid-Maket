@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.Effects
 {
-    public class VariableValueEffect : MonoBehaviour, IPrepareGameplayHandler
+    public class VariableValueEffect : MonoBehaviour
     {
         public event Action<float> OnValueChanged;
         
@@ -31,7 +31,7 @@ namespace GameComponents.Bonus.Effects
             OnValueChanged?.Invoke(_currentVariableValue);
         }
 
-        public void OnPrepareGame()
+        public void StopEffect()
         {
             StopAllCoroutines();
         }

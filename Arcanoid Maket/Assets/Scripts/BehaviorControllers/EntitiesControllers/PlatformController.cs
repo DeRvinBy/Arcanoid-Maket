@@ -45,12 +45,6 @@ namespace BehaviorControllers.EntitiesControllers
             _behaviour.Initialize();
             _valueAnimation = new ValueAnimation(_settings.ValueConfig.EaseMode, _settings.ValueConfig.Duration);
         }
-        
-        public void OnPrepareGame()
-        {
-            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.StartSize);
-            _previousPlatformSize = _settings.StartSize;
-        }
 
         public void SetAdditionalSpeed(float value)
         {
@@ -62,6 +56,13 @@ namespace BehaviorControllers.EntitiesControllers
             var targetSize = _settings.StartSize + value;
             _valueAnimation.PlayAnimation(_previousPlatformSize, targetSize, _behaviour.UpdatePlatformSize);
             _previousPlatformSize = targetSize;
+        }
+        
+        public void OnPrepareGame()
+        {
+            _valueAnimation.StopAnimation();
+            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.StartSize);
+            _previousPlatformSize = _settings.StartSize;
         }
 
         public void OnStartGame()

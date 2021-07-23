@@ -1,6 +1,7 @@
 ﻿using BehaviorControllers.EntitiesControllers.EntitiesManagers;
 using EventInterfaces.BallEvents;
 using EventInterfaces.BonusEvents;
+using GameComponents.Bonus.Abstract;
 using GameComponents.Bonus.Effects;
 using GameEntities.Ball;
 using GameEntities.Bonuses.Enumerations;
@@ -9,7 +10,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class BallsVelocityBonusManager : MonoBehaviour, IBallVelocityBonusHandler, IBallsManagerHandler
+    public class BallsVelocityBonusManager : AbstractBonusManager, IBallVelocityBonusHandler, IBallsManagerHandler
     {
         [SerializeField]
         private BallsManager _manager;
@@ -45,6 +46,12 @@ namespace GameComponents.Bonus.BonusesManagers
         {
             _currentVariableVelocity = value;
             _manager.InvokeBallsAction(a => a.SetAdditionalVelocity(value));
+        }
+
+        public override void OnPrepareGame()
+        {
+            _currentVariableVelocity = 0;
+            _bonusEffect.StopEffect();
         }
     }
 }

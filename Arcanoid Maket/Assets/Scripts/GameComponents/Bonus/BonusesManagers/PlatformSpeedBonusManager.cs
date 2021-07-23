@@ -1,5 +1,6 @@
 ﻿using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.BonusEvents;
+using GameComponents.Bonus.Abstract;
 using GameComponents.Bonus.Effects;
 using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBonusSettings.BonusesSettings;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class PlatformSpeedBonusManager : MonoBehaviour, IPlatformSpeedBonusHandler
+    public class PlatformSpeedBonusManager : AbstractBonusManager, IPlatformSpeedBonusHandler
     {
         [SerializeField]
         private PlatformController _platform;
@@ -36,6 +37,11 @@ namespace GameComponents.Bonus.BonusesManagers
         private void UpdatePlatformSpeed(float value)
         {
             _platform.SetAdditionalSpeed(value);
+        }
+        
+        public override void OnPrepareGame()
+        {
+            _bonusEffect.StopEffect();
         }
     }
 }

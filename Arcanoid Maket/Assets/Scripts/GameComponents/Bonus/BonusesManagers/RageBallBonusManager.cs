@@ -3,7 +3,7 @@ using BehaviorControllers.EntitiesControllers.EntitiesManagers;
 using EventInterfaces.BallEvents;
 using EventInterfaces.BonusEvents;
 using EventInterfaces.GameEvents;
-using EventInterfaces.StatesEvents;
+using GameComponents.Bonus.Abstract;
 using GameEntities.Ball;
 using GameEntities.Blocks;
 using GameSettings.GameBonusSettings.BonusesSettings;
@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class RageBallBonusManager : MonoBehaviour, IRageBallBonusHandler, IBallsManagerHandler, IContinueGameHandler, IPrepareGameplayHandler
+    public class RageBallBonusManager : AbstractBonusManager, IRageBallBonusHandler, IBallsManagerHandler, IContinueGameHandler
     {
         [SerializeField]
         private BallsManager _ballsManager;
@@ -82,6 +82,11 @@ namespace GameComponents.Bonus.BonusesManagers
             }
         }
         
+        public override void OnPrepareGame()
+        {
+            ResetManager();
+        }
+        
         public void OnContinueGame()
         {
             ResetManager();
@@ -94,11 +99,6 @@ namespace GameComponents.Bonus.BonusesManagers
                 StopAllCoroutines();
                 EndEffect();
             }
-        }
-
-        public void OnPrepareGame()
-        {
-            ResetManager();
         }
     }
 }

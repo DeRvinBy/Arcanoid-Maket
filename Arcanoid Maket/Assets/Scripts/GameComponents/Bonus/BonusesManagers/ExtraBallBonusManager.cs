@@ -1,11 +1,12 @@
 ﻿using BehaviorControllers.EntitiesControllers.EntitiesManagers;
 using EventInterfaces.BonusEvents;
+using GameComponents.Bonus.Abstract;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class ExtraBallBonusManager: MonoBehaviour, IExtraBallBonusHandler
+    public class ExtraBallBonusManager : AbstractBonusManager, IExtraBallBonusHandler
     {
         [SerializeField]
         private BallsManager _manager;

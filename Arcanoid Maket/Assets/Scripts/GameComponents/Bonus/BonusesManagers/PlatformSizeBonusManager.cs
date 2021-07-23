@@ -1,5 +1,6 @@
 ﻿using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.BonusEvents;
+using GameComponents.Bonus.Abstract;
 using GameComponents.Bonus.Effects;
 using GameEntities.Bonuses.Enumerations;
 using MyLibrary.EventSystem;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class PlatformSizeBonusManager : MonoBehaviour, IPlatformSizeBonusHandler
+    public class PlatformSizeBonusManager : AbstractBonusManager, IPlatformSizeBonusHandler
     {
         [SerializeField]
         private PlatformController _platform;
@@ -35,6 +36,11 @@ namespace GameComponents.Bonus.BonusesManagers
         private void UpdatePlatformSize(float value)
         {
             _platform.SetAdditionalSize(value);
+        }
+
+        public override void OnPrepareGame()
+        {
+            _bonusEffect.StopEffect();
         }
     }
 }
