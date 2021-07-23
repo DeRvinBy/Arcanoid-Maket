@@ -22,7 +22,6 @@ namespace GameEntities.Blocks
         {
             base.Initialize(settings);
             _bonusSettings = settings.BonusObjectSettings;
-            _blockBonusSprite.Initialize();
         }
 
         public void SetupBonusBLock(BonusType type)
