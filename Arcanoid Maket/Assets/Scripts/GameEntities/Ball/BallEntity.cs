@@ -9,7 +9,7 @@ namespace GameEntities.Ball
     public class BallEntity : PoolObject
     {
         [SerializeField]
-        private BallMovement _movement;
+        private BallBehaviour _behaviour;
 
         [SerializeField]
         private SpriteRenderer _ballSprite;
@@ -26,6 +26,7 @@ namespace GameEntities.Ball
         public void Initialize(BallSettings settings)
         {
             _settings = settings;
+            _behaviour.Initialize(settings);
         }
 
         public void SetSprite(Sprite newSprite)
@@ -41,13 +42,13 @@ namespace GameEntities.Ball
         public void SetAdditionalVelocity(float additionalVelocity)
         {
             _currentVelocity = _settings.BaseVelocity + additionalVelocity;
-            _movement.SetVelocity(_currentVelocity);
+            _behaviour.SetVelocity(_currentVelocity);
         }
         
         public void MoveBallInDirection(Vector2 startDirection)
         {
             var velocity = startDirection * _currentVelocity;
-            _movement.StartBallWithVelocity(velocity);
+            _behaviour.StartBallWithVelocity(velocity);
         }
 
         public override void OnSetup()
@@ -62,7 +63,7 @@ namespace GameEntities.Ball
         public override void OnReset()
         {
             base.OnReset();
-            _movement.DisableMovement();
+            _behaviour.DisableMovement();
             _collider.UnregisterCollider(this);
         }
     }

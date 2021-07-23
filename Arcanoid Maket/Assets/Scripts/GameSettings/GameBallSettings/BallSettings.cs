@@ -14,7 +14,15 @@ namespace GameSettings.GameBallSettings
 
         [SerializeField]
         private int _ballDamage = 2;
+
+        [SerializeField]
+        private float _bounceAngleThreshold = 10f;
         
+        [SerializeField]
+        private float _bounceAngleChange = 10f;
+
+        public float BounceAngleChange => _bounceAngleChange;
+        public float BounceAngleThreshold => _bounceAngleThreshold;
         public float BaseVelocity => _baseVelocity;
         public int BallDamage => _ballDamage;
         public Sprite BallSprite => _ballSprite;

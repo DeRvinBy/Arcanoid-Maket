@@ -20,18 +20,23 @@ namespace GameComponents.Field
 
         [SerializeField]
         private TriggerCollider2D _outCollider;
+
+        [SerializeField]
+        private GeneralCollider2D _bordersCollider;
         
         private Transform _transform;
         private Vector2 _worldScale;
 
         private void OnEnable()
         {
+            _bordersCollider.RegisterCollider(this);
             _outCollider.RegisterCollider(this);
             _outCollider.OnTriggerEnter += DestroyObjectOutBorders;
         }
         
         private void OnDisable()
         {
+            _bordersCollider.UnregisterCollider(this);
             _outCollider.UnregisterCollider(this);
             _outCollider.OnTriggerEnter -= DestroyObjectOutBorders;
         }

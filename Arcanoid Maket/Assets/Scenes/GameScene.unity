@@ -2640,6 +2640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1545777875}
   - component: {fileID: 1545777876}
+  - component: {fileID: 1545777877}
   - component: {fileID: 1545777874}
   m_Layer: 6
   m_Name: FieldBorders
@@ -2702,6 +2703,20 @@ MonoBehaviour:
   _sceneCamera: {fileID: 1972407940}
   _settings: {fileID: 618202564}
   _outCollider: {fileID: 666636499}
+  _bordersCollider: {fileID: 1545777877}
+--- !u!114 &1545777877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545777873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a2fab0546248859e73979869205e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1545777874}
 --- !u!1 &1559416765
 GameObject:
   m_ObjectHideFlags: 0
