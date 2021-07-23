@@ -8,8 +8,8 @@ namespace Animations
         private float _duration;
         private Ease _tweenParams;
 
-        private Tween _tween;
-        
+        private bool _isPlaying;
+
         public ValueAnimation(Ease tweenParams, float duration)
         {
             _tweenParams = tweenParams;
@@ -18,12 +18,19 @@ namespace Animations
         
         public void PlayAnimation(float from, float to, Action<float> updateAction)
         {
-            _tween = DOVirtual.Float(from, to, _duration, (v) => updateAction(v)).SetEase(_tweenParams);
+            _isPlaying = true;
+            DOVirtual.Float(from, to, _duration, (v) =>
+            {
+                if (_isPlaying)
+                {
+                    updateAction(v);
+                }
+            }).SetEase(_tweenParams);
         }
 
-        public void KillAnimation()
+        public void StopAnimation()
         {
-            _tween?.Kill();
+            _isPlaying = false;
         }
     }
 }

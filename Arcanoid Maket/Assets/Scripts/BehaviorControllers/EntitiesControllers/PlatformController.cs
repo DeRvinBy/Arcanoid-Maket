@@ -82,7 +82,7 @@ namespace BehaviorControllers.EntitiesControllers
         public void OnEndGame()
         {
             _behaviour.ResetPlatform();
-            _valueAnimation.KillAnimation();
+            _valueAnimation.StopAnimation();
         }
     }
 }
