@@ -8,7 +8,7 @@ namespace GameEntities.Bonuses.Behaviour
     {
         public void Action()
         {
-            EventBus.RaiseEvent<IRageBallBonusHandler>(a => a.ActivateRageBonus());
+            EventBus.RaiseEvent<IRageBallBonusHandler>(a => a.OnActivateRageBonus());
         }
     }
 }

@@ -67,4 +67,12 @@ MonoBehaviour:
     _blockSettings:
       _blockSprite: {fileID: 2578027069697547834, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 0, g: 0.5921569, b: 0.49411768, a: 1}
+  - _blockId: 16
+    _blockSettings:
+      _blockSprite: {fileID: -4445780529977304318, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.37254903, g: 0.454902, b: 0.41960788, a: 1}
+  - _blockId: 17
+    _blockSettings:
+      _blockSprite: {fileID: 1475719772377886509, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 1, g: 0.6627451, b: 0.6666667, a: 1}
   _bonusObjectSettings: {fileID: 11400000, guid: 3616c30c5eaae314f8faad479cd39ebe, type: 2}

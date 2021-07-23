@@ -3,8 +3,8 @@ using MyLibrary.EventSystem;
 
 namespace EventInterfaces.BonusEvents
 {
-    public interface IPlatformSizeBonusHandler : IGlobalSubscriber
+    public interface ILifeBonusHandler : IGlobalSubscriber
     {
-        void OnActivateSizeBonus(ValueModifer modifer);
+        void OnActivateLifeBonus(ValueModifer modifer);
     }
 }

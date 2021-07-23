@@ -36,7 +36,7 @@ namespace GameComponents.Bonus.BonusesManagers
             EventBus.Subscribe(this);
         }
 
-        public void ActivateRageBonus()
+        public void OnActivateRageBonus()
         {
             _effectTime += _settings.EffectTime;
             if (!_isEffectActive)

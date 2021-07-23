@@ -10,5 +10,7 @@
         PlatformSizeDown = 5,
         RageBall = 6,
         ExtraBall = 7,
+        LifeDecreaseBonus = 8,
+        LifeIncreaseBonus = 9,
     }
 }

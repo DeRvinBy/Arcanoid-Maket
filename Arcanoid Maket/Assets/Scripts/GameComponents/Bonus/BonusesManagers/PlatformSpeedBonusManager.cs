@@ -29,7 +29,7 @@ namespace GameComponents.Bonus.BonusesManagers
             _bonusEffect.OnValueChanged -= UpdatePlatformSpeed;
         }
         
-        public void ActivateSpeedBonus(ValueModifer modifer)
+        public void OnActivateSpeedBonus(ValueModifer modifer)
         {
             _bonusEffect.ActivateEffect(modifer);
         }

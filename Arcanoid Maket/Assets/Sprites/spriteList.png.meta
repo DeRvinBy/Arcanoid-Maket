@@ -74,6 +74,18 @@ TextureImporter:
   - first:
       213: -3023030951598809514
     second: bonus
+  - first:
+      213: -4445780529977304318
+    second: life_block_down
+  - first:
+      213: 1475719772377886509
+    second: life_block_up
+  - first:
+      213: 4287181919740500446
+    second: life_down
+  - first:
+      213: -2377962577909162081
+    second: life_up
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -779,6 +791,90 @@ TextureImporter:
       bones: []
       spriteID: 65e11f0cd590c06d0800000000000000
       internalID: -3023030951598809514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life_block_down
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 150
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20bda59a92a6d42c0800000000000000
+      internalID: -4445780529977304318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life_block_up
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 150
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2faa94705fca7410800000000000000
+      internalID: 1475719772377886509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life_down
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 30
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed91c95dd312f7b30800000000000000
+      internalID: 4287181919740500446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: life_up
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 30
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f5d8662a7cffed0800000000000000
+      internalID: -2377962577909162081
       vertices: []
       indices: 
       edges: []

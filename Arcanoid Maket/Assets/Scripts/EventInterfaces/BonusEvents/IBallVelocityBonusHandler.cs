@@ -6,6 +6,6 @@ namespace EventInterfaces.BonusEvents
 {
     public interface IBallVelocityBonusHandler : IGlobalSubscriber
     {
-        void ActivateVelocityBonus(ValueModifer modifer);
+        void OnActivateVelocityBonus(ValueModifer modifer);
     }
 }

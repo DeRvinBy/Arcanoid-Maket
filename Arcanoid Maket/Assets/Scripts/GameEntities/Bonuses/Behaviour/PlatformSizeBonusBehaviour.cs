@@ -13,7 +13,7 @@ namespace GameEntities.Bonuses.Behaviour
         
         public override void Action()
         {
-            EventBus.RaiseEvent<IPlatformSizeBonusHandler>(a => a.ActivateSizeBonus(_modifer));
+            EventBus.RaiseEvent<IPlatformSizeBonusHandler>(a => a.OnActivateSizeBonus(_modifer));
         }
     }
 }

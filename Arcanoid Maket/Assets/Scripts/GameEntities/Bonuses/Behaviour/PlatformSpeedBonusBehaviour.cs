@@ -13,7 +13,7 @@ namespace GameEntities.Bonuses.Behaviour
         
         public override void Action()
         {
-            EventBus.RaiseEvent<IPlatformSpeedBonusHandler>(a => a.ActivateSpeedBonus(_modifer));
+            EventBus.RaiseEvent<IPlatformSpeedBonusHandler>(a => a.OnActivateSpeedBonus(_modifer));
         }
     }
 }

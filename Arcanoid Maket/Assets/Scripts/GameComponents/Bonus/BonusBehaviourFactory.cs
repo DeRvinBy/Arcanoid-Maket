@@ -27,6 +27,10 @@ namespace GameComponents.Bonus
                     return new RageBallBonusBehaviour();
                 case BonusType.ExtraBall:
                     return new ExtraBallBonusBehaviour(position);
+                case BonusType.LifeDecreaseBonus:
+                    return new LifeBonusBehaviour(ValueModifer.Decrease);
+                case BonusType.LifeIncreaseBonus:
+                    return new LifeBonusBehaviour(ValueModifer.Increase);
             }
 
             return null;

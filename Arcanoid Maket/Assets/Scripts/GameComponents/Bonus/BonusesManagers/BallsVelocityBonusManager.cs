@@ -37,7 +37,7 @@ namespace GameComponents.Bonus.BonusesManagers
             ball.SetAdditionalVelocity(_currentVariableVelocity);
         }
 
-        public void ActivateVelocityBonus(ValueModifer modifer)
+        public void OnActivateVelocityBonus(ValueModifer modifer)
         {
             _bonusEffect.ActivateEffect(modifer);
         }

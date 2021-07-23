@@ -33,13 +33,18 @@ namespace BehaviorControllers.EntitiesControllers
             _lifeUI.CreateLifeContainers(_settings);
         }
 
-        public void OnStartGame()
+        public void IncreaseLifeCount()
         {
-            _lifeCount = _settings.StartLifeCount;
+            _lifeCount++;
+
+            if (_lifeCount > _settings.StartLifeCount)
+            {
+                _lifeCount = _settings.StartLifeCount;
+            }
             _lifeUI.UpdateLifeCount(_lifeCount);
         }
         
-        public void OnPlayerBallLose()
+        public void DecreaseLifeCount()
         {
             _lifeCount--;
             _lifeUI.UpdateLifeCount(_lifeCount);
@@ -48,7 +53,19 @@ namespace BehaviorControllers.EntitiesControllers
             {
                 EventBus.RaiseEvent<IEndGameHandler>(a => a.OnLoseGame());
             }
-            else
+        }
+
+        public void OnStartGame()
+        {
+            _lifeCount = _settings.StartLifeCount;
+            _lifeUI.UpdateLifeCount(_lifeCount);
+        }
+        
+        public void OnPlayerBallLose()
+        {
+            DecreaseLifeCount();
+            
+            if(_lifeCount > 0)
             {
                 EventBus.RaiseEvent<IContinueGameHandler>(a => a.OnContinueGame());
             }

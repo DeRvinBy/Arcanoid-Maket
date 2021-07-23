@@ -5,6 +5,6 @@ namespace EventInterfaces.BonusEvents
 {
     public interface IPlatformSpeedBonusHandler : IGlobalSubscriber
     {
-        void ActivateSpeedBonus(ValueModifer modifer);
+        void OnActivateSpeedBonus(ValueModifer modifer);
     }
 }

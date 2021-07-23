@@ -28,7 +28,7 @@ namespace GameComponents.Bonus.BonusesManagers
             _bonusEffect.OnValueChanged -= UpdatePlatformSize;
         }
         
-        public void ActivateSizeBonus(ValueModifer modifer)
+        public void OnActivateSizeBonus(ValueModifer modifer)
         {
             _bonusEffect.ActivateEffect(modifer);
         }

@@ -13,6 +13,8 @@
         PlatformSpeedBonus = 12,
         PlatformSizeBonus = 13,
         RageBallBonus = 14,
-        ExtraBallBonus = 15
+        ExtraBallBonus = 15,
+        LifeDecreaseBonus = 16,
+        LifeIncreaseBonus = 17,
     }
 }

@@ -4,6 +4,6 @@ namespace EventInterfaces.BonusEvents
 {
     public interface IRageBallBonusHandler : IGlobalSubscriber
     {
-        void ActivateRageBonus();
+        void OnActivateRageBonus();
     }
 }
