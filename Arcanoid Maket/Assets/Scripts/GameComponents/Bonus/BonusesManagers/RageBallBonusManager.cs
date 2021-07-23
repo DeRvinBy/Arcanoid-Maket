@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using BehaviorControllers.EntitiesControllers.EntitiesManagers;
+using EventInterfaces.BallEvents;
 using EventInterfaces.BonusEvents;
 using EventInterfaces.GameEvents;
+using GameEntities.Ball;
 using GameEntities.Blocks;
 using GameSettings.GameBonusSettings.BonusesSettings;
 using MyLibrary.EventSystem;
@@ -9,7 +11,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class RageBallBonusManager : MonoBehaviour, IRageBallBonusHandler, IContinueGameHandler
+    public class RageBallBonusManager : MonoBehaviour, IRageBallBonusHandler, IBallsManagerHandler, IContinueGameHandler
     {
         [SerializeField]
         private BallsManager _ballsManager;
@@ -57,6 +59,7 @@ namespace GameComponents.Bonus.BonusesManagers
         private void StartEffect()
         {
             _isEffectActive = true;
+            _ballsManager.InvokeBallsAction(a => a.SetSprite(_settings.RageBallSprite));
             _blocksManager.InvokeBlocksAction<DestructibleBlock>(a => a.EnableBlockTrigger());
             _blocksManager.InvokeBlocksAction<BonusBlock>(a => a.EnableBlockTrigger());
         }
@@ -65,8 +68,17 @@ namespace GameComponents.Bonus.BonusesManagers
         {
             _isEffectActive = false;
             _effectTime = 0f;
+            _ballsManager.InvokeBallsAction(a => a.ResetDefaultSprite());
             _blocksManager.InvokeBlocksAction<DestructibleBlock>(a => a.DisableBlockTrigger());
             _blocksManager.InvokeBlocksAction<BonusBlock>(a => a.DisableBlockTrigger());
+        }
+        
+        public void OnSpawnNewBall(BallEntity ball)
+        {
+            if (_isEffectActive)
+            {
+                ball.SetSprite(_settings.RageBallSprite);
+            }
         }
         
         public void OnContinueGame()

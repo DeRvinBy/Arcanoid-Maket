@@ -12,6 +12,9 @@ namespace GameEntities.Ball
         private BallMovement _movement;
 
         [SerializeField]
+        private SpriteRenderer _ballSprite;
+        
+        [SerializeField]
         private GeneralCollider2D _collider;
         
         private BallSettings _settings;
@@ -23,6 +26,16 @@ namespace GameEntities.Ball
         public void Initialize(BallSettings settings)
         {
             _settings = settings;
+        }
+
+        public void SetSprite(Sprite newSprite)
+        {
+            _ballSprite.sprite = newSprite;
+        }
+
+        public void ResetDefaultSprite()
+        {
+            _ballSprite.sprite = _settings.BallSprite;
         }
 
         public void SetAdditionalVelocity(float additionalVelocity)
@@ -42,6 +55,7 @@ namespace GameEntities.Ball
             base.OnSetup();
             _currentDamage = _settings.BallDamage;
             _currentVelocity = _settings.BaseVelocity;
+            _ballSprite.sprite = _settings.BallSprite;
             _collider.RegisterCollider(this);
         }
 

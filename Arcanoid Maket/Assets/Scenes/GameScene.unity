@@ -268,6 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05e4c542eaf4541b5b377f294718219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rageBallSprite: {fileID: -7322278629185864981, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   _effectTime: 5
 --- !u!1 &156239578
 GameObject:

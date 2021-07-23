@@ -1,4 +1,5 @@
 ﻿using BehaviorControllers.EntitiesControllers.EntitiesManagers;
+using EventInterfaces.BallEvents;
 using EventInterfaces.BonusEvents;
 using GameComponents.Bonus.Effects;
 using GameEntities.Ball;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers
 {
-    public class BallsVelocityBonusManager : MonoBehaviour, IBallVelocityBonusHandler
+    public class BallsVelocityBonusManager : MonoBehaviour, IBallVelocityBonusHandler, IBallsManagerHandler
     {
         [SerializeField]
         private BallsManager _manager;
@@ -30,9 +31,9 @@ namespace GameComponents.Bonus.BonusesManagers
             _bonusEffect.OnValueChanged -= UpdateBallsVelocity;
         }
 
-        public void UpdateVelocityForNewBall(BallEntity ball)
+        public void OnSpawnNewBall(BallEntity ball)
         {
-            UpdateBallsVelocity(_currentVariableVelocity);
+            ball.SetAdditionalVelocity(_currentVariableVelocity);
         }
 
         public void ActivateVelocityBonus(ValueModifer modifer)

@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 722622970326697302}
+  _ballSprite: {fileID: 722622969088239978}
   _collider: {fileID: 5311432717492757011}
 --- !u!114 &722622970326697302
 MonoBehaviour:

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using BehaviorControllers.Abstract;
 using EventInterfaces.BallEvents;
-using EventInterfaces.BonusEvents;
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Balls;
@@ -43,7 +42,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         {
             var ball = _spawner.SpawnBall(position, _ballParent);
             ball.MoveBallInDirection(direction);
-            EventBus.RaiseEvent<IBallVelocityBonusHandler>(a => a.UpdateVelocityForNewBall(ball));
+            EventBus.RaiseEvent<IBallsManagerHandler>(a => a.OnSpawnNewBall(ball));
             _ballOnScene.Add(ball);
         }
 
