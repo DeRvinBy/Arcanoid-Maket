@@ -3,7 +3,7 @@ using GameEntities.Bonuses.Interfaces;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
-namespace GameEntities.Bonuses.Behaviour
+namespace GameEntities.Bonuses.BonusBehaviour
 {
     public class ExtraBallBonusBehaviour : IBonusBehaviour
     {

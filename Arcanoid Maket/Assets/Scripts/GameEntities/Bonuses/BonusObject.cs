@@ -2,6 +2,7 @@
 using EventInterfaces.BonusEvents;
 using GameEntities.Bonuses.Enumerations;
 using GameEntities.Bonuses.Interfaces;
+using GameEntities.Bonuses.ObjectBehaviour;
 using GameSettings.GameBonusSettings;
 using GameSettings.GameBonusSettings.ObjectSettings;
 using MyLibrary.CollisionStorage.Colliders2D;
@@ -15,23 +16,25 @@ namespace GameEntities.Bonuses
     public class BonusObject : PoolObject
     {
         [SerializeField]
+        private BonusObjectBehaviour _objectBehaviour;
+        
+        [SerializeField]
         private TriggerCollider2D _collider;
 
-        [SerializeField]
-        private SpriteRenderer _bonusSprite;
-        
         private BonusObjectSettings _settings;
         private IBonusBehaviour _bonusBehaviour;
 
         public void Initialize(BonusObjectSettings settings)
         {
             _settings = settings;
+            _objectBehaviour.Initialize(settings.BonusGravityScale);
         }
         
         public void SetupBonusObject(BonusType type, IBonusBehaviour bonusBehaviour)
         {
             _bonusBehaviour = bonusBehaviour;
-            _bonusSprite.sprite = _settings.GetBonusSprite(type);
+            var bonusSprite = _settings.GetBonusSprite(type);
+            _objectBehaviour.SetupBehaviour(bonusSprite);
         }
         
         public override void OnSetup()

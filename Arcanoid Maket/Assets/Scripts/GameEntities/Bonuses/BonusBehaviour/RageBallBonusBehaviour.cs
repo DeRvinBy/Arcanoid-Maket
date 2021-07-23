@@ -2,7 +2,7 @@
 using GameEntities.Bonuses.Interfaces;
 using MyLibrary.EventSystem;
 
-namespace GameEntities.Bonuses.Behaviour
+namespace GameEntities.Bonuses.BonusBehaviour
 {
     public class RageBallBonusBehaviour : IBonusBehaviour
     {

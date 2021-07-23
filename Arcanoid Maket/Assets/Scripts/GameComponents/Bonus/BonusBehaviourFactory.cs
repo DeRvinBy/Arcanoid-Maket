@@ -1,4 +1,4 @@
-﻿using GameEntities.Bonuses.Behaviour;
+﻿using GameEntities.Bonuses.BonusBehaviour;
 using GameEntities.Bonuses.Enumerations;
 using GameEntities.Bonuses.Interfaces;
 using UnityEngine;

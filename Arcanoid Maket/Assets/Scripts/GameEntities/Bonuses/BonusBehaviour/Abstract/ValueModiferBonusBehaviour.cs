@@ -1,7 +1,7 @@
 ﻿using GameEntities.Bonuses.Enumerations;
 using GameEntities.Bonuses.Interfaces;
 
-namespace GameEntities.Bonuses.Behaviour.Abstract
+namespace GameEntities.Bonuses.BonusBehaviour.Abstract
 {
     public abstract class ValueModiferBonusBehaviour : IBonusBehaviour
     {

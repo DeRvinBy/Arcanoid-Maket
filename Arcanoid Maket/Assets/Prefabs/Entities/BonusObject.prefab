@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7637972519996528975}
   - component: {fileID: 7637972519996528974}
+  - component: {fileID: 8466076412155408729}
   - component: {fileID: 8915199332809591365}
   m_Layer: 9
   m_Name: BonusObject
@@ -46,7 +47,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f1d500fc86451eaebe79440347373d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectBehaviour: {fileID: 8466076412155408729}
   _collider: {fileID: 7637972520900850856}
+--- !u!114 &8466076412155408729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7637972519996528972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03109ba999424d14b7b31e3d79fdad70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 8915199332809591365}
   _bonusSprite: {fileID: 7637972520223193752}
 --- !u!50 &8915199332809591365
 Rigidbody2D:

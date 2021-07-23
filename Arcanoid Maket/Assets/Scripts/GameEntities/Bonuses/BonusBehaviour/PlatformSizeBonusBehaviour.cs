@@ -1,9 +1,9 @@
 ﻿using EventInterfaces.BonusEvents;
-using GameEntities.Bonuses.Behaviour.Abstract;
+using GameEntities.Bonuses.BonusBehaviour.Abstract;
 using GameEntities.Bonuses.Enumerations;
 using MyLibrary.EventSystem;
 
-namespace GameEntities.Bonuses.Behaviour
+namespace GameEntities.Bonuses.BonusBehaviour
 {
     public class PlatformSizeBonusBehaviour : ValueModiferBonusBehaviour
     {

@@ -9,7 +9,12 @@ namespace GameSettings.GameBonusSettings.ObjectSettings
     public class BonusObjectSettings : AbstractSettings
     {
         [SerializeField]
+        private float _bonusGravityScale = 0.6f;
+        
+        [SerializeField]
         private BonusSpriteSettings[] _spriteSettings;
+        
+        public float BonusGravityScale => _bonusGravityScale;
         
         private Dictionary<BonusType, Sprite> _spriteSettingsMap;
 
