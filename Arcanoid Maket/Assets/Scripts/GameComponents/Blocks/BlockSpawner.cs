@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using EventInterfaces.BonusEvents;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
@@ -48,26 +49,26 @@ namespace GameComponents.Blocks
         private void CreateIndestructibleBlock(Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<IndestructibleBlock>(position, Quaternion.identity, size, parent);
-            AddPackToMap(typeof(IndestructibleBlock), block);
+            AddBlockToMap(typeof(IndestructibleBlock), block);
         }
         
         private void CreateDestructibleBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<DestructibleBlock>(position, Quaternion.identity, size, parent);
-            AddPackToMap(typeof(DestructibleBlock), block);
+            AddBlockToMap(typeof(DestructibleBlock), block);
             block.SetupBlock(spriteId);
         }
         
         private BonusBlock CreateBonusBLock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<BonusBlock>(position, Quaternion.identity, size, parent);
-            AddPackToMap(typeof(BonusBlock), block);
+            AddBlockToMap(typeof(BonusBlock), block);
             block.SetupBlock(properties.SpriteId);
             block.SetupBonusBLock(properties.BonusId);
             return block;
         }
 
-        private void AddPackToMap(Type type, AbstractBlock block)
+        private void AddBlockToMap(Type type, AbstractBlock block)
         {
             if (!_blocksMap.ContainsKey(type))
             {
@@ -77,6 +78,12 @@ namespace GameComponents.Blocks
             _blocksMap[type].Add(block);
         }
 
+        public List<T> GetBlocks<T>() where T : AbstractBlock
+        {
+            var type = typeof(T);
+            return _blocksMap[type].Select(b => b as T).ToList();
+        }
+        
         public void DestroyBlock<T>(T block) where T : AbstractBlock
         {
             PoolsManager.Instance.ReturnObject(block);

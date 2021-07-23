@@ -25,6 +25,8 @@ namespace GameSettings.GameBlockSettings
 
         public Sprite GetSpriteByLifeCount(int blockLife)
         {
+            if (blockLife < 0) return _cracksSprites[0];
+            
             var index = blockLife / _levelSize;
             return _cracksSprites[index];
         }

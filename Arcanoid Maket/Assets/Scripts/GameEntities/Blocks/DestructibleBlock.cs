@@ -47,18 +47,31 @@ namespace GameEntities.Blocks
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestructibleBlockCreated());
         }
 
+        public void EnableBlockTrigger()
+        {
+            _collider.EnableTrigger();
+        }
+        
+        public void DisableBlockTrigger()
+        {
+            _collider.DisableTrigger();
+        }
+
         public override void OnSetup()
         {
             base.OnSetup();
             _collider.RegisterCollider(this);
             _collider.OnCollisionEnter += OnBlockDamaged;
+            _collider.OnTriggerEnter += DestroyBlock;
         }
         
         public override void OnReset()
         {
             base.OnReset();
-            _collider.RegisterCollider(this);
+            _collider.DisableTrigger();
+            _collider.UnregisterCollider(this);
             _collider.OnCollisionEnter -= OnBlockDamaged;
+            _collider.OnTriggerEnter -= DestroyBlock;
         }
 
         protected virtual void OnBlockDamaged(Collider2D other)

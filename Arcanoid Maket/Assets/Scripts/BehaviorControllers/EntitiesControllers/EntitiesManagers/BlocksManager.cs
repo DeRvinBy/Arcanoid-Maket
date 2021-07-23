@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using BehaviorControllers.Abstract;
 using EventInterfaces.BlockEvents;
 using EventInterfaces.GameEvents;
@@ -6,7 +6,6 @@ using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Data;
-using GameEntities.Blocks.Enumerations;
 using MyLibrary.EventSystem;
 using UI.Header.BlocksUI;
 using UnityEngine;
@@ -36,6 +35,15 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _spawner = new BlockSpawner();
         }
 
+        public void InvokeBlocksAction<T>(Action<T> action) where T : AbstractBlock
+        {
+            var blocks = _spawner.GetBlocks<T>();
+            foreach (var block in blocks)
+            {
+                action.Invoke(block);
+            }
+        }
+        
         public void OnDestructibleBlockCreated()
         {
             _blockCount++;

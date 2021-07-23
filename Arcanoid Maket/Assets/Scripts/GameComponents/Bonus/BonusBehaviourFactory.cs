@@ -24,7 +24,7 @@ namespace GameComponents.Bonus
                 case BonusType.PlatformSizeDown:
                     return new PlatformSizeBonusBehaviour(ValueModifer.Decrease);
                 case BonusType.RageBall:
-                    return new ExtraBallBonusBehaviour(position);
+                    return new RageBallBonusBehaviour();
                 case BonusType.ExtraBall:
                     return new ExtraBallBonusBehaviour(position);
             }

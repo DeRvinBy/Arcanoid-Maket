@@ -65,6 +65,15 @@ TextureImporter:
   - first:
       213: -2492692234379463652
     second: rage_Ball
+  - first:
+      213: 5871065394506613413
+    second: default_block
+  - first:
+      213: -7322278629185864981
+    second: rage_ball_sprite
+  - first:
+      213: -3023030951598809514
+    second: bonus
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -707,6 +716,69 @@ TextureImporter:
       bones: []
       spriteID: c14ff63ae9d286dd0800000000000000
       internalID: -2492692234379463652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: default_block
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 210
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 2, y: 2, z: 2, w: 1}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2c7acbed63a7150800000000000000
+      internalID: 5871065394506613413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rage_ball_sprite
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 107
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bea31f0c16a026a90800000000000000
+      internalID: -7322278629185864981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bonus
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 130
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e11f0cd590c06d0800000000000000
+      internalID: -3023030951598809514
       vertices: []
       indices: 
       edges: []
