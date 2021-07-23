@@ -27,7 +27,10 @@ namespace GamePacks
             var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
             _service.Initialize(config);
-            _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
+            if (_service.IsSaveExit())
+            {
+                _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
+            }
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
             _parser = new JsonParser(tilemap.text);
             

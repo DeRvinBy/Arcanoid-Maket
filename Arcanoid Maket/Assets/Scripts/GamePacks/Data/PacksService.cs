@@ -23,8 +23,13 @@ namespace GamePacks.Data
             var loader = new PlayerPrefsLoader();
             _isSaveExist = loader.IsSaveExist();
             _playerPacksSave = new PlayerPacksSave(loader);
-            _playerPacksSave.LoadPacksFromSave(packsConfig.FirstPack.Key);
-            
+            var firstPack = packsConfig.FirstPack.Key;
+            _playerPacksSave.LoadPacksFromSave(firstPack);
+            if (!_isSaveExist)
+            {
+                StartPack(firstPack);
+            }
+
             _packsInfoMap = new Dictionary<string, PackInfo>();
             foreach (var packKey in _packsMap.Keys)
             {
