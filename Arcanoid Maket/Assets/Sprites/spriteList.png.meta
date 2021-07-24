@@ -431,7 +431,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 83
-        y: 110
+        y: 109
         width: 40
         height: 40
       alignment: 0
@@ -515,7 +515,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 123
-        y: 110
+        y: 109
         width: 40
         height: 40
       alignment: 0
@@ -536,7 +536,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 43
-        y: 110
+        y: 109
         width: 40
         height: 40
       alignment: 0
@@ -578,7 +578,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 163
-        y: 110
+        y: 109
         width: 40
         height: 40
       alignment: 0
@@ -599,7 +599,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 43
-        y: 70
+        y: 69
         width: 40
         height: 40
       alignment: 0
@@ -683,7 +683,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 83
-        y: 70
+        y: 69
         width: 40
         height: 40
       alignment: 0
@@ -704,7 +704,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 123
-        y: 70
+        y: 69
         width: 40
         height: 40
       alignment: 0
@@ -724,8 +724,8 @@ TextureImporter:
       name: rage_Ball
       rect:
         serializedVersion: 2
-        x: 163
-        y: 70
+        x: 162
+        y: 69
         width: 40
         height: 40
       alignment: 0
@@ -851,7 +851,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 43
-        y: 30
+        y: 29
         width: 40
         height: 40
       alignment: 0
@@ -872,7 +872,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 83
-        y: 30
+        y: 29
         width: 40
         height: 40
       alignment: 0
@@ -893,7 +893,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 123
-        y: 30
+        y: 29
         width: 40
         height: 40
       alignment: 0
@@ -914,7 +914,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 163
-        y: 30
+        y: 29
         width: 40
         height: 40
       alignment: 0

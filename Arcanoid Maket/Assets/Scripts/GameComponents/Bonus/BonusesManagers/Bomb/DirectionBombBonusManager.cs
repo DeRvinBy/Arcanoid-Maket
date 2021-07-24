@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using EventInterfaces.BonusEvents.Bomb;
 using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
-using GameComponents.Bonus.BonusesManagers.Bomb.Data;
-using GameEntities.Blocks;
+using GameComponents.Bonus.BonusesManagers.Bomb.Searchers;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBonusSettings.BonusesSettings;
@@ -22,6 +20,13 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         [SerializeField]
         private DirectionBombBonusSettings _settings;
 
+        private BlocksDirectionSearcher _searcher;
+
+        private void Awake()
+        {
+            _searcher = new BlocksDirectionSearcher();
+        }
+
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -36,20 +41,20 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         {
             var startCoords = _gridBlocks.GetBlocksCoordinates(position);
             var blocksMatrix = _gridBlocks.GetBlocksMatrix();
-            var destroyMap = new DirectionBombDestroyBlocksMap(startCoords, blocksMatrix);
+            _searcher.Setup(startCoords, blocksMatrix);
+            List<Vector2Int> moveDirections;
             
             if (direction == BombBonusDirection.Horizontal)
             {
-                destroyMap.FillDestroyBlocksMap(1, new Vector2Int(1, 0));
-                destroyMap.FillDestroyBlocksMap(1, new Vector2Int(-1, 0));
+                moveDirections = _settings.HorizontalMoveDirections;
             }
             else
             {
-                destroyMap.FillDestroyBlocksMap(1, new Vector2Int(0, 1));
-                destroyMap.FillDestroyBlocksMap(1, new Vector2Int(0, -1));
+                moveDirections = _settings.VerticalMoveDirections;
             }
 
-            StartCoroutine(StartDestroyBlocks(destroyMap.DestroyBlocksMap));
+            var destroyMap = _searcher.GetDestroyBlocksMap(moveDirections);
+            StartCoroutine(StartDestroyBlocks(destroyMap));
         }
 
         private IEnumerator StartDestroyBlocks(Dictionary<int,List<AbstractBlock>> destroyBlocksMaps)
@@ -57,7 +62,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
             foreach (var level in destroyBlocksMaps.Keys)
             {
                 yield return new WaitForSeconds(_settings.BlocksDestructionDelay);
-                
+
                 foreach (var block in destroyBlocksMaps[level])
                 {
                     block.DestroyBlock();   
