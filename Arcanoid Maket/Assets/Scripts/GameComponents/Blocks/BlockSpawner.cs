@@ -21,42 +21,44 @@ namespace GameComponents.Blocks
             _blocksMap = new Dictionary<Type, List<AbstractBlock>>();
         }
         
-        public void SpawnBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
+        public AbstractBlock SpawnBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
         {
             switch (properties.Type)
             {
                 case BlockType.Destructible:
-                    CreateDestructibleBlock(properties.SpriteId, position, size, parent);
-                    break;
+                    return CreateDestructibleBlock(properties.SpriteId, position, size, parent);
                 case BlockType.Indestructible:
-                    CreateIndestructibleBlock(position, size, parent);
-                    break;
+                    return CreateIndestructibleBlock(position, size, parent);
                 case BlockType.WithSpawningBonus:
                     var spawningBonusBlock = CreateBonusBLock(properties, position, size, parent);
                     spawningBonusBlock.OnBlockDestroy += () =>
                         EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
                             a.OnCreateBonusObject(properties.BonusId, position));
-                    break;
+                    return spawningBonusBlock;
                 case BlockType.WithInstantBonus:
                     var instantBonusBlock = CreateBonusBLock(properties, position, size, parent);
                     instantBonusBlock.OnBlockDestroy += () =>
                         EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
                             a.OnStartBonusAtPosition(properties.BonusId, position));
-                    break;
+                    return instantBonusBlock;
             }
+
+            return null;
         }
 
-        private void CreateIndestructibleBlock(Vector3 position, Vector3 size, Transform parent)
+        private AbstractBlock CreateIndestructibleBlock(Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<IndestructibleBlock>(position, Quaternion.identity, size, parent);
             AddBlockToMap(typeof(IndestructibleBlock), block);
+            return block;
         }
         
-        private void CreateDestructibleBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
+        private AbstractBlock CreateDestructibleBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<DestructibleBlock>(position, Quaternion.identity, size, parent);
             AddBlockToMap(typeof(DestructibleBlock), block);
             block.SetupBlock(spriteId);
+            return block;
         }
         
         private BonusBlock CreateBonusBLock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)

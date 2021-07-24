@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dd202dd2a154ec58af9442bd2a8a092, type: 3}
   m_Name: BonusObjectSettings
   m_EditorClassIdentifier: 
+  _bonusGravityScale: 0.6
   _spriteSettings:
   - _bonusType: 0
     _sprite: {fileID: -6964432528036780075, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
@@ -33,3 +34,7 @@ MonoBehaviour:
     _sprite: {fileID: 4287181919740500446, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   - _bonusType: 9
     _sprite: {fileID: -2377962577909162081, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+  - _bonusType: 10
+    _sprite: {fileID: 2391764928223797118, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+  - _bonusType: 11
+    _sprite: {fileID: -162622819657226963, guid: fa5338999ca421a48be4dfba8947172f, type: 3}

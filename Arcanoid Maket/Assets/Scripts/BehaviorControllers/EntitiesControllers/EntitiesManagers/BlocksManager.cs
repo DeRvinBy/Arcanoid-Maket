@@ -17,6 +17,9 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         [SerializeField]
         private BlocksProgressUI _blocksProgressUI;
 
+        [SerializeField]
+        private GridBlocks _gridBlocks;
+        
         private BlockSpawner _spawner;
         private int _blockCount;
 
@@ -51,7 +54,8 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 
         public void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockProperties properties)
         {
-            _spawner.SpawnBlock(properties, position, size, parent);
+            var block = _spawner.SpawnBlock(properties, position, size, parent);
+            _gridBlocks.AddBlockToMatrix(position, block);
         }
 
         public void OnBlockStartDestroyed()

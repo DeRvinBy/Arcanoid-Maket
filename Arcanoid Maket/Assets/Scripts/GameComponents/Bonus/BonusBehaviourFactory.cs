@@ -1,4 +1,8 @@
 ﻿using GameEntities.Bonuses.BonusBehaviour;
+using GameEntities.Bonuses.BonusBehaviour.Ball;
+using GameEntities.Bonuses.BonusBehaviour.Bomb;
+using GameEntities.Bonuses.BonusBehaviour.Life;
+using GameEntities.Bonuses.BonusBehaviour.Platform;
 using GameEntities.Bonuses.Enumerations;
 using GameEntities.Bonuses.Interfaces;
 using UnityEngine;
@@ -31,6 +35,10 @@ namespace GameComponents.Bonus
                     return new LifeBonusBehaviour(ValueModifer.Decrease);
                 case BonusType.LifeIncreaseBonus:
                     return new LifeBonusBehaviour(ValueModifer.Increase);
+                case BonusType.HorizontalBombBonus:
+                    return new DirectionBombBonusBehaviour(position, BombBonusDirection.Horizontal);
+                case BonusType.VerticalBombBonus:
+                    return new DirectionBombBonusBehaviour(position, BombBonusDirection.Vertical);
             }
 
             return null;

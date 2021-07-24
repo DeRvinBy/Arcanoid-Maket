@@ -75,4 +75,8 @@ MonoBehaviour:
     _blockSettings:
       _blockSprite: {fileID: 1475719772377886509, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
       _particleColor: {r: 1, g: 0.6627451, b: 0.6666667, a: 1}
+  - _blockId: 18
+    _blockSettings:
+      _blockSprite: {fileID: 1089911936713184430, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+      _particleColor: {r: 0.627451, g: 0.37647063, b: 0.19215688, a: 1}
   _bonusObjectSettings: {fileID: 11400000, guid: 3616c30c5eaae314f8faad479cd39ebe, type: 2}

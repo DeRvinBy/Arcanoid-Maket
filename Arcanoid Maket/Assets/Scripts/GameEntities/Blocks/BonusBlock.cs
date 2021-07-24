@@ -29,7 +29,7 @@ namespace GameEntities.Blocks
             var sprite = _bonusSettings.GetBonusSprite(type);
             _blockBonusSprite.SetupSprite(sprite);
         }
-        
+
         public override void OnReset()
         {
             base.OnReset();

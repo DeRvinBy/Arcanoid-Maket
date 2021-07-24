@@ -1,4 +1,5 @@
 ﻿using BehaviorControllers.Abstract;
+using EventInterfaces.FieldEvents;
 using EventInterfaces.PacksEvents;
 using GameComponents.Field;
 using GamePacks.Data.Level;
@@ -41,6 +42,7 @@ namespace BehaviorControllers.EntitiesControllers
         public void OnLevelFileChanged(LevelData levelData)
         {
             _fieldGrid.CreateGameField(levelData);
+            EventBus.RaiseEvent<IFieldGridHandler>(a => a.OnFieldGridCreated(_fieldGrid));
             _creator.CreateBlocksInGameField(_fieldGrid);
         }
     }

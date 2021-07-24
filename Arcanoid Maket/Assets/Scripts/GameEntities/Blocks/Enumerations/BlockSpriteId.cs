@@ -16,5 +16,6 @@
         ExtraBallBonus = 15,
         LifeDecreaseBonus = 16,
         LifeIncreaseBonus = 17,
+        BombBonus = 18,
     }
 }

@@ -5,8 +5,8 @@ namespace GameComponents.Field.Data
 {
     public class FieldCell
     {
-        public Vector2 Position { get; private set; }
-        public BlockProperties Properties { get; private set; }
+        public Vector2 Position { get; }
+        public BlockProperties Properties { get; }
         
         public FieldCell(Vector2 position, BlockProperties properties)
         {

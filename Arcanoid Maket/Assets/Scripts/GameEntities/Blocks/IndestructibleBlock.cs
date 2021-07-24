@@ -16,6 +16,8 @@ namespace GameEntities.Blocks
         
         [SerializeField]
         private BlockParticles _particles;
+
+        private bool _isDestroying;
         
         public override void Initialize(BlockSettings settings)
         {
@@ -24,8 +26,17 @@ namespace GameEntities.Blocks
             _sprite.SetupSprite(visualSettings.Sprite);
         }
 
+        public override void OnSetup()
+        {
+            base.OnSetup();
+            _isDestroying = false;
+        }
+
         public override void DestroyBlock()
         {
+            if (_isDestroying) return;
+            
+            _isDestroying = true;
             StartCoroutine(DestroyBlockAnimate());
         }
         

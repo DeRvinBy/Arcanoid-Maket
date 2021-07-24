@@ -12,5 +12,7 @@
         ExtraBall = 7,
         LifeDecreaseBonus = 8,
         LifeIncreaseBonus = 9,
+        HorizontalBombBonus = 10,
+        VerticalBombBonus = 11,
     }
 }
