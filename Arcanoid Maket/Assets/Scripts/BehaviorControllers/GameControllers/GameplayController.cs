@@ -6,6 +6,7 @@ using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Popup;
+using MyLibrary.UI.Transition;
 
 namespace BehaviorControllers.GameControllers
 {
@@ -18,17 +19,17 @@ namespace BehaviorControllers.GameControllers
 
         private void Start()
         {
-            StartGame();
+            StartCoroutine(StartGameScene());
         }
 
-        // private IEnumerator StartGameScene()
-        // {
-        //     EventBus.RaiseEvent<IClearGameSceneHandler>(a => a.OnClearObjects());
-        //     EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
-        //     EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
-        //     //yield return _popupsController.ShowTransition<TransitionPopup>();
-        //     EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
-        // }
+        private IEnumerator StartGameScene()
+        {
+            EventBus.RaiseEvent<IClearGameSceneHandler>(a => a.OnClearObjects());
+            EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
+            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
+            yield return TransitionController.Instance.ShowForwardTransition();
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
+        }
         
         private void StartGame()
         {

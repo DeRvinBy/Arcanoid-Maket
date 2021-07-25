@@ -6,6 +6,7 @@ using EventInterfaces.StatesEvents;
 using GamePacks;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Popup;
+using MyLibrary.UI.Transition;
 using UI.Popups;
 using UnityEngine;
 
@@ -23,14 +24,14 @@ namespace BehaviorControllers.GameControllers
             EventBus.Subscribe(this);
         }
 
-        private void Start()
+        private void Awake()
         {
             StartCoroutine(ShowMenu());
         }
 
         private IEnumerator ShowMenu()
         {
-           // yield return PopupsController.Instance.ShowTransition<TransitionPopup>();
+            yield return TransitionController.Instance.ShowForwardTransition();
             yield return PopupsController.Instance.ShowPopup<MenuPopup>();
         }
         
@@ -53,21 +54,20 @@ namespace BehaviorControllers.GameControllers
             }
             else
             {
-                OnPackButtonPressed();
+                StartCoroutine(StartGameScene());
             }
         }
 
         public void OnPackButtonPressed()
         {
-            // StartCoroutine(StartGameScene());
+            StartCoroutine(StartGameScene());
+        }
+
+        private IEnumerator StartGameScene()
+        {
+            yield return TransitionController.Instance.ShowBackwardTransition();
             PopupsController.Instance.ClearPopups();
             _scenesController.LoadScene(_gameSceneID);
         }
-
-        // private IEnumerator StartGameScene()
-        // {
-        //     yield return _popupsController.HideTransition<TransitionPopup>();
-        //     
-        // }
     }
 }

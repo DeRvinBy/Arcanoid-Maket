@@ -29,6 +29,7 @@ namespace MyLibrary.UI.Transition.Abstract
 
         public IEnumerator ShowBackwardTransition()
         {
+            gameObject.SetActive(true);
             if (_animation != null)
             {
                 yield return _animation.PlayBackwardAnimation();
