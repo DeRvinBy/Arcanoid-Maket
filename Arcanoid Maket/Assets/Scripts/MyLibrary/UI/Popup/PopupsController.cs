@@ -1,29 +1,34 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using BehaviorControllers.Abstract;
 using MyLibrary.ObjectPool;
+using MyLibrary.Singleton;
 using MyLibrary.UI.Popup.Abstract;
+using MyLibrary.UI.Popup.Components;
 using UnityEngine;
 
 namespace MyLibrary.UI.Popup
 {
-    public class PopupsController : EntityController
+    public class PopupsController : Singleton<PopupsController>
     {
-        [SerializeField]
-        private Transform _popupsUIContainer;
-
-        [SerializeField]
         private PopupsLocker _popupsLocker;
-        
+        private Transform _popupsContainer;
+
         private Dictionary<Type, AbstractPopup> _popupsMap;
-
         private Stack<AbstractPopup> _popupsStack;
-
-        public override void Initialize()
+        
+        protected override void Initialize()
         {
             _popupsMap = new Dictionary<Type, AbstractPopup>();
             _popupsStack = new Stack<AbstractPopup>();
+            CreatePopupsContainer();
+        }
+
+        private void CreatePopupsContainer()
+        {
+            var container = PoolsManager.Instance.GetObject<PopupsContainer>(Vector3.zero);
+            _popupsLocker = container.PopupsLocker;
+            _popupsContainer = container.transform;
         }
 
         public IEnumerator ShowPopup<T>() where T : AbstractPopup
@@ -42,7 +47,7 @@ namespace MyLibrary.UI.Popup
             var type = typeof(T);
             if (!_popupsMap.ContainsKey(type))
             {
-                var popup = PoolsManager.Instance.GetObject<T>(Vector3.zero, _popupsUIContainer);
+                var popup = PoolsManager.Instance.GetObject<T>(Vector3.zero, _popupsContainer);
                 var rectTransform = (RectTransform)popup.transform;
                 rectTransform.anchoredPosition = Vector2.zero;
                 rectTransform.localScale = Vector3.one;
@@ -92,6 +97,8 @@ namespace MyLibrary.UI.Popup
             {
                 PoolsManager.Instance.ReturnObject(pair.Key, pair.Value);
             }
+            _popupsMap.Clear();
+            _popupsStack.Clear();
         }
     }
 }

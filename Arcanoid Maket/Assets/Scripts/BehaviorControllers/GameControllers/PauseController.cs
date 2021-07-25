@@ -12,8 +12,6 @@ namespace BehaviorControllers.GameControllers
 {
     public class PauseController : GameController, IPauseGameHandler, IPackButtonPressedHandler
     {
-        private PopupsController _popupsController;
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -23,12 +21,7 @@ namespace BehaviorControllers.GameControllers
         {
             EventBus.Unsubscribe(this);
         }
-        
-        public override void Initialize(ControllersManager controllersManager)
-        {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
-        }
-        
+
         public void OnStartTime()
         {
             Time.timeScale = 1;
@@ -38,7 +31,7 @@ namespace BehaviorControllers.GameControllers
         {
             Time.timeScale = 0;
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnDisableInput());
-            StartCoroutine(_popupsController.ShowPopup<PausePopup>());
+            StartCoroutine(PopupsController.Instance.ShowPopup<PausePopup>());
         }
         
         public void OnPackButtonPressed()
@@ -53,7 +46,7 @@ namespace BehaviorControllers.GameControllers
 
         private IEnumerator ContinueGame()
         {
-            yield return _popupsController.HideAllActivePopups();
+            yield return PopupsController.Instance.HideAllActivePopups();
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
             Time.timeScale = 1;
         }

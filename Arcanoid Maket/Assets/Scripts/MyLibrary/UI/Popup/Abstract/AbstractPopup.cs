@@ -1,15 +1,15 @@
 ﻿using System.Collections;
-using MyLibrary.ObjectPool.Abstract;
+using MyLibrary.UI.UIPool;
 using UnityEngine;
 
 namespace MyLibrary.UI.Popup.Abstract
 {
-    public abstract class AbstractPopup : PoolObject
+    public abstract class AbstractPopup : UIElementPoolObject
     {
         [SerializeField]
         private AbstractPopupAnimation _popupAnimation;
-        
-        public virtual void Initialize()
+
+        public override void Initialize()
         {
             gameObject.SetActive(false);
             if (_popupAnimation != null)

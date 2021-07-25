@@ -28,6 +28,7 @@ namespace MyLibrary.ObjectPool
                 var creatorPrefab = creatorConfig.Creator;
                 var creator = Instantiate(creatorPrefab, transform);
                 creator.Initialize(creatorConfig, creator.transform);
+                creator.gameObject.name = $"{creator.ObjectType.Name}s Pool";
                 var container = new PoolContainer(creator);
 
                 for (int i = 0; i < creatorConfig.InitialCount; i++)

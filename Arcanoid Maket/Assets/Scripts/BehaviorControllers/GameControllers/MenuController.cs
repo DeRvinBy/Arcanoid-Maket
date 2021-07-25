@@ -1,4 +1,5 @@
-﻿using BehaviorControllers.Abstract;
+﻿using System.Collections;
+using BehaviorControllers.Abstract;
 using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
@@ -15,7 +16,6 @@ namespace BehaviorControllers.GameControllers
         [SerializeField]
         private int _gameSceneID = 1;
         
-        private PopupsController _popupsController;
         private ScenesController _scenesController;
 
         private void OnEnable()
@@ -25,7 +25,13 @@ namespace BehaviorControllers.GameControllers
 
         private void Start()
         {
-            StartCoroutine(_popupsController.ShowPopup<MenuPopup>());
+            StartCoroutine(ShowMenu());
+        }
+
+        private IEnumerator ShowMenu()
+        {
+           // yield return PopupsController.Instance.ShowTransition<TransitionPopup>();
+            yield return PopupsController.Instance.ShowPopup<MenuPopup>();
         }
         
         private void OnDisable()
@@ -35,7 +41,6 @@ namespace BehaviorControllers.GameControllers
         
         public override void Initialize(ControllersManager controllersManager)
         {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
             _scenesController = controllersManager.GetEntityController<ScenesController>();
         }
         
@@ -48,19 +53,21 @@ namespace BehaviorControllers.GameControllers
             }
             else
             {
-                StartGameScene();
+                OnPackButtonPressed();
             }
         }
-        
+
         public void OnPackButtonPressed()
         {
-            StartGameScene();
-        }
-
-        private void StartGameScene()
-        {
-            _popupsController.ClearPopups();
+            // StartCoroutine(StartGameScene());
+            PopupsController.Instance.ClearPopups();
             _scenesController.LoadScene(_gameSceneID);
         }
+
+        // private IEnumerator StartGameScene()
+        // {
+        //     yield return _popupsController.HideTransition<TransitionPopup>();
+        //     
+        // }
     }
 }

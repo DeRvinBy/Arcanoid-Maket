@@ -72,7 +72,6 @@ namespace MyLibrary.Singleton
         
         protected virtual void OnDestroy() { _isAlive = false; }
         protected virtual void OnApplicationQuit() { _isAlive = false; }
-        
         protected virtual void Initialize() { }
     }
 }

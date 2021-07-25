@@ -10,8 +10,6 @@ namespace BehaviorControllers.GameControllers
 {
     public class GameResultController : GameController, IEndGameHandler
     {
-        private PopupsController _popupsController;
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -22,11 +20,6 @@ namespace BehaviorControllers.GameControllers
             EventBus.Unsubscribe(this);
         }
 
-        public override void Initialize(ControllersManager controllersManager)
-        {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
-        }
-
         public void OnWinGame()
         {
             StartCoroutine(WinGame());
@@ -35,12 +28,12 @@ namespace BehaviorControllers.GameControllers
         private IEnumerator WinGame()
         {
             PacksManager.Instance.CompleteLevel();
-            yield return _popupsController.ShowPopup<WinPopup>();
+            yield return PopupsController.Instance.ShowPopup<WinPopup>();
         }
 
         public void OnLoseGame()
         {
-            StartCoroutine(_popupsController.ShowPopup<LosePopup>());
+            StartCoroutine(PopupsController.Instance.ShowPopup<LosePopup>());
         }
     }
 }
