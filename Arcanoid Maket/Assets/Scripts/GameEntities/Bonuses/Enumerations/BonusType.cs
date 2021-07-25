@@ -14,5 +14,6 @@
         LifeIncreaseBonus = 9,
         HorizontalBombBonus = 10,
         VerticalBombBonus = 11,
+        RadiusBombBonus = 12,
     }
 }

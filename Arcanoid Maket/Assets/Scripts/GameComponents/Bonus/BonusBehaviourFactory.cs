@@ -39,6 +39,8 @@ namespace GameComponents.Bonus
                     return new DirectionBombBonusBehaviour(position, BombBonusDirection.Horizontal);
                 case BonusType.VerticalBombBonus:
                     return new DirectionBombBonusBehaviour(position, BombBonusDirection.Vertical);
+                case BonusType.RadiusBombBonus:
+                    return new RadiusBombBonusBehaviour(position);
             }
 
             return null;

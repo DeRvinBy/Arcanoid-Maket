@@ -1,22 +1,20 @@
 ﻿using EventInterfaces.BonusEvents.Ball;
+using GameEntities.Bonuses.BonusBehaviour.Abstract;
 using GameEntities.Bonuses.Interfaces;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameEntities.Bonuses.BonusBehaviour.Ball
 {
-    public class ExtraBallBonusBehaviour : IBonusBehaviour
+    public class ExtraBallBonusBehaviour : PositionBonusBehaviour
     {
-        private Vector2 _spawnPosition;
-        
-        public ExtraBallBonusBehaviour(Vector2 spawnPosition)
+        public ExtraBallBonusBehaviour(Vector2 position) : base(position)
         {
-            _spawnPosition = spawnPosition;
         }
         
-        public void Action()
+        public override void Action()
         {
-            EventBus.RaiseEvent<IExtraBallBonusHandler>(a => a.OnSpawnExtraBall(_spawnPosition));
+            EventBus.RaiseEvent<IExtraBallBonusHandler>(a => a.OnSpawnExtraBall(_position));
         }
     }
 }

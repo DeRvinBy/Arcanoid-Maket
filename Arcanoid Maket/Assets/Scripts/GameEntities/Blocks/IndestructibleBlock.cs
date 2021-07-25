@@ -17,13 +17,20 @@ namespace GameEntities.Blocks
         [SerializeField]
         private BlockParticles _particles;
 
+        private BlockSettings _settings;
         private bool _isDestroying;
         
         public override void Initialize(BlockSettings settings)
         {
             _sprite.Initialize();
-            var visualSettings = settings.GetBlockSettings(BlockSpriteId.Iron); 
-            _sprite.SetupSprite(visualSettings.Sprite);
+            _settings = settings;
+        }
+
+        public void SetupBlock()
+        {
+            var settings = _settings.GetBlockSettings(BlockSpriteId.Iron);
+            _sprite.SetupSprite(settings.Sprite);
+            _particles.SetParticleColor(settings.ParticleColor);
         }
 
         public override void OnSetup()

@@ -94,7 +94,13 @@ TextureImporter:
     second: vertical_bomb
   - first:
       213: 1089911936713184430
-    second: bomb_bonus_sprite
+    second: bomb_bonus_block
+  - first:
+      213: 2793626475964722651
+    second: radius_bomb
+  - first:
+      213: -8487730866568824024
+    second: color_bomb
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -724,7 +730,7 @@ TextureImporter:
       name: rage_Ball
       rect:
         serializedVersion: 2
-        x: 162
+        x: 163
         y: 69
         width: 40
         height: 40
@@ -931,7 +937,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bomb_bonus_sprite
+      name: bomb_bonus_block
       rect:
         serializedVersion: 2
         x: 163
@@ -947,6 +953,48 @@ TextureImporter:
       bones: []
       spriteID: ea45f30c125202f00800000000000000
       internalID: 1089911936713184430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: radius_bomb
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 109
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdde0078a74f4c620800000000000000
+      internalID: 2793626475964722651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: color_bomb
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 69
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82bfb0d2fb5853a80800000000000000
+      internalID: -8487730866568824024
       vertices: []
       indices: 
       edges: []

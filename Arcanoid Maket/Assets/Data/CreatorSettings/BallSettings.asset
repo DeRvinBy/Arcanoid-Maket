@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballSprite: {fileID: -7600441579368616308, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   _baseVelocity: 6
-  _ballDamage: 2
+  _ballDamage: 1
   _bounceAngleThreshold: 20
   _bounceAngleChange: 25

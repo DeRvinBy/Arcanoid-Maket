@@ -50,6 +50,7 @@ namespace GameComponents.Blocks
         {
             var block = PoolsManager.Instance.GetObject<IndestructibleBlock>(position, Quaternion.identity, size, parent);
             AddBlockToMap(typeof(IndestructibleBlock), block);
+            block.SetupBlock();
             return block;
         }
         

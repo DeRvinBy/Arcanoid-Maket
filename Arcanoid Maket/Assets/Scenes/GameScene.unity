@@ -356,7 +356,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 166774867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6947d08f1e80413bb9266484609ac31b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ddf0a42b34d41109749f9fb9323aebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _blocksDestructionDelay: 0.2
@@ -2119,6 +2119,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blocksProgressUI: {fileID: 2090620831}
   _gridBlocks: {fileID: 1192828617}
+--- !u!1 &860956998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860956999}
+  - component: {fileID: 860957000}
+  m_Layer: 0
+  m_Name: RadiusBombBonusManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860956999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860956998}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1032700303}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860957000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860956998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91e744c3b444175b1767922dd07e751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridBlocks: {fileID: 1192828617}
+  _settings: {fileID: 978645543}
 --- !u!1 &907368488
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,6 +2255,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937478730}
   m_CullTransparentMesh: 1
+--- !u!1 &978645541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978645542}
+  - component: {fileID: 978645543}
+  m_Layer: 0
+  m_Name: RadiusBombBonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978645542
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978645541}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1209774296}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &978645543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978645541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d7223b584943969d2a30d1936d2949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blocksDestructionDelay: 0.2
+  _bombDamage: 1
+  _bombRadius: 1
 --- !u!1 &996391810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2400,7 @@ Transform:
   - {fileID: 1901569680}
   - {fileID: 2105964204}
   - {fileID: 518237267}
+  - {fileID: 860956999}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2567,6 +2659,7 @@ Transform:
   - {fileID: 40682932}
   - {fileID: 1173050664}
   - {fileID: 166774868}
+  - {fileID: 978645542}
   m_Father: {fileID: 1404385753}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -38,3 +38,5 @@ MonoBehaviour:
     _sprite: {fileID: 2391764928223797118, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   - _bonusType: 11
     _sprite: {fileID: -162622819657226963, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
+  - _bonusType: 12
+    _sprite: {fileID: 2793626475964722651, guid: fa5338999ca421a48be4dfba8947172f, type: 3}

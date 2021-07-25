@@ -26,7 +26,7 @@ namespace GameEntities.Blocks
         private BlockParticles _particles;
 
         private BlockSettings _settings;
-        private bool _isDestroyed;
+        private bool _isDestroying;
         private int _lifeCount;
 
         public override void Initialize(BlockSettings settings)
@@ -61,7 +61,7 @@ namespace GameEntities.Blocks
         public override void OnSetup()
         {
             base.OnSetup();
-            _isDestroyed = false;
+            _isDestroying = false;
             _collider.RegisterCollider(this);
             _collider.OnCollisionEnter += OnBlockDamaged;
             _collider.OnTriggerEnter += DestroyBlock;
@@ -81,7 +81,12 @@ namespace GameEntities.Blocks
             var ball = other.GetColliderMonoBehaviour<BallEntity>();
             if (ball == null) return;
             
-            _lifeCount -= ball.BallDamage;
+            DamageBlock(ball.BallDamage);
+        }
+
+        public void DamageBlock(int damage)
+        {
+            _lifeCount -= damage;
             _cracks.UpdateBlockCracks(_lifeCount);
             if (_lifeCount <= 0)
             {
@@ -91,9 +96,9 @@ namespace GameEntities.Blocks
 
         public override void DestroyBlock()
         {
-            if (_isDestroyed) return;
+            if (_isDestroying) return;
 
-            _isDestroyed = true;
+            _isDestroying = true;
             StartCoroutine(DestroyBlockAnimate());
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());
         }

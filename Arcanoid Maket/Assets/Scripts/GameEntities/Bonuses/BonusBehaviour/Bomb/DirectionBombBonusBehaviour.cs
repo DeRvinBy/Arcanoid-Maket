@@ -1,23 +1,21 @@
 ﻿using EventInterfaces.BonusEvents.Bomb;
+using GameEntities.Bonuses.BonusBehaviour.Abstract;
 using GameEntities.Bonuses.Enumerations;
-using GameEntities.Bonuses.Interfaces;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameEntities.Bonuses.BonusBehaviour.Bomb
 {
-    public class DirectionBombBonusBehaviour : IBonusBehaviour
+    public class DirectionBombBonusBehaviour : PositionBonusBehaviour
     {
-        private Vector2 _position;
         private BombBonusDirection _direction;
 
-        public DirectionBombBonusBehaviour(Vector2 position, BombBonusDirection direction)
+        public DirectionBombBonusBehaviour(Vector2 position, BombBonusDirection direction) : base(position)
         {
-            _position = position;
             _direction = direction;
         }
         
-        public void Action()
+        public override void Action()
         {
             EventBus.RaiseEvent<IDirectionBombBonusHandler>(a => a.OnActivateBonus(_position, _direction));
         }

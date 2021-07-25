@@ -1,32 +1,43 @@
-﻿using GameEntities.Blocks;
+﻿using System.Collections.Generic;
+using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
+using GameEntities.Bonuses.Enumerations;
 using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public class BlocksDirectionSearcher : AbstractBlocksSearcher
     {
-        private int _level;
-
-        public override void Setup(Vector2Int startCoords, AbstractBlock[,] blocksMatrix)
+        public Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap(BombBonusDirection direction)
         {
-            base.Setup(startCoords, blocksMatrix);
-            _level = 1;
+            _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
+            
+            if (direction == BombBonusDirection.Horizontal)
+            {
+                FillDestroyBlocksMap(1, Vector2Int.left);
+                FillDestroyBlocksMap(1, Vector2Int.right);
+            }
+            else
+            {
+                FillDestroyBlocksMap(1, Vector2Int.up);
+                FillDestroyBlocksMap(1, Vector2Int.down);
+            }
+            
+            return _destroyBlocksMap;
         }
-
-        protected override void FillDestroyBlocksMap(Vector2Int direction)
+        
+        private void FillDestroyBlocksMap(int level, Vector2Int direction)
         {
-            var currentCoords = _startCoords + direction * _level;
+            var currentCoords = _startCoords + direction * level;
             if (IsWithinInMatrix(currentCoords))
             {
                 var block = _blocksMatrix[currentCoords.x, currentCoords.y];
                 if (block != null && !(block is IndestructibleBlock))
                 {
-                    AddBlockToMap(_level, block);
+                    AddBlockToMap(level, block);
                 }
-
-                _level++;
-                FillDestroyBlocksMap(direction);
+                
+                FillDestroyBlocksMap(++level, direction);
             }
         }
     }

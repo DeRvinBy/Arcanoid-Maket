@@ -342,6 +342,44 @@
                  "type":"int",
                  "value":4
                 }]
+        }, 
+        {
+         "id":40,
+         "properties":[
+                {
+                 "name":"blockBonus",
+                 "type":"int",
+                 "value":12
+                }, 
+                {
+                 "name":"blockSprite",
+                 "type":"int",
+                 "value":18
+                }, 
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":4
+                }]
+        }, 
+        {
+         "id":41,
+         "properties":[
+                {
+                 "name":"blockBonus",
+                 "type":"int",
+                 "value":13
+                }, 
+                {
+                 "name":"blockSprite",
+                 "type":"int",
+                 "value":18
+                }, 
+                {
+                 "name":"blockType",
+                 "type":"int",
+                 "value":4
+                }]
         }],
  "tilewidth":20,
  "type":"tileset",
