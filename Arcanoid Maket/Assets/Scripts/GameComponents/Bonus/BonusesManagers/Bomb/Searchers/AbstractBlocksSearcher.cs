@@ -23,7 +23,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             return isWithinX && isWithinY;
         }
         
-        protected void AddBlockToMap(int level, AbstractBlock block)
+        protected void AddBlockToDestroyMap(int level, AbstractBlock block)
         {
             if (!_destroyBlocksMap.ContainsKey(level))
             {

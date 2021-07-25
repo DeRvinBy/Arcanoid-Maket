@@ -25,8 +25,8 @@ namespace GameComponents.Blocks
         {
             switch (properties.Type)
             {
-                case BlockType.Destructible:
-                    return CreateDestructibleBlock(properties.SpriteId, position, size, parent);
+                case BlockType.ColorBlock:
+                    return CreateColorBlock(properties.SpriteId, position, size, parent);
                 case BlockType.Indestructible:
                     return CreateIndestructibleBlock(position, size, parent);
                 case BlockType.WithSpawningBonus:
@@ -54,10 +54,10 @@ namespace GameComponents.Blocks
             return block;
         }
         
-        private AbstractBlock CreateDestructibleBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
+        private AbstractBlock CreateColorBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
         {
-            var block = PoolsManager.Instance.GetObject<DestructibleBlock>(position, Quaternion.identity, size, parent);
-            AddBlockToMap(typeof(DestructibleBlock), block);
+            var block = PoolsManager.Instance.GetObject<ColorBlock>(position, Quaternion.identity, size, parent);
+            AddBlockToMap(typeof(ColorBlock), block);
             block.SetupBlock(spriteId);
             return block;
         }

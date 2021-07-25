@@ -17,7 +17,7 @@ MonoBehaviour:
     _creator: {fileID: 8011211296335321509, guid: f3e7b91d24713f745b298657ced02237, type: 3}
     _settings: {fileID: 11400000, guid: f8b3f981ffa9c9d4d8dbbb0ea6b076ad, type: 2}
     _initialCount: 3
-  - _prefab: {fileID: 5425245372202826004, guid: 92253702f8856204eb44d9ae5cd6ad18, type: 3}
+  - _prefab: {fileID: 8692304021422267646, guid: 92253702f8856204eb44d9ae5cd6ad18, type: 3}
     _creator: {fileID: 8275823155518591653, guid: f435f055923e4e14bb0d6ddba3ec35fe, type: 3}
     _settings: {fileID: 11400000, guid: 591d1ac58c63cdd4784b02aade93b818, type: 2}
     _initialCount: 10

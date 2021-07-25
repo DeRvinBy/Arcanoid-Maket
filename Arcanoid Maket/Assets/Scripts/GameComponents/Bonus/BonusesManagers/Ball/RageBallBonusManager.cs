@@ -61,7 +61,7 @@ namespace GameComponents.Bonus.BonusesManagers.Ball
         {
             _isEffectActive = true;
             _ballsManager.InvokeBallsAction(a => a.SetSprite(_settings.RageBallSprite));
-            _blocksManager.InvokeBlocksAction<DestructibleBlock>(a => a.EnableBlockTrigger());
+            _blocksManager.InvokeBlocksAction<ColorBlock>(a => a.EnableBlockTrigger());
             _blocksManager.InvokeBlocksAction<BonusBlock>(a => a.EnableBlockTrigger());
         }
         
@@ -70,7 +70,7 @@ namespace GameComponents.Bonus.BonusesManagers.Ball
             _isEffectActive = false;
             _effectTime = 0f;
             _ballsManager.InvokeBallsAction(a => a.ResetDefaultSprite());
-            _blocksManager.InvokeBlocksAction<DestructibleBlock>(a => a.DisableBlockTrigger());
+            _blocksManager.InvokeBlocksAction<ColorBlock>(a => a.DisableBlockTrigger());
             _blocksManager.InvokeBlocksAction<BonusBlock>(a => a.DisableBlockTrigger());
         }
         

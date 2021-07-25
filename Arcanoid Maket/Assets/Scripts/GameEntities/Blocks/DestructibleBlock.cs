@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace GameEntities.Blocks
 {
-    public class DestructibleBlock : AbstractBlock
+    public abstract class DestructibleBlock : AbstractBlock
     {
         [SerializeField]
         private BlockSprite _sprite;
@@ -36,7 +36,7 @@ namespace GameEntities.Blocks
             _cracks.Initialize(_settings.LifeSettings);
         }
 
-        public void SetupBlock(BlockSpriteId spriteId)
+        public virtual void SetupBlock(BlockSpriteId spriteId)
         {
             _lifeCount = _settings.LifeSettings.BlockLife;
             _cracks.SetupBlockCracks();
@@ -76,7 +76,7 @@ namespace GameEntities.Blocks
             _collider.OnTriggerEnter -= DestroyBlock;
         }
 
-        protected virtual void OnBlockDamaged(Collider2D other)
+        protected void OnBlockDamaged(Collider2D other)
         {
             var ball = other.GetColliderMonoBehaviour<BallEntity>();
             if (ball == null) return;
@@ -112,9 +112,6 @@ namespace GameEntities.Blocks
             DestroyCompleteBlock();
         }
 
-        protected virtual void DestroyCompleteBlock()
-        {
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));   
-        }
+        protected abstract void DestroyCompleteBlock();
     }
 }

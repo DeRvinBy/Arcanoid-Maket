@@ -15,5 +15,6 @@
         HorizontalBombBonus = 10,
         VerticalBombBonus = 11,
         RadiusBombBonus = 12,
+        ColorBombBonus = 13,
     }
 }

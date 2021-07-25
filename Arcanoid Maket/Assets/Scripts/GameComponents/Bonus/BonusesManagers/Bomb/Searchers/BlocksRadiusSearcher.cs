@@ -32,7 +32,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 var block = _blocksMatrix[currentCoords.x, currentCoords.y];
                 if (block != null)
                 {
-                    AddBlockToMap(0, block);
+                    AddBlockToDestroyMap(0, block);
                 }
             }
         }

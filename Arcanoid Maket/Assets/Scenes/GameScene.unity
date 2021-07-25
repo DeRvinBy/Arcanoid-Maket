@@ -270,6 +270,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rageBallSprite: {fileID: -7322278629185864981, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
   _effectTime: 5
+--- !u!1 &112731250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112731251}
+  - component: {fileID: 112731252}
+  m_Layer: 0
+  m_Name: ColorBombBonusManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112731251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112731250}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1032700303}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112731252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112731250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea7d1c7caf84b54b6f833fd808aae17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gridBlocks: {fileID: 1192828617}
+  _settings: {fileID: 168028359}
 --- !u!1 &156239578
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +399,50 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166774867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ddf0a42b34d41109749f9fb9323aebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _blocksDestructionDelay: 0.2
+--- !u!1 &168028357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 168028358}
+  - component: {fileID: 168028359}
+  m_Layer: 0
+  m_Name: ColorBombBonus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &168028358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168028357}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1209774296}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &168028359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 168028357}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ddf0a42b34d41109749f9fb9323aebb, type: 3}
@@ -1542,7 +1631,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646748948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 441305657}
@@ -2298,9 +2387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7d7223b584943969d2a30d1936d2949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blocksDestructionDelay: 0.2
   _bombDamage: 1
-  _bombRadius: 1
 --- !u!1 &996391810
 GameObject:
   m_ObjectHideFlags: 0
@@ -2401,6 +2488,7 @@ Transform:
   - {fileID: 2105964204}
   - {fileID: 518237267}
   - {fileID: 860956999}
+  - {fileID: 112731251}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2660,6 +2748,7 @@ Transform:
   - {fileID: 1173050664}
   - {fileID: 166774868}
   - {fileID: 978645542}
+  - {fileID: 168028358}
   m_Father: {fileID: 1404385753}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

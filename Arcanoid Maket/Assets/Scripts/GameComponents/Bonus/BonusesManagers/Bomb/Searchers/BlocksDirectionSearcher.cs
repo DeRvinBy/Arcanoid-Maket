@@ -34,7 +34,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 var block = _blocksMatrix[currentCoords.x, currentCoords.y];
                 if (block != null && !(block is IndestructibleBlock))
                 {
-                    AddBlockToMap(level, block);
+                    AddBlockToDestroyMap(level, block);
                 }
                 
                 FillDestroyBlocksMap(++level, direction);

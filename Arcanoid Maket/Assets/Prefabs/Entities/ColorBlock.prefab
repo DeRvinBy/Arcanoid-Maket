@@ -102,9 +102,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2828554167545141088}
-  - component: {fileID: 5425245372202826004}
+  - component: {fileID: 8692304021422267646}
   m_Layer: 7
-  m_Name: DestructibleBlock
+  m_Name: ColorBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5425245372202826004
+--- !u!114 &8692304021422267646
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2828554167545141091}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367d99886b6043219270685befc99c69, type: 3}
+  m_Script: {fileID: 11500000, guid: c61705678b514458bd497a37b7deda11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 8249050588195967281}

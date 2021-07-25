@@ -46,7 +46,7 @@ MonoBehaviour:
   - _blockId: 10
     _blockSettings:
       _blockSprite: {fileID: 3945680786666316028, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
-      _particleColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+      _particleColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
   - _blockId: 11
     _blockSettings:
       _blockSprite: {fileID: 4034055338128651791, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
