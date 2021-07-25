@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
-    public class BlocksManager : EntityController, IBlockOnSceneHandler, IPrepareGameplayHandler, IStartGameplayHandler
+    public class BlocksManager : EntityController, IBlockOnSceneHandler, IClearGameSceneHandler, IStartGameplayHandler
     {
         [SerializeField]
         private BlocksProgressUI _blocksProgressUI;
@@ -77,8 +77,8 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         {
             _blocksProgressUI.SetupSlider(_blockCount);  
         }
-        
-        public void OnPrepareGame()
+
+        public void OnClearObjects()
         {
             _spawner.DestroyAllBlocks();
             _blockCount = 0;

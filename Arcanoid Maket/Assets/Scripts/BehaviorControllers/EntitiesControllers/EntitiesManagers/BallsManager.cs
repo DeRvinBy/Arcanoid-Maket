@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
-    public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler, IPrepareGameplayHandler
+    public class BallsManager : EntityController, IBallSceneHandler, IEndGameplayHandler, IClearGameSceneHandler
     {
         [SerializeField]
         private Transform _ballParent;
@@ -71,13 +71,13 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
                 action.Invoke(ball);
             }
         }
-        
-        public void OnPrepareGame()
+
+        public void OnEndGame()
         {
             DestroyAllBalls();
         }
         
-        public void OnEndGame()
+        public void OnClearObjects()
         {
             DestroyAllBalls();
         }

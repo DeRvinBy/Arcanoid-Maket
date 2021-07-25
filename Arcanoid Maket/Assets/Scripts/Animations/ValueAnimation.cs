@@ -27,6 +27,13 @@ namespace Animations
                 }
             }).SetEase(_tweenParams);
         }
+        
+        public Tween GetAnimation(float from, float to, Action<float> updateAction)
+        {
+            var tween = DOVirtual.Float(from, to, _duration, (v) => updateAction(v)).SetEase(_tweenParams);
+            tween.Pause();
+            return tween;
+        }
 
         public void StopAnimation()
         {

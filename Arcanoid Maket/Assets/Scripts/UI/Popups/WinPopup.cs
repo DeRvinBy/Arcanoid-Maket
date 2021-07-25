@@ -1,6 +1,6 @@
 ﻿using EventInterfaces.GameEvents;
-using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
+using GamePacks;
 using GamePacks.Data.Packs;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Button;
@@ -10,44 +10,71 @@ using UnityEngine;
 
 namespace UI.Popups
 {
-    public class WinPopup : AbstractPopup, IPackChangedHandler
+    public class WinPopup : AbstractPopup
     {
         [SerializeField]
         private WinPopupPackUI _popupPackUI;
         
         [SerializeField]
         private EventButton _nextButton;
-        
+
+        private PackInfo _currentPack;
         private bool _isNeedChoosePack;
 
-        private void OnEnable()
+        public override void Initialize()
         {
-            EventBus.Subscribe(this);
+            base.Initialize();
+            SetupPackUI();
+            _nextButton.OnButtonPressed += OnContinueButtonPressed;
         }
 
-        private void OnDisable()
+        protected override void PreparePopup()
         {
-            EventBus.Unsubscribe(this);
+            _popupPackUI.PreaprePackUI();
         }
 
         protected override void StartPopup()
         {
-            _nextButton.OnButtonPressed += OnContinueButtonPressed;
+            UpdatePackUI();
         }
 
         protected override void ResetPopup()
         {
-            _nextButton.OnButtonPressed -= OnContinueButtonPressed;
+            if (_isNeedChoosePack)
+            {
+                SetupPackUI();
+            }
         }
 
-        public void OnPackChanged(PackInfo currentPack)
+        private void SetupPackUI()
         {
-            _popupPackUI.SetPackImage(currentPack.GamePack.Icon);
-            _popupPackUI.SetPackName(currentPack.GamePack.Key);
-            var maxValue = currentPack.GamePack.LevelCount + 1;
-            var value = currentPack.CurrentLevel;
-            _popupPackUI.UpdateSlider(value, maxValue);
-            _isNeedChoosePack = currentPack.IsPackReplayed || currentPack.IsLastPack;
+            _currentPack = PacksManager.Instance.GetCurrentPack();
+            _popupPackUI.SetPackImage(_currentPack.GamePack.Icon);
+            _popupPackUI.SetPackName(_currentPack.GamePack.Key);
+            var maxValue = _currentPack.GamePack.LevelCount + 1;
+            var currentLevel = _currentPack.CurrentLevel;
+            _popupPackUI.SetupSlider(currentLevel, maxValue);
+        }
+
+        private void UpdatePackUI()
+        {
+            var pack = PacksManager.Instance.GetCurrentPack();
+            if (_currentPack == pack)
+            {
+                _isNeedChoosePack = _currentPack.IsPackReplayed || _currentPack.IsLastPack;
+                if (_isNeedChoosePack)
+                {
+                    _popupPackUI.UpdatePackProgress(_currentPack.GamePack.LevelCount + 1, null);
+                }
+                else
+                {
+                    _popupPackUI.UpdatePackProgress(_currentPack.CurrentLevel, null);
+                }
+            }
+            else
+            {
+                _popupPackUI.UpdatePackProgress(_currentPack.GamePack.LevelCount + 1, SetupPackUI);
+            }
         }
 
         private void OnContinueButtonPressed()

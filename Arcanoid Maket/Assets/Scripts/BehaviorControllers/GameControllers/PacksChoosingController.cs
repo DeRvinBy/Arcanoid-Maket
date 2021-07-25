@@ -28,7 +28,6 @@ namespace BehaviorControllers.GameControllers
 
         public void OnStartChoosePack()
         {
-            PacksManager.Instance.UpdatePacksInfo();
             StartCoroutine(_popupsController.ShowPopup<PackChoosingPopup>());
         }
 

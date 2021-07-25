@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using EventInterfaces.PacksEvents;
-using EventInterfaces.StatesEvents;
-using GamePacks.Data.Packs;
+﻿using EventInterfaces.StatesEvents;
+using GamePacks;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Button;
 using MyLibrary.UI.Popup.Abstract;
@@ -10,7 +8,7 @@ using UnityEngine;
 
 namespace UI.Popups
 {
-    public class PackChoosingPopup : AbstractPopup, IPacksInfoHandler
+    public class PackChoosingPopup : AbstractPopup
     {
         [SerializeField]
         private UIPacksManager _manager;
@@ -18,34 +16,21 @@ namespace UI.Popups
         [SerializeField]
         private EventButton _backButton;
 
-        private void OnEnable()
+        public override void Initialize()
         {
-            EventBus.Subscribe(this);
-        }
-        
-        private void OnDisable()
-        {
-            EventBus.Subscribe(this);
-        }
-
-        protected override void StartPopup()
-        {
+            base.Initialize();
             _backButton.OnButtonPressed += OnBack;
         }
-        
-        protected override void ResetPopup()
+
+        protected override void PreparePopup()
         {
-            _backButton.OnButtonPressed -= OnBack;
+            var packsInfo = PacksManager.Instance.GetPacksInfo();
+            _manager.UpdatePackContainers(packsInfo);
         }
-        
+
         private void OnBack()
         {
             EventBus.RaiseEvent<IPacksChoosingHandler>(a => a.OnCancelChoosePack());
-        }
-
-        public void OnPacksInfoUpdated(Dictionary<string, PackInfo> packsInfo)
-        {
-            _manager.UpdatePackContainers(packsInfo);
         }
     }
 }

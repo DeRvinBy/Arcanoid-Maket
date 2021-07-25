@@ -18,4 +18,3 @@ MonoBehaviour:
   _levels:
   - {fileID: 4900000, guid: ad45378b42b88314791c7f3617e930c7, type: 3}
   - {fileID: 4900000, guid: dbac475e7dc4f6945a3e4b6c3a733982, type: 3}
-  - {fileID: 4900000, guid: c1d56a89224ff8b4ab68a1052c212c4a, type: 3}

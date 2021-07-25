@@ -1,9 +1,9 @@
-﻿using EventInterfaces.PacksEvents;
+﻿using System.Collections.Generic;
 using GamePacks.Data;
+using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
 using GamePacks.Data.Level.LevelParser.Json;
 using GamePacks.Data.Packs;
-using MyLibrary.EventSystem;
 using MyLibrary.Singleton;
 using UnityEngine;
 
@@ -33,8 +33,6 @@ namespace GamePacks
             }
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
             _parser = new JsonParser(tilemap.text);
-            
-            UpdatePacksInfo();
         }
 
         public bool IsSaveExist()
@@ -42,38 +40,25 @@ namespace GamePacks
             return _service.IsSaveExit();
         }
         
-        public void UpdatePacksInfo()
+        public Dictionary<string, PackInfo> GetPacksInfo()
         {
-            var packsInfo = _service.GetPacksInfo();
-            EventBus.RaiseEvent<IPacksInfoHandler>(a => a.OnPacksInfoUpdated(packsInfo));
+            return _service.GetPacksInfo();
         }
 
-        public void PreparePack()
+        public PackInfo GetCurrentPack()
         {
-            StartPack();
-            StartLevel();
+            return _service.GetCurrentPackInfo();
         }
 
-        private void StartPack()
-        {
-            var currentPack = _service.GetCurrentPackInfo();
-            
-            EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
-        }
-
-        private void StartLevel()
+        public LevelData GetCurrentLevel()
         {
             var levelFile = _service.GetCurrentLevelFile();
-            var levelData = _parser.ParseLevelData(levelFile.text);
-            EventBus.RaiseEvent<ILevelFileChangedHandler>(a => a.OnLevelFileChanged(levelData));
+            return _parser.ParseLevelData(levelFile.text);
         }
 
         public void CompleteLevel()
         {
             _service.CompleteLevel();
-            
-            var currentPack = _service.GetCurrentPackInfo();
-            EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged(currentPack));
         }
 
         public void SetCurrentPack(string packName)

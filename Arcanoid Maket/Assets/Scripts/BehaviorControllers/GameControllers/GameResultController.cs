@@ -34,8 +34,8 @@ namespace BehaviorControllers.GameControllers
 
         private IEnumerator WinGame()
         {
-            yield return _popupsController.ShowPopup<WinPopup>();
             PacksManager.Instance.CompleteLevel();
+            yield return _popupsController.ShowPopup<WinPopup>();
         }
 
         public void OnLoseGame()

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
 {
-    public class BonusesManager : EntityController, IPrepareGameplayHandler, IBonusOnSceneHandler
+    public class BonusesManager : EntityController, IClearGameSceneHandler, IBonusOnSceneHandler
     {
         private BonusBehaviourFactory _behaviourFactory;
         private BonusObjectSpawner _spawner;
@@ -29,11 +29,6 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _behaviourFactory = new BonusBehaviourFactory();
             _spawner = new BonusObjectSpawner(_behaviourFactory);
         }
-        
-        public void OnPrepareGame()
-        {
-            _spawner.DestroyAllBonusObjects();
-        }
 
         public void OnStartBonusAtPosition(BonusType type, Vector3 position)
         {
@@ -51,5 +46,9 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _spawner.DestroyBonusObject(bonus);
         }
 
+        public void OnClearObjects()
+        {
+            _spawner.DestroyAllBonusObjects();
+        }
     }
 }

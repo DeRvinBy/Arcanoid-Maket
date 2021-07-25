@@ -11,14 +11,10 @@ namespace UI.Popups
         [SerializeField]
         private EventButton _restartButton;
 
-        protected override void StartPopup()
+        public override void Initialize()
         {
+            base.Initialize();
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
-        }
-
-        protected override void ResetPopup()
-        {
-            _restartButton.OnButtonPressed -= OnRestartButtonPressed;
         }
 
         private void OnRestartButtonPressed()

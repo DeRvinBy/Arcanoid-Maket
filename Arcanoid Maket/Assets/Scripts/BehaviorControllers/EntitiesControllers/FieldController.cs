@@ -1,14 +1,14 @@
 ﻿using BehaviorControllers.Abstract;
 using EventInterfaces.FieldEvents;
-using EventInterfaces.PacksEvents;
+using EventInterfaces.StatesEvents;
 using GameComponents.Field;
-using GamePacks.Data.Level;
+using GamePacks;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers
 {
-    public class FieldController : EntityController, ILevelFileChangedHandler
+    public class FieldController : EntityController, IPrepareGameplayHandler
     {
         [SerializeField]
         private FieldProperties _properties;
@@ -25,7 +25,7 @@ namespace BehaviorControllers.EntitiesControllers
         {
             EventBus.Subscribe(this);
         }
-
+        
         private void OnDisable()
         {
             EventBus.Unsubscribe(this);
@@ -39,8 +39,9 @@ namespace BehaviorControllers.EntitiesControllers
             _borders.Initialize();
         }
 
-        public void OnLevelFileChanged(LevelData levelData)
+        public void OnPrepareGame()
         {
+            var levelData = PacksManager.Instance.GetCurrentLevel();
             _fieldGrid.CreateGameField(levelData);
             EventBus.RaiseEvent<IFieldGridHandler>(a => a.OnFieldGridCreated(_fieldGrid));
             _creator.CreateBlocksInGameField(_fieldGrid);
