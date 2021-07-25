@@ -8,11 +8,18 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public class BlocksDirectionSearcher : AbstractBlocksSearcher
     {
-        public Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap(BombBonusDirection direction)
+        private BombBonusDirection _direction;
+
+        public void SetupDirection(BombBonusDirection direction)
+        {
+            _direction = direction;
+        }
+        
+        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
         {
             _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
             
-            if (direction == BombBonusDirection.Horizontal)
+            if (_direction == BombBonusDirection.Horizontal)
             {
                 FillDestroyBlocksMap(1, Vector2Int.left);
                 FillDestroyBlocksMap(1, Vector2Int.right);

@@ -22,6 +22,8 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             var isWithinY = coords.y >= 0 && coords.y <= _blocksMatrix.GetUpperBound(1);
             return isWithinX && isWithinY;
         }
+
+        public abstract Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap();
         
         protected void AddBlockToDestroyMap(int level, AbstractBlock block)
         {

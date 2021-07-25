@@ -6,6 +6,6 @@ namespace EventInterfaces.BonusEvents.Bomb
 {
     public interface IDirectionBombBonusHandler : IGlobalSubscriber
     {
-        void OnActivateBonus(Vector2 position, BombBonusDirection direction);
+        void OnActivateDirectionBombBonus(Vector2 position, BombBonusDirection direction);
     }
 }

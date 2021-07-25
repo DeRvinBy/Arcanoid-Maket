@@ -5,6 +5,6 @@ namespace EventInterfaces.BonusEvents.Bomb
 {
     public interface IColorBombBonusHandler : IGlobalSubscriber
     {
-        void OnActivateBonus(Vector2 position);
+        void OnActivateColorBombBonus(Vector2 position);
     }
 }

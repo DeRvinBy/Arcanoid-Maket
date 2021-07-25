@@ -17,7 +17,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
         private Dictionary<ColorBlock, Vector2Int> _blockCoordsMap;
         private List<Vector2Int> _passedCoords;
 
-        public Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
+        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
         {
             _colorBlocksMap = new Dictionary<BlockSpriteId, HashSet<ColorBlock>>();
             _blockCoordsMap = new Dictionary<ColorBlock, Vector2Int>();

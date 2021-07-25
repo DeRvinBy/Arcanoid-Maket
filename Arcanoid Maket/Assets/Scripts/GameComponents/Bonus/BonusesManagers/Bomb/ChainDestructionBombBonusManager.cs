@@ -5,27 +5,30 @@ using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
 using GameComponents.Bonus.BonusesManagers.Bomb.Searchers;
 using GameEntities.Blocks.Abstract;
+using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBonusSettings.BonusesSettings;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers.Bomb
 {
-    public class ColorBombBonusManager : MonoBehaviour, IColorBombBonusHandler, IPrepareGameplayHandler
+    public class ChainDestructionBombBonusManager : MonoBehaviour, IDirectionBombBonusHandler, IColorBombBonusHandler, IPrepareGameplayHandler
     {
         [SerializeField]
         private GridBlocks _gridBlocks;
-        
+
         [SerializeField]
         private BombDestructionSettings _settings;
-        
-        private BlocksColorSearcher _searcher;
-        
+
+        private BlocksColorSearcher _colorSearcher;
+        private BlocksDirectionSearcher _directionSearcher;
+
         private void Awake()
         {
-            _searcher = new BlocksColorSearcher();
+            _colorSearcher = new BlocksColorSearcher();
+            _directionSearcher = new BlocksDirectionSearcher();
         }
-        
+
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -33,16 +36,27 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         private void OnDisable()
         {
-            EventBus.Unsubscribe(this);
+            EventBus.Subscribe(this);
+        }
+
+        public void OnActivateDirectionBombBonus(Vector2 position, BombBonusDirection direction)
+        {
+            _directionSearcher.SetupDirection(direction);
+            CompleteBonus(position, _directionSearcher);
         }
         
-        public void OnActivateBonus(Vector2 position)
+        public void OnActivateColorBombBonus(Vector2 position)
+        {
+            CompleteBonus(position, _colorSearcher);
+        }
+
+        private void CompleteBonus(Vector2 position, AbstractBlocksSearcher searcher)
         {
             var startCoords = _gridBlocks.GetBlocksCoordinates(position);
             var blocksMatrix = _gridBlocks.GetBlocksMatrix();
-            _searcher.Setup(startCoords, blocksMatrix);
+            searcher.Setup(startCoords, blocksMatrix);
             
-            var destroyMap = _searcher.GetDestroyBlocksMap();
+            var destroyMap = searcher.GetDestroyBlocksMap();
             StartCoroutine(StartDestroyBlocks(destroyMap));
         }
 

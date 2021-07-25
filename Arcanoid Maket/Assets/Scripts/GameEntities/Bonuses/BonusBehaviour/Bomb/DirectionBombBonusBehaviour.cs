@@ -17,7 +17,7 @@ namespace GameEntities.Bonuses.BonusBehaviour.Bomb
         
         public override void Action()
         {
-            EventBus.RaiseEvent<IDirectionBombBonusHandler>(a => a.OnActivateBonus(_position, _direction));
+            EventBus.RaiseEvent<IDirectionBombBonusHandler>(a => a.OnActivateDirectionBombBonus(_position, _direction));
         }
     }
 }

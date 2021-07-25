@@ -13,7 +13,7 @@ namespace GameEntities.Bonuses.BonusBehaviour.Bomb
 
         public override void Action()
         {
-            EventBus.RaiseEvent<IColorBombBonusHandler>(a => a.OnActivateBonus(_position));
+            EventBus.RaiseEvent<IColorBombBonusHandler>(a => a.OnActivateColorBombBonus(_position));
         }
     }
 }

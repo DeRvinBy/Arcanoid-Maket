@@ -13,7 +13,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             new Vector2Int(-1, -1), Vector2Int.down, new Vector2Int(1, -1)
         };
         
-        public Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
+        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
         {
             _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
             foreach (var direction in _moveDirections)
