@@ -15,6 +15,11 @@ namespace MyLibrary.Localization
         private LocalizationData _localization;
         private LocalizationConfig _config;
         
+        private void OnApplicationPause(bool pauseStatus)
+        {
+            _localization.SaveUserLanguage();
+        }
+        
         protected override void Initialize()
         {
             InitializeLocalization();
@@ -30,11 +35,6 @@ namespace MyLibrary.Localization
         private void Start()
         {
             EventBus.RaiseEvent<ILanguageChangedEvent>((a) => a.OnLanguageChanged());
-        }
-
-        protected override void OnApplicationQuit()
-        {
-            _localization.SaveUserLanguage();
         }
 
         public List<SystemLanguage> GetSupportedLanguages()

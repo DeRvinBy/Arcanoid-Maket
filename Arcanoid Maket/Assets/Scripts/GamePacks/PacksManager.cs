@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GamePacks.Data;
 using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
@@ -17,7 +18,7 @@ namespace GamePacks
         private PacksService _service;
         private ILevelParser _parser;
 
-        protected override void OnApplicationQuit()
+        private void OnApplicationPause(bool pauseStatus)
         {
             _service.SavePlayerPacks();
         }
