@@ -28,10 +28,14 @@ namespace GamePacks
             var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
             _service.Initialize(config);
+            
+#if UNITY_EDITOR
             if (_service.IsSaveExit())
             {
                 _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
-            }
+            }         
+#endif
+            
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
             _parser = new JsonParser(tilemap.text);
         }
@@ -52,7 +56,7 @@ namespace GamePacks
             return _service.GetPacksInfo();
         }
 
-        public PackInfo GetCurrentPack()
+        public PackInfo GetCurrentPackInfo()
         {
             return _service.GetCurrentPackInfo();
         }

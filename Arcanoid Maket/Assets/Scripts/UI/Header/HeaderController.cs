@@ -41,7 +41,7 @@ namespace UI.Header
 
         public void OnPrepareGame()
         {
-            var currentPack = PacksManager.Instance.GetCurrentPack();
+            var currentPack = PacksManager.Instance.GetCurrentPackInfo();
             _headerPackUI.SetPackImage(currentPack.GamePack.Icon);
             _headerPackUI.SetLevelText(currentPack.CurrentLevel.ToString());
         }

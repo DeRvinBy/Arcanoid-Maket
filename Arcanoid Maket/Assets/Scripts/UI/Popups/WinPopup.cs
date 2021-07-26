@@ -42,7 +42,7 @@ namespace UI.Popups
 
         private void SetupPackUI()
         {
-            _currentPack = PacksManager.Instance.GetCurrentPack();
+            _currentPack = PacksManager.Instance.GetCurrentPackInfo();
             _popupPackUI.SetPackImage(_currentPack.GamePack.Icon);
             _popupPackUI.SetPackName(_currentPack.GamePack.Key);
             var maxValue = _currentPack.GamePack.LevelCount + 1;
@@ -52,7 +52,7 @@ namespace UI.Popups
 
         private void UpdatePackUI()
         {
-            var pack = PacksManager.Instance.GetCurrentPack();
+            var pack = PacksManager.Instance.GetCurrentPackInfo();
             if (_currentPack == pack)
             {
                 _isNeedChoosePack = _currentPack.IsPackReplayed || _currentPack.IsLastPack;

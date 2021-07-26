@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be1beb5f1334708b6d5f291a8fd26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 3.5
+  _baseSpeed: 4
   _startSize: 1.5
   _valueConfig: {fileID: 11400000, guid: 999487958864f4a47b27f0de1cba0d54, type: 2}
 --- !u!1 &366563676
@@ -2298,7 +2298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startVelocity: 6
-  _additionalVelocityPerBlock: 0.2
+  _additionalVelocityPerBlock: 0.1
   _maxAdditionalVelocity: 10
 --- !u!1 &978645541
 GameObject:
