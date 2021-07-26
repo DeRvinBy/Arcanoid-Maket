@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4e2e99347e496f94e4ba8454c7dc63, type: 3}
   m_Name: ButtonColorConfig
   m_EditorClassIdentifier: 
-  _startColor: {r: 1, g: 1, b: 1, a: 1}
-  _targetColor: {r: 0, g: 0, b: 0, a: 1}
+  _deltaBrightness: 0.2

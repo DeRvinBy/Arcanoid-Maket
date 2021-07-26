@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PackContainerScale
   m_EditorClassIdentifier: 
   _startScale: 1
-  _targetScale: 1
+  _targetScale: 0.9

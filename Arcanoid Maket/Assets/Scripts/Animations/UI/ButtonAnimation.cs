@@ -15,7 +15,7 @@ namespace Animations.UI
         private ScaleAnimationConfig _scaleConfig;
         
         [SerializeField]
-        private ColorAnimationConfig _colorConfig;
+        private BrightnessAnimationConfig _brightnessConfig;
 
         [SerializeField]
         private RectTransform _rectTransform;
@@ -27,7 +27,6 @@ namespace Animations.UI
 
         public override void SetupAnimation()
         {
-            _image.color = _colorConfig.StartColor;
             CreateAnimation();
         }
         
@@ -35,6 +34,8 @@ namespace Animations.UI
         {
             var localScale = _rectTransform.localScale;
             var halfDuration = _baseConfig.Duration / 2f;
+            var startColor = _brightnessConfig.GetStartColor(_image.color);
+            var targetColor = _brightnessConfig.GetTargetColor(_image.color);
             var scaleParams = new TweenParams().SetEase(_baseConfig.EaseMode).SetUpdate(_baseConfig.IsUpdate);
             var colorParams = new TweenParams().SetUpdate(_baseConfig.IsUpdate);
 
@@ -44,10 +45,10 @@ namespace Animations.UI
             
             var scale = localScale * _scaleConfig.TargetScale;
             _sequence.Append(_rectTransform.DOScale(scale , halfDuration).SetAs(scaleParams));
-            _sequence.Join(_image.DOColor(_colorConfig.TargetColor, halfDuration)).SetAs(colorParams);
+            _sequence.Join(_image.DOColor(targetColor, halfDuration)).SetAs(colorParams);
             scale = localScale * _scaleConfig.StartScale;
             _sequence.Append(_rectTransform.DOScale(scale, halfDuration).SetAs(scaleParams));
-            _sequence.Join(_image.DOColor(_colorConfig.StartColor, halfDuration)).SetAs(colorParams);
+            _sequence.Join(_image.DOColor(startColor, halfDuration)).SetAs(colorParams);
             
             _sequence.OnComplete(() => _sequence.Rewind());
         }

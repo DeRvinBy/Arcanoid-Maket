@@ -6,6 +6,7 @@ namespace MyLibrary.Localization.UILocalization
     public class TMProValueLocalization : TMProTextLocalization
     {
         [SerializeField]
+        [Multiline(3)]
         private string _textWithValueFormat = "{0}: {1}";
         
         private string _value;

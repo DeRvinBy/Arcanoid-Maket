@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d430b1cb0f444fb8bbfd712caeaef01d, type: 3}
   m_Name: MenuSelectorRectTransform
   m_EditorClassIdentifier: 
-  _startPosition: {x: 0, y: 1200}
-  _endPosition: {x: 0, y: 900}
+  _startPosition: {x: 0, y: 200}
+  _endPosition: {x: 0, y: -100}

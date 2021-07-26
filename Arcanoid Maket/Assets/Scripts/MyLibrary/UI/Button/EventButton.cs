@@ -14,7 +14,7 @@ namespace MyLibrary.UI.Button
         [SerializeField]
         private UnityEngine.UI.Button _button;
 
-        public void Awake()
+        public void Start()
         {
             _animation.SetupAnimation();
             _button.onClick.AddListener(OnClick);
