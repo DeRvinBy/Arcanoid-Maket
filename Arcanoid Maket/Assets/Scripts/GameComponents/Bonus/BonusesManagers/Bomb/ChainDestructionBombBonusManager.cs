@@ -52,9 +52,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         private void CompleteBonus(Vector2 position, AbstractBlocksSearcher searcher)
         {
-            var startCoords = _gridBlocks.GetBlocksCoordinates(position);
-            var blocksMatrix = _gridBlocks.GetBlocksMatrix();
-            searcher.Setup(startCoords, blocksMatrix);
+            searcher.Setup(position, _gridBlocks);
             
             var destroyMap = searcher.GetDestroyBlocksMap();
             StartCoroutine(StartDestroyBlocks(destroyMap));

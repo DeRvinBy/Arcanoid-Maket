@@ -38,9 +38,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         public void OnActivateBonus(Vector2 position)
         {
-            var startCoords = _gridBlocks.GetBlocksCoordinates(position);
-            var blocksMatrix = _gridBlocks.GetBlocksMatrix();
-            _searcher.Setup(startCoords, blocksMatrix);
+            _searcher.Setup(position, _gridBlocks);
             
             var destroyMap = _searcher.GetDestroyBlocksMap();
             StartDestroyBlocks(destroyMap);

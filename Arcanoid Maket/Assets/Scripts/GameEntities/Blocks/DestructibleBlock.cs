@@ -100,7 +100,7 @@ namespace GameEntities.Blocks
 
             _isDestroying = true;
             StartCoroutine(DestroyBlockAnimate());
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed(this));
         }
 
         private IEnumerator DestroyBlockAnimate()

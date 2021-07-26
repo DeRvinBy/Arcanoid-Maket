@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Enumerations;
@@ -15,13 +15,11 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
         };
         private Dictionary<BlockSpriteId, HashSet<ColorBlock>> _colorBlocksMap;
         private Dictionary<ColorBlock, Vector2Int> _blockCoordsMap;
-        private List<Vector2Int> _passedCoords;
 
         public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
         {
             _colorBlocksMap = new Dictionary<BlockSpriteId, HashSet<ColorBlock>>();
             _blockCoordsMap = new Dictionary<ColorBlock, Vector2Int>();
-            _passedCoords = new List<Vector2Int>();
 
             _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
             FindColorsBlock();
@@ -37,7 +35,6 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 var currentCoords = _startCoords + direction;
                 if (IsWithinInMatrix(currentCoords))
                 {
-                    _passedCoords.Add(currentCoords);
                     var colorBlock = GetColorBlock(currentCoords);
                     if (colorBlock != null)
                     {
@@ -58,12 +55,10 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             foreach (var direction in _moveDirections)
             {
                 var currentCoords = coords + direction;
-                if (IsWithinInMatrix(currentCoords) && !_passedCoords.Contains(currentCoords))
+                if (IsWithinInMatrix(currentCoords))
                 {
-                    _passedCoords.Add(currentCoords);
-
                     var colorBlock = GetColorBlock(currentCoords);
-                    if (colorBlock != null && colorBlock.BlockColor == color)
+                    if (IsMatchingBlock(colorBlock, color))
                     {
                         AddBlockToMaps(colorBlock, currentCoords);
                         FindBlocksByColor(currentCoords, color);
@@ -71,10 +66,17 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 }
             }
         }
+        
         private ColorBlock GetColorBlock(Vector2Int coords)
         {
             var block = _blocksMatrix[coords.x, coords.y] as ColorBlock;
+
             return block;
+        }
+
+        private bool IsMatchingBlock(ColorBlock block, BlockSpriteId color)
+        {
+            return block != null && !_blockCoordsMap.Keys.Contains(block) && block.BlockColor == color;
         }
         
         private void AddBlockToMaps(ColorBlock block, Vector2Int coords)

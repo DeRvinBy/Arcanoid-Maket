@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using EventInterfaces.FieldEvents;
 using GameComponents.Field;
 using GameEntities.Blocks.Abstract;
@@ -27,6 +26,12 @@ namespace GameComponents.Blocks
         {
             var coords = _coordsMap[position];
             _blocksMatrix[coords.x, coords.y] = block;
+        }
+
+        public void RemoveBlockFromMatrix(AbstractBlock block)
+        {
+            var coords = _coordsMap[block.transform.position];
+            _blocksMatrix[coords.x, coords.y] = null;
         }
 
         public Vector2Int GetBlocksCoordinates(Vector2 position)

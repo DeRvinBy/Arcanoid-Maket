@@ -9,7 +9,7 @@ namespace EventInterfaces.BlockEvents
     {
         void OnDestructibleBlockCreated();
         void OnCreateBlock(Vector3 position, Vector3 size, Transform parent, BlockProperties properties);
-        void OnBlockStartDestroyed();
+        void OnBlockStartDestroyed(AbstractBlock block);
         void OnDestroyBlock<T>(T block) where T : AbstractBlock;
     }
 }

@@ -58,10 +58,11 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _gridBlocks.AddBlockToMatrix(position, block);
         }
 
-        public void OnBlockStartDestroyed()
+        public void OnBlockStartDestroyed(AbstractBlock block)
         {
             _blockCount--;
             _blocksProgressUI.UpdateSlider(_blockCount);
+            _gridBlocks.RemoveBlockFromMatrix(block);
             if (_blockCount <= 0)
             {
                 EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());
@@ -71,6 +72,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         public void OnDestroyBlock<T>(T block) where T : AbstractBlock
         {
             _spawner.DestroyBlock(block);
+            _gridBlocks.RemoveBlockFromMatrix(block);
         }
         
         public void OnStartGame()
