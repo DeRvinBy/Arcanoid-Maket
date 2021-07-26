@@ -56,7 +56,12 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
                     }
                     else
                     {
-                        ((DestructibleBlock)block).DamageBlock(_settings.BombDamage);
+                        var destructibleBlock = (DestructibleBlock) block;
+                        if (!destructibleBlock.IsDamageEnoughToDestroy(_settings.BombDamage))
+                        {
+                            _gridBlocks.AddBlockToMatrix(block.transform.position, block);
+                        }
+                        destructibleBlock.DamageBlock(_settings.BombDamage);
                     }
                 }
             }

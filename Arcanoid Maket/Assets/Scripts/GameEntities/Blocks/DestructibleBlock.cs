@@ -84,6 +84,11 @@ namespace GameEntities.Blocks
             DamageBlock(ball.BallDamage);
         }
 
+        public bool IsDamageEnoughToDestroy(int damage)
+        {
+            return _lifeCount - damage <= 0;
+        }
+        
         public void DamageBlock(int damage)
         {
             _lifeCount -= damage;
