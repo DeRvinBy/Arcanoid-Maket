@@ -151,6 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1936782565}
+  - {fileID: 1544494294}
   m_Father: {fileID: 1049240217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1024,7 +1025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d7f98d83314f49b45685fc1d434ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _manager: {fileID: 1931055811}
+  _velocityController: {fileID: 1544494295}
   _bonusEffect: {fileID: 506979374}
 --- !u!4 &506979373
 Transform:
@@ -1112,6 +1113,7 @@ MonoBehaviour:
   - {fileID: 1931055811}
   - {fileID: 837585704}
   - {fileID: 1111402341}
+  - {fileID: 1544494295}
 --- !u!1 &518237266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,10 +1987,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0761c2dba548450eb54e928577293ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _variableValue: 2
+  _variableValue: 1
   _timeOfEffect: 5
-  _maxValue: 6
-  _minValue: -2
+  _maxValue: 3
+  _minValue: -4
 --- !u!1 &820954345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,6 +2254,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937478730}
   m_CullTransparentMesh: 1
+--- !u!1 &949367900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 949367901}
+  - component: {fileID: 949367902}
+  m_Layer: 0
+  m_Name: BallsVelocitySettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &949367901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949367900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1404385753}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &949367902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949367900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c870112f5e4c3cb00d8733305f3b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startVelocity: 6
+  _additionalVelocityPerBlock: 0.2
+  _maxAdditionalVelocity: 10
 --- !u!1 &978645541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,7 +2704,7 @@ Transform:
   - {fileID: 166774868}
   - {fileID: 978645542}
   m_Father: {fileID: 1404385753}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1237283673
 GameObject:
@@ -2806,6 +2854,7 @@ Transform:
   - {fileID: 618202563}
   - {fileID: 345307103}
   - {fileID: 184778294}
+  - {fileID: 949367901}
   - {fileID: 1209774296}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2899,6 +2948,51 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1544494293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1544494294}
+  - component: {fileID: 1544494295}
+  m_Layer: 0
+  m_Name: BallsVelocityController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1544494294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544494293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 12045609}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1544494295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544494293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde541eed7c46bd82f5c1718ad75d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ballsManager: {fileID: 1931055811}
+  _velocitySettings: {fileID: 949367902}
 --- !u!1 &1545777873
 GameObject:
   m_ObjectHideFlags: 0

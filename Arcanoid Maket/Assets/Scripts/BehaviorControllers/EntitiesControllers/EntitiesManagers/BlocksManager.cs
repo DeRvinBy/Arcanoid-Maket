@@ -63,6 +63,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
             _blockCount--;
             _blocksProgressUI.UpdateSlider(_blockCount);
             _gridBlocks.RemoveBlockFromMatrix(block);
+            EventBus.RaiseEvent<IBlockDestroyedHandler>(a => a.OnBlockDestroy());
             if (_blockCount <= 0)
             {
                 EventBus.RaiseEvent<IEndGameHandler>(a => a.OnWinGame());

@@ -1,24 +1,20 @@
-﻿using BehaviorControllers.EntitiesControllers.EntitiesManagers;
-using EventInterfaces.BallEvents;
+﻿using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.BonusEvents.Ball;
 using EventInterfaces.StatesEvents;
 using GameComponents.Bonus.Effects;
-using GameEntities.Ball;
 using GameEntities.Bonuses.Enumerations;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers.Ball
 {
-    public class BallsVelocityBonusManager : MonoBehaviour, IBallVelocityBonusHandler, IBallsManagerHandler, IPrepareGameplayHandler
+    public class BallsVelocityBonusManager : MonoBehaviour, IBallVelocityBonusHandler, IPrepareGameplayHandler
     {
         [SerializeField]
-        private BallsManager _manager;
+        private BallsVelocityController _velocityController;
 
         [SerializeField]
         private VariableValueEffect _bonusEffect;
-        
-        private float _currentVariableVelocity;
 
         private void OnEnable()
         {
@@ -32,11 +28,6 @@ namespace GameComponents.Bonus.BonusesManagers.Ball
             _bonusEffect.OnValueChanged -= UpdateBallsVelocity;
         }
 
-        public void OnSpawnNewBall(BallEntity ball)
-        {
-            ball.SetAdditionalVelocity(_currentVariableVelocity);
-        }
-
         public void OnActivateVelocityBonus(ValueModifer modifer)
         {
             _bonusEffect.ActivateEffect(modifer);
@@ -44,13 +35,11 @@ namespace GameComponents.Bonus.BonusesManagers.Ball
 
         private void UpdateBallsVelocity(float value)
         {
-            _currentVariableVelocity = value;
-            _manager.InvokeBallsAction(a => a.SetAdditionalVelocity(value));
+            _velocityController.SetAdditionalVelocity(value);
         }
 
         public void OnPrepareGame()
         {
-            _currentVariableVelocity = 0;
             _bonusEffect.StopEffect();
         }
     }

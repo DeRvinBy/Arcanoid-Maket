@@ -7,10 +7,7 @@ namespace GameSettings.GameBallSettings
     public class BallSettings : AbstractSettings
     {
         [SerializeField]
-        private Sprite _ballSprite; 
-        
-        [SerializeField]
-        private float _baseVelocity = 6f;
+        private Sprite _ballSprite;
 
         [SerializeField]
         private int _ballDamage = 2;
@@ -23,7 +20,6 @@ namespace GameSettings.GameBallSettings
 
         public float BounceAngleChange => _bounceAngleChange;
         public float BounceAngleThreshold => _bounceAngleThreshold;
-        public float BaseVelocity => _baseVelocity;
         public int BallDamage => _ballDamage;
         public Sprite BallSprite => _ballSprite;
     }
