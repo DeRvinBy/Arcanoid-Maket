@@ -34,6 +34,8 @@ namespace GameComponents.Bonus.Effects
         public void StopEffect()
         {
             StopAllCoroutines();
+            _currentVariableValue = 0;
+            OnValueChanged?.Invoke(_currentVariableValue);
         }
     }
 }

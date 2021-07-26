@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BehaviorControllers.EntitiesControllers
 {
-    public class LifeController : EntityController, IStartGameplayHandler, IPlayerBallsHandler
+    public class LifeController : EntityController, IPrepareGameplayHandler, IPlayerBallsHandler
     {
         [SerializeField]
         private LifeSettings _settings;
@@ -55,7 +55,7 @@ namespace BehaviorControllers.EntitiesControllers
             }
         }
 
-        public void OnStartGame()
+        public void OnPrepareGame()
         {
             _lifeCount = _settings.StartLifeCount;
             _lifeUI.UpdateLifeCount(_lifeCount);
