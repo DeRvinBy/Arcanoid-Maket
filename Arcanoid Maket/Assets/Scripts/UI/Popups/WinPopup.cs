@@ -1,4 +1,5 @@
 ﻿using EventInterfaces.GameEvents;
+using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks;
 using GamePacks.Data.Packs;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace UI.Popups
 {
-    public class WinPopup : AbstractPopup
+    public class WinPopup : AbstractPopup, IPackChangedHandler
     {
         [SerializeField]
         private WinPopupPackUI _popupPackUI;
@@ -26,6 +27,7 @@ namespace UI.Popups
             base.Initialize();
             SetupPackUI();
             _nextButton.OnButtonPressed += OnContinueButtonPressed;
+            EventBus.Subscribe(this);
         }
 
         protected override void PreparePopup()
@@ -36,14 +38,6 @@ namespace UI.Popups
         protected override void StartPopup()
         {
             UpdatePackUI();
-        }
-
-        protected override void ResetPopup()
-        {
-            if (_isNeedChoosePack)
-            {
-                SetupPackUI();
-            }
         }
 
         private void SetupPackUI()
@@ -87,6 +81,11 @@ namespace UI.Popups
             {
                 EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
             }
+        }
+
+        public void OnPackChanged()
+        {
+            SetupPackUI();
         }
     }
 }

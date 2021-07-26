@@ -97,6 +97,7 @@ namespace MyLibrary.UI.Popup
             {
                 PoolsManager.Instance.ReturnObject(pair.Key, pair.Value);
             }
+            _popupsLocker.DisableLocker();
             _popupsMap.Clear();
             _popupsStack.Clear();
         }

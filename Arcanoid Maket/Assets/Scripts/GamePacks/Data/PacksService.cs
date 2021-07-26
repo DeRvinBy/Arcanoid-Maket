@@ -39,6 +39,15 @@ namespace GamePacks.Data
             }
         }
 
+        public void CompleteAllPacks()
+        {
+            foreach (var key in _packsMap.Keys)
+            {
+                _playerPacksSave.AddOpenSavePack(key);
+                _playerPacksSave.CompletePack(key);
+            }
+        }
+
         public bool IsSaveExit()
         {
             return _isSaveExist;

@@ -1,4 +1,5 @@
 ﻿using BehaviorControllers.Abstract;
+using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks;
 using MyLibrary.EventSystem;
@@ -27,6 +28,7 @@ namespace BehaviorControllers.GameControllers
         public void OnPackChoose(string packKey)
         {
             PacksManager.Instance.SetCurrentPack(packKey);
+            EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged());
         }
 
         public void OnCancelChoosePack()

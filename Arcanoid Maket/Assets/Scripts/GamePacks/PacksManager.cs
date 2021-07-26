@@ -35,6 +35,12 @@ namespace GamePacks
             _parser = new JsonParser(tilemap.text);
         }
 
+        [ContextMenu("Complete all packs")]
+        public void CompleteAllPacks()
+        {
+            _service.CompleteAllPacks();
+        }
+
         public bool IsSaveExist()
         {
             return _service.IsSaveExit();
