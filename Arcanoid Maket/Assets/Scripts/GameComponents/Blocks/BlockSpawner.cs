@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using EventInterfaces.BonusEvents;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
+using GameEntities.Blocks.Data;
 using GameEntities.Blocks.Enumerations;
+using MyLibrary.EventSystem;
 using MyLibrary.ObjectPool;
 using UnityEngine;
 
@@ -17,32 +21,57 @@ namespace GameComponents.Blocks
             _blocksMap = new Dictionary<Type, List<AbstractBlock>>();
         }
         
-        public void SpawnBlock(BlockId id, Vector3 position, Vector3 size, Transform parent)
+        public AbstractBlock SpawnBlock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
         {
-            if (id == BlockId.Indestructible)
+            switch (properties.Type)
             {
-                CreateIndestructibleBlock(position, size, parent);
+                case BlockType.ColorBlock:
+                    return CreateColorBlock(properties.SpriteId, position, size, parent);
+                case BlockType.Indestructible:
+                    return CreateIndestructibleBlock(position, size, parent);
+                case BlockType.WithSpawningBonus:
+                    var spawningBonusBlock = CreateBonusBLock(properties, position, size, parent);
+                    spawningBonusBlock.OnBlockDestroy += () =>
+                        EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
+                            a.OnCreateBonusObject(properties.BonusId, position));
+                    return spawningBonusBlock;
+                case BlockType.WithInstantBonus:
+                    var instantBonusBlock = CreateBonusBLock(properties, position, size, parent);
+                    instantBonusBlock.OnBlockDestroy += () =>
+                        EventBus.RaiseEvent<IBonusOnSceneHandler>(a =>
+                            a.OnStartBonusAtPosition(properties.BonusId, position));
+                    return instantBonusBlock;
             }
-            else
-            {
-                CreateDestructibleBlock(id, position, size, parent);
-            }
+
+            return null;
         }
 
-        private void CreateIndestructibleBlock(Vector3 position, Vector3 size, Transform parent)
+        private AbstractBlock CreateIndestructibleBlock(Vector3 position, Vector3 size, Transform parent)
         {
             var block = PoolsManager.Instance.GetObject<IndestructibleBlock>(position, Quaternion.identity, size, parent);
-            AddPackToMap(typeof(IndestructibleBlock), block);
+            AddBlockToMap(typeof(IndestructibleBlock), block);
+            block.SetupBlock();
+            return block;
         }
         
-        private void CreateDestructibleBlock(BlockId id, Vector3 position, Vector3 size, Transform parent)
+        private AbstractBlock CreateColorBlock(BlockSpriteId spriteId, Vector3 position, Vector3 size, Transform parent)
         {
-            var block = PoolsManager.Instance.GetObject<DestructibleBlock>(position, Quaternion.identity, size, parent);
-            AddPackToMap(typeof(DestructibleBlock), block);
-            block.SetupBlock(id);
+            var block = PoolsManager.Instance.GetObject<ColorBlock>(position, Quaternion.identity, size, parent);
+            AddBlockToMap(typeof(ColorBlock), block);
+            block.SetupBlock(spriteId);
+            return block;
+        }
+        
+        private BonusBlock CreateBonusBLock(BlockProperties properties, Vector3 position, Vector3 size, Transform parent)
+        {
+            var block = PoolsManager.Instance.GetObject<BonusBlock>(position, Quaternion.identity, size, parent);
+            AddBlockToMap(typeof(BonusBlock), block);
+            block.SetupBlock(properties.SpriteId);
+            block.SetupBonusBLock(properties.BonusId);
+            return block;
         }
 
-        private void AddPackToMap(Type type, AbstractBlock block)
+        private void AddBlockToMap(Type type, AbstractBlock block)
         {
             if (!_blocksMap.ContainsKey(type))
             {
@@ -52,6 +81,12 @@ namespace GameComponents.Blocks
             _blocksMap[type].Add(block);
         }
 
+        public List<T> GetBlocks<T>() where T : AbstractBlock
+        {
+            var type = typeof(T);
+            return _blocksMap[type].Select(b => b as T).ToList();
+        }
+        
         public void DestroyBlock<T>(T block) where T : AbstractBlock
         {
             PoolsManager.Instance.ReturnObject(block);

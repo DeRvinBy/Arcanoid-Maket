@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c435bf99bd2443c2b42012423927afd3, type: 3}
+  m_Name: magic_gnome_pack
+  m_EditorClassIdentifier: 
+  _key: magic_gnome_pack
+  _icon: {fileID: -6456279491224675847, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
+  _color: {r: 0.8207547, g: 0.37876666, b: 0.3213332, a: 1}
+  _levels:
+  - {fileID: 4900000, guid: 0d308f6866e1a1e42b91ddea23e32886, type: 3}
+  - {fileID: 4900000, guid: c99dfe8515ef27347b3b156b51f11de7, type: 3}
+  - {fileID: 4900000, guid: c5220c90ad6f0d44089272980989298d, type: 3}
+  - {fileID: 4900000, guid: 87f25cfc226ebb64aaa0de444d9dbe23, type: 3}
+  - {fileID: 4900000, guid: 9a81a8450ab1c264da60cf029c8ff6bf, type: 3}

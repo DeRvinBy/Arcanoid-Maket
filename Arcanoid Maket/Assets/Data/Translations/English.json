@@ -9,7 +9,10 @@
   "header_level" : "Level",
   "unknown_pack" : "???",
   "test_pack" : "Test pack",
-  "tree_house_pack" : "Tree house",
+  "test_bonus_pack" : "Test bonus pack",
+  "tea_drinking_pack" : "Tea drinking",
   "dog_pack" : "Pug Dog",
-  "ice_cream_watermelon_pack" : "Watermelon ice cream"
+  "magic_gnome_pack" : "Magic Gnome",
+  "little_pig_pack" : "Little Pig",
+  "grand_tour_pack" : "Grand tour"
 }

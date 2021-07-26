@@ -3,15 +3,28 @@ using UnityEngine;
 
 namespace GameSettings.GameBallSettings
 {
+    [CreateAssetMenu(fileName = "New Ball Settings", menuName = "Creator Settings/Ball Settings")]
     public class BallSettings : AbstractSettings
     {
         [SerializeField]
-        private float _startVelocity = 25f;
+        private Sprite _ballSprite; 
+        
+        [SerializeField]
+        private float _baseVelocity = 6f;
 
         [SerializeField]
-        private int _ballDamage = 1;
+        private int _ballDamage = 2;
+
+        [SerializeField]
+        private float _bounceAngleThreshold = 10f;
         
-        public float StartVelocity => _startVelocity;
+        [SerializeField]
+        private float _bounceAngleChange = 10f;
+
+        public float BounceAngleChange => _bounceAngleChange;
+        public float BounceAngleThreshold => _bounceAngleThreshold;
+        public float BaseVelocity => _baseVelocity;
         public int BallDamage => _ballDamage;
+        public Sprite BallSprite => _ballSprite;
     }
 }

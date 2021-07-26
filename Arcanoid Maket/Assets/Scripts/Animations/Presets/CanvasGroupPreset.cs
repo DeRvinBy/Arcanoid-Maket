@@ -17,9 +17,19 @@ namespace Animations.Presets
         [SerializeField]
         private AlphaAnimationConfig _alphaConfig;
 
-        public Tween GetForwardAnimation()
+        public void ResetToStartAlpha()
         {
             _canvasGroup.alpha = _alphaConfig.StartAlpha;
+        }
+        
+        public void ResetToEndAlpha()
+        {
+            _canvasGroup.alpha = _alphaConfig.EndAlpha;
+        }
+
+        public Tween GetForwardAnimation()
+        {
+            ResetToStartAlpha();
             var tween = _canvasGroup.DOFade(_alphaConfig.EndAlpha, _baseConfig.Duration).SetAs(_baseConfig.TweenParams);
             tween.Pause();
             return tween;
@@ -27,7 +37,7 @@ namespace Animations.Presets
         
         public Tween GetBackwardAnimation()
         {
-            _canvasGroup.alpha = _alphaConfig.EndAlpha;
+            ResetToEndAlpha();
             var tween = _canvasGroup.DOFade(_alphaConfig.StartAlpha, _baseConfig.Duration).SetAs(_baseConfig.TweenParams);
             tween.Pause();
             return tween;

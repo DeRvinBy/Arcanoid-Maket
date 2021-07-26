@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using EventInterfaces.BlockEvents;
+using GameEntities.Ball;
 using GameEntities.Blocks.Abstract;
-using GameEntities.Blocks.Behaviour;
+using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
+using MyLibrary.CollisionStorage.Extensions;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
 namespace GameEntities.Blocks
 {
-    public class DestructibleBlock : AbstractBlock
+    public abstract class DestructibleBlock : AbstractBlock
     {
         [SerializeField]
         private BlockSprite _sprite;
@@ -24,6 +26,7 @@ namespace GameEntities.Blocks
         private BlockParticles _particles;
 
         private BlockSettings _settings;
+        private bool _isDestroying;
         private int _lifeCount;
 
         public override void Initialize(BlockSettings settings)
@@ -33,48 +36,87 @@ namespace GameEntities.Blocks
             _cracks.Initialize(_settings.LifeSettings);
         }
 
-        public void SetupBlock(BlockId id)
+        public virtual void SetupBlock(BlockSpriteId spriteId)
         {
             _lifeCount = _settings.LifeSettings.BlockLife;
-            _collider.SetupCollider();
             _cracks.SetupBlockCracks();
-            var settings = _settings.GetBlockSettings(id);
+            _collider.EnableCollider();
+            var settings = _settings.GetBlockSettings(spriteId);
             _sprite.SetupSprite(settings.Sprite);
             _particles.SetParticleColor(settings.ParticleColor);
             
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestructibleBlockCreated());
         }
 
-        public override void Setup()
+        public void EnableBlockTrigger()
         {
-            base.Setup();
-            _collider.OnBlockCollided += OnBlockDamaged;
+            _collider.EnableTrigger();
         }
         
-        public override void Reset()
+        public void DisableBlockTrigger()
         {
-            base.Reset();
-            _collider.OnBlockCollided -= OnBlockDamaged;
+            _collider.DisableTrigger();
         }
 
-        private void OnBlockDamaged(Collision2D other)
+        public override void OnSetup()
         {
-            _lifeCount -= 1;
+            base.OnSetup();
+            _isDestroying = false;
+            _collider.RegisterCollider(this);
+            _collider.OnCollisionEnter += OnBlockDamaged;
+            _collider.OnTriggerEnter += DestroyBlock;
+        }
+        
+        public override void OnReset()
+        {
+            base.OnReset();
+            _collider.DisableTrigger();
+            _collider.UnregisterCollider(this);
+            _collider.OnCollisionEnter -= OnBlockDamaged;
+            _collider.OnTriggerEnter -= DestroyBlock;
+        }
+
+        protected void OnBlockDamaged(Collider2D other)
+        {
+            var ball = other.GetColliderMonoBehaviour<BallEntity>();
+            if (ball == null) return;
+            
+            DamageBlock(ball.BallDamage);
+        }
+
+        public bool IsDamageEnoughToDestroy(int damage)
+        {
+            return _lifeCount - damage <= 0;
+        }
+        
+        public void DamageBlock(int damage)
+        {
+            _lifeCount -= damage;
             _cracks.UpdateBlockCracks(_lifeCount);
             if (_lifeCount <= 0)
             {
-                StartCoroutine(DestroyBlock());
-                EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed());    
+                DestroyBlock();
             }
         }
 
-        private IEnumerator DestroyBlock()
+        public override void DestroyBlock()
+        {
+            if (_isDestroying) return;
+
+            _isDestroying = true;
+            StartCoroutine(DestroyBlockAnimate());
+            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnBlockStartDestroyed(this));
+        }
+
+        private IEnumerator DestroyBlockAnimate()
         {
             _sprite.ResetSprite();
-            _collider.ResetCollider();
+            _collider.DisableCollider();
             _cracks.ResetBlockCracks();
             yield return _particles.PlayParticle();
-            EventBus.RaiseEvent<IBlockOnSceneHandler>(a => a.OnDestroyBlock(this));
+            DestroyCompleteBlock();
         }
+
+        protected abstract void DestroyCompleteBlock();
     }
 }

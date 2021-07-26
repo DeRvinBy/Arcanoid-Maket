@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace GameSettings.PackContainerSettings
 {
+    [CreateAssetMenu(fileName = "New Default Pack Container Settings", menuName = "Creator Settings/Default Pack Container Settings")]
     public class DefaultPackContainerSettings : AbstractSettings
     {
         [SerializeField]

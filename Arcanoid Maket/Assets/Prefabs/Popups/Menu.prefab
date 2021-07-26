@@ -805,7 +805,7 @@ MonoBehaviour:
     _canvasGroup: {fileID: 3846490122693695551}
     _alphaConfig: {fileID: 11400000, guid: b2b9358bc5fbc1e4f9701d351dda0451, type: 2}
   _playButtonCanvasAnimation:
-    _baseConfig: {fileID: 11400000, guid: 42237d5b4809de543824f74568654c17, type: 2}
+    _baseConfig: {fileID: 11400000, guid: 88bad81fd0d4e3d459cda0680648287d, type: 2}
     _canvasGroup: {fileID: 3846490124443824263}
     _alphaConfig: {fileID: 11400000, guid: b2b9358bc5fbc1e4f9701d351dda0451, type: 2}
 --- !u!1 &3846490123208919685

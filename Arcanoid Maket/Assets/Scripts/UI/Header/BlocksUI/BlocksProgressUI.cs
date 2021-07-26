@@ -23,8 +23,8 @@ namespace UI.Header.BlocksUI
 
         public void ResetSlider()
         {
+            _valueAnimation.StopAnimation();
             _slider.value = 0;
-            _valueAnimation.KillAnimation();
         }
 
         public void SetupSlider(int blockCount)

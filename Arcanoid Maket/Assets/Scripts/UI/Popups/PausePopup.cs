@@ -18,31 +18,17 @@ namespace UI.Popups
         [SerializeField]
         private EventButton _continueButton;
 
-        protected override void StartPopup()
+        public override void Initialize()
         {
-            _restartButton.Enable();
-            _backButton.Enable();
-            _continueButton.Enable();
-            
+            base.Initialize();
             _restartButton.OnButtonPressed += OnRestartButtonPressed;
             _backButton.OnButtonPressed += OnBackButtonPressed;
             _continueButton.OnButtonPressed += OnContinueButtonPressed;
         }
         
-        protected override void ResetPopup()
-        {
-            _restartButton.Disable();
-            _backButton.Disable();
-            _continueButton.Disable();
-            
-            _restartButton.OnButtonPressed -= OnRestartButtonPressed;
-            _backButton.OnButtonPressed -= OnBackButtonPressed;
-            _continueButton.OnButtonPressed -= OnContinueButtonPressed;
-        }
-
         private void OnRestartButtonPressed()
         {
-            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
+            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnStartTime());
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
         }
 

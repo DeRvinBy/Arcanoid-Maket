@@ -1,4 +1,5 @@
 ﻿using BehaviorControllers.Abstract;
+using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks;
 using MyLibrary.EventSystem;
@@ -9,8 +10,6 @@ namespace BehaviorControllers.GameControllers
 {
     public class PacksChoosingController : GameController, IPacksChoosingHandler
     {
-        private PopupsController _popupsController;
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -20,26 +19,21 @@ namespace BehaviorControllers.GameControllers
         {
             EventBus.Unsubscribe(this);
         }
-        
-        public override void Initialize(ControllersManager controllersManager)
-        {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
-        }
 
         public void OnStartChoosePack()
         {
-            PacksManager.Instance.UpdatePacksInfo();
-            StartCoroutine(_popupsController.ShowPopup<PackChoosingPopup>());
+            StartCoroutine(PopupsController.Instance.ShowPopup<PackChoosingPopup>());
         }
 
         public void OnPackChoose(string packKey)
         {
             PacksManager.Instance.SetCurrentPack(packKey);
+            EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged());
         }
 
         public void OnCancelChoosePack()
         {
-            StartCoroutine(_popupsController.HideLastPopup());
+            StartCoroutine(PopupsController.Instance.HideLastPopup());
         }
     }
 }

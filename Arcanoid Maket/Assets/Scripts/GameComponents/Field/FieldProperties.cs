@@ -12,7 +12,7 @@ namespace GameComponents.Field
         
         [SerializeField]
         private FieldSettings _settings;
-
+        
         private Vector2 _startPosition;
 
         public void Initialize()

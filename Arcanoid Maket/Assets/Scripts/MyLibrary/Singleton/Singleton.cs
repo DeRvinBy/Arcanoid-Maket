@@ -4,7 +4,9 @@ namespace MyLibrary.Singleton
 {
     public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     {
-        private  static T _instance = null;
+        private static T _instance = null;
+        
+        private bool _isAlive = true;
         public static T Instance
         {
             get
@@ -39,6 +41,19 @@ namespace MyLibrary.Singleton
                 return _instance;
             }
         }
+        
+        public static bool IsAlive
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    return false;
+                }
+
+                return _instance._isAlive;
+            }
+        }
 
         protected void Awake()
         {
@@ -55,6 +70,8 @@ namespace MyLibrary.Singleton
             }
         }
         
+        protected virtual void OnDestroy() { _isAlive = false; }
+        protected virtual void OnApplicationQuit() { _isAlive = false; }
         protected virtual void Initialize() { }
     }
 }

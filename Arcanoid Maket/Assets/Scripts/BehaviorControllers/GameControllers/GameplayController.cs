@@ -4,16 +4,14 @@ using EventInterfaces.GameEvents;
 using EventInterfaces.Input;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
-using GamePacks;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Popup;
+using MyLibrary.UI.Transition;
 
 namespace BehaviorControllers.GameControllers
 {
     public class GameplayController : GameController, IStartGameHandler, IPackButtonPressedHandler, IEndGameHandler
     {
-        private PopupsController _popupsController;
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -21,7 +19,16 @@ namespace BehaviorControllers.GameControllers
 
         private void Start()
         {
-            StartGame();
+            StartCoroutine(StartGameScene());
+        }
+
+        private IEnumerator StartGameScene()
+        {
+            EventBus.RaiseEvent<IClearGameSceneHandler>(a => a.OnClearObjects());
+            EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
+            EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
+            yield return TransitionController.Instance.ShowForwardTransition();
+            EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
         }
         
         private void StartGame()
@@ -31,9 +38,9 @@ namespace BehaviorControllers.GameControllers
 
         private IEnumerator PrepareAndStartGame()
         {
+            EventBus.RaiseEvent<IClearGameSceneHandler>(a => a.OnClearObjects());
             EventBus.RaiseEvent<IPrepareGameplayHandler>(a => a.OnPrepareGame());
-            PacksManager.Instance.PreparePack();
-            yield return _popupsController.HideAllActivePopups();
+            yield return PopupsController.Instance.HideAllActivePopups();
             EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
         }
@@ -41,11 +48,6 @@ namespace BehaviorControllers.GameControllers
         private void OnDisable()
         {
             EventBus.Unsubscribe(this);
-        }
-        
-        public override void Initialize(ControllersManager controllersManager)
-        {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
         }
 
         public void OnStartGameProcess()

@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using Animations.Configs;
+using UnityEngine;
 
 namespace GameSettings.GamePlatformSettings
 {
     public class PlatformSettings : MonoBehaviour
     {
         [SerializeField]
-        private float _speed = 5f;
+        private float _baseSpeed = 5f;
 
         [SerializeField]
         private float _startSize = 2f;
 
-        public float Speed => _speed;
+        [SerializeField]
+        private BaseAnimationConfig _valueConfig;
+        
+        public float BaseSpeed => _baseSpeed;
         public float StartSize => _startSize;
+        public BaseAnimationConfig ValueConfig => _valueConfig;
     }
 }

@@ -23,14 +23,28 @@ namespace GamePacks.Data
             var loader = new PlayerPrefsLoader();
             _isSaveExist = loader.IsSaveExist();
             _playerPacksSave = new PlayerPacksSave(loader);
-            _playerPacksSave.LoadPacksFromSave(packsConfig.FirstPack.Key);
-            
+            var firstPack = packsConfig.FirstPack.Key;
+            _playerPacksSave.LoadPacksFromSave(firstPack);
+            if (!_isSaveExist)
+            {
+                StartPack(firstPack);
+            }
+
             _packsInfoMap = new Dictionary<string, PackInfo>();
             foreach (var packKey in _packsMap.Keys)
             {
                 var packInfo = new PackInfo();
                 _packsInfoMap.Add(packKey, packInfo);
                 UpdatePackInfo(packKey);
+            }
+        }
+
+        public void CompleteAllPacks()
+        {
+            foreach (var key in _packsMap.Keys)
+            {
+                _playerPacksSave.AddOpenSavePack(key);
+                _playerPacksSave.CompletePack(key);
             }
         }
 
@@ -77,11 +91,11 @@ namespace GamePacks.Data
             _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
         }
         
-        public void StartDebugPack(string packKey)
+        public void StartDebugPack(string packKey, int currentLevel)
         {
             _playerPacksSave.AddOpenSavePack(packKey);
             _currentPackKey = packKey;
-            _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
+            _currentLevelId = currentLevel;
         }
 
         public void CompleteLevel()

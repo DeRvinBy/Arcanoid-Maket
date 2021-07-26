@@ -1,10 +1,12 @@
-﻿using BehaviorControllers.Abstract;
+﻿using System.Collections;
+using BehaviorControllers.Abstract;
 using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
 using GamePacks;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Popup;
+using MyLibrary.UI.Transition;
 using UI.Popups;
 using UnityEngine;
 
@@ -15,7 +17,6 @@ namespace BehaviorControllers.GameControllers
         [SerializeField]
         private int _gameSceneID = 1;
         
-        private PopupsController _popupsController;
         private ScenesController _scenesController;
 
         private void OnEnable()
@@ -23,9 +24,15 @@ namespace BehaviorControllers.GameControllers
             EventBus.Subscribe(this);
         }
 
-        private void Start()
+        private void Awake()
         {
-            StartCoroutine(_popupsController.ShowPopup<MenuPopup>());
+            StartCoroutine(ShowMenu());
+        }
+
+        private IEnumerator ShowMenu()
+        {
+            yield return TransitionController.Instance.ShowForwardTransition();
+            yield return PopupsController.Instance.ShowPopup<MenuPopup>();
         }
         
         private void OnDisable()
@@ -35,7 +42,6 @@ namespace BehaviorControllers.GameControllers
         
         public override void Initialize(ControllersManager controllersManager)
         {
-            _popupsController = controllersManager.GetEntityController<PopupsController>();
             _scenesController = controllersManager.GetEntityController<ScenesController>();
         }
         
@@ -48,18 +54,19 @@ namespace BehaviorControllers.GameControllers
             }
             else
             {
-                StartGameScene();
+                StartCoroutine(StartGameScene());
             }
         }
-        
+
         public void OnPackButtonPressed()
         {
-            StartGameScene();
+            StartCoroutine(StartGameScene());
         }
 
-        private void StartGameScene()
+        private IEnumerator StartGameScene()
         {
-            _popupsController.ClearPopups();
+            yield return TransitionController.Instance.ShowBackwardTransition();
+            PopupsController.Instance.ClearPopups();
             _scenesController.LoadScene(_gameSceneID);
         }
     }

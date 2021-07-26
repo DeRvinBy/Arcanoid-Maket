@@ -1,10 +1,11 @@
-﻿using BehaviorControllers.Abstract;
+﻿using Animations;
+using BehaviorControllers.Abstract;
 using EventInterfaces.BallEvents;
 using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using GameComponents.Platform.Behaviour;
-using GameComponents.Platform.Data;
 using GameSettings.GamePlatformSettings;
+using MyLibrary.CollisionStorage.Colliders2D;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -19,32 +20,51 @@ namespace BehaviorControllers.EntitiesControllers
         private PlatformBehaviour _behaviour;
 
         [SerializeField]
+        private GeneralCollider2D _collider;
+        
+        [SerializeField]
         private Transform _spawnPlatformTransform;
 
-        private PlatformProperties _properties;
-
+        private float _previousPlatformSize;
+        private ValueAnimation _valueAnimation;
+        
         private void OnEnable()
         {
             EventBus.Subscribe(this);
+            _collider.RegisterCollider(this);
         }
 
         private void OnDisable()
         {
             EventBus.Unsubscribe(this);
+            _collider.UnregisterCollider(this);
         }
 
         public override void Initialize()
         {
-            _properties = new PlatformProperties();
-            _behaviour.Initialize(_properties);
+            _behaviour.Initialize();
+            _valueAnimation = new ValueAnimation(_settings.ValueConfig.EaseMode, _settings.ValueConfig.Duration);
+        }
+
+        public void SetAdditionalSpeed(float value)
+        {
+            _behaviour.UpdatePlatformSpeed(_settings.BaseSpeed + value);
+        }
+        
+        public void SetAdditionalSize(float value)
+        {
+            var targetSize = _settings.StartSize + value;
+            _valueAnimation.PlayAnimation(_previousPlatformSize, targetSize, _behaviour.UpdatePlatformSize);
+            _previousPlatformSize = targetSize;
         }
         
         public void OnPrepareGame()
         {
-            _properties.SetupProperties(_settings);
-            _behaviour.SetupPlatform();
+            _valueAnimation.StopAnimation();
+            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.StartSize);
+            _previousPlatformSize = _settings.StartSize;
         }
-        
+
         public void OnStartGame()
         {
             SpawnBall();
@@ -63,6 +83,7 @@ namespace BehaviorControllers.EntitiesControllers
         public void OnEndGame()
         {
             _behaviour.ResetPlatform();
+            _valueAnimation.StopAnimation();
         }
     }
 }

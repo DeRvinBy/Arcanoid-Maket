@@ -1,44 +1,44 @@
 ﻿using System.Collections.Generic;
 using GameEntities.Blocks.Enumerations;
-using GameSettings.GameBlockSettings.Destructible;
-using GameSettings.GameBlockSettings.Indestructible;
+using GameSettings.GameBonusSettings.ObjectSettings;
 using MyLibrary.ObjectPool.Abstract;
 using UnityEngine;
 
 namespace GameSettings.GameBlockSettings
 {
+    [CreateAssetMenu(fileName = "New Block Settings", menuName = "Creator Settings/Block Settings")]
     public class BlockSettings : AbstractSettings
     {
         [SerializeField]
         private BlockLifeSettings _lifeSettings;
 
         [SerializeField]
-        private IndestructibleBlockSettings _indestructibleSettings;
-        
+        private VisualBlockSettingsContainer[] _visualSettingsContainers;
+
         [SerializeField]
-        private DestructibleBlockSettingsContainer[] _settingsContainers;
-
+        private BonusObjectSettings _bonusObjectSettings;
+        
         public BlockLifeSettings LifeSettings => _lifeSettings;
-        public IndestructibleBlockSettings IndestructibleSettings => _indestructibleSettings;
+        public BonusObjectSettings BonusObjectSettings => _bonusObjectSettings;
 
-        private Dictionary<BlockId, DestructibleBlockSettings> _settingsMap;
+        private Dictionary<BlockSpriteId, VisualBlockSettings> _settingsMap;
 
         public void Initialize()
         {
             _lifeSettings.Initialize();
-            CreateSettingMap();
+            CreateSettingMaps();
         }
 
-        private void CreateSettingMap()
+        private void CreateSettingMaps()
         {
-            _settingsMap = new Dictionary<BlockId, DestructibleBlockSettings>();
-            foreach (var container in _settingsContainers)
+            _settingsMap = new Dictionary<BlockSpriteId, VisualBlockSettings>();
+            foreach (var container in _visualSettingsContainers)
             {
                 _settingsMap.Add(container.BlockID, container.BlockSettings);
             }
         }
 
-        public DestructibleBlockSettings GetBlockSettings(BlockId blockID)
+        public VisualBlockSettings GetBlockSettings(BlockSpriteId blockID)
         {
             return _settingsMap[blockID];
         }

@@ -20,7 +20,7 @@ namespace GameComponents.Field
                 for (int j = 0; j < grid.HorizontalCount; j++)
                 {
                     var cell = cells[i, j];
-                    if (cell.BlockId != BlockId.Empty)
+                    if (cell.Properties.Type != BlockType.Empty)
                     {
                         CreateBlock(cell, cellSize);
                     }
@@ -31,7 +31,7 @@ namespace GameComponents.Field
         private void CreateBlock(FieldCell cell, Vector2 cellSize)
         {
             EventBus.RaiseEvent<IBlockOnSceneHandler>(a => 
-                a.OnCreateBlock(cell.Position, cellSize, transform, cell.BlockId));
+                a.OnCreateBlock(cell.Position, cellSize, transform, cell.Properties));
         }
 
         private void OnDrawGizmos()

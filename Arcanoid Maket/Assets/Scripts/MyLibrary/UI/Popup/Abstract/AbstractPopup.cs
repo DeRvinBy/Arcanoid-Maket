@@ -1,15 +1,15 @@
 ﻿using System.Collections;
-using MyLibrary.ObjectPool.Abstract;
+using MyLibrary.UI.UIPool;
 using UnityEngine;
 
 namespace MyLibrary.UI.Popup.Abstract
 {
-    public abstract class AbstractPopup : PoolObject
+    public abstract class AbstractPopup : UIElementPoolObject
     {
         [SerializeField]
         private AbstractPopupAnimation _popupAnimation;
-        
-        public virtual void Initialize()
+
+        public override void Initialize()
         {
             gameObject.SetActive(false);
             if (_popupAnimation != null)
@@ -21,6 +21,7 @@ namespace MyLibrary.UI.Popup.Abstract
         public IEnumerator ShowPopup()
         {
             gameObject.SetActive(true);
+            PreparePopup();
             if (_popupAnimation != null)
             {
                 yield return _popupAnimation.PlayShowAnimation();
@@ -31,14 +32,15 @@ namespace MyLibrary.UI.Popup.Abstract
 
         public IEnumerator HidePopup()
         {
-            ResetPopup();
             if (_popupAnimation != null)
             {
                 yield return _popupAnimation.PlayHideAnimation();
             }
+            ResetPopup();
             gameObject.SetActive(false);
         }
-
+        
+        protected virtual void PreparePopup() {}
         protected virtual void StartPopup() {}
         protected virtual void ResetPopup() {}
     }

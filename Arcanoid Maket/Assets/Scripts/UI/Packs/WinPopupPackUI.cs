@@ -1,4 +1,8 @@
-﻿using MyLibrary.Localization.UILocalization;
+﻿using System;
+using Animations.Presets;
+using DG.Tweening;
+using MyLibrary.Localization.UILocalization;
+using MyLibrary.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +18,18 @@ namespace UI.Packs
         
         [SerializeField]
         private Slider _slider;
+        
+        [SerializeField]
+        private SliderPreset _sliderAnimation;
 
+        [SerializeField]
+        private EventButton _nextButton;
+        
+        [SerializeField]
+        private CanvasGroupPreset _buttonAnimation;
+        
+        private float _previousSliderValue;
+        
         public void SetPackImage(Sprite icon)
         {
             _packImage.sprite = icon;
@@ -25,10 +40,31 @@ namespace UI.Packs
             _packText.SetTranslationName(packKey);
         }
 
-        public void UpdateSlider(float value, float maxValue)
+        public void SetupSlider(float currentValue, float maxValue)
         {
+            _previousSliderValue = currentValue;
             _slider.maxValue = maxValue;
-            _slider.value = value;
+            _slider.value = currentValue;
+        }
+
+        public void PreaprePackUI()
+        {
+            _buttonAnimation.ResetToStartAlpha();
+            _nextButton.Disable();
+        }
+        
+        public void UpdatePackProgress(float nextSliderValue, TweenCallback onPackChanged)
+        {
+            var animationSequence = DOTween.Sequence();
+
+            var sliderTween = _sliderAnimation.GetAnimationTween(_previousSliderValue, nextSliderValue);
+            sliderTween.onComplete += onPackChanged;
+            _previousSliderValue = nextSliderValue;
+            animationSequence.Append(sliderTween);
+
+            var buttonTween = _buttonAnimation.GetForwardAnimation();
+            buttonTween.onComplete += _nextButton.Enable;
+            animationSequence.Append(buttonTween);
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using MyLibrary.ObjectPool.Abstract;
+using MyLibrary.UI.UIPool;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Header.LifeUI
 {
-    public class LifeImageUI : PoolObject
+    public class LifeImageUI : UIElementPoolObject
     {
         [SerializeField]
         private Image _icon;

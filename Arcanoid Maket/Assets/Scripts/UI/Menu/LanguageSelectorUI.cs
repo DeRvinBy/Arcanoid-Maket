@@ -40,16 +40,6 @@ namespace UI.Menu
             _selector.value = setupId;
         }
 
-        public void Enable()
-        {
-            _selector.interactable = true;
-        }
-        
-        public void Disable()
-        {
-            _selector.interactable = false;
-        }
-        
         private void OnSelectorValueChanged(int id)
         {
             var language = _optionsMap[id];

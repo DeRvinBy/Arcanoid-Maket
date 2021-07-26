@@ -1,6 +1,10 @@
 ﻿using EventInterfaces.BallEvents;
+using EventInterfaces.BonusEvents;
 using GameEntities.Ball;
+using GameEntities.Bonuses;
 using GameSettings.GameFieldSettings;
+using MyLibrary.CollisionStorage.Colliders2D;
+using MyLibrary.CollisionStorage.Extensions;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -13,9 +17,44 @@ namespace GameComponents.Field
 
         [SerializeField]
         private FieldSettings _settings;
+
+        [SerializeField]
+        private TriggerCollider2D _outCollider;
+
+        [SerializeField]
+        private GeneralCollider2D _bordersCollider;
         
         private Transform _transform;
         private Vector2 _worldScale;
+
+        private void OnEnable()
+        {
+            _bordersCollider.RegisterCollider(this);
+            _outCollider.RegisterCollider(this);
+            _outCollider.OnTriggerEnter += DestroyObjectOutBorders;
+        }
+        
+        private void OnDisable()
+        {
+            _bordersCollider.UnregisterCollider(this);
+            _outCollider.UnregisterCollider(this);
+            _outCollider.OnTriggerEnter -= DestroyObjectOutBorders;
+        }
+
+        private void DestroyObjectOutBorders(Collider2D other)
+        {
+            var ball = other.GetColliderMonoBehaviour<BallEntity>();
+            if (ball != null)
+            {
+                EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnDestroyBall(ball));
+            }
+            
+            var bonus = other.GetColliderMonoBehaviour<BonusObject>();
+            if (bonus != null)
+            {
+                EventBus.RaiseEvent<IBonusOnSceneHandler>(a => a.OnDestroyBonusObject(bonus));
+            }
+        }
         
         public void Initialize()
         {
@@ -45,12 +84,6 @@ namespace GameComponents.Field
             var position = _transform.position;
             position.y -= _worldScale.y * _settings.TopOffset;
             _transform.position = position;
-        }
-
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            var ball = other.GetComponent<BallEntity>();
-            EventBus.RaiseEvent<IBallSceneHandler>(a => a.OnDestroyBall(ball));
         }
     }
 }
