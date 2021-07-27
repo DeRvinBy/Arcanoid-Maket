@@ -12,7 +12,7 @@ namespace GamePacks
 {
     public class PacksManager : Singleton<PacksManager>
     {
-        private const string PacksConfigPath = "Data/Packs/build_packs";
+        private const string PacksConfigPath = "Data/Packs/debug_packs";
         private const string TilemapFilePath = "Data/tilemap";
 
         private PacksService _service;

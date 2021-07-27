@@ -4,6 +4,7 @@ using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
+using MyLibrary.CollisionStorage.Colliders2D;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ namespace GameEntities.Blocks
         [SerializeField]
         private BlockParticles _particles;
 
+        [SerializeField]
+        private GeneralCollider2D _collider;
+        
         private BlockSettings _settings;
         private bool _isDestroying;
         
@@ -36,7 +40,14 @@ namespace GameEntities.Blocks
         public override void OnSetup()
         {
             base.OnSetup();
+            _collider.RegisterCollider(this);
             _isDestroying = false;
+        }
+
+        public override void OnReset()
+        {
+            base.OnReset();
+            _collider.UnregisterCollider(this);
         }
 
         public override void DestroyBlock()
