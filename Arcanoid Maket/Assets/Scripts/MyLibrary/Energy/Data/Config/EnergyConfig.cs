@@ -12,12 +12,10 @@ namespace MyLibrary.Energy.Data.Config
         private int _energyPerTime = 1;
 
         [SerializeField]
-        private int _restoringTimeInMinutes = 20;
+        private int _restoringTimeInSeconds = 60;
 
-        public int RestoringTimeInMinutes => _restoringTimeInMinutes;
-
+        public int RestoringTimeInSeconds => _restoringTimeInSeconds;
         public int EnergyPerTime => _energyPerTime;
-
         public int MaxEnergy => _maxEnergy;
     }
 }

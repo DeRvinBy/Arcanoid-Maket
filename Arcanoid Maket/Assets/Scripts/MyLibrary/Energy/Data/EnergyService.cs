@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using MyLibrary.Energy.Data.Config;
 using MyLibrary.Energy.Data.EnergySave;
 using MyLibrary.Energy.Data.EnergySave.Interfaces;
@@ -11,7 +12,10 @@ namespace MyLibrary.Energy.Data
         private IEnergySaveLoadManager _saveLoadManager;
         private EnergyConfig _config;
         private EnergySaveItem _energySave;
+        private bool _isRestoring;
 
+        private DateTime _nextRestoreTime;
+        
         public EnergyService(IEnergySaveLoadManager saveLoadManager)
         {
             _saveLoadManager = saveLoadManager;
@@ -19,34 +23,82 @@ namespace MyLibrary.Energy.Data
         
         public void SaveEnergy()
         {
+            if (_isRestoring)
+            {
+                var remainingSeconds = (float)_nextRestoreTime.Subtract(DateTime.Now).TotalSeconds;
+                _energySave.RestoreProgress = remainingSeconds / _config.RestoringTimeInSeconds;
+            }
+            else
+            {
+                _energySave.RestoreProgress = 0;
+            }
+            _energySave.TimeSaveValue = DateTime.Now;
             _saveLoadManager.SaveEnergySave(_energySave);
         }
         
         public void Initialize(EnergyConfig config)
         {
             _config = config;
-            _energySave = _saveLoadManager.LoadEnergySave();
-            UpdateEnergySaveByCurrentTime();
+            
+            if (_saveLoadManager.IsSaveExist())
+            {
+                _energySave = _saveLoadManager.LoadEnergySave();
+                UpdateEnergySaveByCurrentTime();
+            }
+            else
+            {
+                _energySave = new EnergySaveItem {EnergySaveValue = 30, TimeSaveValue = DateTime.Now};
+                UpdateNextRestoreTime(_config.RestoringTimeInSeconds);
+            }
         }
 
         private void UpdateEnergySaveByCurrentTime()
         {
-            var now = DateTime.Now.AddMonths(1);
+            var now = DateTime.Now;
             var timeInterval = now.Subtract(_energySave.TimeSaveValue);
-            Debug.Log("Total minutes: " + timeInterval.TotalMinutes);
-            var energy = _config.EnergyPerTime * (int)(timeInterval.TotalMinutes / _config.RestoringTimeInMinutes);
+            
+            var passedTime = timeInterval.TotalSeconds + _energySave.RestoreProgress * _config.RestoringTimeInSeconds;
+            var energy = _config.EnergyPerTime * (int) passedTime / _config.RestoringTimeInSeconds;
+            var remainingSeconds = (int) passedTime % _config.RestoringTimeInSeconds;
             AddEnergy(energy);
-            Debug.Log("Current energy: " + _energySave.EnergySaveValue);
+            UpdateNextRestoreTime(remainingSeconds);
+        }
+
+        private void UpdateNextRestoreTime(int seconds)
+        {
+            _nextRestoreTime = DateTime.Now.AddSeconds(seconds);
         }
 
         private void AddEnergy(int value)
         {
-            Debug.Log("Add value: " + value);
             _energySave.EnergySaveValue += value;
             if (_energySave.EnergySaveValue > _config.MaxEnergy)
             {
                 _energySave.EnergySaveValue = _config.MaxEnergy;
+                _isRestoring = false;
             }
+        }
+
+        public IEnumerator RestoreEnergy()
+        {
+            if (_energySave.EnergySaveValue < _config.MaxEnergy)
+            {
+                _isRestoring = true;
+            }
+
+            do
+            {
+                var restoreInterval = (float)_nextRestoreTime.Subtract(DateTime.Now).TotalSeconds;
+                if (restoreInterval <= 0 || restoreInterval > _config.RestoringTimeInSeconds)
+                {
+                    restoreInterval = _config.RestoringTimeInSeconds;
+                    _nextRestoreTime = DateTime.Now.AddSeconds(restoreInterval);
+                }
+                yield return new WaitForSeconds(restoreInterval);
+                AddEnergy(_config.EnergyPerTime);
+                UpdateNextRestoreTime(_config.RestoringTimeInSeconds);
+            } 
+            while (_isRestoring);
         }
     }
 }

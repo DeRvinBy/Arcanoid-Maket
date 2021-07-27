@@ -1,5 +1,4 @@
-﻿using System;
-using MyLibrary.Energy.Data.EnergySave.Interfaces;
+﻿using MyLibrary.Energy.Data.EnergySave.Interfaces;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -16,14 +15,8 @@ namespace MyLibrary.Energy.Data.EnergySave
 
         public EnergySaveItem LoadEnergySave()
         {
-            if (IsSaveExist())
-            {
-                var json = PlayerPrefs.GetString(SaveKey);
-                return JsonConvert.DeserializeObject<EnergySaveItem>(json);
-            }
-
-            var save = new EnergySaveItem {TimeSaveValue = DateTime.Now};
-            return save;
+            var json = PlayerPrefs.GetString(SaveKey);
+            return JsonConvert.DeserializeObject<EnergySaveItem>(json);
         }
 
         public void SaveEnergySave(EnergySaveItem save)

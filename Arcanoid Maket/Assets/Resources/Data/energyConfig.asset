@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxEnergy: 30
   _energyPerTime: 1
-  _restoringTimeInMinutes: 20
+  _restoringTimeInSeconds: 5

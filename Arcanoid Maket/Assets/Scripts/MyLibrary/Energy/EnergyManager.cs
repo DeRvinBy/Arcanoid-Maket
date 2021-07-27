@@ -24,6 +24,8 @@ namespace MyLibrary.Energy
             _service = new EnergyService(saveLoadManager);
             var config = Resources.Load<EnergyConfig>(ConfigPath);
             _service.Initialize(config);
+
+            StartCoroutine(_service.RestoreEnergy());
         }
     }
 }
