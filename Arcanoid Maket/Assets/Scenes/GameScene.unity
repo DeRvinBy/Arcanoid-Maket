@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rageBallSprite: {fileID: -7322278629185864981, guid: fa5338999ca421a48be4dfba8947172f, type: 3}
-  _effectTime: 5
+  _effectTime: 10
 --- !u!1 &156239578
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _variableValue: 0.5
-  _timeOfEffect: 5
+  _timeOfEffect: 7.5
   _maxValue: 1
   _minValue: -0.5
 --- !u!1 &376653950

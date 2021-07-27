@@ -19,6 +19,7 @@ namespace BehaviorControllers.EntitiesControllers
         private BallsVelocitySettings _velocitySettings;
         
         private float _currentBallsVelocity;
+        private float _additionalVelocity;
 
         private void OnEnable()
         {
@@ -32,18 +33,19 @@ namespace BehaviorControllers.EntitiesControllers
 
         public void SetAdditionalVelocity(float additionalVelocity)
         {
-            _currentBallsVelocity += additionalVelocity;
+            _additionalVelocity = additionalVelocity;
             UpdateBallsVelocity();
         }
 
         private void UpdateBallsVelocity()
         {
-            _ballsManager.InvokeBallsAction(a => a.SetCurrentVelocity(_currentBallsVelocity));
+            var velocity = _currentBallsVelocity + _additionalVelocity;
+            _ballsManager.InvokeBallsAction(a => a.SetCurrentVelocity(velocity));
         }
         
         public void OnSpawnNewBall(BallEntity ball)
         {
-            ball.SetCurrentVelocity(_currentBallsVelocity);
+            ball.SetCurrentVelocity(_currentBallsVelocity + _additionalVelocity);
         }
         
         public void OnBlockDestroy()
@@ -56,7 +58,7 @@ namespace BehaviorControllers.EntitiesControllers
 
             UpdateBallsVelocity();
         }
-
+        
         public void OnPrepareGame()
         {
             _currentBallsVelocity = _velocitySettings.StartVelocity;
