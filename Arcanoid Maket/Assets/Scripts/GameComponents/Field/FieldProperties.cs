@@ -28,7 +28,7 @@ namespace GameComponents.Field
             var screenPosition = new Vector2(screenSideOffset, fieldHeight);
             _startPosition = _sceneCamera.ScreenToWorldPoint(screenPosition);
         }
-        
+
         public float GetCellMargin()
         {
             return _settings.CellMargin;

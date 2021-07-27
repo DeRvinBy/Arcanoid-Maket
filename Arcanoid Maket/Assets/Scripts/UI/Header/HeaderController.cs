@@ -2,12 +2,15 @@
 using BehaviorControllers.Abstract;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
+using GameComponents.Field;
 using GamePacks;
 using GamePacks.Data.Packs;
+using GameSettings.GameFieldSettings;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Button;
 using UI.Header.PackUI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Header
 {
@@ -19,6 +22,15 @@ namespace UI.Header
         [SerializeField]
         private EventButton _pauseButton;
 
+        [SerializeField]
+        private FieldSettings _filedSettings;
+        
+        [SerializeField]
+        private CanvasScaler _canvasScaler;
+
+        [SerializeField]
+        private RectTransform _headerTransform;
+        
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -32,6 +44,8 @@ namespace UI.Header
         public override void Initialize()
         {
             _pauseButton.OnButtonPressed += OnPauseButtonPressed;
+            var height = _canvasScaler.referenceResolution.y * _filedSettings.TopOffset;
+            _headerTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
         }
         
         private void OnPauseButtonPressed()
