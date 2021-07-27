@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GamePacks.Data.Player.SaveLoader;
+using GamePacks.Data.Player.SaveLoadManagers;
 using UnityEngine;
 
 namespace GamePacks.Data.Player
@@ -7,23 +7,23 @@ namespace GamePacks.Data.Player
     public class PlayerPacksSave
     {
         private PacksSaveContainer _packsSaveContainer;
-        private readonly ISaveLoader _loader;
+        private readonly IPacksSaveLoadManager _loadManager;
         
-        public PlayerPacksSave(ISaveLoader loader)
+        public PlayerPacksSave(IPacksSaveLoadManager loadManager)
         {
-            _loader = loader;
+            _loadManager = loadManager;
         }
         
         public void SavePacksToSave()
         {
-            _loader.Save(_packsSaveContainer);
+            _loadManager.Save(_packsSaveContainer);
         }
         
         public void LoadPacksFromSave(string startPackKey)
         {
-            if (_loader.IsSaveExist())
+            if (_loadManager.IsSaveExist())
             {
-                _packsSaveContainer = _loader.Load();
+                _packsSaveContainer = _loadManager.Load();
             }
             else
             {

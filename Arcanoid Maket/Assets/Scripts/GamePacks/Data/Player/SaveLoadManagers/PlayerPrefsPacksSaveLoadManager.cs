@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using UnityEngine;
 
-namespace GamePacks.Data.Player.SaveLoader
+namespace GamePacks.Data.Player.SaveLoadManagers
 {
-    public class PlayerPrefsLoader : ISaveLoader
+    public class PlayerPrefsPacksSaveLoadManager : IPacksSaveLoadManager
     {
         private const string SaveKey = "PacksSaveJSON";
 

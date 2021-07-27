@@ -1,6 +1,6 @@
-﻿namespace GamePacks.Data.Player.SaveLoader
+﻿namespace GamePacks.Data.Player.SaveLoadManagers
 {
-    public interface ISaveLoader
+    public interface IPacksSaveLoadManager
     {
         bool IsSaveExist();
         PacksSaveContainer Load();

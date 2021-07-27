@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GamePacks.Data.Packs;
 using GamePacks.Data.Player;
-using GamePacks.Data.Player.SaveLoader;
+using GamePacks.Data.Player.SaveLoadManagers;
 using UnityEngine;
 
 namespace GamePacks.Data
@@ -20,7 +20,7 @@ namespace GamePacks.Data
         public void Initialize(PacksConfig packsConfig)
         {
             _packsMap = packsConfig.GetPacksMap();
-            var loader = new PlayerPrefsLoader();
+            var loader = new PlayerPrefsPacksSaveLoadManager();
             _isSaveExist = loader.IsSaveExist();
             _playerPacksSave = new PlayerPacksSave(loader);
             _currentPackKey = packsConfig.FirstPack.Key;
