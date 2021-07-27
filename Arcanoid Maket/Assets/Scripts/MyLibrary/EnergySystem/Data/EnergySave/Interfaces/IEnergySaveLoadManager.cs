@@ -1,4 +1,4 @@
-﻿namespace MyLibrary.Energy.Data.EnergySave.Interfaces
+﻿namespace MyLibrary.EnergySystem.Data.EnergySave.Interfaces
 {
     public interface IEnergySaveLoadManager
     {

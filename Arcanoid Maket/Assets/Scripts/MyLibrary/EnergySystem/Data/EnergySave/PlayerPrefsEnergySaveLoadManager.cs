@@ -1,8 +1,8 @@
-﻿using MyLibrary.Energy.Data.EnergySave.Interfaces;
+﻿using MyLibrary.EnergySystem.Data.EnergySave.Interfaces;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace MyLibrary.Energy.Data.EnergySave
+namespace MyLibrary.EnergySystem.Data.EnergySave
 {
     public class PlayerPrefsEnergySaveLoadManager : IEnergySaveLoadManager
     {

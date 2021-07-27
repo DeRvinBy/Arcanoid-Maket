@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyLibrary.Energy.Data.EnergySave
+namespace MyLibrary.EnergySystem.Data.EnergySave
 {
     public class EnergySaveItem
     {
