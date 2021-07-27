@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using GameComponents.Field;
+using GameEntities.Blocks;
 using GameSettings.GameBallSettings;
 using MyLibrary.CollisionStorage.Extensions;
 using UnityEngine;
@@ -49,7 +50,8 @@ namespace GameEntities.Ball.Behaviour
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.collider.IsColliderHasMonoBehaviour<FieldBorders>())
+            if (other.collider.IsColliderHasMonoBehaviour<FieldBorders>() 
+                || other.collider.IsColliderHasMonoBehaviour<IndestructibleBlock>())
             {
                 UpdateBounceDirection();
             }

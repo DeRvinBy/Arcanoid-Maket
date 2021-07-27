@@ -39,9 +39,9 @@ namespace GameEntities.Ball
             _ballSprite.sprite = _settings.BallSprite;
         }
 
-        public void SetAdditionalVelocity(float additionalVelocity)
+        public void SetCurrentVelocity(float velocity)
         {
-            _currentVelocity = _settings.BaseVelocity + additionalVelocity;
+            _currentVelocity = velocity;
             _behaviour.SetVelocity(_currentVelocity);
         }
         
@@ -55,7 +55,6 @@ namespace GameEntities.Ball
         {
             base.OnSetup();
             _currentDamage = _settings.BallDamage;
-            _currentVelocity = _settings.BaseVelocity;
             _ballSprite.sprite = _settings.BallSprite;
             _collider.RegisterCollider(this);
         }

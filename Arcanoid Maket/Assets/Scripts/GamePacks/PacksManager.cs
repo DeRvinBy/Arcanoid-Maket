@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GamePacks.Data;
 using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
@@ -11,13 +12,13 @@ namespace GamePacks
 {
     public class PacksManager : Singleton<PacksManager>
     {
-        private const string PacksConfigPath = "Data/Packs/build_packs";
+        private const string PacksConfigPath = "Data/Packs/debug_packs";
         private const string TilemapFilePath = "Data/tilemap";
 
         private PacksService _service;
         private ILevelParser _parser;
 
-        protected override void OnApplicationQuit()
+        private void OnApplicationPause(bool pauseStatus)
         {
             _service.SavePlayerPacks();
         }
@@ -27,10 +28,14 @@ namespace GamePacks
             var config = Resources.Load<PacksConfig>(PacksConfigPath);
             _service = new PacksService();
             _service.Initialize(config);
+            
+#if UNITY_EDITOR
             if (_service.IsSaveExit())
             {
                 _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
-            }
+            }         
+#endif
+            
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
             _parser = new JsonParser(tilemap.text);
         }
@@ -51,7 +56,7 @@ namespace GamePacks
             return _service.GetPacksInfo();
         }
 
-        public PackInfo GetCurrentPack()
+        public PackInfo GetCurrentPackInfo()
         {
             return _service.GetCurrentPackInfo();
         }
