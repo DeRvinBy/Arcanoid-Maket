@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GamePacks.Data.Config;
 using GamePacks.Data.Packs;
 using GamePacks.Data.Player;
 using GamePacks.Data.Player.SaveLoadManagers;
@@ -60,7 +61,6 @@ namespace GamePacks.Data
                 var isComplete = _playerPacksSave.IsPackComplete(key);
                 var currentLevel = _playerPacksSave.GetCurrentLevelId(key);
                 var packsLevelCount = _packsMap[key].LevelCount;
-                packInfo.IsComplete = isComplete;
                 packInfo.CurrentLevel = currentLevel + 1;
                 packInfo.PackProgressLevel = isComplete ? packsLevelCount : currentLevel;
                 packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);

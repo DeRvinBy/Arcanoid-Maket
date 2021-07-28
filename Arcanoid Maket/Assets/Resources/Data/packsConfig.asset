@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4fb1d5e05e6460e8a07ccef2ace3c17, type: 3}
-  m_Name: debug_packs
+  m_Name: packsConfig
   m_EditorClassIdentifier: 
-  _packs:
-  - {fileID: 11400000, guid: 1f1d66cb1c580cc46a934a43dfb6a76a, type: 2}
-  - {fileID: 11400000, guid: 8e419549ef7a22045a5001aadf98de99, type: 2}
+  _currentContainer: {fileID: 11400000, guid: 5fd241ecbd69967458d7a87386a29f9f, type: 2}
   _debugPack: test_pack
-  _debugLevelId: 0
+  _debugLevelId: 2

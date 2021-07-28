@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fb1d5e05e6460e8a07ccef2ace3c17, type: 3}
+  m_Script: {fileID: 11500000, guid: 114a7468ad9c4494b4959653a9e580a2, type: 3}
   m_Name: build_packs
   m_EditorClassIdentifier: 
   _packs:
@@ -18,5 +18,3 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2dd5bdcc08a12c9489aebde5de8a90fc, type: 2}
   - {fileID: 11400000, guid: 1b5721b30d8a1eb4aa8652ef7fab70ab, type: 2}
   - {fileID: 11400000, guid: b4b95b549c536854fabdfb2461c41bec, type: 2}
-  _debugPack: little_pig_pack
-  _debugLevelId: 0

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GamePacks.Data;
+using GamePacks.Data.Config;
 using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
 using GamePacks.Data.Level.LevelParser.Json;
@@ -11,7 +12,7 @@ namespace GamePacks
 {
     public class PacksManager : Singleton<PacksManager>
     {
-        private const string PacksConfigPath = "Data/Packs/debug_packs";
+        private const string PacksConfigPath = "Data/Packs/packs_config";
         private const string TilemapFilePath = "Data/tilemap";
 
         private PacksService _service;
