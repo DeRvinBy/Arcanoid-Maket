@@ -10,7 +10,7 @@ namespace MyLibrary.UI.Button
 
         [SerializeField]
         private AbstractButtonAnimation _animation;
-        
+
         [SerializeField]
         private UnityEngine.UI.Button _button;
 

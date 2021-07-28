@@ -29,7 +29,7 @@ namespace UI.Popups
         private void OnRestartButtonPressed()
         {
             EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnStartTime());
-            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnRestartGameProcess());
         }
 
         private void OnBackButtonPressed()

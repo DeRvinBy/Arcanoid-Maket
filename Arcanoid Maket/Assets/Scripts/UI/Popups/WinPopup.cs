@@ -1,8 +1,12 @@
 ﻿using EventInterfaces.GameEvents;
 using EventInterfaces.PacksEvents;
 using EventInterfaces.StatesEvents;
+using GameComponents.Energy.Commands;
+using GameComponents.Energy.Enumerations;
+using GameComponents.Energy.UI;
 using GamePacks;
 using GamePacks.Data.Packs;
+using MyLibrary.EnergySystem;
 using MyLibrary.EventSystem;
 using MyLibrary.UI.Button;
 using MyLibrary.UI.Popup.Abstract;
@@ -18,7 +22,7 @@ namespace UI.Popups
         
         [SerializeField]
         private EventButton _nextButton;
-
+        
         private PackInfo _currentPack;
         private bool _isNeedChoosePack;
 
@@ -32,7 +36,7 @@ namespace UI.Popups
 
         protected override void PreparePopup()
         {
-            _popupPackUI.PreaprePackUI();
+            _popupPackUI.PreparePackUI();
         }
 
         protected override void StartPopup()
@@ -64,6 +68,7 @@ namespace UI.Popups
                 {
                     _popupPackUI.UpdatePackProgress(_currentPack.CurrentLevel, null);
                 }
+                _popupPackUI.UpdateContinueButton(!_isNeedChoosePack);
             }
             else
             {
@@ -79,7 +84,7 @@ namespace UI.Popups
             }
             else
             {
-                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());   
+                EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
             }
         }
 

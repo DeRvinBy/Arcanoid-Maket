@@ -6,7 +6,10 @@ namespace GameComponents.Energy.Commands
     {
         public override void Execute()
         {
-            _service.RemoveEnergy(_energyValue);
+            if (_service.IsEnoughEnergy(_energyValue))
+            {
+                _service.RemoveEnergy(_energyValue);
+            }
         }
     }
 }

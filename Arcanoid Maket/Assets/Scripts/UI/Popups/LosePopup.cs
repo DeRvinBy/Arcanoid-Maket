@@ -19,7 +19,7 @@ namespace UI.Popups
 
         private void OnRestartButtonPressed()
         {
-            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnStartGameProcess());
+            EventBus.RaiseEvent<IStartGameHandler>(a => a.OnRestartGameProcess());
         }
     }
 }

@@ -112,39 +112,14 @@ namespace MyLibrary.EnergySystem
 
         public void Update()
         {
-            AbstractCommandWithEnergy command = null;
-            
             if (Input.GetKeyDown(KeyCode.W))
             {
-                command = new AddEnergyCommand();
-                SetupCommandWithEnergy(command, 3);
-                Debug.Log("Win level");
+                _service.AddEnergyOverLimit(5);
             }
             
             if (Input.GetKeyDown(KeyCode.S))
             {
-                command = new SpendEnergyCommand();
-                SetupCommandWithEnergy(command, 0);
-                Debug.Log("Start level");
-            }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                command = new SpendEnergyCommand();
-                SetupCommandWithEnergy(command, 1);
-                Debug.Log("Restart level");
-            }
-            
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                command = new SpendEnergyCommand();
-                SetupCommandWithEnergy(command, 2);
-                Debug.Log("Continue level");
-            }
-
-            if (command != null)
-            {
-                command.Execute();
+                _service.RemoveEnergy(5);
             }
         }
     }
