@@ -1,4 +1,4 @@
-﻿namespace MyLibrary.Localization.UILocalization
+﻿namespace MyLibrary.Localization.UI
 {
     public class TMProCustomTextLocalization : TMProTextLocalization
     {

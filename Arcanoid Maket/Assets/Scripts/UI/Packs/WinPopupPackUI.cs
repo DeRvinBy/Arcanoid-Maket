@@ -1,7 +1,7 @@
 ﻿using System;
 using Animations.Presets;
 using DG.Tweening;
-using MyLibrary.Localization.UILocalization;
+using MyLibrary.Localization.UI;
 using MyLibrary.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;

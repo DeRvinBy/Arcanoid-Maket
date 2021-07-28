@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using MyLibrary.EnergySystem.Data.Abstract;
-using MyLibrary.EnergySystem.Data.Config;
 using UnityEngine;
 
 namespace GameComponents.Energy.Config
 {
+    [CreateAssetMenu(fileName = "New Energy Values Config", menuName = "Energy/Energy Values Config")]
     public class GameEnergyValuesContainer : EnergyValuesContainer
     {
         [SerializeField]

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace MyLibrary.Localization.UILocalization
+namespace MyLibrary.Localization.UI
 {
     public class TMProValueLocalization : TMProTextLocalization
     {

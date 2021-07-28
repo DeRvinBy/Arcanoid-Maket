@@ -3,7 +3,7 @@ using MyLibrary.Localization.Interfaces;
 using TMPro;
 using UnityEngine;
 
-namespace MyLibrary.Localization.UILocalization
+namespace MyLibrary.Localization.UI
 {
     public class TMProTextLocalization : MonoBehaviour, ILanguageChangedEvent
     {

@@ -1,7 +1,13 @@
-﻿using MyLibrary.EnergySystem.Data;
+﻿using System;
+using GameComponents.Energy.Commands;
+using MyLibrary.EnergySystem.Data;
 using MyLibrary.EnergySystem.Data.Abstract;
 using MyLibrary.EnergySystem.Data.Config;
 using MyLibrary.EnergySystem.Data.EnergySave;
+using MyLibrary.EnergySystem.Data.EnergySave.Interfaces;
+using MyLibrary.EnergySystem.Data.Info;
+using MyLibrary.EnergySystem.Interfaces;
+using MyLibrary.EventSystem;
 using MyLibrary.Singleton;
 using UnityEngine;
 
@@ -11,29 +17,135 @@ namespace MyLibrary.EnergySystem
     {
         private const string ConfigPath = "Data/energyConfig";
 
+        private IEnergySaveLoadManager _saveLoadManager;
+        private EnergySaveItem _energySave;
+        private EnergyConfig _config;
         private EnergyService _service;
-        private EnergyValuesContainer _energyValues;
+        private EnergyRestore _restore;
 
+        protected override void OnApplicationQuit()
+        {
+            SaveEnergy();
+        }
+        
         private void OnApplicationPause(bool pauseStatus)
         {
-            _service.SaveEnergy();
+            SaveEnergy();
+        }
+        
+        private void SaveEnergy()
+        {
+            var energyInfo = _service.GetEnergyInfo();
+            _energySave.EnergySaveValue = energyInfo.CurrentEnergy;
+            _energySave.RestoreProgress = _restore.GetRestoreProgress();
+            _energySave.TimeSaveValue = DateTime.Now;
+            _saveLoadManager.SaveEnergySave(_energySave);
         }
 
         protected override void Initialize()
         {
-            var saveLoadManager = new PlayerPrefsEnergySaveLoadManager();
-            _service = new EnergyService(saveLoadManager);
-            var config = Resources.Load<EnergyConfig>(ConfigPath);
-            _service.Initialize(config);
-            _energyValues = config.EnergyValuesContainer;
+            _config = Resources.Load<EnergyConfig>(ConfigPath);
+            _saveLoadManager = new PlayerPrefsEnergySaveLoadManager();
+            LoadEnergy();
+            
+            _service = new EnergyService();
+            _service.Initialize(_config, _energySave.EnergySaveValue);
 
-            StartCoroutine(_service.RestoreEnergy());
+            _restore = gameObject.AddComponent<EnergyRestore>();
+            _restore.Initialize(_config);
+            if (!_service.IsFullEnergy())
+            {
+                var offlineEnergy = _restore.GetEnergyStoredOffline(_energySave);
+                _service.AddEnergy(offlineEnergy);
+            }
+
+            _service.OnEnergyChanged += UpdateCurrentEnergy;
+            _restore.OnEnergyRestoreCompleted += RestoreEnergy;
+            UpdateCurrentEnergy();
         }
 
-        public void SetupCommand(AbstractCommandWithEnergy abstractCommand, int energyValueId)
+        private void LoadEnergy()
         {
-            var value = _energyValues.GetCostById(energyValueId);
+            if (_saveLoadManager.IsSaveExist())
+            {
+                _energySave = _saveLoadManager.LoadEnergySave();
+            }
+            else
+            {
+                _energySave = new EnergySaveItem {EnergySaveValue = _config.MaxEnergy, TimeSaveValue = DateTime.Now};
+            }
+        }
+
+        private void UpdateCurrentEnergy()
+        {
+            EventBus.RaiseEvent<IEnergyUpdatedHandler>(a => a.OnEnergyUpdated());
+            if (!_service.IsFullEnergy())
+            {
+                _restore.StartRestoreEnergy();
+            }
+            else
+            {
+                _restore.StopRestoreEnergy();
+            }
+        }
+
+        private void RestoreEnergy()
+        {
+            _service.AddEnergy(_config.EnergyPerTime);
+        }
+
+        public EnergyInfo GetEnergyInfo()
+        {
+            return _service.GetEnergyInfo();
+        }
+        
+        public TimeSpan GetCurrentRestoreInterval()
+        {
+            return _restore.GetCurrentRestoreInterval();
+        }
+        
+        public void SetupCommandWithEnergy(AbstractCommandWithEnergy abstractCommand, int energyValueId)
+        {
+            var value = _config.EnergyValuesContainer.GetCostById(energyValueId);
             abstractCommand.Setup(_service, value);
+        }
+
+        public void Update()
+        {
+            AbstractCommandWithEnergy command = null;
+            
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                command = new AddEnergyCommand();
+                SetupCommandWithEnergy(command, 3);
+                Debug.Log("Win level");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                command = new SpendEnergyCommand();
+                SetupCommandWithEnergy(command, 0);
+                Debug.Log("Start level");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                command = new SpendEnergyCommand();
+                SetupCommandWithEnergy(command, 1);
+                Debug.Log("Restart level");
+            }
+            
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                command = new SpendEnergyCommand();
+                SetupCommandWithEnergy(command, 2);
+                Debug.Log("Continue level");
+            }
+
+            if (command != null)
+            {
+                command.Execute();
+            }
         }
     }
 }

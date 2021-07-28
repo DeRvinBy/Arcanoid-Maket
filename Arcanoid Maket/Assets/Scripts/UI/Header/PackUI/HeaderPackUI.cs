@@ -1,4 +1,4 @@
-﻿using MyLibrary.Localization.UILocalization;
+﻿using MyLibrary.Localization.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
