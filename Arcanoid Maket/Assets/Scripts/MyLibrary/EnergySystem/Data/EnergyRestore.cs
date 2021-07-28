@@ -57,12 +57,10 @@ namespace MyLibrary.EnergySystem.Data
         {
             var restoreInterval = _config.RestoringTimeInSeconds;
             _nextRestoreTime = DateTime.Now.AddSeconds(restoreInterval);
-
-            var currentTime = 0f;
-            while (currentTime < restoreInterval)
+            
+            while (_nextRestoreTime.Subtract(DateTime.Now).TotalSeconds > 0)
             {
-                yield return new WaitForSeconds(1f);
-                currentTime += 1f;
+                yield return null;
             }
             
             _isRestoring = false;

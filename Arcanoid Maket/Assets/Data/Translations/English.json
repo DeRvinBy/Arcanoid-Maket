@@ -5,6 +5,7 @@
   "play_button" : "Play",
   "back_button" : "Back",
   "continue_button" : "Continue",
+  "new_ball_button" : "New ball",
   "restart_button" : "Restart",
   "header_level" : "Level",
   "unknown_pack" : "???",
