@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UI.Header.LifeUI
 {
-    public class LifeImageUI : UIElementPoolObject
+    public class PlayerBallImageUI : UIElementPoolObject
     {
         [SerializeField]
         private Image _icon;
