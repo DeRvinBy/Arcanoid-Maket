@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3846490123035560078}
   - component: {fileID: 6510550978295052631}
-  - component: {fileID: 556625136310203280}
+  - component: {fileID: 4716815762595020187}
   - component: {fileID: 4303272049567245604}
   m_Layer: 5
   m_Name: TransitionPopup
@@ -47,7 +47,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3846490123035560077}
   m_CullTransparentMesh: 1
---- !u!114 &556625136310203280
+--- !u!114 &4716815762595020187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,10 +56,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3846490123035560077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf1dd9b76bce490b8f6e9f8e69f1248c, type: 3}
+  m_Script: {fileID: 11500000, guid: 72d270b887844b6b82ccba367345baf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popupAnimation: {fileID: 4303272049567245604}
+  _animation: {fileID: 4303272049567245604}
 --- !u!114 &4303272049567245604
 MonoBehaviour:
   m_ObjectHideFlags: 0

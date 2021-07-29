@@ -9,7 +9,7 @@ namespace GameComponents.Bonus.BonusesManagers.Life
     public class LifeBonusManager : MonoBehaviour, ILifeBonusHandler
     {
         [SerializeField]
-        private LifeController _lifeController;
+        private PlayerBallsController _playerBallsController;
 
         private void OnEnable()
         {
@@ -25,11 +25,11 @@ namespace GameComponents.Bonus.BonusesManagers.Life
         {
             if (modifer == ValueModifer.Decrease)
             {
-                _lifeController.DecreaseLifeCount();
+                _playerBallsController.DecreasePlayerBallCount();
             }
             else
             {
-                _lifeController.IncreaseLifeCount();
+                _playerBallsController.IncreasePlayerBallCount();
             }
         }
     }

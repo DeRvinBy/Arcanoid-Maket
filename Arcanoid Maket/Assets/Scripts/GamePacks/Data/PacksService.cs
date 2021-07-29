@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GamePacks.Data.Config;
 using GamePacks.Data.Packs;
 using GamePacks.Data.Player;
-using GamePacks.Data.Player.SaveLoader;
+using GamePacks.Data.Player.SaveLoadManagers;
 using UnityEngine;
 
 namespace GamePacks.Data
@@ -20,7 +21,7 @@ namespace GamePacks.Data
         public void Initialize(PacksConfig packsConfig)
         {
             _packsMap = packsConfig.GetPacksMap();
-            var loader = new PlayerPrefsLoader();
+            var loader = new PlayerPrefsPacksSaveLoadManager();
             _isSaveExist = loader.IsSaveExist();
             _playerPacksSave = new PlayerPacksSave(loader);
             _currentPackKey = packsConfig.FirstPack.Key;
@@ -60,7 +61,6 @@ namespace GamePacks.Data
                 var isComplete = _playerPacksSave.IsPackComplete(key);
                 var currentLevel = _playerPacksSave.GetCurrentLevelId(key);
                 var packsLevelCount = _packsMap[key].LevelCount;
-                packInfo.IsComplete = isComplete;
                 packInfo.CurrentLevel = currentLevel + 1;
                 packInfo.PackProgressLevel = isComplete ? packsLevelCount : currentLevel;
                 packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);

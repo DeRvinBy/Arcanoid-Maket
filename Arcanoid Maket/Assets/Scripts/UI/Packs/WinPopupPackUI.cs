@@ -1,7 +1,7 @@
-﻿using System;
-using Animations.Presets;
+﻿using Animations.Presets;
 using DG.Tweening;
-using MyLibrary.Localization.UILocalization;
+using GameComponents.Energy.UI;
+using MyLibrary.Localization.UI;
 using MyLibrary.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +27,9 @@ namespace UI.Packs
         
         [SerializeField]
         private CanvasGroupPreset _buttonAnimation;
+
+        [SerializeField]
+        private ButtonLockerByEnergy _continueButtonLocker;
         
         private float _previousSliderValue;
         
@@ -46,8 +49,13 @@ namespace UI.Packs
             _slider.maxValue = maxValue;
             _slider.value = currentValue;
         }
+        
+        public void UpdateContinueButton(bool isNeedToContinue)
+        {
+            _continueButtonLocker.SetLockerUpdate(isNeedToContinue);
+        }
 
-        public void PreaprePackUI()
+        public void PreparePackUI()
         {
             _buttonAnimation.ResetToStartAlpha();
             _nextButton.Disable();

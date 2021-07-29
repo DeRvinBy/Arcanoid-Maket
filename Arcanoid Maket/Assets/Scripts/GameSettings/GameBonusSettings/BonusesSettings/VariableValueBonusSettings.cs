@@ -22,8 +22,22 @@ namespace GameSettings.GameBonusSettings.BonusesSettings
         private float _minValue = -2;
         
         public float TimeOfEffect => _timeOfEffect;
+
+        public float GetCurrentLimitValue(float currentValue)
+        {
+            if (currentValue < _minValue)
+            {
+                currentValue = _minValue;
+            }
+            else if (currentValue > _maxValue)
+            {
+                currentValue = _maxValue;
+            }
+
+            return currentValue;
+        }
         
-        public float GetLimitValue(ValueModifer modifer, float currentValue)
+        public float GetAddingLimitValue(ValueModifer modifer, float currentValue)
         {
             var result = _variableValue * (int)modifer;
             if (currentValue + result > _maxValue)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using BehaviorControllers.EntitiesControllers;
 using GameComponents.Field;
 using GameEntities.Blocks;
 using GameSettings.GameBallSettings;
@@ -42,6 +43,16 @@ namespace GameEntities.Ball.Behaviour
         
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                _rigidbody.velocity = Vector2.up * _currentVelocity;
+            }
+            
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                _rigidbody.velocity = Vector2.right * _currentVelocity;
+            }
+            
             if (Math.Abs(_rigidbody.velocity.magnitude - _currentVelocity) > ThresholdVelocityChangeValue)
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * _currentVelocity;
@@ -54,6 +65,11 @@ namespace GameEntities.Ball.Behaviour
                 || other.collider.IsColliderHasMonoBehaviour<IndestructibleBlock>())
             {
                 UpdateBounceDirection();
+            }
+
+            if (other.collider.IsColliderHasMonoBehaviour<PlatformController>())
+            {
+                UpdateDirectionByPlatform();
             }
         }
 
@@ -69,6 +85,12 @@ namespace GameEntities.Ball.Behaviour
                 var targetQuaternion = Quaternion.Euler(0f, 0f, targetAngle);
                 _rigidbody.velocity = targetQuaternion * outDirection * _currentVelocity;
             }
+        }
+        
+        private void UpdateDirectionByPlatform()
+        {
+            Vector3 outDirection = _rigidbody.velocity.normalized;
+            _rigidbody.velocity = outDirection * _currentVelocity;
         }
     }
 }

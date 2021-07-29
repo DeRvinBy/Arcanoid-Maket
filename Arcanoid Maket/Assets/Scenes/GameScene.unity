@@ -204,10 +204,10 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -0.5, y: 0}
-  - {x: -0.38, y: 0.1}
+  - {x: -0.4, y: 0.11}
   - {x: -0.1, y: 0.16}
   - {x: 0.1, y: 0.16}
-  - {x: 0.38, y: 0.1}
+  - {x: 0.4, y: 0.11}
   - {x: 0.5, y: 0}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
@@ -346,7 +346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1209774296}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &166774869
 MonoBehaviour:
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0861f8cabceb4b958c373fe3fa3a160b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startLifeCount: 3
+  _startBallsCount: 3
 --- !u!1 &200949510
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be1beb5f1334708b6d5f291a8fd26c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseSpeed: 4
+  _baseSpeed: 5
   _startSize: 1.5
   _valueConfig: {fileID: 11400000, guid: 999487958864f4a47b27f0de1cba0d54, type: 2}
 --- !u!1 &366563676
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 628179590}
   - component: {fileID: 628179589}
   m_Layer: 5
-  m_Name: LifeImageContainer
+  m_Name: PlayerBallsImageContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2329,7 +2329,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1209774296}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &978645543
 MonoBehaviour:
@@ -2444,6 +2444,7 @@ Transform:
   - {fileID: 2105964204}
   - {fileID: 518237267}
   - {fileID: 860956999}
+  - {fileID: 1173050664}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2606,12 +2607,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173050663}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1209774296}
-  m_RootOrder: 4
+  m_Father: {fileID: 1032700303}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1173050665
 MonoBehaviour:
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0905064671dd45f9a8ee83dedf1157f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeController: {fileID: 1936782566}
+  _playerBallsController: {fileID: 1936782566}
 --- !u!1 &1192828615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2700,7 +2701,6 @@ Transform:
   - {fileID: 366563677}
   - {fileID: 276338392}
   - {fileID: 40682932}
-  - {fileID: 1173050664}
   - {fileID: 166774868}
   - {fileID: 978645542}
   m_Father: {fileID: 1404385753}
@@ -3021,7 +3021,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 1545777873}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e70313122ce257143ac6709b3947b239, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3335,7 +3335,7 @@ GameObject:
   - component: {fileID: 1936782565}
   - component: {fileID: 1936782566}
   m_Layer: 0
-  m_Name: LifeController
+  m_Name: PlayerBallController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 184778295}
-  _lifeUI: {fileID: 628179590}
+  _playerBallsUI: {fileID: 628179590}
 --- !u!1 &1970702160
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,7 +3735,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.25
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

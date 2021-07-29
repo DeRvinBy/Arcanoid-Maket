@@ -11,10 +11,10 @@ namespace BehaviorControllers.EntitiesControllers
             var languages = LocalizationManager.Instance.GetSupportedLanguages();
             var currentLanguage = LocalizationManager.Instance.GetCurrentLanguage();
             selector.Initialize(languages, currentLanguage);
-            selector.OnUserChangeLanguage += DOOnUserChangeUserLanguage;
+            selector.OnUserChangeLanguage += ChangeLanguage;
         }
 
-        private void DOOnUserChangeUserLanguage(SystemLanguage language)
+        private void ChangeLanguage(SystemLanguage language)
         {
             LocalizationManager.Instance.SetCurrentLanguage(language);
         }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GamePacks.Data;
+using GamePacks.Data.Config;
 using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
 using GamePacks.Data.Level.LevelParser.Json;
@@ -12,13 +12,18 @@ namespace GamePacks
 {
     public class PacksManager : Singleton<PacksManager>
     {
-        private const string PacksConfigPath = "Data/Packs/debug_packs";
+        private const string PacksConfigPath = "Data/packsConfig";
         private const string TilemapFilePath = "Data/tilemap";
 
         private PacksService _service;
         private ILevelParser _parser;
 
         private void OnApplicationPause(bool pauseStatus)
+        {
+            _service.SavePlayerPacks();
+        }
+        
+        protected override void OnApplicationQuit()
         {
             _service.SavePlayerPacks();
         }
