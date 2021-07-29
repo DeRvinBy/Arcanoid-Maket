@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 594369820523013178}
   - component: {fileID: 4321281194046060688}
   - component: {fileID: 11718475483435262}
-  - component: {fileID: 5022869259838939394}
+  - component: {fileID: 1532359421667804318}
   m_Layer: 5
   m_Name: EnergyPanel
   m_TagString: Untagged
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5022869259838939394
+--- !u!114 &1532359421667804318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -588,9 +588,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4399705280432547745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7ca25584ed4fb78ec34b309e873e3e, type: 3}
+  m_Script: {fileID: 11500000, guid: 19e588b5289c47d3b77c340938dfa241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _baseConfig: {fileID: 11400000, guid: 4fb146a0bb779864fa5d3eb6d8b14358, type: 2}
   _energyInfoText: {fileID: 5984889695523622762}
   _energyInfoFormat: '{0}/{1}'
   _timerToNextEnergyText: {fileID: 1801358402623268324}
@@ -1735,6 +1736,7 @@ MonoBehaviour:
     _canvasGroup: {fileID: 8165988741722658507}
     _alphaConfig: {fileID: 11400000, guid: d354ce493fedf364e910dc2cc8b0065a, type: 2}
   _continueButtonLocker: {fileID: 6716012286450217482}
+  _energyPanel: {fileID: 1532359421667804318}
 --- !u!1 &8133989685166938376
 GameObject:
   m_ObjectHideFlags: 0

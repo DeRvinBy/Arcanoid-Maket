@@ -30,6 +30,9 @@ namespace UI.Packs
 
         [SerializeField]
         private ButtonLockerByEnergy _continueButtonLocker;
+
+        [SerializeField]
+        private AnimateUIEnergyPanel _energyPanel;
         
         private float _previousSliderValue;
         
@@ -66,6 +69,7 @@ namespace UI.Packs
             var animationSequence = DOTween.Sequence();
 
             var sliderTween = _sliderAnimation.GetAnimationTween(_previousSliderValue, nextSliderValue);
+            sliderTween.onComplete += _energyPanel.PlayAnimation;
             sliderTween.onComplete += onPackChanged;
             _previousSliderValue = nextSliderValue;
             animationSequence.Append(sliderTween);

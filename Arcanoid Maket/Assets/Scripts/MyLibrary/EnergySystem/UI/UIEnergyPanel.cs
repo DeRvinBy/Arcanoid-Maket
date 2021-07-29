@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MyLibrary.EnergySystem.UI
 {
-    public class UIEnergyElement : MonoBehaviour, IEnergyUpdatedHandler
+    public class UIEnergyPanel : MonoBehaviour, IEnergyUpdatedHandler
     {
         [SerializeField]
         private TMP_Text _energyInfoText;

@@ -43,16 +43,6 @@ namespace GameEntities.Ball.Behaviour
         
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                _rigidbody.velocity = Vector2.up * _currentVelocity;
-            }
-            
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                _rigidbody.velocity = Vector2.right * _currentVelocity;
-            }
-            
             if (Math.Abs(_rigidbody.velocity.magnitude - _currentVelocity) > ThresholdVelocityChangeValue)
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * _currentVelocity;

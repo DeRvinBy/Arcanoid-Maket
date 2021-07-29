@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GamePacks.Data.Packs;
 using UnityEngine;
 
@@ -15,7 +16,13 @@ namespace GamePacks.Data.Config
         
         [SerializeField]
         private int _debugLevelId = 2;
-        
+
+        private void OnValidate()
+        {
+            _debugPack = _currentContainer.FirstPack.Key;
+            _debugLevelId = 0;
+        }
+
         public Pack FirstPack => _currentContainer.FirstPack;
         public string DebugPack => _debugPack;
         public int DebugLevelId => _debugLevelId;
