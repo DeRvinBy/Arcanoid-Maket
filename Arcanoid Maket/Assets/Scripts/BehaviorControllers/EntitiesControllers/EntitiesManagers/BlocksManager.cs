@@ -41,6 +41,7 @@ namespace BehaviorControllers.EntitiesControllers.EntitiesManagers
         public void InvokeBlocksAction<T>(Action<T> action) where T : AbstractBlock
         {
             var blocks = _spawner.GetBlocks<T>();
+            if (blocks == null) return;
             foreach (var block in blocks)
             {
                 action.Invoke(block);

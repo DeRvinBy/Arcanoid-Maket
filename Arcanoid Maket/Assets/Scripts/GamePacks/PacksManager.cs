@@ -34,12 +34,12 @@ namespace GamePacks
             _service = new PacksService();
             _service.Initialize(config);
             
-#if UNITY_EDITOR
-            if (_service.IsSaveExit())
-            {
-                _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
-            }         
-#endif
+// #if UNITY_EDITOR
+//             if (_service.IsSaveExit())
+//             {
+//                 _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
+//             }         
+// #endif
             
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
             _parser = new JsonParser(tilemap.text);

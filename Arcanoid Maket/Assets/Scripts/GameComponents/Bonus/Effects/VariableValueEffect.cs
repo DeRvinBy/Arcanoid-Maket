@@ -18,16 +18,17 @@ namespace GameComponents.Bonus.Effects
 
         public void ActivateEffect(ValueModifer modifer)
         {
-            var value = _settings.GetLimitValue(modifer, _currentVariableValue);
+            var value = _settings.GetAddingLimitValue(modifer, _currentVariableValue);
             StartCoroutine(StartEffect(value));
         }
         
-        private IEnumerator StartEffect(float velocity)
+        private IEnumerator StartEffect(float value)
         {
-            _currentVariableValue += velocity;
+            _currentVariableValue += value;
             OnValueChanged?.Invoke(_currentVariableValue);
             yield return new WaitForSeconds(_settings.TimeOfEffect);
-            _currentVariableValue -= velocity;
+            _currentVariableValue -= value;
+            _currentVariableValue = _settings.GetCurrentLimitValue(_currentVariableValue);
             OnValueChanged?.Invoke(_currentVariableValue);
         }
 

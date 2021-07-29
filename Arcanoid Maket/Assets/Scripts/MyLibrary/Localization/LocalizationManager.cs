@@ -14,7 +14,12 @@ namespace MyLibrary.Localization
         
         private LocalizationData _localization;
         private LocalizationConfig _config;
-        
+
+        protected override void OnApplicationQuit()
+        {
+            _localization.SaveUserLanguage();
+        }
+
         private void OnApplicationPause(bool pauseStatus)
         {
             _localization.SaveUserLanguage();

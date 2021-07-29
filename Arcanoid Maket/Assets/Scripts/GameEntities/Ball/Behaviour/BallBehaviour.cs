@@ -43,8 +43,6 @@ namespace GameEntities.Ball.Behaviour
         
         private void Update()
         {
-            print(_rigidbody.velocity.magnitude);
-            
             if (Input.GetKeyDown(KeyCode.T))
             {
                 _rigidbody.velocity = Vector2.up * _currentVelocity;

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb1d5e05e6460e8a07ccef2ace3c17, type: 3}
   m_Name: packsConfig
   m_EditorClassIdentifier: 
-  _currentContainer: {fileID: 11400000, guid: 5fd241ecbd69967458d7a87386a29f9f, type: 2}
-  _debugPack: bonus_test_pack
-  _debugLevelId: 2
+  _currentContainer: {fileID: 11400000, guid: 930b7f07432668343986fc14a543ddfc, type: 2}
+  _debugPack: one_bonus_pack
+  _debugLevelId: 0

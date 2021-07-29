@@ -84,7 +84,12 @@ namespace GameComponents.Blocks
         public List<T> GetBlocks<T>() where T : AbstractBlock
         {
             var type = typeof(T);
-            return _blocksMap[type].Select(b => b as T).ToList();
+            if (_blocksMap.ContainsKey(type))
+            {
+                return _blocksMap[type].Select(b => b as T).ToList();
+            }
+            
+            return null;
         }
         
         public void DestroyBlock<T>(T block) where T : AbstractBlock
