@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4fb1d5e05e6460e8a07ccef2ace3c17, type: 3}
-  m_Name: packsConfig
+  m_Script: {fileID: 11500000, guid: 55ce17225d33486a8bb234e9a77f4353, type: 3}
+  m_Name: EnergyPanelbase
   m_EditorClassIdentifier: 
-  _currentContainer: {fileID: 11400000, guid: 930b7f07432668343986fc14a543ddfc, type: 2}
-  _debugPack: one_bonus_pack
-  _debugLevelId: 0
+  _duration: 1
+  _easeMode: 1
+  _isUpdate: 1
