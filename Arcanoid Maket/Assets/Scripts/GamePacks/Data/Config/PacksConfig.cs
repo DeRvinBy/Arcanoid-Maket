@@ -20,7 +20,6 @@ namespace GamePacks.Data.Config
         private void OnValidate()
         {
             _debugPack = _currentContainer.FirstPack.Key;
-            _debugLevelId = 0;
         }
 
         public Pack FirstPack => _currentContainer.FirstPack;
