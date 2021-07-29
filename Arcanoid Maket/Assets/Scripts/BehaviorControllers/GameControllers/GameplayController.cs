@@ -20,6 +20,7 @@ namespace BehaviorControllers.GameControllers
         private SpendEnergyCommand _spendEnergyStartGame;
         private SpendEnergyCommand _spendEnergyRestartGame;
         private SpendEnergyCommand _spendEnergyForNewBall;
+        private AddEnergyCommand _addEnergyOnWin;
 
         private void OnEnable()
         {
@@ -37,9 +38,11 @@ namespace BehaviorControllers.GameControllers
             _spendEnergyStartGame = new SpendEnergyCommand();
             _spendEnergyRestartGame = new SpendEnergyCommand();
             _spendEnergyForNewBall = new SpendEnergyCommand();
+            _addEnergyOnWin = new AddEnergyCommand();
             EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyStartGame, (int)TypeActionForEnergy.StartLevel);
             EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyRestartGame, (int)TypeActionForEnergy.RestartLevel);
             EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyForNewBall, (int)TypeActionForEnergy.ContinueAfterLoseOnLevel);
+            EnergyManager.Instance.SetupCommandWithEnergy(_addEnergyOnWin, (int)TypeActionForEnergy.WinGame);
         }
 
         private IEnumerator StartGameScene()
@@ -104,6 +107,7 @@ namespace BehaviorControllers.GameControllers
 
         public void OnWinGame()
         {
+            _addEnergyOnWin.Execute();
             EndGame();
         }
 
