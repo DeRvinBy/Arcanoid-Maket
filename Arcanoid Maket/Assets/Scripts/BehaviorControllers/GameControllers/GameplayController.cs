@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using BehaviorControllers.Abstract;
+using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.GameEvents;
 using EventInterfaces.Input;
 using EventInterfaces.PacksEvents;
@@ -15,9 +16,11 @@ namespace BehaviorControllers.GameControllers
 {
     public class GameplayController : GameController, IStartGameHandler, IPackButtonPressedHandler, IEndGameHandler
     {
+        private PlayerBallsController _playerBallsController;
         private SpendEnergyCommand _spendEnergyStartGame;
         private SpendEnergyCommand _spendEnergyRestartGame;
-        
+        private SpendEnergyCommand _spendEnergyForNewBall;
+
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -25,11 +28,18 @@ namespace BehaviorControllers.GameControllers
 
         private void Start()
         {
+            SetupEnergyCommands();
+            StartCoroutine(StartGameScene());
+        }
+
+        private void SetupEnergyCommands()
+        {
             _spendEnergyStartGame = new SpendEnergyCommand();
             _spendEnergyRestartGame = new SpendEnergyCommand();
+            _spendEnergyForNewBall = new SpendEnergyCommand();
             EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyStartGame, (int)TypeActionForEnergy.StartLevel);
             EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyRestartGame, (int)TypeActionForEnergy.RestartLevel);
-            StartCoroutine(StartGameScene());
+            EnergyManager.Instance.SetupCommandWithEnergy(_spendEnergyForNewBall, (int)TypeActionForEnergy.ContinueAfterLoseOnLevel);
         }
 
         private IEnumerator StartGameScene()
@@ -41,7 +51,12 @@ namespace BehaviorControllers.GameControllers
             yield return TransitionController.Instance.ShowForwardTransition();
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
         }
-        
+
+        public override void Initialize(ControllersManager controllersManager)
+        {
+            _playerBallsController = controllersManager.GetEntityController<PlayerBallsController>();
+        }
+
         private void StartGame()
         {
             StartCoroutine(PrepareAndStartGame());
@@ -71,6 +86,14 @@ namespace BehaviorControllers.GameControllers
         {
             _spendEnergyRestartGame.Execute();
             StartGame();
+        }
+
+        public void OnContinueAfterLoseGameProcess()
+        {
+            _spendEnergyForNewBall.Execute();
+            _playerBallsController.IncreasePlayerBallCount();
+            EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
+            EventBus.RaiseEvent<IContinueGameHandler>(a => a.OnContinueGame());
         }
 
         public void OnPackButtonPressed()

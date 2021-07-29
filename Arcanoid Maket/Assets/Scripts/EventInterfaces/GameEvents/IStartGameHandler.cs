@@ -6,5 +6,6 @@ namespace EventInterfaces.GameEvents
     {
         void OnStartGameProcess();
         void OnRestartGameProcess();
+        void OnContinueAfterLoseGameProcess();
     }
 }
