@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using BehaviorControllers.EntitiesControllers;
-using GameComponents.Field;
-using GameEntities.Blocks;
+﻿using BehaviorControllers.EntitiesControllers;
 using GameSettings.GameBallSettings;
 using MyLibrary.CollisionStorage.Extensions;
 using UnityEngine;
@@ -43,7 +39,7 @@ namespace GameEntities.Ball.Behaviour
         
         private void Update()
         {
-            if (Math.Abs(_rigidbody.velocity.magnitude - _currentVelocity) > ThresholdVelocityChangeValue)
+            if (Mathf.Abs(_rigidbody.velocity.magnitude - _currentVelocity) > ThresholdVelocityChangeValue)
             {
                 _rigidbody.velocity = _rigidbody.velocity.normalized * _currentVelocity;
             }
@@ -51,27 +47,27 @@ namespace GameEntities.Ball.Behaviour
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.collider.IsColliderHasMonoBehaviour<FieldBorders>() 
-                || other.collider.IsColliderHasMonoBehaviour<IndestructibleBlock>())
-            {
-                UpdateBounceDirection();
-            }
-
             if (other.collider.IsColliderHasMonoBehaviour<PlatformController>())
             {
                 UpdateDirectionByPlatform();
             }
+            else
+            {
+                UpdateBounceDirection(_settings.VerticalSettings, Vector2.right, Vector2.up);
+                var bounceDirection = transform.position.x < 0f ? Vector2.up : Vector2.right; 
+                UpdateBounceDirection(_settings.HorizontalSettings, Vector2.up, bounceDirection);
+            }
         }
 
-        private void UpdateBounceDirection()
+        private void UpdateBounceDirection(BallThresholdAngleSettings settings, Vector2 collisionPerpendicular, Vector2 bounceDirectionPerpendicular)
         {
             Vector3 outDirection = _rigidbody.velocity.normalized;
-            var signX = Mathf.Sign(Vector2.Dot(outDirection, Vector2.right));
-            var angle = Vector2.Angle(outDirection, Vector2.right * signX);
-            if (angle < _settings.BounceAngleThreshold)
+            var signX = Mathf.Sign(Vector2.Dot(outDirection, collisionPerpendicular));
+            var angle = Vector2.Angle(outDirection, collisionPerpendicular * signX);
+            if (angle < settings.BounceAngleThreshold)
             {
-                var signY =  Mathf.Sign(Vector2.Dot(outDirection, Vector2.up));
-                var targetAngle = _settings.BounceAngleChange * signX * signY;
+                var signY =  Mathf.Sign(Vector2.Dot(outDirection, bounceDirectionPerpendicular));
+                var targetAngle = settings.BounceAngleChange * signX * signY;
                 var targetQuaternion = Quaternion.Euler(0f, 0f, targetAngle);
                 _rigidbody.velocity = targetQuaternion * outDirection * _currentVelocity;
             }
