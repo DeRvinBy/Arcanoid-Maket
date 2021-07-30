@@ -8,7 +8,7 @@ namespace MyLibrary.Localization.UI
     public class TMProTextLocalization : MonoBehaviour, ILanguageChangedEvent
     {
         [SerializeField]
-        protected TMP_Text _tmpText = null;
+        protected TMP_Text _tmpText;
 
         [SerializeField]
         protected string _translationName = "";
@@ -18,7 +18,7 @@ namespace MyLibrary.Localization.UI
             _tmpText.text = _translationName;
         }
 
-        private void Start()
+        private void OnEnable()
         {
             EventBus.Subscribe(this);
             OnLanguageChanged();
