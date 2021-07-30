@@ -6,10 +6,10 @@ namespace GameComponents.Platform.Behaviour
     {
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
-
+        
         private Transform _transform;
         
-        private void Awake()
+        public void Awake()
         {
             _transform = transform;
         }

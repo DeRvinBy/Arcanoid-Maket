@@ -28,8 +28,8 @@ namespace GameComponents.Bonus.Effects
             OnValueChanged?.Invoke(_currentVariableValue);
             yield return new WaitForSeconds(_settings.TimeOfEffect);
             _currentVariableValue -= value;
-            _currentVariableValue = _settings.GetCurrentLimitValue(_currentVariableValue);
-            OnValueChanged?.Invoke(_currentVariableValue);
+            var endValue = _settings.GetCurrentLimitValue(_currentVariableValue);
+            OnValueChanged?.Invoke(endValue);
         }
 
         public void StopEffect()

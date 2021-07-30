@@ -53,7 +53,7 @@ namespace BehaviorControllers.EntitiesControllers
         
         public void SetAdditionalSize(float value)
         {
-            var targetSize = _settings.StartSize + value;
+            var targetSize = _settings.BaseSize + value;
             _valueAnimation.PlayAnimation(_previousPlatformSize, targetSize, _behaviour.UpdatePlatformSize);
             _previousPlatformSize = targetSize;
         }
@@ -61,8 +61,8 @@ namespace BehaviorControllers.EntitiesControllers
         public void OnPrepareGame()
         {
             _valueAnimation.StopAnimation();
-            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.StartSize);
-            _previousPlatformSize = _settings.StartSize;
+            _behaviour.SetupPlatform(_settings.BaseSpeed, _settings.BaseSize);
+            _previousPlatformSize = _settings.BaseSize;
         }
 
         public void OnStartGame()

@@ -23,6 +23,7 @@ namespace GameComponents.Platform.Behaviour
         private Vector3 _initialPosition;
         private float _currentSpeed;
         private float _currentSize;
+        private float _worldBoundX;
         private float _worldSizeX;
         private bool _isMove;
 
@@ -40,7 +41,8 @@ namespace GameComponents.Platform.Behaviour
         {
             _transform = transform;
             _initialPosition = _transform.position;
-            _worldSizeX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
+            _worldBoundX = _sceneCamera.orthographicSize * _sceneCamera.aspect;
+            _worldSizeX = _worldBoundX * 2;
         }
 
         public void SetupPlatform(float speed, float size)
@@ -53,8 +55,8 @@ namespace GameComponents.Platform.Behaviour
 
         public void UpdatePlatformSize(float value)
         {
-            _currentSize = value;
-            _platformComponentsSize.UpdateComponentsSize(value);
+            _currentSize = _worldSizeX * value;
+            _platformComponentsSize.UpdateComponentsSize(_currentSize);
         }
         
         public void UpdatePlatformSpeed(float value)
@@ -100,15 +102,15 @@ namespace GameComponents.Platform.Behaviour
             var halfSize = _currentSize / 2f;
             var positionX = Mathf.Abs(targetPosition.x) + halfSize;
 
-            if (positionX > _worldSizeX)
+            if (positionX > _worldBoundX)
             {
                 if (targetPosition.x > 0)
                 {
-                    targetPosition.x = _worldSizeX - halfSize;
+                    targetPosition.x = _worldBoundX - halfSize;
                 }
                 else
                 {
-                    targetPosition.x = - _worldSizeX + halfSize;
+                    targetPosition.x = - _worldBoundX + halfSize;
                 }
             }
 

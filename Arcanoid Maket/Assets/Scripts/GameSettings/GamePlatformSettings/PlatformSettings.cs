@@ -9,13 +9,14 @@ namespace GameSettings.GamePlatformSettings
         private float _baseSpeed = 5f;
 
         [SerializeField]
-        private float _startSize = 2f;
+        [Range(0.1f, 1.0f)]
+        private float _baseRelativeSize = 0.25f;
 
         [SerializeField]
         private BaseAnimationConfig _valueConfig;
         
         public float BaseSpeed => _baseSpeed;
-        public float StartSize => _startSize;
+        public float BaseSize => _baseRelativeSize;
         public BaseAnimationConfig ValueConfig => _valueConfig;
     }
 }
