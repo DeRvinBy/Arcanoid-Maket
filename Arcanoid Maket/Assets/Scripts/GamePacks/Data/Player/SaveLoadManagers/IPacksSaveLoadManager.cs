@@ -3,7 +3,7 @@
     public interface IPacksSaveLoadManager
     {
         bool IsSaveExist();
-        PacksSaveContainer Load();
+        PacksSaveContainer GetSave();
         void Save(PacksSaveContainer container);
     }
 }

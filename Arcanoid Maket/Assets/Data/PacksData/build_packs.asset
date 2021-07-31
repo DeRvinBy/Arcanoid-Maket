@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114a7468ad9c4494b4959653a9e580a2, type: 3}
   m_Name: build_packs
   m_EditorClassIdentifier: 
+  _version: 1
   _packs:
   - {fileID: 11400000, guid: 3f8a95794aacc814eb8bab5bf2e46b23, type: 2}
   - {fileID: 11400000, guid: 70e2c2e368116514ebc9ef2817b44582, type: 2}

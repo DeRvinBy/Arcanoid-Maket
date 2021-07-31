@@ -7,9 +7,12 @@ namespace GamePacks.Data.Config
     public class PacksContainer : ScriptableObject
     {
         [SerializeField]
+        private int _version;
+        
+        [SerializeField]
         private Pack[] _packs;
         
-        public Pack FirstPack => _packs[0];
+        public int Version => _version;
         public Pack[] Packs => _packs;
     }
 }

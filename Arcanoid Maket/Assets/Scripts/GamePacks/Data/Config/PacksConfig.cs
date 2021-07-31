@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GamePacks.Data.Packs;
 using UnityEngine;
 
@@ -19,10 +18,11 @@ namespace GamePacks.Data.Config
 
         private void OnValidate()
         {
-            _debugPack = _currentContainer.FirstPack.Key;
+            _debugPack = _currentContainer.Packs[0].Key;
         }
 
-        public Pack FirstPack => _currentContainer.FirstPack;
+        public string PacksContainerKey => _currentContainer.name + _currentContainer.Version;
+        public string FirstPackKey => _currentContainer.Packs[0].Key;
         public string DebugPack => _debugPack;
         public int DebugLevelId => _debugLevelId;
 
@@ -33,6 +33,7 @@ namespace GamePacks.Data.Config
             {
                 map.Add(pack.Key, pack);
             }
+
             return map;
         }
     }

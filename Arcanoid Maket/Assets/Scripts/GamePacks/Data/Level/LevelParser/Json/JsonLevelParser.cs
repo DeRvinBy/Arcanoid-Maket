@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace GamePacks.Data.Level.LevelParser.Json
 {
-    public class JsonParser : ILevelParser
+    public class JsonLevelParser : ILevelParser
     {
         private int _horizontalCount;
         private int _verticalCount;
@@ -15,9 +15,9 @@ namespace GamePacks.Data.Level.LevelParser.Json
 
         private Dictionary<int, TileProperties> _tilePropertiesMap;
         
-        public JsonParser(string tilemapJson)
+        public JsonLevelParser(string tilemapJson)
         {
-            var tilePropertiesParser = new TilePropertiesParser();
+            var tilePropertiesParser = new JsonTilePropertiesParser();
             _tilePropertiesMap = tilePropertiesParser.ParseTilePropertiesMap(tilemapJson);
         }
         

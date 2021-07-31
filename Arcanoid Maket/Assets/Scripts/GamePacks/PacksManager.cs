@@ -5,6 +5,9 @@ using GamePacks.Data.Level;
 using GamePacks.Data.Level.LevelParser.Interfaces;
 using GamePacks.Data.Level.LevelParser.Json;
 using GamePacks.Data.Packs;
+using GamePacks.Data.Player;
+using GamePacks.Data.Player.SaveLoadManagers;
+using GamePacks.DebugPacks;
 using MyLibrary.Singleton;
 using UnityEngine;
 
@@ -15,45 +18,53 @@ namespace GamePacks
         private const string PacksConfigPath = "Data/packsConfig";
         private const string TilemapFilePath = "Data/tilemap";
 
+        private PacksConfig _config;
+        private PlayerPacks _playerPacks;
         private PacksService _service;
         private ILevelParser _parser;
+        private bool _isSaveExist;
 
         private void OnApplicationPause(bool pauseStatus)
         {
-            _service.SavePlayerPacks();
+            _playerPacks.SavePacks();
         }
         
         protected override void OnApplicationQuit()
         {
-            _service.SavePlayerPacks();
+            base.OnApplicationQuit();
+            _playerPacks.SavePacks();
         }
 
         protected override void Initialize()
         {
-            var config = Resources.Load<PacksConfig>(PacksConfigPath);
-            _service = new PacksService();
-            _service.Initialize(config);
+            _config = Resources.Load<PacksConfig>(PacksConfigPath);
             
-#if UNITY_EDITOR
-            if (_service.IsSaveExit())
-            {
-                _service.StartDebugPack(config.DebugPack, config.DebugLevelId);
-            }         
-#endif
+            var saveLoadManager = new PlayerPrefsPacksSaveLoadManager(_config.PacksContainerKey);
+            _playerPacks = new PlayerPacks();
+            _playerPacks.Initialize(saveLoadManager, _config.GetPacksMap());
+            _isSaveExist = saveLoadManager.IsSaveExist();
+            
+            _service = new PacksService();
+            _service.Initialize(_playerPacks, _config);
             
             var tilemap = Resources.Load<TextAsset>(TilemapFilePath);
-            _parser = new JsonParser(tilemap.text);
-        }
-
-        [ContextMenu("Complete all packs")]
-        public void CompleteAllPacks()
-        {
-            _service.CompleteAllPacks();
+            _parser = new JsonLevelParser(tilemap.text);
+            
+            
+#if UNITY_EDITOR
+            var debugHandler = gameObject.AddComponent<DebugPacksHandler>();
+            debugHandler.Initialize(_config, _service, _isSaveExist);
+#endif
         }
 
         public bool IsSaveExist()
         {
-            return _service.IsSaveExit();
+            return _isSaveExist;
+        }
+        
+        public PackInfo GetCurrentPackInfo()
+        {
+            return _service.GetCurrentPackInfo();
         }
         
         public Dictionary<string, PackInfo> GetPacksInfo()
@@ -61,25 +72,25 @@ namespace GamePacks
             return _service.GetPacksInfo();
         }
 
-        public PackInfo GetCurrentPackInfo()
-        {
-            return _service.GetCurrentPackInfo();
-        }
-
         public LevelData GetCurrentLevel()
         {
             var levelFile = _service.GetCurrentLevelFile();
             return _parser.ParseLevelData(levelFile.text);
         }
+        
+        public void SetupFirstPack()
+        {
+            _service.StartPack(_config.FirstPackKey);
+        }
+        
+        public void SetCurrentPack(string packName)
+        {
+            _service.StartPack(packName);
+        }
 
         public void CompleteLevel()
         {
             _service.CompleteLevel();
-        }
-
-        public void SetCurrentPack(string packName)
-        {
-            _service.StartPack(packName);
         }
     }
 }

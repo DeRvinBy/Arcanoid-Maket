@@ -54,6 +54,8 @@ namespace BehaviorControllers.GameControllers
             }
             else
             {
+                PacksManager.Instance.SetupFirstPack();
+                EventBus.RaiseEvent<IPackChangedHandler>(a => a.OnPackChanged());
                 StartCoroutine(StartGameScene());
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GamePacks.Data.Level.LevelParser.Tiles
 {
-    public class TilePropertiesParser
+    public class JsonTilePropertiesParser
     {
         public Dictionary<int, TileProperties> ParseTilePropertiesMap(string text)
         {

@@ -29,7 +29,6 @@ namespace UI.Popups
         public override void Initialize()
         {
             base.Initialize();
-            SetupPackUI();
             _nextButton.OnButtonPressed += OnContinueButtonPressed;
             EventBus.Subscribe(this);
         }
@@ -46,6 +45,8 @@ namespace UI.Popups
 
         private void SetupPackUI()
         {
+            if (!PacksManager.Instance.IsSaveExist()) return;
+            
             _currentPack = PacksManager.Instance.GetCurrentPackInfo();
             _popupPackUI.SetPackImage(_currentPack.GamePack.Icon);
             _popupPackUI.SetPackName(_currentPack.GamePack.Key);

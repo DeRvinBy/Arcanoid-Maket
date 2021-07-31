@@ -4,7 +4,6 @@ using System.Linq;
 using GamePacks.Data.Config;
 using GamePacks.Data.Packs;
 using GamePacks.Data.Player;
-using GamePacks.Data.Player.SaveLoadManagers;
 using UnityEngine;
 
 namespace GamePacks.Data
@@ -13,21 +12,19 @@ namespace GamePacks.Data
     {
         private Dictionary<string, Pack> _packsMap;
         private Dictionary<string, PackInfo> _packsInfoMap;
-        private PlayerPacksSave _playerPacksSave;
+        private PlayerPacks _playerPacks;
         private string _currentPackKey;
         private int _currentLevelId;
-        private bool _isSaveExist;
 
-        public void Initialize(PacksConfig packsConfig)
+        public void Initialize(PlayerPacks playerPacks, PacksConfig packsConfig)
         {
+            _playerPacks = playerPacks;
             _packsMap = packsConfig.GetPacksMap();
-            var loader = new PlayerPrefsPacksSaveLoadManager();
-            _isSaveExist = loader.IsSaveExist();
-            _playerPacksSave = new PlayerPacksSave(loader);
-            _currentPackKey = packsConfig.FirstPack.Key;
-            _playerPacksSave.LoadPacksFromSave(_currentPackKey);
-            StartPack(_currentPackKey);
+            CreateInfoMap();
+        }
 
+        private void CreateInfoMap()
+        {
             _packsInfoMap = new Dictionary<string, PackInfo>();
             foreach (var packKey in _packsMap.Keys)
             {
@@ -41,14 +38,9 @@ namespace GamePacks.Data
         {
             foreach (var key in _packsMap.Keys)
             {
-                _playerPacksSave.AddOpenSavePack(key);
-                _playerPacksSave.CompletePack(key);
+                _playerPacks.AddOpenSavePack(key);
+                _playerPacks.CompletePack(key);
             }
-        }
-
-        public bool IsSaveExit()
-        {
-            return _isSaveExist;
         }
 
         private void UpdatePackInfo(string key)
@@ -56,14 +48,14 @@ namespace GamePacks.Data
             var packInfo = _packsInfoMap[key];
             packInfo.GamePack = _packsMap[key];
             
-            if (_playerPacksSave.IsPackExist(key))
+            if (_playerPacks.IsPackExist(key))
             {
-                var isComplete = _playerPacksSave.IsPackComplete(key);
-                var currentLevel = _playerPacksSave.GetCurrentLevelId(key);
+                var isComplete = _playerPacks.IsPackComplete(key);
+                var currentLevel = _playerPacks.GetCurrentLevelId(key);
                 var packsLevelCount = _packsMap[key].LevelCount;
                 packInfo.CurrentLevel = currentLevel + 1;
                 packInfo.PackProgressLevel = isComplete ? packsLevelCount : currentLevel;
-                packInfo.IsOpen = _playerPacksSave.IsPackOpen(key);
+                packInfo.IsOpen = _playerPacks.IsPackOpen(key);
             }
         }
 
@@ -85,12 +77,12 @@ namespace GamePacks.Data
         public void StartPack(string packKey)
         {
             _currentPackKey = packKey;
-            _currentLevelId = _playerPacksSave.GetCurrentLevelId(packKey);
+            _currentLevelId = _playerPacks.GetCurrentLevelId(packKey);
         }
         
         public void StartDebugPack(string packKey, int currentLevel)
         {
-            _playerPacksSave.AddOpenSavePack(packKey);
+            _playerPacks.AddOpenSavePack(packKey);
             _currentPackKey = packKey;
             _currentLevelId = currentLevel;
         }
@@ -101,10 +93,10 @@ namespace GamePacks.Data
             if (_currentLevelId >= _packsMap[_currentPackKey].LevelCount)
             {
                 _currentLevelId = 0;
-                _playerPacksSave.SetCurrentLevelId(_currentPackKey, _currentLevelId);
-                if (!_playerPacksSave.IsPackComplete(_currentPackKey))
+                _playerPacks.SetCurrentLevelId(_currentPackKey, _currentLevelId);
+                if (!_playerPacks.IsPackComplete(_currentPackKey))
                 {
-                    _playerPacksSave.CompletePack(_currentPackKey);
+                    _playerPacks.CompletePack(_currentPackKey);
                     UpdatePackInfo(_currentPackKey);
                     SetNextPack();
                 }
@@ -115,7 +107,7 @@ namespace GamePacks.Data
             }
             else
             {
-                _playerPacksSave.SetCurrentLevelId(_currentPackKey, _currentLevelId);
+                _playerPacks.SetCurrentLevelId(_currentPackKey, _currentLevelId);
                 _packsInfoMap[_currentPackKey].IsPackReplayed = false;
             }
 
@@ -131,17 +123,12 @@ namespace GamePacks.Data
             if (currentKey < keys.Length)
             {
                 _currentPackKey = keys[currentKey];
-                _playerPacksSave.AddOpenSavePack(_currentPackKey);
+                _playerPacks.AddOpenSavePack(_currentPackKey);
             }
             else
             {
                 _packsInfoMap[_currentPackKey].IsLastPack = true;
             }
-        }
-
-        public void SavePlayerPacks()
-        {
-            _playerPacksSave.SavePacksToSave();
         }
     }
 }

@@ -1,42 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using GamePacks.Data.Packs;
 using GamePacks.Data.Player.SaveLoadManagers;
-using UnityEngine;
 
 namespace GamePacks.Data.Player
 {
-    public class PlayerPacksSave
+    public class PlayerPacks
     {
         private PacksSaveContainer _packsSaveContainer;
-        private readonly IPacksSaveLoadManager _loadManager;
-        
-        public PlayerPacksSave(IPacksSaveLoadManager loadManager)
+        private IPacksSaveLoadManager _loadManager;
+
+        public void Initialize(IPacksSaveLoadManager loadManager, Dictionary<string, Pack> packsMap)
         {
             _loadManager = loadManager;
+            if (_loadManager.IsSaveExist())
+            {
+                _packsSaveContainer = _loadManager.GetSave();
+                UpdateSave(packsMap);
+            }
+            else
+            {
+                CreateDefaultSave(packsMap);             
+            }
         }
-        
-        public void SavePacksToSave()
+
+        private void UpdateSave(Dictionary<string, Pack> packsMap)
+        {
+            var lastCompletedPlayerPackKey = _packsSaveContainer.Packs.LastOrDefault((pair) => pair.Value.IsComplete).Key;
+
+            if (string.IsNullOrEmpty(lastCompletedPlayerPackKey)) return;
+            
+            var keys = packsMap.Keys.ToArray();
+            var nextPackIndex = Array.IndexOf(keys, lastCompletedPlayerPackKey) + 1;
+            if (nextPackIndex < keys.Length)
+            {
+                var nextPackKey = keys[nextPackIndex];
+                AddOpenSavePack(nextPackKey);
+            }
+        }
+
+        private void CreateDefaultSave(Dictionary<string, Pack> packsMap)
+        {
+            _packsSaveContainer = new PacksSaveContainer {Packs = new Dictionary<string, PackSaveItem>()};
+            AddOpenSavePack(packsMap.Keys.First()); 
+        }
+
+        public void SavePacks()
         {
             _loadManager.Save(_packsSaveContainer);
         }
         
-        public void LoadPacksFromSave(string startPackKey)
-        {
-            if (_loadManager.IsSaveExist())
-            {
-                _packsSaveContainer = _loadManager.Load();
-            }
-            else
-            {
-                CreateDefaultSave(startPackKey);             
-            }
-        }
-
-        private void CreateDefaultSave(string startPackKey)
-        {
-            _packsSaveContainer = new PacksSaveContainer {Packs = new Dictionary<string, PackSaveItem>()};
-            AddOpenSavePack(startPackKey); 
-        }
-
         public void AddOpenSavePack(string key)
         {
             if (_packsSaveContainer.Packs.ContainsKey(key)) return;
