@@ -13,23 +13,16 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             Vector2Int.left, Vector2Int.right,
             new Vector2Int(-1, -1), Vector2Int.down, new Vector2Int(1, -1)
         };
-        
+
         public BlocksRadiusSearcher(Vector2 bonusPosition, GridBlocks gridBlocks) 
             : base(bonusPosition, gridBlocks) { }
 
         public override bool IsHasNextBlocks()
         {
-            return false;
+            return _isHasNext;
         }
 
-        public override List<AbstractBlock> GetNextDestroyList()
-        {
-            _destroyList = new List<AbstractBlock>();
-            FillDestroyBlocksList();
-            return _destroyList;
-        }
-        
-        private void FillDestroyBlocksList()
+        protected override void FillDestroyBlocksList()
         {
             foreach (var direction in _moveDirections)
             {
@@ -43,6 +36,8 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                     }
                 }
             }
+
+            _isHasNext = false;
         }
     }
 }

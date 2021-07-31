@@ -2,7 +2,6 @@
 using System.Linq;
 using GameComponents.Blocks;
 using GameEntities.Blocks;
-using GameEntities.Blocks.Abstract;
 using GameEntities.Bonuses.Enumerations;
 using UnityEngine;
 
@@ -10,7 +9,6 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public class BlocksDirectionSearcher : AbstractBlocksSearcher
     {
-        private bool _isHasNext;
         private Dictionary<Vector2Int, Vector2Int> _moveCoordsMap;
 
         public BlocksDirectionSearcher(BombBonusDirection direction, Vector2 bonusPosition, GridBlocks gridBlocks) : base(bonusPosition, gridBlocks)
@@ -33,14 +31,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             return _isHasNext;
         }
 
-        public override List<AbstractBlock> GetNextDestroyList()
-        {
-            _destroyList = new List<AbstractBlock>();
-            FillDestroyBlocksList();
-            return _destroyList;
-        }
-
-        private void FillDestroyBlocksList()
+        protected override void FillDestroyBlocksList()
         {
             _isHasNext = false;
             var moves = _moveCoordsMap.ToList();

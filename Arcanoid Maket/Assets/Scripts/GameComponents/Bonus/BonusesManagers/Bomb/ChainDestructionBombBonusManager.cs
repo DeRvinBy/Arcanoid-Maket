@@ -1,10 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using EventInterfaces.BonusEvents.Bomb;
 using EventInterfaces.StatesEvents;
 using GameComponents.Blocks;
 using GameComponents.Bonus.BonusesManagers.Bomb.Searchers;
-using GameEntities.Blocks.Abstract;
 using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBonusSettings.BonusesSettings;
 using MyLibrary.EventSystem;
@@ -46,17 +44,12 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         {
             while (true)
             {
+                if (!searcher.IsHasNextBlocks()) break;
+                
                 yield return new WaitForSeconds(_settings.BlocksDestructionDelay);
-
-                var destroyBlocks = searcher.GetNextDestroyList();
-                foreach (var block in destroyBlocks)
+                foreach (var block in searcher.GetNextDestroyList())
                 {
                     block.DestroyBlock();
-                }
-                
-                if (!searcher.IsHasNextBlocks())
-                {
-                    break;
                 }
             }
         }

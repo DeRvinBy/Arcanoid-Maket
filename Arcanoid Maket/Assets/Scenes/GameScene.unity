@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ddf0a42b34d41109749f9fb9323aebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _blocksDestructionDelay: 0.2
+  _blocksDestructionDelay: 1
 --- !u!1 &184778293
 GameObject:
   m_ObjectHideFlags: 0
