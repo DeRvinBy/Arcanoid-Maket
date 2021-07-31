@@ -19,4 +19,4 @@ MonoBehaviour:
     _bounceAngleChange: 25
   _horizontalSettings:
     _bounceAngleThreshold: 10
-    _bounceAngleChange: 5
+    _bounceAngleChange: 15

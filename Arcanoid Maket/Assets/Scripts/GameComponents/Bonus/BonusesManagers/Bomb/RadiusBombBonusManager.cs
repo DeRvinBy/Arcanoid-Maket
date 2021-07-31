@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using EventInterfaces.BonusEvents.Bomb;
 using GameComponents.Blocks;
 using GameComponents.Bonus.BonusesManagers.Bomb.Searchers;
@@ -31,13 +32,14 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         public void OnActivateBonus(Vector2 position)
         {
             var searcher = new BlocksRadiusSearcher(position, _gridBlocks);
-            var destroyList = searcher.GetNextDestroyList();
-            StartDestroyBlocks(destroyList);
+            StartCoroutine(StartDamageBlocks(searcher));
         }
         
-        private void StartDestroyBlocks(List<AbstractBlock> destroyBlocksList)
+        private IEnumerator StartDamageBlocks(AbstractBlocksSearcher searcher)
         {
-            foreach (var block in destroyBlocksList)
+            yield return new WaitForSeconds(_settings.BlocksDestructionDelay);
+            
+            foreach (var block in searcher.GetNextDestroyList())
             {
                 if (block is IndestructibleBlock)
                 {

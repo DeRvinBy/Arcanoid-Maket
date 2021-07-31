@@ -51,6 +51,7 @@ namespace GameComponents.Platform.Behaviour
             UpdatePlatformSize(size);
             _transform.position = _initialPosition;
             _isMove = true;
+            StopAllCoroutines();
         }
 
         public void UpdatePlatformSize(float value)

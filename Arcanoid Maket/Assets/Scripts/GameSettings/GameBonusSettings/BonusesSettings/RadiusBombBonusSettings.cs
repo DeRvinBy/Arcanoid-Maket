@@ -2,7 +2,7 @@
 
 namespace GameSettings.GameBonusSettings.BonusesSettings
 {
-    public class RadiusBombBonusSettings : MonoBehaviour
+    public class RadiusBombBonusSettings : BombDestructionSettings
     {
         [SerializeField]
         [Min(1)]
