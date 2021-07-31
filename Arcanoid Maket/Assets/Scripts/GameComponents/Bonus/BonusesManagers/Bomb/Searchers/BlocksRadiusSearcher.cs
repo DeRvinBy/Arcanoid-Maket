@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameComponents.Blocks;
 using GameEntities.Blocks.Abstract;
 using UnityEngine;
 
@@ -13,26 +14,33 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             new Vector2Int(-1, -1), Vector2Int.down, new Vector2Int(1, -1)
         };
         
-        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
-        {
-            _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
-            foreach (var direction in _moveDirections)
-            {
-                FillDestroyBlocksMap(direction);
-            }
+        public BlocksRadiusSearcher(Vector2 bonusPosition, GridBlocks gridBlocks) 
+            : base(bonusPosition, gridBlocks) { }
 
-            return _destroyBlocksMap;
+        public override bool IsHasNextBlocks()
+        {
+            return false;
+        }
+
+        public override List<AbstractBlock> GetNextDestroyList()
+        {
+            _destroyList = new List<AbstractBlock>();
+            FillDestroyBlocksList();
+            return _destroyList;
         }
         
-        private void FillDestroyBlocksMap(Vector2Int direction)
+        private void FillDestroyBlocksList()
         {
-            var currentCoords = _startCoords + direction;
-            if (IsWithinInMatrix(currentCoords))
+            foreach (var direction in _moveDirections)
             {
-                var block = _blocksMatrix[currentCoords.x, currentCoords.y];
-                if (block != null)
+                var currentCoords = _startCoords + direction;
+                if (IsWithinInMatrix(currentCoords))
                 {
-                    AddBlockToDestroyMap(0, block);
+                    var block = _blocksMatrix[currentCoords.x, currentCoords.y];
+                    if (block != null)
+                    {
+                        AddBlockToDestroyList(block);
+                    }
                 }
             }
         }

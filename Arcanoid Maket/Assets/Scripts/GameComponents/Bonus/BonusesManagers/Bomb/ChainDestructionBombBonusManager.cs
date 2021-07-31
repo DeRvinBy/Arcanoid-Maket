@@ -20,15 +20,6 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         [SerializeField]
         private BombDestructionSettings _settings;
 
-        private BlocksColorSearcher _colorSearcher;
-        private BlocksDirectionSearcher _directionSearcher;
-
-        private void Awake()
-        {
-            _colorSearcher = new BlocksColorSearcher();
-            _directionSearcher = new BlocksDirectionSearcher();
-        }
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -41,32 +32,31 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         public void OnActivateDirectionBombBonus(Vector2 position, BombBonusDirection direction)
         {
-            _directionSearcher.SetupDirection(direction);
-            CompleteBonus(position, _directionSearcher);
+            var searcher = new BlocksDirectionSearcher(direction, position, _gridBlocks);
+            StartCoroutine(StartDestroyBlocks(searcher));
         }
         
         public void OnActivateColorBombBonus(Vector2 position)
         {
-            CompleteBonus(position, _colorSearcher);
+            var searcher = new BlocksColorSearcher(position, _gridBlocks);
+            StartCoroutine(StartDestroyBlocks(searcher));
         }
 
-        private void CompleteBonus(Vector2 position, AbstractBlocksSearcher searcher)
+        private IEnumerator StartDestroyBlocks(AbstractBlocksSearcher searcher)
         {
-            searcher.Setup(position, _gridBlocks);
-            
-            var destroyMap = searcher.GetDestroyBlocksMap();
-            StartCoroutine(StartDestroyBlocks(destroyMap));
-        }
-
-        private IEnumerator StartDestroyBlocks(Dictionary<int,List<AbstractBlock>> destroyBlocksMaps)
-        {
-            foreach (var level in destroyBlocksMaps.Keys)
+            while (true)
             {
                 yield return new WaitForSeconds(_settings.BlocksDestructionDelay);
 
-                foreach (var block in destroyBlocksMaps[level])
+                var destroyBlocks = searcher.GetNextDestroyList();
+                foreach (var block in destroyBlocks)
                 {
-                    block.DestroyBlock();   
+                    block.DestroyBlock();
+                }
+                
+                if (!searcher.IsHasNextBlocks())
+                {
+                    break;
                 }
             }
         }

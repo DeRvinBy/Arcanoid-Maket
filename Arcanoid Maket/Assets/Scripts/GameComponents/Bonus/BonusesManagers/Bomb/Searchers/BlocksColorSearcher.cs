@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameComponents.Blocks;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Enumerations;
@@ -9,6 +10,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public class BlocksColorSearcher : AbstractBlocksSearcher
     {
+        private int _level;
         private readonly List<Vector2Int> _moveDirections = new List<Vector2Int>
         {
             Vector2Int.left, Vector2Int.up, Vector2Int.right, Vector2Int.down
@@ -16,15 +18,24 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
         private Dictionary<BlockSpriteId, HashSet<ColorBlock>> _colorBlocksMap;
         private Dictionary<ColorBlock, Vector2Int> _blockCoordsMap;
 
-        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
+        public BlocksColorSearcher(Vector2 bonusPosition, GridBlocks gridBlocks) : base(bonusPosition, gridBlocks)
         {
+            _level = 1;
             _colorBlocksMap = new Dictionary<BlockSpriteId, HashSet<ColorBlock>>();
             _blockCoordsMap = new Dictionary<ColorBlock, Vector2Int>();
-
-            _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
             FindColorsBlock();
+        }
+
+        public override bool IsHasNextBlocks()
+        {
+            return true;
+        }
+
+        public override List<AbstractBlock> GetNextDestroyList()
+        {
+            _destroyList = new List<AbstractBlock>();
             FillDestroyMap();
-            return _destroyBlocksMap;
+            return _destroyList;
         }
 
         private void FindColorsBlock()
@@ -107,11 +118,18 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 var x = Mathf.Abs(_startCoords.x - blockCoords.x);
                 var y = Mathf.Abs(_startCoords.y - blockCoords.y);
                 var level = x + y;
-                if (level != 0)
+                if (level == _level)
                 {
-                    AddBlockToDestroyMap(level, block);
+                    AddBlockToDestroyList(block);
                 }
             }
+
+            foreach (var block in _destroyList.Cast<ColorBlock>())
+            {
+                _colorBlocksMap[targetColor].Remove(block);
+            }
+
+            _level++;
         }
 
         private BlockSpriteId GetColorOfMaxBlockCount()

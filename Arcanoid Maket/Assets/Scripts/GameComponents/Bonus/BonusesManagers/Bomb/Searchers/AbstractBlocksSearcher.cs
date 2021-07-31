@@ -7,15 +7,15 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public abstract class AbstractBlocksSearcher
     {
-        private int _blockMatrixRows;
-        private int _blockMatrixColumns;
-        private GridBlocks _gridBlocks;
+        private readonly int _blockMatrixRows;
+        private readonly int _blockMatrixColumns;
+        private readonly GridBlocks _gridBlocks;
 
-        protected Vector2Int _startCoords;
-        protected AbstractBlock[,] _blocksMatrix;
-        protected Dictionary<int, List<AbstractBlock>> _destroyBlocksMap;
+        protected readonly Vector2Int _startCoords;
+        protected readonly AbstractBlock[,] _blocksMatrix;
+        protected List<AbstractBlock> _destroyList;
 
-        public void Setup(Vector2 bonusPosition, GridBlocks gridBlocks)
+        public AbstractBlocksSearcher(Vector2 bonusPosition, GridBlocks gridBlocks)
         {
             _gridBlocks = gridBlocks;
             _startCoords = _gridBlocks.GetBlocksCoordinates(bonusPosition);
@@ -32,16 +32,12 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
             return isWithinX && isWithinY;
         }
 
-        public abstract Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap();
+        public abstract bool IsHasNextBlocks();
+        public abstract List<AbstractBlock> GetNextDestroyList();
         
-        protected void AddBlockToDestroyMap(int level, AbstractBlock block)
+        protected void AddBlockToDestroyList(AbstractBlock block)
         {
-            if (!_destroyBlocksMap.ContainsKey(level))
-            {
-                _destroyBlocksMap.Add(level, new List<AbstractBlock>());
-            }
-            
-            _destroyBlocksMap[level].Add(block);
+            _destroyList.Add(block);
             _gridBlocks.RemoveBlockFromMatrix(block);
         }
     }

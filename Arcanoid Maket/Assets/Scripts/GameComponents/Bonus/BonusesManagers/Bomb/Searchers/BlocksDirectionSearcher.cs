@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using GameComponents.Blocks;
 using GameEntities.Blocks;
 using GameEntities.Blocks.Abstract;
 using GameEntities.Bonuses.Enumerations;
@@ -8,43 +10,56 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
 {
     public class BlocksDirectionSearcher : AbstractBlocksSearcher
     {
-        private BombBonusDirection _direction;
+        private bool _isHasNext;
+        private Dictionary<Vector2Int, Vector2Int> _moveCoordsMap;
 
-        public void SetupDirection(BombBonusDirection direction)
+        public BlocksDirectionSearcher(BombBonusDirection direction, Vector2 bonusPosition, GridBlocks gridBlocks) : base(bonusPosition, gridBlocks)
         {
-            _direction = direction;
-        }
-        
-        public override Dictionary<int, List<AbstractBlock>> GetDestroyBlocksMap()
-        {
-            _destroyBlocksMap = new Dictionary<int, List<AbstractBlock>>();
-            
-            if (_direction == BombBonusDirection.Horizontal)
+            _moveCoordsMap = new Dictionary<Vector2Int, Vector2Int>();
+            if (direction == BombBonusDirection.Horizontal)
             {
-                FillDestroyBlocksMap(1, Vector2Int.left);
-                FillDestroyBlocksMap(1, Vector2Int.right);
+                _moveCoordsMap.Add(_startCoords + Vector2Int.right, Vector2Int.right);
+                _moveCoordsMap.Add(_startCoords + Vector2Int.left, Vector2Int.left);
             }
             else
             {
-                FillDestroyBlocksMap(1, Vector2Int.up);
-                FillDestroyBlocksMap(1, Vector2Int.down);
+                _moveCoordsMap.Add(_startCoords + Vector2Int.up, Vector2Int.up);
+                _moveCoordsMap.Add(_startCoords + Vector2Int.down, Vector2Int.down);
             }
-            
-            return _destroyBlocksMap;
         }
-        
-        private void FillDestroyBlocksMap(int level, Vector2Int direction)
+
+        public override bool IsHasNextBlocks()
         {
-            var currentCoords = _startCoords + direction * level;
-            if (IsWithinInMatrix(currentCoords))
+            return _isHasNext;
+        }
+
+        public override List<AbstractBlock> GetNextDestroyList()
+        {
+            _destroyList = new List<AbstractBlock>();
+            FillDestroyBlocksList();
+            return _destroyList;
+        }
+
+        private void FillDestroyBlocksList()
+        {
+            _isHasNext = false;
+            var moves = _moveCoordsMap.ToList();
+            _moveCoordsMap.Clear();
+            
+            foreach (var move in moves)
             {
-                var block = _blocksMatrix[currentCoords.x, currentCoords.y];
-                if (block != null && !(block is IndestructibleBlock))
+                var coords = move.Key;
+                if (IsWithinInMatrix(coords))
                 {
-                    AddBlockToDestroyMap(level, block);
+                    _isHasNext = true;
+                    var block = _blocksMatrix[coords.x, coords.y];
+                    if (block != null && !(block is IndestructibleBlock))
+                    {
+                        AddBlockToDestroyList(block);
+                    }
+
+                    _moveCoordsMap.Add(coords + move.Value, move.Value);
                 }
-                
-                FillDestroyBlocksMap(++level, direction);
             }
         }
     }

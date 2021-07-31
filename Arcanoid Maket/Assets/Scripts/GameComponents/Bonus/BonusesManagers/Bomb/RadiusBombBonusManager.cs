@@ -19,13 +19,6 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
         [SerializeField]
         private RadiusBombBonusSettings _settings;
 
-        private BlocksRadiusSearcher _searcher;
-
-        private void Awake()
-        {
-            _searcher = new BlocksRadiusSearcher();
-        }
-
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -38,31 +31,27 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         public void OnActivateBonus(Vector2 position)
         {
-            _searcher.Setup(position, _gridBlocks);
-            
-            var destroyMap = _searcher.GetDestroyBlocksMap();
-            StartDestroyBlocks(destroyMap);
+            var searcher = new BlocksRadiusSearcher(position, _gridBlocks);
+            var destroyList = searcher.GetNextDestroyList();
+            StartDestroyBlocks(destroyList);
         }
         
-        private void StartDestroyBlocks(Dictionary<int, List<AbstractBlock>> destroyBlocksMaps)
+        private void StartDestroyBlocks(List<AbstractBlock> destroyBlocksList)
         {
-            foreach (var level in destroyBlocksMaps.Keys)
+            foreach (var block in destroyBlocksList)
             {
-                foreach (var block in destroyBlocksMaps[level])
+                if (block is IndestructibleBlock)
                 {
-                    if (block is IndestructibleBlock)
+                    block.DestroyBlock();
+                }
+                else
+                {
+                    var destructibleBlock = (DestructibleBlock) block;
+                    if (!destructibleBlock.IsDamageEnoughToDestroy(_settings.BombDamage))
                     {
-                        block.DestroyBlock();
+                        _gridBlocks.AddBlockToMatrix(block.transform.position, block);
                     }
-                    else
-                    {
-                        var destructibleBlock = (DestructibleBlock) block;
-                        if (!destructibleBlock.IsDamageEnoughToDestroy(_settings.BombDamage))
-                        {
-                            _gridBlocks.AddBlockToMatrix(block.transform.position, block);
-                        }
-                        destructibleBlock.DamageBlock(_settings.BombDamage);
-                    }
+                    destructibleBlock.DamageBlock(_settings.BombDamage);
                 }
             }
         }
