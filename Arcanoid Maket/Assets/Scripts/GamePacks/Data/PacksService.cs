@@ -66,6 +66,7 @@ namespace GamePacks.Data
 
         public PackInfo GetCurrentPackInfo()
         {
+            if (string.IsNullOrEmpty(_currentPackKey)) return null;
             return _packsInfoMap[_currentPackKey];
         }
 

@@ -31,6 +31,7 @@ namespace UI.Popups
             base.Initialize();
             _nextButton.OnButtonPressed += OnContinueButtonPressed;
             EventBus.Subscribe(this);
+            SetupPackUI();
         }
 
         protected override void PreparePopup()
@@ -45,9 +46,8 @@ namespace UI.Popups
 
         private void SetupPackUI()
         {
-            if (!PacksManager.Instance.IsSaveExist()) return;
-            
             _currentPack = PacksManager.Instance.GetCurrentPackInfo();
+            if (_currentPack == null) return;
             _popupPackUI.SetPackImage(_currentPack.GamePack.Icon);
             _popupPackUI.SetPackName(_currentPack.GamePack.Key);
             var maxValue = _currentPack.GamePack.LevelCount + 1;

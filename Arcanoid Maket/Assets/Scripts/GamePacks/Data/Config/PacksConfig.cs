@@ -16,11 +16,6 @@ namespace GamePacks.Data.Config
         [SerializeField]
         private int _debugLevelId = 2;
 
-        private void OnValidate()
-        {
-            _debugPack = _currentContainer.Packs[0].Key;
-        }
-
         public string PacksContainerKey => _currentContainer.name + _currentContainer.Version;
         public string FirstPackKey => _currentContainer.Packs[0].Key;
         public string DebugPack => _debugPack;

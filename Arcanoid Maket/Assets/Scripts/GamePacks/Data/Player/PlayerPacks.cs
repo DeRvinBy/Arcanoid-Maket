@@ -21,8 +21,13 @@ namespace GamePacks.Data.Player
             }
             else
             {
-                CreateDefaultSave(packsMap);             
+                CreateDefaultSave(packsMap);
             }
+        }
+
+        public bool IsSaveExist()
+        {
+            return _loadManager.IsSaveExist();
         }
 
         private void UpdateSave(Dictionary<string, Pack> packsMap)
