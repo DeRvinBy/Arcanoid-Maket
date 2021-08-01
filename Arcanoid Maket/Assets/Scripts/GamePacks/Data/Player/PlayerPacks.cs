@@ -20,11 +20,6 @@ namespace GamePacks.Data.Player
             if (_saveLoadManager.IsSaveExist())
             {
                 _packsSaveContainer = _saveLoadManager.LoadSave();
-                Debug.Log("Save exist: ");
-                foreach (var pack in _packsSaveContainer.Packs)
-                {
-                    Debug.Log(pack.Key);
-                }
                 UpdateSaveFirstPack(packsMap);
                 UpdateSavePacksByCompleted(packsMap);
             }
@@ -39,7 +34,6 @@ namespace GamePacks.Data.Player
             var firstPackKey = packsMap.First().Key;
             if (!IsPackExist(firstPackKey))
             {
-                Debug.Log("First pack doesn't exist: " + firstPackKey);
                 _isSaveExistOnStart = IsExistOpenPackFromMap(packsMap);
                 AddOpenSavePack(firstPackKey);
             }
@@ -91,11 +85,6 @@ namespace GamePacks.Data.Player
 
         public void SavePacks()
         {
-            Debug.Log("Save: ");
-            foreach (var pack in _packsSaveContainer.Packs)
-            {
-                Debug.Log(pack.Key);
-            }
             _saveLoadManager.Save(_packsSaveContainer);
         }
         
