@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using EventInterfaces.BlockEvents;
 using GameEntities.Ball;
-using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Components;
 using GameEntities.Blocks.Enumerations;
 using GameSettings.GameBlockSettings;
@@ -9,7 +8,7 @@ using MyLibrary.CollisionStorage.Extensions;
 using MyLibrary.EventSystem;
 using UnityEngine;
 
-namespace GameEntities.Blocks
+namespace GameEntities.Blocks.Abstract
 {
     public abstract class DestructibleBlock : AbstractBlock
     {

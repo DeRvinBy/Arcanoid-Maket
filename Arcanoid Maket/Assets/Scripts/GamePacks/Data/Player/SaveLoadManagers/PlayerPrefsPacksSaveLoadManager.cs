@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using GamePacks.Data.Player.Data;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace GamePacks.Data.Player.SaveLoadManagers

@@ -1,6 +1,8 @@
 ﻿using System;
 using EventInterfaces.BlockEvents;
+using GameEntities.Blocks.Abstract;
 using GameEntities.Blocks.Components;
+using GameEntities.Blocks.Enumerations;
 using GameEntities.Bonuses.Enumerations;
 using GameSettings.GameBlockSettings;
 using GameSettings.GameBonusSettings.ObjectSettings;
@@ -24,9 +26,10 @@ namespace GameEntities.Blocks
             _bonusSettings = settings.BonusObjectSettings;
         }
 
-        public void SetupBonusBLock(BonusType type)
+        public void SetupBonusBLock(BlockType blockType, BonusType bonusType)
         {
-            var sprite = _bonusSettings.GetBonusSprite(type);
+            BlockType = blockType;
+            var sprite = _bonusSettings.GetBonusSprite(bonusType);
             _blockBonusSprite.SetupSprite(sprite);
         }
 

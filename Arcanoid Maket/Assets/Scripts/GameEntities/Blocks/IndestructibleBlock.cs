@@ -28,6 +28,7 @@ namespace GameEntities.Blocks
         {
             _sprite.Initialize();
             _settings = settings;
+            BlockType = BlockType.Indestructible;
         }
 
         public void SetupBlock()

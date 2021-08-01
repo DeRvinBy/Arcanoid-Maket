@@ -67,7 +67,7 @@ namespace GameComponents.Blocks
             var block = PoolsManager.Instance.GetObject<BonusBlock>(position, Quaternion.identity, size, parent);
             AddBlockToMap(typeof(BonusBlock), block);
             block.SetupBlock(properties.SpriteId);
-            block.SetupBonusBLock(properties.BonusId);
+            block.SetupBonusBLock(properties.Type, properties.BonusId);
             return block;
         }
 

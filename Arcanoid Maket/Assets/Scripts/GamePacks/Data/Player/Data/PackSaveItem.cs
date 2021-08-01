@@ -1,4 +1,4 @@
-﻿namespace GamePacks.Data.Player
+﻿namespace GamePacks.Data.Player.Data
 {
     public class PackSaveItem
     {

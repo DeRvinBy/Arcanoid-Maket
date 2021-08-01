@@ -7,14 +7,14 @@ using UnityEngine;
 
 namespace GameComponents.Bonus.BonusesManagers.Bomb
 {
-    public class RadiusBombBonusManager : MonoBehaviour, IRadiusBombHandler
+    public class ColorBombBonusManager : MonoBehaviour, IColorBombBonusHandler
     {
         [SerializeField]
         private GridBlocks _gridBlocks;
 
         [SerializeField]
         private BombAction _bombAction;
-
+        
         private void OnEnable()
         {
             EventBus.Subscribe(this);
@@ -22,12 +22,12 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb
 
         private void OnDisable()
         {
-            EventBus.Unsubscribe(this);
+            EventBus.Subscribe(this);
         }
-
-        public void OnActivateBonus(Vector2 position)
+        
+        public void OnActivateColorBombBonus(Vector2 position)
         {
-            var searcher = new BlocksRadiusSearcher(position, _gridBlocks);
+            var searcher = new BlocksColorSearcher(position, _gridBlocks);
             _bombAction.StartAction(searcher);
         }
     }

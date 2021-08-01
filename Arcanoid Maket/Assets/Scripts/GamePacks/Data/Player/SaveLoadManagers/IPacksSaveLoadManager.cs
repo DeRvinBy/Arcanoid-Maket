@@ -1,4 +1,6 @@
-﻿namespace GamePacks.Data.Player.SaveLoadManagers
+﻿using GamePacks.Data.Player.Data;
+
+namespace GamePacks.Data.Player.SaveLoadManagers
 {
     public interface IPacksSaveLoadManager
     {

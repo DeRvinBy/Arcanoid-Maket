@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GamePacks.Data.Packs;
+using GamePacks.Data.Player.Data;
 using GamePacks.Data.Player.SaveLoadManagers;
 using UnityEngine;
 
