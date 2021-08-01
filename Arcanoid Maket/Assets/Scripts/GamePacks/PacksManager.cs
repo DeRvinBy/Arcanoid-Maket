@@ -22,7 +22,6 @@ namespace GamePacks
         private PlayerPacks _playerPacks;
         private PacksService _service;
         private ILevelParser _parser;
-        private bool _isSaveExist;
 
         private void OnApplicationPause(bool pauseStatus)
         {
@@ -39,11 +38,10 @@ namespace GamePacks
         {
             _config = Resources.Load<PacksConfig>(PacksConfigPath);
             
-            var saveLoadManager = new PlayerPrefsPacksSaveLoadManager(_config.PacksContainerKey);
+            var saveLoadManager = new PlayerPrefsPacksSaveLoadManager();
             _playerPacks = new PlayerPacks();
             _playerPacks.Initialize(saveLoadManager, _config.GetPacksMap());
-            _isSaveExist = saveLoadManager.IsSaveExist();
-            
+
             _service = new PacksService();
             _service.Initialize(_playerPacks, _config);
             
@@ -52,14 +50,15 @@ namespace GamePacks
             
             
 #if UNITY_EDITOR
+            if (!_config.IsDebugEnable) return;
             var debugHandler = gameObject.AddComponent<DebugPacksHandler>();
-            debugHandler.Initialize(_config, _service, _isSaveExist);
+            debugHandler.Initialize(_config, _service, _playerPacks.IsSaveOnStartExist());
 #endif
         }
 
-        public bool IsSaveExist()
+        public bool IsSaveExistOnStart()
         {
-            return _isSaveExist;
+            return _playerPacks.IsSaveOnStartExist();
         }
         
         public PackInfo GetCurrentPackInfo()

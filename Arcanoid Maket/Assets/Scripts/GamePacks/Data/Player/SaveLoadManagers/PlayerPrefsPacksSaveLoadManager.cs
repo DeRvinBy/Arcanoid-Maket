@@ -6,30 +6,11 @@ namespace GamePacks.Data.Player.SaveLoadManagers
     public class PlayerPrefsPacksSaveLoadManager : IPacksSaveLoadManager
     {
         private const string SaveKey = "PacksSaveJSON";
-        
-        private PacksSaveContainer _saveContainer;
-        private string _packsContainerKey;
 
-        public PlayerPrefsPacksSaveLoadManager(string packsContainerKey)
+        public PlayerPrefsPacksSaveLoadManager()
         {
-            _packsContainerKey = packsContainerKey;
             if (!PlayerPrefs.HasKey(SaveKey)) return;
             LoadSave();
-        }
-
-        private void LoadSave()
-        {
-            var saveJson = PlayerPrefs.GetString(SaveKey);
-            var saveContainer = JsonConvert.DeserializeObject<PacksSaveContainer>(saveJson);
-
-            if (saveContainer.PackContainerKey == _packsContainerKey)
-            {
-                _saveContainer = saveContainer;
-            }
-            else
-            {
-                PlayerPrefs.DeleteKey(SaveKey);
-            }
         }
 
         public bool IsSaveExist()
@@ -37,14 +18,15 @@ namespace GamePacks.Data.Player.SaveLoadManagers
             return PlayerPrefs.HasKey(SaveKey);
         }
 
-        public PacksSaveContainer GetSave()
+        public PacksSaveContainer LoadSave()
         {
-            return _saveContainer;
+            var saveJson = PlayerPrefs.GetString(SaveKey);
+            var saveContainer = JsonConvert.DeserializeObject<PacksSaveContainer>(saveJson);
+            return saveContainer;
         }
 
         public void Save(PacksSaveContainer container)
         {
-            container.PackContainerKey = _packsContainerKey;
             var saveJson = JsonConvert.SerializeObject(container);
             PlayerPrefs.SetString(SaveKey, saveJson);
         }

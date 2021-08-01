@@ -8,18 +8,21 @@ namespace GamePacks.Data.Config
     public class PacksConfig : ScriptableObject
     {
         [SerializeField]
-        private PacksContainer _currentContainer; 
+        private PacksContainer _currentContainer;
+
+        [SerializeField]
+        private bool _isDebugEnable = false;
         
         [SerializeField]
         private string _debugPack = "test_pack";
         
         [SerializeField]
         private int _debugLevelId = 2;
-
-        public string PacksContainerKey => _currentContainer.name + _currentContainer.Version;
+        
         public string FirstPackKey => _currentContainer.Packs[0].Key;
         public string DebugPack => _debugPack;
         public int DebugLevelId => _debugLevelId;
+        public bool IsDebugEnable => _isDebugEnable;
 
         public Dictionary<string, Pack> GetPacksMap()
         {

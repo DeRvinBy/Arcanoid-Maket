@@ -47,7 +47,7 @@ namespace BehaviorControllers.GameControllers
         
         public void OnStartGame()
         {
-            var isSaveExist = PacksManager.Instance.IsSaveExist();
+            var isSaveExist = PacksManager.Instance.IsSaveExistOnStart();
             if (isSaveExist)
             {
                 EventBus.RaiseEvent<IPacksChoosingHandler>(a => a.OnStartChoosePack());
