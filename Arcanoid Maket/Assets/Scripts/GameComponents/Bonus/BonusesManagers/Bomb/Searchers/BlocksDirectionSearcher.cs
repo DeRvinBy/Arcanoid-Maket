@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GameComponents.Blocks;
-using GameEntities.Blocks;
 using GameEntities.Bonuses.Enumerations;
 using UnityEngine;
 
@@ -44,7 +43,7 @@ namespace GameComponents.Bonus.BonusesManagers.Bomb.Searchers
                 {
                     _isHasNext = true;
                     var block = _blocksMatrix[coords.x, coords.y];
-                    if (block != null && !(block is IndestructibleBlock))
+                    if (block != null)
                     {
                         AddBlockToDestroyList(block);
                     }

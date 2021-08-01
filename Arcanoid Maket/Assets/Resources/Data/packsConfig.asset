@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentContainer: {fileID: 11400000, guid: 930b7f07432668343986fc14a543ddfc, type: 2}
   _isDebugEnable: 1
-  _debugPack: one_click_pack
-  _debugLevelId: 4
+  _debugPack: one_bonus_pack
+  _debugLevelId: 7
