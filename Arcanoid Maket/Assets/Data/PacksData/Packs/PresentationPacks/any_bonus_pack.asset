@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: any_bonus_pack
   m_EditorClassIdentifier: 
   _key: any_bonus_pack
-  _icon: {fileID: -6338109932877840061, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
-  _color: {r: 0.8584906, g: 0.63811344, b: 0.54668033, a: 1}
+  _icon: {fileID: -3795997307497363853, guid: 4676ae72faf5fc84abf3cc0f5e631ad5, type: 3}
+  _color: {r: 0.7591418, g: 0.8773585, b: 0.5752492, a: 1}
   _levels:
   - {fileID: 4900000, guid: 1bd8b840636d3234aa457d9db43b3edd, type: 3}
   - {fileID: 4900000, guid: 0d6861d6fa487d24aa33e743753ff07d, type: 3}
