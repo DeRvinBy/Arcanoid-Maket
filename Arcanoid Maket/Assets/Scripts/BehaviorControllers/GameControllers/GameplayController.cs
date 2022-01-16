@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Ads;
 using BehaviorControllers.Abstract;
 using BehaviorControllers.EntitiesControllers;
 using EventInterfaces.GameEvents;
@@ -50,6 +51,7 @@ namespace BehaviorControllers.GameControllers
             EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
             yield return TransitionController.Instance.ShowForwardTransition();
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
+            AdsController.Instance.BannerAdService.ShowBannerAd();
         }
 
         public override void Initialize(ControllersManager controllersManager)
@@ -69,6 +71,7 @@ namespace BehaviorControllers.GameControllers
             yield return PopupsController.Instance.HideAllActivePopups();
             EventBus.RaiseEvent<IStartGameplayHandler>(a => a.OnStartGame());
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnEnableInput());
+            AdsController.Instance.BannerAdService.ShowBannerAd();
         }
         
         private void OnDisable()
@@ -94,6 +97,7 @@ namespace BehaviorControllers.GameControllers
             _playerBallsController.IncreasePlayerBallCount();
             EventBus.RaiseEvent<IPauseGameHandler>(a => a.OnContinue());
             EventBus.RaiseEvent<IContinueGameHandler>(a => a.OnContinueGame());
+            AdsController.Instance.BannerAdService.ShowBannerAd();
         }
 
         public void OnPackButtonPressed()
@@ -114,6 +118,7 @@ namespace BehaviorControllers.GameControllers
 
         private void EndGame()
         {
+            AdsController.Instance.BannerAdService.HideBannerAd();
             EventBus.RaiseEvent<IEndGameplayHandler>(a => a.OnEndGame());
             EventBus.RaiseEvent<IInputEnabledHandler>(a => a.OnDisableInput());
         }

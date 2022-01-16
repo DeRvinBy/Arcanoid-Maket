@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using Ads;
 using BehaviorControllers.Abstract;
 using EventInterfaces.GameEvents;
 using GameComponents.Energy.Commands;
@@ -39,8 +39,12 @@ namespace BehaviorControllers.GameControllers
         private IEnumerator WinGame()
         {
             PacksManager.Instance.CompleteLevel();
-            yield return PopupsController.Instance.ShowPopup<WinPopup>();
-            _addEnergyOnWin.Execute();
+            yield return PopupsController.Instance.ShowPopup<WinPopup>(OnWinPopupShown);
+        }
+
+        private void OnWinPopupShown()
+        {
+             AdsController.Instance.InterstitialAdService.ShowAd(_addEnergyOnWin.Execute);
         }
 
         public void OnLoseGame()

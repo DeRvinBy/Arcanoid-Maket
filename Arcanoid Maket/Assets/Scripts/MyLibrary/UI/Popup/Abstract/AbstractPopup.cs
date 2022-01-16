@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using MyLibrary.UI.UIPool;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace MyLibrary.UI.Popup.Abstract
             }
         }
 
-        public IEnumerator ShowPopup()
+        public IEnumerator ShowPopup(Action onComplete)
         {
             gameObject.SetActive(true);
             PreparePopup();
@@ -27,7 +28,7 @@ namespace MyLibrary.UI.Popup.Abstract
                 yield return _popupAnimation.PlayShowAnimation();
             }
             
-            StartPopup();
+            StartPopup(onComplete);
         }
 
         public IEnumerator HidePopup()
@@ -41,7 +42,7 @@ namespace MyLibrary.UI.Popup.Abstract
         }
         
         protected virtual void PreparePopup() {}
-        protected virtual void StartPopup() {}
+        protected virtual void StartPopup(Action onComplete) {}
         protected virtual void ResetPopup() {}
     }
 }

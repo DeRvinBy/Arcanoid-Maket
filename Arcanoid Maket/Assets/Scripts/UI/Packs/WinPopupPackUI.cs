@@ -64,7 +64,7 @@ namespace UI.Packs
             _nextButton.Disable();
         }
         
-        public void UpdatePackProgress(float nextSliderValue, TweenCallback onPackChanged)
+        public void UpdatePackProgress(float nextSliderValue, TweenCallback onPackChanged, TweenCallback onComplete)
         {
             var animationSequence = DOTween.Sequence();
 
@@ -77,6 +77,7 @@ namespace UI.Packs
             var buttonTween = _buttonAnimation.GetForwardAnimation();
             buttonTween.onComplete += _nextButton.Enable;
             animationSequence.Append(buttonTween);
+            animationSequence.onComplete += onComplete;
         }
     }
 }

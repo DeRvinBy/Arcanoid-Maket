@@ -31,14 +31,14 @@ namespace MyLibrary.UI.Popup
             _popupsContainer = container.transform;
         }
 
-        public IEnumerator ShowPopup<T>() where T : AbstractPopup
+        public IEnumerator ShowPopup<T>(Action onComplete = null) where T : AbstractPopup
         {
             var popup = GetPopupByType<T>();
             popup.transform.SetAsLastSibling();
             _popupsLocker.EnableLocker();
             _popupsLocker.MoveUpLocker(popup.transform);
             _popupsStack.Push(popup);
-            yield return popup.ShowPopup();
+            yield return popup.ShowPopup(onComplete);
             _popupsLocker.MoveDownLocker(popup.transform);
         }
 

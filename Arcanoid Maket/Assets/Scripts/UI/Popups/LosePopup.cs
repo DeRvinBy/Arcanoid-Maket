@@ -1,7 +1,7 @@
-﻿using EventInterfaces.GameEvents;
+﻿using Ads;
+using EventInterfaces.GameEvents;
 using EventInterfaces.StatesEvents;
 using MyLibrary.EventSystem;
-using MyLibrary.Extensions;
 using MyLibrary.UI.Button;
 using MyLibrary.UI.Popup.Abstract;
 using UnityEngine;
@@ -15,7 +15,9 @@ namespace UI.Popups
 
         [SerializeField]
         private GameObject _newBallButtonContainer;
-        
+        [SerializeField]
+        private GameObject _newBallButtonLocker;
+
         [SerializeField]
         private EventButton _newBallButton;
 
@@ -31,16 +33,39 @@ namespace UI.Popups
 
         protected override void PreparePopup()
         {
-            _newBallButtonContainer.SetActive(!_isAdditionalBallUsed);
+            if (_isAdditionalBallUsed)
+            {
+                _newBallButtonContainer.SetActive(false);
+                return;
+            }
+
+            _newBallButtonLocker.SetActive(true);
+            _newBallButtonContainer.SetActive(true);
+            AdsController.Instance.RewardedAdService.LoadAd(OnRewardedAdLoad);
+        }
+
+        private void OnRewardedAdLoad(bool isLoad)
+        {
+            _newBallButtonLocker.SetActive(false);
         }
 
         private void OnNewBallButtonPressed()
         {
             _isAdditionalBallUsed = true;
+            AdsController.Instance.RewardedAdService.ShowAd(OnRewardedVideoShown);
+        }
+
+        private void OnRewardedVideoShown()
+        {
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnContinueAfterLoseGameProcess());
         }
 
         private void OnRestartButtonPressed()
+        {
+            AdsController.Instance.InterstitialAdService.ShowAd(OnInterstitialAdShown);
+        }
+
+        private void OnInterstitialAdShown()
         {
             EventBus.RaiseEvent<IStartGameHandler>(a => a.OnRestartGameProcess());
         }
