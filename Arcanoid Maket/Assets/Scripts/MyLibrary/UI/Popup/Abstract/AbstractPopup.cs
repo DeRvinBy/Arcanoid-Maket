@@ -38,7 +38,6 @@ namespace MyLibrary.UI.Popup.Abstract
                 yield return _popupAnimation.PlayHideAnimation();
             }
             ResetPopup();
-            gameObject.SetActive(false);
         }
         
         protected virtual void PreparePopup() {}

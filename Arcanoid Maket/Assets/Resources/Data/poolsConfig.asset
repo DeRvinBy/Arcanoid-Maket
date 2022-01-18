@@ -69,3 +69,7 @@ MonoBehaviour:
     _creator: {fileID: 6606783348075168499, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
     _settings: {fileID: 11400000, guid: b8ef8cfaf01b6954d9e2b2739d30a018, type: 2}
     _initialCount: 1
+  - _prefab: {fileID: 9011863847566416980, guid: 4af3139cc730e6a4a9765ad302f71de7, type: 3}
+    _creator: {fileID: 6606783348075168499, guid: 83de67faa64cb334e8531ec9c8f7b9d8, type: 3}
+    _settings: {fileID: 11400000, guid: b8ef8cfaf01b6954d9e2b2739d30a018, type: 2}
+    _initialCount: 1

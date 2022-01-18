@@ -1,7 +1,11 @@
 ﻿{
+  "no_energy" : "Нет энергии",
+  "get_energy" : "Получить энергию",
   "lose_text" : "Вы проиграли!",
   "pause_text" : "Пауза",
   "choose_pack_text" : "Выбор пака",
+  "later_button" : "Позже",
+  "get_energy_button" : "Получить энергию",
   "play_button" : "Играть",
   "back_button" : "Назад",
   "continue_button" : "Продолжить",

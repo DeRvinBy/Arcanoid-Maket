@@ -71,12 +71,13 @@ namespace MyLibrary.UI.Popup
             yield return popup.HidePopup();
             if (_popupsStack.Count != 0)
             {
-                _popupsLocker.MoveDownLocker(popup.transform);
+                _popupsLocker.MoveDownLocker(_popupsStack.Peek().transform);
             }
             else
             {
                 _popupsLocker.DisableLocker();
             }
+            popup.gameObject.SetActive(false);
         }
 
         public IEnumerator HideAllActivePopups()
@@ -84,7 +85,7 @@ namespace MyLibrary.UI.Popup
             _popupsLocker.MoveOnAllPopups();
             for (int i = 0; i < _popupsStack.Count; i++)
             {
-                var popup = _popupsStack.Pop();
+                var popup = _popupsStack.Peek();
                 yield return popup.HidePopup();
             }
             _popupsStack.Clear();

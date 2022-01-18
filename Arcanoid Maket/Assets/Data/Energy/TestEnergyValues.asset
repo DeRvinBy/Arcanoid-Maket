@@ -21,3 +21,5 @@ MonoBehaviour:
     _energyValue: 5
   - _typeAction: 3
     _energyValue: 5
+  - _typeAction: 4
+    _energyValue: 7

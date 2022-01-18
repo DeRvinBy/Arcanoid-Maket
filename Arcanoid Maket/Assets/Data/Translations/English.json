@@ -1,7 +1,10 @@
 {
+  "no_energy" : "No Energy",
   "lose_text" : "You lose!",
   "pause_text" : "Pause",
   "choose_pack_text" : "Choosing pack",
+  "later_button" : "Later",
+  "get_energy_button" : "Get Energy",
   "play_button" : "Play",
   "back_button" : "Back",
   "continue_button" : "Continue",
